@@ -5,6 +5,9 @@
 // CTAssetsPickerController https://github.com/chiunam/CTAssetsPickerController
 #import <CTAssetsPickerController/CTAssetsPickerController.h>
 
+// DateTools https://github.com/MatthewYork/DateTools
+#import <DateTools/DateTools.h>
+
 // EAIntroView https://github.com/ealeksandrov/EAIntroView
 #import <EAIntroView/EAIntroView.h>
 

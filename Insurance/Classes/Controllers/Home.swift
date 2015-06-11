@@ -60,4 +60,3 @@ class Home: BaseController, CAPSPageMenuDelegate {
         view.addSubview(pageMenu.view)
     }
 }
-

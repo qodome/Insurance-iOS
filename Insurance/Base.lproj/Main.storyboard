@@ -18,6 +18,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="uLU-FH-2d0"/>
+                    <connections>
+                        <segue destination="l9x-AV-3qP" kind="show" identifier="segue.discover-card_list" id="CZ4-7l-IVq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8UX-ww-2iq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,6 +44,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNj-Ll-93w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1518" y="918"/>
+        </scene>
+        <!--Simple Card List-->
+        <scene sceneID="mEF-lv-kcn">
+            <objects>
+                <viewController storyboardIdentifier="card_list" id="l9x-AV-3qP" customClass="SimpleCardList" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wiT-tH-fyc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ho8-wY-ZRY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4dk-PB-aEf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DeM-Ne-g0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2330" y="256"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="E4J-8K-FCK">
@@ -111,8 +132,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="qQ6-ce-EUQ" kind="relationship" relationship="viewControllers" id="xec-yH-Ohp"/>
-                        <segue destination="pHd-wp-FK6" kind="relationship" relationship="viewControllers" id="mPi-cB-MbR"/>
                         <segue destination="oM7-Jp-B2X" kind="relationship" relationship="viewControllers" id="OPl-k2-o0J"/>
+                        <segue destination="pHd-wp-FK6" kind="relationship" relationship="viewControllers" id="mPi-cB-MbR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9iT-Bt-Rp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -138,11 +159,11 @@
             </objects>
             <point key="canvasLocation" x="706" y="-406"/>
         </scene>
-        <!--Item 2-->
+        <!--Navigation Controller-->
         <scene sceneID="qyM-DE-065">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oM7-Jp-B2X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="eda-e5-Va0"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="eda-e5-Va0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OFM-Gf-T0x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -192,6 +213,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPL-Rg-QAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="706" y="1580"/>
+        </scene>
+        <!--Search Results List-->
+        <scene sceneID="3Zi-LZ-3gC">
+            <objects>
+                <viewController storyboardIdentifier="search_results" id="ErA-lj-IqZ" customClass="SearchResultsList" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S1W-ZE-mhG"/>
+                        <viewControllerLayoutGuide type="bottom" id="khG-8X-w1B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dfd-52-F6q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iKI-RD-HhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="256"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hTd-bb-vWh">
