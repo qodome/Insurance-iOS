@@ -7,22 +7,22 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.2.0)
   - CTAssetsPickerController (2.9.4)
-  - DateTools (1.5.0)
-  - EAIntroView (2.7.3):
-    - EARestrictedScrollView (~> 0.1.0)
-  - EARestrictedScrollView (0.1.0)
-  - FBSDKCoreKit (4.2.0):
+  - DateTools (1.6.1)
+  - EAIntroView (2.7.4):
+    - EARestrictedScrollView (~> 0.2.0)
+  - EARestrictedScrollView (0.2.0)
+  - FBSDKCoreKit (4.3.0):
     - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.2.0)
-    - FBSDKCoreKit/no-arc (= 4.2.0)
-  - FBSDKCoreKit/arc (4.2.0):
+    - FBSDKCoreKit/arc (= 4.3.0)
+    - FBSDKCoreKit/no-arc (= 4.3.0)
+  - FBSDKCoreKit/arc (4.3.0):
     - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.2.0):
+  - FBSDKCoreKit/no-arc (4.3.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
-  - FBSDKLoginKit (4.2.0):
+  - FBSDKLoginKit (4.3.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.2.0):
+  - FBSDKShareKit (4.3.0):
     - FBSDKCoreKit
   - FormatterKit (1.8.0):
     - FormatterKit/AddressFormatter (= 1.8.0)
@@ -72,7 +72,7 @@ PODS:
   - SDWebImage/Core (3.7.2)
   - SOCKit (1.1)
   - SZTextView (1.2.1)
-  - TLYShyNavBar (0.9.10)
+  - TLYShyNavBar (0.9.11)
   - TransitionKit (2.1.1)
   - TSMessages (0.9.12):
     - HexColors
@@ -100,12 +100,12 @@ SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   CTAssetsPickerController: 3030dc60f5d1a3c4e5b1c0aa9f069220d5bf7008
-  DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
-  EAIntroView: bedde44388280d71c9798ce36c82720901596355
-  EARestrictedScrollView: 5ab3eadd9ea55282cc72df0daecb09803059e3a0
-  FBSDKCoreKit: 84b3616a361801f190e43a9909caead7bb6087c7
-  FBSDKLoginKit: 57e37106af12c9e264e473dcb75d7decdbb07fe4
-  FBSDKShareKit: 931746fdf8fb95efd6e12310ec14b2b3295e2aec
+  DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
+  EAIntroView: 50b85eedf414260e61330070ffe5947e72493a62
+  EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
+  FBSDKCoreKit: a3a60225a84abeace291d0fe71cae29a627382c2
+  FBSDKLoginKit: 6bc2f8f2628c3b6d2e346762fff8cb55cfd3a58d
+  FBSDKShareKit: 15806d69714de39d5dff2c84645f4cde23f5876e
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
@@ -115,10 +115,10 @@ SPEC CHECKSUMS:
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
-  TLYShyNavBar: 297414e49b9f779655cbe128d167f8227a30bae8
+  TLYShyNavBar: e0d7b6719a8860144415708bbe8b6fbddd36f419
   TransitionKit: 3a14b6acc7cf2d1dd3e454e24dbad1cfab9a1ef1
   TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
   WeiboSDK: e40a302dc603a20c8ec7fc15ebec49fa4e93d7ba
   Weixin: 078167ff244c56fa8352506420b6328a13a184a1
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.0.beta.1

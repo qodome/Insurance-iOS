@@ -87,6 +87,9 @@
 		0ECD827C1B206C2000054FD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD827E1B206C2000054FD2 /* InfoPlist.strings */; };
 		0ECD82811B206C9900054FD2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD82801B206C9900054FD2 /* Info.plist */; };
 		0ECD82841B206CDA00054FD2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD82861B206CDA00054FD2 /* Localizable.strings */; };
+		0EF0BF0A1B4677A300D17ECD /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0BF071B4677A300D17ECD /* Intro.swift */; };
+		0EF0BF0B1B4677A300D17ECD /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0BF081B4677A300D17ECD /* SignIn.swift */; };
+		0EF0BF0C1B4677A300D17ECD /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0BF091B4677A300D17ECD /* SignUp.swift */; };
 		910AD29E4662E8D204D61344 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D748F14C98BF0FDECBD93157 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +192,9 @@
 		0ECD82801B206C9900054FD2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ECD82851B206CDA00054FD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0ECD82871B206CDC00054FD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0EF0BF071B4677A300D17ECD /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		0EF0BF081B4677A300D17ECD /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		0EF0BF091B4677A300D17ECD /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		33460E9F51E1D8AF9D4D6B86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3CDE55435AAF7CBF3FEE012A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D748F14C98BF0FDECBD93157 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -444,6 +450,7 @@
 		0ECD81C41B2066B100054FD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0EF0BF0D1B4677AA00D17ECD /* Login */,
 				0ECD81CA1B2066B100054FD2 /* Home.swift */,
 				0ECD81C91B2066B100054FD2 /* Discover.swift */,
 				0ECD81C51B2066B100054FD2 /* About.swift */,
@@ -504,6 +511,16 @@
 				0E12089F1B213F9100418D47 /* Taylor */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		0EF0BF0D1B4677AA00D17ECD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0EF0BF071B4677A300D17ECD /* Intro.swift */,
+				0EF0BF081B4677A300D17ECD /* SignIn.swift */,
+				0EF0BF091B4677A300D17ECD /* SignUp.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		F647CE9DCC15F7A15F9686E0 /* Pods */ = {
@@ -695,6 +712,7 @@
 				0E1208F91B213F9100418D47 /* UIViewController+Extension.swift in Sources */,
 				0E12090C1B213F9100418D47 /* RightDetailCell.swift in Sources */,
 				0ECD81E01B2066B100054FD2 /* Home.swift in Sources */,
+				0EF0BF0B1B4677A300D17ECD /* SignIn.swift in Sources */,
 				0E1208E31B213F9100418D47 /* HttpTask.swift in Sources */,
 				0E1208EA1B213F9100418D47 /* SearchResultsList.swift in Sources */,
 				0E1208ED1B213F9100418D47 /* TableSearch.swift in Sources */,
@@ -727,6 +745,8 @@
 				0E1208F31B213F9100418D47 /* UIColor+Extension.swift in Sources */,
 				0E1208F81B213F9100418D47 /* UIView+Extension.swift in Sources */,
 				0E1209061B213F9100418D47 /* S3Utils.swift in Sources */,
+				0EF0BF0C1B4677A300D17ECD /* SignUp.swift in Sources */,
+				0EF0BF0A1B4677A300D17ECD /* Intro.swift in Sources */,
 				0ECD81E31B2066B100054FD2 /* Category.swift in Sources */,
 				0E1209031B213F9100418D47 /* TaylorR.swift in Sources */,
 				0E1209171B218E2300418D47 /* CAPSPageMenu.swift in Sources */,
@@ -841,7 +861,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -880,7 +900,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

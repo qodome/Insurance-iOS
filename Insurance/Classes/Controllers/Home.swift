@@ -3,15 +3,15 @@
 //
 
 class Home: BaseController, CAPSPageMenuDelegate {
-    var OPTIONS = [
-        "menuHeight" : NAVIGATION_BAR_HEIGHT,
-        "menuItemFont" : UIFont(name: "HelveticaNeue-Light", size: DEFAULT_FONT_SIZE)!,
-        "menuItemWidth" : 90,
-        "scrollMenuBackgroundColor" : UIColor.whiteColor(),
-        "unselectedMenuItemLabelColor" : UIColor.darkGrayColor(),
-        "selectedMenuItemLabelColor" : UIColor.colorWithHex(APP_COLOR),
-        "selectionIndicatorColor" : UIColor.colorWithHex(APP_COLOR),
-        "selectionIndicatorHeight" : 2
+    var parameters: [CAPSPageMenuOption] = [
+        .MenuHeight(NAVIGATION_BAR_HEIGHT),
+        .MenuItemFont(UIFont(name: "HelveticaNeue-Light", size: DEFAULT_FONT_SIZE)!),
+        .MenuItemWidth(90),
+        .ScrollMenuBackgroundColor(UIColor.whiteColor()),
+        .UnselectedMenuItemLabelColor(UIColor.darkGrayColor()),
+        .SelectedMenuItemLabelColor(UIColor.colorWithHex(APP_COLOR)),
+        .SelectionIndicatorColor(UIColor.colorWithHex(APP_COLOR)),
+        .SelectionIndicatorHeight(2)
     ]
     var pageMenu: CAPSPageMenu! // 必须写在外面不能写在viewDidLoad
     
@@ -56,7 +56,7 @@ class Home: BaseController, CAPSPageMenuDelegate {
             controllerList.append(controller)
             tag++
         }
-        pageMenu = CAPSPageMenu(viewControllers: controllerList, frame: CGRectMake(0, STATUS_BAR_HEIGHT, view.frame.width, view.frame.height), options: OPTIONS)
+        pageMenu = CAPSPageMenu(viewControllers: controllerList, frame: CGRectMake(0, STATUS_BAR_HEIGHT, view.frame.width, view.frame.height), pageMenuOptions: parameters)
         view.addSubview(pageMenu.view)
     }
 }
