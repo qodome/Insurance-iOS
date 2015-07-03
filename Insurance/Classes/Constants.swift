@@ -4,10 +4,10 @@
 
 let APP_ID = "981373001" // "https://itunes.apple.com/cn/app/id981373001"
 
-let DOMAIN = "dovoq.com"
+let DOMAIN = "test1.xiaomar.com"
 let API_VERSION = "api/v1"
 
-let DEFAULT_TOKEN = "e91c2126c2a9ba77000a932fc11a85bbb29e8f54"
+let DEFAULT_TOKEN = "d55c45f1b33d0617fc3212657e36be1abf2e0a71"
 
 let BASE_URL = "http://\(DOMAIN)"
 let MEDIA_URL = "http://media.\(DOMAIN)"

@@ -5,53 +5,42 @@
 class Card: BaseModel {
     var id: NSNumber!
     var idStr: NSString = ""
-    var image: NSString = ""
     var user: User?
-    var created: NSDate!
-    var isActive = false
-    var userId: NSNumber!
-    var username: NSString = ""
-    var userImageUrl: NSString = ""
-    var objectId: NSNumber!
-    var type: NSString = ""
-    var caption: NSString = ""
-    var imageUrl: NSString = ""
-    var imagesCount: NSNumber!
-    var stream: NSString = ""
-    var player: NSString = ""
     var site: NSString = ""
+    var createdTime: NSDate!
+    var isActive = false
+    var caption: NSString = ""
+    var type: NSString = ""
+    var imageUrl: NSString = ""
     var url: NSString = ""
-    var likesCount: NSNumber!
-    var commentsCount: NSNumber!
     var tags: NSString = ""
     var brand: NSString = ""
+    var objectId: NSNumber!
+    var imageCount: NSNumber!
+    var stream: NSString = ""
+    var player: NSString = ""
     var tips: NSString = ""
+    var repostCount: NSNumber!
     
-    override class func getMapping() -> Dictionary<String, String> {
+    override class func getMapping() -> [String : String] {
         return [
             "id" : "id",
             "id_str" : "idStr",
-            "image" : "image",
-            "user" : "user",
-            "created" : "created",
-            "is_active" : "isActive",
-            "user_id" : "userId",
-            "username" : "username",
-            "user_image_url" : "userImageUrl",
-            "object_id" : "objectId",
-            "type" : "type",
-            "caption" : "caption",
-            "image_url" : "imageUrl",
-            "images_count" : "imagesCount",
-            "stream" : "stream",
-            "player" : "player",
             "site" : "site",
+            "created_time" : "createdTime",
+            "is_active" : "isActive",
+            "caption" : "caption",
+            "type" : "type",
+            "image_url" : "imageUrl",
             "url" : "url",
-            "likes_count" : "likesCount",
-            "comments_count" : "commentsCount",
             "tags" : "tags",
             "brand" : "brand",
+            "object_id" : "objectId",
+            "image_count" : "imageCount",
+            "stream" : "stream",
+            "player" : "player",
             "tips" : "tips",
+            "repost_count" : "repostCount",
         ]
     }
 }

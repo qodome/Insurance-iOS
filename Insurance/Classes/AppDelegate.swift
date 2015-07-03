@@ -5,7 +5,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: BaseAppDelegate {
+class AppDelegate: SocialAppDelegate {
     // MARK: - 🐤 Taylor
     override func onFinishLaunching(application: UIApplication, options: [NSObject : AnyObject]?) {
         super.onFinishLaunching(application, options: options)
