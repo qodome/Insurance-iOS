@@ -7,7 +7,7 @@ class Settings: TableDetail {
     override func onPrepare() {
         super.onPrepare()
         title = LocalizedString("settings")
-        items = [["settings"]]
+        items = [["about"]]
     }
     
     override func getItemView<T : NSObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
@@ -16,9 +16,10 @@ class Settings: TableDetail {
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        if indexPath.section == 2 && indexPath.row == 0 {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            openAppReviews()
-//        }
+        switch getItem(indexPath) {
+        case "about":
+            performSegueWithIdentifier("segue.settings-about", sender: self)
+        default: break
+        }
     }
 }

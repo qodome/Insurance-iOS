@@ -34,6 +34,6 @@ class UserDetail: TableDetail {
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 150
+        return section == 0 ? 150 : 20
     }
 }

@@ -6,7 +6,7 @@ class Me: UserDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items[0] += ["settings"]
+        items += [["settings"]]
     }
     
     override func onLoadSuccess<E : User>(entity: E) {

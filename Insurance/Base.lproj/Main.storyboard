@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="1518" y="256"/>
         </scene>
-        <!--View Controller-->
+        <!--Compare-->
         <scene sceneID="31H-eK-Dy3">
             <objects>
-                <viewController id="YLk-5r-fDA" sceneMemberID="viewController">
+                <viewController id="YLk-5r-fDA" customClass="Compare" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1oh-aJ-kQw"/>
                         <viewControllerLayoutGuide type="bottom" id="S1h-8f-PdI"/>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="1518" y="1580"/>
         </scene>
-        <!--About-->
+        <!--Me-->
         <scene sceneID="pVO-kV-ndI">
             <objects>
-                <viewController id="9JS-g0-Aa7" customClass="About" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9JS-g0-Aa7" customClass="Me" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HH1-Py-B4Z"/>
                         <viewControllerLayoutGuide type="bottom" id="3nY-mS-7U0"/>
@@ -96,10 +96,52 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iZJ-v4-nZX"/>
+                    <connections>
+                        <segue destination="Anz-QY-mfo" kind="show" identifier="segue.me-settings" id="aZA-jP-hX7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcY-20-1LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1518" y="2242"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="XzM-md-HoD">
+            <objects>
+                <viewController id="Anz-QY-mfo" customClass="Settings" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1cp-TS-NqT"/>
+                        <viewControllerLayoutGuide type="bottom" id="B8p-EH-zZ6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="98N-EE-LQg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="acY-hn-fWZ" kind="show" identifier="segue.settings-about" id="PBz-g0-Bes"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="70W-YR-Qle" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2330" y="2242"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="Lbg-nI-Dvn">
+            <objects>
+                <viewController id="acY-hn-fWZ" customClass="About" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ahy-NF-Sys"/>
+                        <viewControllerLayoutGuide type="bottom" id="cNj-h3-TkB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YHV-ui-aAE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uML-rf-orV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142" y="2904"/>
         </scene>
         <!--Home-->
         <scene sceneID="LS1-UN-OUD">
@@ -120,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="1518" y="-406"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main-->
         <scene sceneID="qQp-4l-rOK">
             <objects>
-                <tabBarController id="yCg-Rf-ueA" sceneMemberID="viewController">
+                <tabBarController id="yCg-Rf-ueA" customClass="Main" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="QSL-pf-cVw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -133,6 +175,7 @@
                     <connections>
                         <segue destination="qQ6-ce-EUQ" kind="relationship" relationship="viewControllers" id="xec-yH-Ohp"/>
                         <segue destination="oM7-Jp-B2X" kind="relationship" relationship="viewControllers" id="OPl-k2-o0J"/>
+                        <segue destination="AWo-Zx-Xhe" kind="relationship" relationship="viewControllers" id="sS8-iG-8XG"/>
                         <segue destination="pHd-wp-FK6" kind="relationship" relationship="viewControllers" id="mPi-cB-MbR"/>
                     </connections>
                 </tabBarController>
@@ -140,11 +183,11 @@
             </objects>
             <point key="canvasLocation" x="-106" y="918"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--home-->
         <scene sceneID="DXZ-gk-tUy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qQ6-ce-EUQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="np6-eK-938"/>
+                    <tabBarItem key="tabBarItem" title="home" image="ic_tab_home" id="np6-eK-938"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sB7-6g-Hrt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -159,11 +202,11 @@
             </objects>
             <point key="canvasLocation" x="706" y="-406"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--discover-->
         <scene sceneID="qyM-DE-065">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oM7-Jp-B2X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="eda-e5-Va0"/>
+                    <tabBarItem key="tabBarItem" title="discover" image="ic_tab_discover" id="eda-e5-Va0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OFM-Gf-T0x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -178,10 +221,11 @@
             </objects>
             <point key="canvasLocation" x="706" y="256"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--compare-->
         <scene sceneID="n3X-cz-XEL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AWo-Zx-Xhe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="compare" image="ic_tab_compare" id="NFX-7f-hPM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="low-uP-430">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -214,11 +258,11 @@
             </objects>
             <point key="canvasLocation" x="706" y="1580"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--me-->
         <scene sceneID="hTd-bb-vWh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pHd-wp-FK6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="sKr-zP-pnG"/>
+                    <tabBarItem key="tabBarItem" title="me" image="ic_tab_me" id="sKr-zP-pnG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HVd-Kr-cKh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -236,7 +280,6 @@
         <!--Sign In-->
         <scene sceneID="Uof-Gk-sr2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g43-E4-aNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="aDv-z6-fnK" customClass="SignIn" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H6P-4K-4ub"/>
@@ -249,6 +292,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7Yj-hS-fed"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g43-E4-aNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-918" y="1580"/>
         </scene>
@@ -297,7 +341,6 @@
         <!--Sign Up-->
         <scene sceneID="RdL-Pl-MKX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UWk-U2-JdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="VEl-J6-X1W" customClass="SignUp" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KNq-8J-F0R"/>
@@ -310,8 +353,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="03d-rz-yhI"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWk-U2-JdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-918" y="256"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_tab_compare" width="16" height="16"/>
+        <image name="ic_tab_discover" width="16" height="16"/>
+        <image name="ic_tab_home" width="16" height="16"/>
+        <image name="ic_tab_me" width="16" height="16"/>
+    </resources>
 </document>

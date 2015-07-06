@@ -3,6 +3,7 @@
 //
 
 class Special: BaseModel {
+    var cards = ListModel() // 手动补
     var id: NSNumber!
     var createdTime: NSDate!
     var isActive = false
