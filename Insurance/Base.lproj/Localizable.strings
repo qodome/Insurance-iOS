@@ -1,2 +1,7 @@
 /* Tips */
 tips = "";
+
+compare = "比价";
+vehicles = "车辆";
+insurances = "保险";
+orders = "订单";

@@ -9,7 +9,7 @@ class UserDetail: TableDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [["insurances", "orders"]]
+        items = [["vehicles", "insurances", "orders"]]
         endpoint = getEndpoint("users/\(userId)")
         refreshMode = .WillAppear
         avatar = AvatarView(frame: CGRectMake((view.frame.width - 150) / 2, 0, 150, 150))

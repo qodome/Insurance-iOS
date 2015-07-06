@@ -6,11 +6,11 @@ class Settings: TableDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        title = LocalizedString("settings")
         items = [["about"]]
     }
     
     override func getItemView<T : NSObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
+        cell.accessoryType = .DisclosureIndicator
         return cell
     }
     

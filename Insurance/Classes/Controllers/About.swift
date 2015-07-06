@@ -6,7 +6,6 @@ class About: TableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        title = LocalizedString("about")
         items = [["review"]]
     }
     

@@ -39,7 +39,6 @@ class Home: MyList {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        title = LocalizedString("home")
         endpoint = getEndpoint("home")
         refreshMode = .WillAppear
         (listView as! UICollectionView).registerClass(CardCell.self, forCellWithReuseIdentifier: cellId)

@@ -60,7 +60,6 @@
 		0E1209131B213F9100418D47 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208DB1B213F9100418D47 /* TagsView.swift */; };
 		0E1209141B213F9100418D47 /* Default.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E1208DD1B213F9100418D47 /* Default.strings */; };
 		0E1209171B218E2300418D47 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1209161B218E2300418D47 /* CAPSPageMenu.swift */; };
-		0E18E1641B4A2D7400994647 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E1631B4A2D7400994647 /* BaseTabBarController.swift */; };
 		0E18E1661B4A302F00994647 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E1651B4A302F00994647 /* Main.swift */; };
 		0E18E1681B4A39B300994647 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E1671B4A39B300994647 /* Home.swift */; };
 		0E18E16A1B4A3AA200994647 /* MyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E1691B4A3AA200994647 /* MyList.swift */; };
@@ -74,6 +73,7 @@
 		0E18E17B1B4A3BB900994647 /* PosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E1731B4A3BB900994647 /* PosterView.swift */; };
 		0E18E17C1B4A3BB900994647 /* SpecialCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E1741B4A3BB900994647 /* SpecialCover.swift */; };
 		0E18E17E1B4A3C6F00994647 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E17D1B4A3C6F00994647 /* CardUtils.swift */; };
+		0E18E1801B4A745B00994647 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E17F1B4A745B00994647 /* Profile.swift */; };
 		0EC689001B468F4A00E94341 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC688FE1B468F4A00E94341 /* Me.swift */; };
 		0EC689011B468F4A00E94341 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC688FF1B468F4A00E94341 /* Settings.swift */; };
 		0EC689031B468F5C00E94341 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC689021B468F5C00E94341 /* UserDetail.swift */; };
@@ -190,7 +190,6 @@
 		0E1208DF1B213F9100418D47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Default.strings; sourceTree = "<group>"; };
 		0E1208E01B213F9100418D47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Default.strings"; sourceTree = "<group>"; };
 		0E1209161B218E2300418D47 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
-		0E18E1631B4A2D7400994647 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		0E18E1651B4A302F00994647 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		0E18E1671B4A39B300994647 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		0E18E1691B4A3AA200994647 /* MyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyList.swift; sourceTree = "<group>"; };
@@ -204,6 +203,7 @@
 		0E18E1731B4A3BB900994647 /* PosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterView.swift; sourceTree = "<group>"; };
 		0E18E1741B4A3BB900994647 /* SpecialCover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialCover.swift; sourceTree = "<group>"; };
 		0E18E17D1B4A3C6F00994647 /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../CardUtils.swift; sourceTree = "<group>"; };
+		0E18E17F1B4A745B00994647 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		0EC688FE1B468F4A00E94341 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		0EC688FF1B468F4A00E94341 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0EC689021B468F5C00E94341 /* UserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -327,7 +327,6 @@
 				0E1208A71B213F9100418D47 /* BaseCreate.swift */,
 				0E1208A81B213F9100418D47 /* BaseDetail.swift */,
 				0E1208A91B213F9100418D47 /* BaseFieldEdit.swift */,
-				0E18E1631B4A2D7400994647 /* BaseTabBarController.swift */,
 				0E1208AA1B213F9100418D47 /* CollectionList.swift */,
 				0E1208AB1B213F9100418D47 /* ListController.swift */,
 				0E1208AC1B213F9100418D47 /* SearchResultsList.swift */,
@@ -618,6 +617,7 @@
 			children = (
 				0EC689021B468F5C00E94341 /* UserDetail.swift */,
 				0EC688FE1B468F4A00E94341 /* Me.swift */,
+				0E18E17F1B4A745B00994647 /* Profile.swift */,
 				0EC688FF1B468F4A00E94341 /* Settings.swift */,
 				0ECD81C51B2066B100054FD2 /* About.swift */,
 			);
@@ -833,7 +833,6 @@
 				0E18E16A1B4A3AA200994647 /* MyList.swift in Sources */,
 				0E1208ED1B213F9100418D47 /* TableSearch.swift in Sources */,
 				0ECD81E11B2066B100054FD2 /* SimpleCardList.swift in Sources */,
-				0E18E1641B4A2D7400994647 /* BaseTabBarController.swift in Sources */,
 				0ECD81DB1B2066B100054FD2 /* About.swift in Sources */,
 				0EC689231B46BDDE00E94341 /* Special.swift in Sources */,
 				0ECD81E51B2066B100054FD2 /* R.swift in Sources */,
@@ -858,6 +857,7 @@
 				0E1208F21B213F9100418D47 /* String+Extension.swift in Sources */,
 				0E1208FF1B213F9100418D47 /* BaseUser.swift in Sources */,
 				0EC6891D1B46BDDE00E94341 /* Insurance.swift in Sources */,
+				0E18E1801B4A745B00994647 /* Profile.swift in Sources */,
 				0EC6891A1B46BDDE00E94341 /* Company.swift in Sources */,
 				0E18E16C1B4A3B8200994647 /* HomeModel.swift in Sources */,
 				0ECD81DA1B2066B100054FD2 /* Constants.swift in Sources */,
