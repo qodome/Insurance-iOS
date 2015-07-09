@@ -98,11 +98,30 @@
                     <navigationItem key="navigationItem" id="iZJ-v4-nZX"/>
                     <connections>
                         <segue destination="Anz-QY-mfo" kind="show" identifier="segue.me-settings" id="aZA-jP-hX7"/>
+                        <segue destination="4zV-nt-H0U" kind="show" identifier="segue.me-profile" id="Ngs-tM-FEf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcY-20-1LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1518" y="2242"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="ohN-Vl-njv">
+            <objects>
+                <viewController id="4zV-nt-H0U" customClass="Profile" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cI6-uB-Prd"/>
+                        <viewControllerLayoutGuide type="bottom" id="75B-tm-rYF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jCN-4D-F8y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hD5-u9-dQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2330" y="2242"/>
         </scene>
         <!--Settings-->
         <scene sceneID="XzM-md-HoD">
@@ -123,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70W-YR-Qle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2330" y="2242"/>
+            <point key="canvasLocation" x="2330" y="2904"/>
         </scene>
         <!--About-->
         <scene sceneID="Lbg-nI-Dvn">
@@ -359,9 +378,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_tab_compare" width="16" height="16"/>
-        <image name="ic_tab_discover" width="16" height="16"/>
-        <image name="ic_tab_home" width="16" height="16"/>
-        <image name="ic_tab_me" width="16" height="16"/>
+        <image name="ic_tab_compare" width="25" height="25"/>
+        <image name="ic_tab_discover" width="25" height="25"/>
+        <image name="ic_tab_home" width="25" height="25"/>
+        <image name="ic_tab_me" width="25" height="25"/>
     </resources>
 </document>

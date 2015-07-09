@@ -16,6 +16,9 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
+// FontAwesomeKit https://github.com/PrideChung/FontAwesomeKit
+#import <FontAwesomeKit/FontAwesomeKit.h>
+
 // FormatterKit https://github.com/mattt/FormatterKit
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 

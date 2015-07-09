@@ -6,7 +6,7 @@ PODS:
   - Bolts/AppLinks (1.2.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.2.0)
-  - CTAssetsPickerController (2.9.4)
+  - CTAssetsPickerController (2.9.5)
   - DateTools (1.6.1)
   - EAIntroView (2.7.4):
     - EARestrictedScrollView (~> 0.2.0)
@@ -24,6 +24,21 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.3.0):
     - FBSDKCoreKit
+  - FontAwesomeKit (2.2.0):
+    - FontAwesomeKit/Core (= 2.2.0)
+    - FontAwesomeKit/FontAwesome (= 2.2.0)
+    - FontAwesomeKit/FoundationIcons (= 2.2.0)
+    - FontAwesomeKit/IonIcons (= 2.2.0)
+    - FontAwesomeKit/Zocial (= 2.2.0)
+  - FontAwesomeKit/Core (2.2.0)
+  - FontAwesomeKit/FontAwesome (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/FoundationIcons (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/IonIcons (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Zocial (2.2.0):
+    - FontAwesomeKit/Core
   - FormatterKit (1.8.0):
     - FormatterKit/AddressFormatter (= 1.8.0)
     - FormatterKit/ArrayFormatter (= 1.8.0)
@@ -43,7 +58,7 @@ PODS:
   - FormatterKit/TimeIntervalFormatter (1.8.0)
   - FormatterKit/UnitOfInformationFormatter (1.8.0)
   - FormatterKit/URLRequestFormatter (1.8.0)
-  - HexColors (2.2.1)
+  - HexColors (2.3.0)
   - ISO8601DateFormatterValueTransformer (0.6.0):
     - RKValueTransformers (~> 1.1.0)
   - M13ProgressSuite (1.2.7)
@@ -86,6 +101,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - FontAwesomeKit
   - FormatterKit
   - M13ProgressSuite
   - RestKit
@@ -99,15 +115,16 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
-  CTAssetsPickerController: 3030dc60f5d1a3c4e5b1c0aa9f069220d5bf7008
+  CTAssetsPickerController: b413fece2194ae3dbf22fbc544cf6f2a6d516a4d
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   EAIntroView: 50b85eedf414260e61330070ffe5947e72493a62
   EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
   FBSDKCoreKit: a3a60225a84abeace291d0fe71cae29a627382c2
   FBSDKLoginKit: 6bc2f8f2628c3b6d2e346762fff8cb55cfd3a58d
   FBSDKShareKit: 15806d69714de39d5dff2c84645f4cde23f5876e
+  FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
-  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
   ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
   M13ProgressSuite: 03d194af6359da440641ba758aed5a18b0386a86
   RestKit: 1987b5efef289c6b27bd980714d6ca48d3871b78
@@ -121,4 +138,4 @@ SPEC CHECKSUMS:
   WeiboSDK: e40a302dc603a20c8ec7fc15ebec49fa4e93d7ba
   Weixin: 078167ff244c56fa8352506420b6328a13a184a1
 
-COCOAPODS: 0.38.0.beta.1
+COCOAPODS: 0.38.0.beta.2

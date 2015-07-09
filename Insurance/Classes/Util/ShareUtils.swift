@@ -14,7 +14,7 @@ func startShareActivity(controller: UIViewController, items: [AnyObject], view: 
         UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo,
         UIActivityTypeAirDrop]
     // http://stackoverflow.com/questions/25644054/uiactivityviewcontroller-crashing-on-ios8-ipads
-    if dest.respondsToSelector("popoverPresentationController") { // 兼容iPad
+    if dest.respondsToSelector("popoverPresentationController") { // 适配iPad
         if view != nil {
             dest.popoverPresentationController?.sourceView = view
             dest.popoverPresentationController?.sourceRect = CGRectMake(view!.frame.width / 2, 0, 0, 0)

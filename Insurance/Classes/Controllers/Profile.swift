@@ -4,10 +4,6 @@
 
 class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    let avatarPath = PATH_DOCUMENTS.stringByAppendingPathComponent("avatar.png")
-    let QRCodePath = PATH_DOCUMENTS.stringByAppendingPathComponent("qr_code.png")
-    var savePath = ""
-    
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,10 +23,6 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         super.onPrepare()
         title = LocalizedString("profile")
         items = [["avatar", "nickname", "about", "qr_code"], ["generate_template"]]
-        // navigationController?.navigationBar.translucent = false
-        // navigationController?.navigationBar.barTintColor = UIColor.colorWithHex(APP_COLOR)
-        // navigationController?.navigationBar.barStyle = .Black
-        // navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
@@ -38,7 +30,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         case "avatar":
             cell.setTranslatesAutoresizingMaskIntoConstraints(false)
             let imageView = AvatarView(frame: CGRectMake(0, 0, 60, 60))
-            imageView.image.image = UIImage(contentsOfFile: avatarPath)
+            imageView.image.sd_setImageWithURL(NSURL(string: data!.imageUrl as String))
             cell.accessoryView = imageView
         case "nickname":
             cell.detailTextLabel?.text = data?.nickname as? String
@@ -46,14 +38,6 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         case "about":
             cell.detailTextLabel?.text = data?.about as? String
             cell.accessoryType = .DisclosureIndicator
-        case "qr_code":
-            let imageView = UIImageView(frame: CGRectSettingsIcon)
-            imageView.contentMode = .ScaleAspectFit
-            let image = UIImage(contentsOfFile: QRCodePath)
-            imageView.image = image != nil ? image : UIImage.imageWithColor(UIColor.colorWithHex(APP_COLOR)) // TIP: 设定图片背景色的方式选中会盖掉
-            cell.accessoryView = imageView
-        case "generate_template":
-            cell.textLabel?.textColor = UIColor.defaultColor()
         default: break
         }
         return cell
@@ -75,10 +59,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             picker.delegate = self
             self.presentViewController(picker, animated: true, completion: nil)
             })
-        alert.addAction(UIAlertAction(title: LocalizedString("cancel"), style: .Cancel, handler: nil))
-        alert.popoverPresentationController?.sourceView = view // 适配iPad
-        alert.popoverPresentationController?.sourceRect = CGRectMake(0, 0, view.frame.width, view.frame.height / 2)
-        presentViewController(alert, animated: true, completion: nil)
+        showActionSheet(self, alert)
     }
     
     // MARK: - 💜 UITableViewDelegate
@@ -86,16 +67,11 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         switch getItem(indexPath) {
         case "avatar":
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            savePath = avatarPath
             startImageSheet()
         case "nickname":
             performSegueWithIdentifier("segue.profile-nickname", sender: self)
         case "about":
             performSegueWithIdentifier("segue.profile-about", sender: self)
-        case "qr_code":
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            savePath = QRCodePath
-            startImageSheet()
         default: break
         }
     }
@@ -112,7 +88,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     // MARK: 💜 UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
-            saveFile(savePath, UIImagePNGRepresentation(info[UIImagePickerControllerEditedImage] as! UIImage))
+            // saveFile(savePath, UIImagePNGRepresentation(info[UIImagePickerControllerEditedImage] as! UIImage))
             picker.dismissViewControllerAnimated(true, completion: nil)
         }
     }

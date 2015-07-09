@@ -116,12 +116,11 @@
 		0ECD82741B206AA100054FD2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECD82731B206AA100054FD2 /* libz.dylib */; };
 		0ECD82761B206AA800054FD2 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECD82751B206AA800054FD2 /* libc++.dylib */; };
 		0ECD827C1B206C2000054FD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD827E1B206C2000054FD2 /* InfoPlist.strings */; };
-		0ECD82811B206C9900054FD2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD82801B206C9900054FD2 /* Info.plist */; };
 		0ECD82841B206CDA00054FD2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD82861B206CDA00054FD2 /* Localizable.strings */; };
 		0EF0BF0A1B4677A300D17ECD /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0BF071B4677A300D17ECD /* Intro.swift */; };
 		0EF0BF0B1B4677A300D17ECD /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0BF081B4677A300D17ECD /* SignIn.swift */; };
 		0EF0BF0C1B4677A300D17ECD /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0BF091B4677A300D17ECD /* SignUp.swift */; };
-		910AD29E4662E8D204D61344 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D748F14C98BF0FDECBD93157 /* libPods.a */; };
+		BB50681EA16B4E0A002E1396 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E5DF7372E9C8C07A670467E /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,9 +256,9 @@
 		0EF0BF071B4677A300D17ECD /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		0EF0BF081B4677A300D17ECD /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		0EF0BF091B4677A300D17ECD /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		1E5DF7372E9C8C07A670467E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		33460E9F51E1D8AF9D4D6B86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3CDE55435AAF7CBF3FEE012A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		D748F14C98BF0FDECBD93157 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,7 +269,7 @@
 				0ECD82761B206AA800054FD2 /* libc++.dylib in Frameworks */,
 				0ECD82741B206AA100054FD2 /* libz.dylib in Frameworks */,
 				0ECD82721B206A9500054FD2 /* libsqlite3.0.dylib in Frameworks */,
-				910AD29E4662E8D204D61344 /* libPods.a in Frameworks */,
+				BB50681EA16B4E0A002E1396 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,7 +638,7 @@
 				0ECD82751B206AA800054FD2 /* libc++.dylib */,
 				0ECD82731B206AA100054FD2 /* libz.dylib */,
 				0ECD82711B206A9500054FD2 /* libsqlite3.0.dylib */,
-				D748F14C98BF0FDECBD93157 /* libPods.a */,
+				1E5DF7372E9C8C07A670467E /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -690,7 +689,7 @@
 		0ECD81911B2059D700054FD2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = NY;
 				TargetAttributes = {
 					0ECD81981B2059D700054FD2 = {
@@ -733,7 +732,6 @@
 				0ECD81AB1B2059D700054FD2 /* LaunchScreen.xib in Resources */,
 				0ECD81A81B2059D700054FD2 /* Images.xcassets in Resources */,
 				0ECD827C1B206C2000054FD2 /* InfoPlist.strings in Resources */,
-				0ECD82811B206C9900054FD2 /* Info.plist in Resources */,
 				0E1209141B213F9100418D47 /* Default.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

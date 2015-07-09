@@ -146,7 +146,7 @@ class Home: MyList {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PageCell
         selected = getSelected(indexPath, page: cell.page)
         if selected.isKindOfClass(Card) {
-            performSegueWithIdentifier(SEGUE_CARD_DETAIL, sender: self)
+//            performSegueWithIdentifier(SEGUE_CARD_DETAIL, sender: self)
         } else if selected.isKindOfClass(Special) {
             destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
             performSegueWithIdentifier(SEGUE_CARD_LIST, sender: self)

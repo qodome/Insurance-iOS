@@ -29,6 +29,20 @@ class UserDetail: TableDetail {
     
     override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
         cell.accessoryType = .DisclosureIndicator
+        var icon: FAKIcon? = nil
+        switch item {
+        case "vehicles":
+            icon = FAKIonIcons.androidCarIconWithSize(CGSizeSettingsIcon.width)
+            icon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_RED))
+        case "insurances":
+            icon = FAKIonIcons.iosMedicalIconWithSize(CGSizeSettingsIcon.width)
+            icon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_GREEN))
+        case "orders":
+            icon = FAKIonIcons.iosPaperIconWithSize(CGSizeSettingsIcon.width)
+            icon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_YELLOW))
+        default: break
+        }
+        cell.imageView?.image = icon?.imageWithSize(CGSizeSettingsIcon)
         return cell
     }
     

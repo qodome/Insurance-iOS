@@ -6,7 +6,7 @@ class Me: UserDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items += [["settings"], ["sign_out"]]
+        items += [["settings"]]
     }
     
     override func onLoadSuccess<E : User>(entity: E) {
@@ -15,11 +15,13 @@ class Me: UserDetail {
     }
     
     override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
+        let cell = super.getItemView(tableView, indexPath: indexPath, data: data, item: item, cell: cell)
         switch item {
-        case "sign_out":
-            cell.textLabel?.textColor = UIColor.redColor()
-        default:
-            cell.accessoryType = .DisclosureIndicator
+        case "settings":
+            let icon = FAKIonIcons.iosGearIconWithSize(CGSizeSettingsIcon.width)
+            icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_BLUE))
+            cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
+        default: break
         }
         return cell
     }
@@ -29,8 +31,6 @@ class Me: UserDetail {
         switch getItem(indexPath) {
         case "settings":
             performSegueWithIdentifier("segue.me-settings", sender: self)
-        case "sign_out":
-            performSegueWithIdentifier("segue.me-intro", sender: self)
         default: break
         }
     }

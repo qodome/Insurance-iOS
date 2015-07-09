@@ -30,7 +30,6 @@ class Compare: BaseController, CAPSPageMenuDelegate {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        title = ""
         endpoint = getEndpoint("popping/categories")
         refreshMode = .DidLoad
     }
