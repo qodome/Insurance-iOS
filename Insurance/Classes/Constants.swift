@@ -23,3 +23,8 @@ let APP_COLOR = XIAOMAR_RED
 let BACKGROUND_COLOR = 0xF5F5F5
 let PRIMARY_TEXT_COLOR = 0x333333
 let SECONDARY_TEXT_COLOR = 0x565A5C
+
+enum Color: Int {
+    case XiaomarRed = 0xFC2C28 // 0xFF2819
+    case XiaomarYellow = 0xFDB333 // 0xFFB419
+}

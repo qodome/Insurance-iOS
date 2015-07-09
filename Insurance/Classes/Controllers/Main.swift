@@ -14,4 +14,10 @@ class Main: UITabBarController {
         (tabBar.items?.last as! UITabBarItem).title = LocalizedString("me")
         selectedIndex = 3
     }
+    
+    // MARK: - 💜 场景切换 (Segue)
+    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject?) -> UIViewController? {
+        // 8.1以下手动修复http://stackoverflow.com/questions/25654941/unwind-segue-not-working-in-ios-8
+        return selectedViewController?.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
+    }
 }

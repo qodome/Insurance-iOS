@@ -74,6 +74,7 @@
 		0E18E17C1B4A3BB900994647 /* SpecialCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E1741B4A3BB900994647 /* SpecialCover.swift */; };
 		0E18E17E1B4A3C6F00994647 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E17D1B4A3C6F00994647 /* CardUtils.swift */; };
 		0E18E1801B4A745B00994647 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E17F1B4A745B00994647 /* Profile.swift */; };
+		0E1E62A31B4E447F004965CD /* UserEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E62A21B4E447F004965CD /* UserEdit.swift */; };
 		0EC689001B468F4A00E94341 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC688FE1B468F4A00E94341 /* Me.swift */; };
 		0EC689011B468F4A00E94341 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC688FF1B468F4A00E94341 /* Settings.swift */; };
 		0EC689031B468F5C00E94341 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC689021B468F5C00E94341 /* UserDetail.swift */; };
@@ -203,6 +204,7 @@
 		0E18E1741B4A3BB900994647 /* SpecialCover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialCover.swift; sourceTree = "<group>"; };
 		0E18E17D1B4A3C6F00994647 /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../CardUtils.swift; sourceTree = "<group>"; };
 		0E18E17F1B4A745B00994647 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		0E1E62A21B4E447F004965CD /* UserEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEdit.swift; sourceTree = "<group>"; };
 		0EC688FE1B468F4A00E94341 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		0EC688FF1B468F4A00E94341 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0EC689021B468F5C00E94341 /* UserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 				0E18E17F1B4A745B00994647 /* Profile.swift */,
 				0EC688FF1B468F4A00E94341 /* Settings.swift */,
 				0ECD81C51B2066B100054FD2 /* About.swift */,
+				0E1E62A21B4E447F004965CD /* UserEdit.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -800,6 +803,7 @@
 				0EC6891B1B46BDDE00E94341 /* Featured.swift in Sources */,
 				0E18E1791B4A3BB900994647 /* CommentCell.swift in Sources */,
 				0E12090F1B213F9100418D47 /* BaseIntro.swift in Sources */,
+				0E1E62A31B4E447F004965CD /* UserEdit.swift in Sources */,
 				0E1208E81B213F9100418D47 /* CollectionList.swift in Sources */,
 				0ECD81DF1B2066B100054FD2 /* Discover.swift in Sources */,
 				0E1209041B213F9100418D47 /* FileUtils.swift in Sources */,
