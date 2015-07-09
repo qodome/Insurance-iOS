@@ -2,7 +2,7 @@
 //  Copyright (c) 2015年 NY. All rights reserved.
 //
 
-class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdatedDelegate {
+class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdateDelegate {
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -30,13 +30,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             cell.selectionStyle = .None
             cell.accessoryType = .None
         case "gender":
-            switch data!.gender {
-            case "m":
-                cell.detailTextLabel?.text = LocalizedString("male")
-            case "f":
-                cell.detailTextLabel?.text = LocalizedString("female")
-            default: break
-            }
+            cell.detailTextLabel?.text = getString(GENDER_STRING, data?.gender as? String)
         default: break
         }
         return cell
@@ -76,6 +70,8 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             startImageSheet()
         case "nickname", "about":
             performSegueWithIdentifier("segue.profile-user_edit", sender: self)
+        case "gender":
+            performSegueWithIdentifier("segue.profile-user_check", sender: self)
         default: break
         }
     }
@@ -103,8 +99,10 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         let dest = segue.destinationViewController as! UIViewController
         dest.setValue(data, forKey: "data")
         dest.setValue(getItem(tableView.indexPathForSelectedRow()!), forKey: "fieldName")
-        if dest.isKindOfClass(UserEdit) {
-            (dest as! UserEdit).delegate = self
+        if dest.isKindOfClass(UpdateController) {
+            (dest as! UpdateController).delegate = self
+            (dest as! UpdateController).endpoint = getEndpoint("users/\((data as! User).id)")
+            (dest as! UpdateController).loader = HttpLoader(endpoint: getEndpoint("users/\((data as! User).id)"), type: User.self)
         }
     }
 }

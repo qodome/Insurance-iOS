@@ -28,3 +28,8 @@ enum Color: Int {
     case XiaomarRed = 0xFC2C28 // 0xFF2819
     case XiaomarYellow = 0xFDB333 // 0xFFB419
 }
+
+let GENDER_STRING = [
+    "m" : LocalizedString("male"),
+    "f" : LocalizedString("female")
+]
