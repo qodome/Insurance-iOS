@@ -1,29 +1,10 @@
 PODS:
   - AFNetworking (1.3.4)
-  - Bolts (1.2.0):
-    - Bolts/AppLinks (= 1.2.0)
-    - Bolts/Tasks (= 1.2.0)
-  - Bolts/AppLinks (1.2.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.2.0)
   - CTAssetsPickerController (2.9.5)
   - DateTools (1.6.1)
   - EAIntroView (2.7.4):
     - EARestrictedScrollView (~> 0.2.0)
   - EARestrictedScrollView (0.2.0)
-  - FBSDKCoreKit (4.3.0):
-    - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.3.0)
-    - FBSDKCoreKit/no-arc (= 4.3.0)
-  - FBSDKCoreKit/arc (4.3.0):
-    - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.3.0):
-    - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc
-  - FBSDKLoginKit (4.3.0):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.3.0):
-    - FBSDKCoreKit
   - FontAwesomeKit (2.2.0):
     - FontAwesomeKit/Core (= 2.2.0)
     - FontAwesomeKit/FontAwesome (= 2.2.0)
@@ -98,9 +79,6 @@ DEPENDENCIES:
   - CTAssetsPickerController
   - DateTools
   - EAIntroView
-  - FBSDKCoreKit
-  - FBSDKLoginKit
-  - FBSDKShareKit
   - FontAwesomeKit
   - FormatterKit
   - M13ProgressSuite
@@ -114,14 +92,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
-  Bolts: d176cb1e0012175589e389a9db49b85e27787576
   CTAssetsPickerController: b413fece2194ae3dbf22fbc544cf6f2a6d516a4d
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   EAIntroView: 50b85eedf414260e61330070ffe5947e72493a62
   EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
-  FBSDKCoreKit: a3a60225a84abeace291d0fe71cae29a627382c2
-  FBSDKLoginKit: 6bc2f8f2628c3b6d2e346762fff8cb55cfd3a58d
-  FBSDKShareKit: 15806d69714de39d5dff2c84645f4cde23f5876e
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f

@@ -9,12 +9,7 @@
 #import <DateTools/DateTools.h>
 
 // EAIntroView https://github.com/ealeksandrov/EAIntroView
-#import <EAIntroView/EAIntroView.h>
-
-// Facebook https://developers.facebook.com/quickstarts
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <FBSDKShareKit/FBSDKShareKit.h>
+#import <EAIntroView/EAIntroView.h> 
 
 // FontAwesomeKit https://github.com/PrideChung/FontAwesomeKit
 #import <FontAwesomeKit/FontAwesomeKit.h>

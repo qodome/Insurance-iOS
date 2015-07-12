@@ -3,6 +3,12 @@
 //
 
 class UserDetail: TableDetail {
+    // MARK: - 💖 生命周期 (Lifecycle)
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        endpoint = getEndpoint("users/\(userId)")
+//    }
+    
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()

@@ -26,6 +26,11 @@ class Settings: TableDetail {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
             alert.addAction(UIAlertAction(title: LocalizedString("sign_out"), style: .Destructive) { (action) in
                 NSUserDefaults.standardUserDefaults().removeObjectForKey(TaylorR.Pref.UserToken.rawValue)
+                userToken = DEFAULT_TOKEN
+                RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: String(format: "Token %@", userToken))
+                userId = 0
+//                userId = getInteger(TaylorR.Pref.UserId.rawValue)
+                showAlert(self, title: "已注销")
                 })
             showActionSheet(self, alert)
         default:

@@ -3,7 +3,7 @@
 //
 
 class Main: UITabBarController {
-    
+    // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = UIColor.colorWithHex(APP_COLOR)

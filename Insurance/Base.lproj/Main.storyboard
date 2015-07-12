@@ -299,7 +299,6 @@
         <!--Gender Update-->
         <scene sceneID="4OW-ie-zpv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tcc-lv-ZY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="5Gn-gh-hv0" customClass="GenderUpdate" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uq3-0o-mES"/>
@@ -311,6 +310,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tcc-lv-ZY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3142" y="2904"/>
         </scene>
@@ -449,28 +449,9 @@
             <point key="canvasLocation" x="706" y="2242"/>
         </scene>
         <!--Sign In-->
-        <scene sceneID="Uof-Gk-sr2">
-            <objects>
-                <viewController id="aDv-z6-fnK" customClass="SignIn" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="H6P-4K-4ub"/>
-                        <viewControllerLayoutGuide type="bottom" id="vja-qA-3N7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cTG-L0-fiy">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="7Yj-hS-fed"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g43-E4-aNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-918" y="1580"/>
-        </scene>
-        <!--Intro-->
         <scene sceneID="C1V-ip-yQJ">
             <objects>
-                <viewController id="x79-Xl-Y1u" customClass="Intro" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="x79-Xl-Y1u" customClass="SignIn" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WSp-rA-cX1"/>
                         <viewControllerLayoutGuide type="bottom" id="hpi-JF-CGo"/>
@@ -478,13 +459,12 @@
                     <view key="view" contentMode="scaleToFill" id="jXT-Kc-Get">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="eKG-JK-hOj"/>
                     <connections>
                         <segue destination="yCg-Rf-ueA" kind="show" identifier="segue.main" id="MXF-QI-0gN"/>
                         <segue destination="VEl-J6-X1W" kind="show" identifier="segue.sign_up" id="vqv-em-53Q"/>
-                        <segue destination="aDv-z6-fnK" kind="show" identifier="segue.sign_in" id="mZR-xV-6Zn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYu-dd-iNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
