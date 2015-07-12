@@ -77,6 +77,11 @@
 		0E1E62A51B4E7941004965CD /* GenderUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E62A41B4E7941004965CD /* GenderUpdate.swift */; };
 		0E1E62A71B4E7F17004965CD /* UpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E62A61B4E7F17004965CD /* UpdateController.swift */; };
 		0E1E631A1B4E8F40004965CD /* CheckListUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */; };
+		0E1E631C1B4FB54C004965CD /* VehicleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E631B1B4FB54C004965CD /* VehicleList.swift */; };
+		0E1E631E1B4FB747004965CD /* VehicleCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E631D1B4FB747004965CD /* VehicleCreate.swift */; };
+		0E1E63201B4FBC43004965CD /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E631F1B4FBC43004965CD /* Urls.swift */; };
+		0E1E63221B4FCA75004965CD /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63211B4FCA75004965CD /* Vehicle.swift */; };
+		0E1E63241B4FCB67004965CD /* Conf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63231B4FCB67004965CD /* Conf.swift */; };
 		0EC689001B468F4A00E94341 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC688FE1B468F4A00E94341 /* Me.swift */; };
 		0EC689011B468F4A00E94341 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC688FF1B468F4A00E94341 /* Settings.swift */; };
 		0EC689031B468F5C00E94341 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC689021B468F5C00E94341 /* UserDetail.swift */; };
@@ -209,6 +214,11 @@
 		0E1E62A41B4E7941004965CD /* GenderUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderUpdate.swift; sourceTree = "<group>"; };
 		0E1E62A61B4E7F17004965CD /* UpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateController.swift; sourceTree = "<group>"; };
 		0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListUpdate.swift; sourceTree = "<group>"; };
+		0E1E631B1B4FB54C004965CD /* VehicleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleList.swift; sourceTree = "<group>"; };
+		0E1E631D1B4FB747004965CD /* VehicleCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleCreate.swift; sourceTree = "<group>"; };
+		0E1E631F1B4FBC43004965CD /* Urls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
+		0E1E63211B4FCA75004965CD /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		0E1E63231B4FCB67004965CD /* Conf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conf.swift; sourceTree = "<group>"; };
 		0EC688FE1B468F4A00E94341 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		0EC688FF1B468F4A00E94341 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0EC689021B468F5C00E94341 /* UserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -302,6 +312,7 @@
 		0E1208A01B213F9100418D47 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0E1E63231B4FCB67004965CD /* Conf.swift */,
 				0E1208C81B213F9100418D47 /* TaylorR.swift */,
 				0E1208A11B213F9100418D47 /* Content */,
 				0E1208A51B213F9100418D47 /* Controllers */,
@@ -507,6 +518,7 @@
 				0ECD81C21B2066B100054FD2 /* Config.swift */,
 				0ECD81C31B2066B100054FD2 /* Constants.swift */,
 				0ECD81D01B2066B100054FD2 /* R.swift */,
+				0E1E631F1B4FBC43004965CD /* Urls.swift */,
 				0ECD81C41B2066B100054FD2 /* Controllers */,
 				0ECD81CC1B2066B100054FD2 /* Models */,
 				0ECD81D11B2066B100054FD2 /* Util */,
@@ -530,6 +542,8 @@
 				0ECD81C71B2066B100054FD2 /* CardList.swift */,
 				0ECD81C81B2066B100054FD2 /* CardWebDetail.swift */,
 				0ECD81CB1B2066B100054FD2 /* SimpleCardList.swift */,
+				0E1E631B1B4FB54C004965CD /* VehicleList.swift */,
+				0E1E631D1B4FB747004965CD /* VehicleCreate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -545,6 +559,7 @@
 				0EC6890A1B46BDDE00E94341 /* Company.swift */,
 				0EC6890B1B46BDDE00E94341 /* Featured.swift */,
 				0EC6890C1B46BDDE00E94341 /* Illegaality.swift */,
+				0E18E16B1B4A3B8200994647 /* HomeModel.swift */,
 				0EC6890D1B46BDDE00E94341 /* Insurance.swift */,
 				0EC6890E1B46BDDE00E94341 /* Like.swift */,
 				0EC6890F1B46BDDE00E94341 /* Order.swift */,
@@ -556,7 +571,7 @@
 				0ECD81CF1B2066B100054FD2 /* User.swift */,
 				0EC689151B46BDDE00E94341 /* Video.swift */,
 				0EC689161B46BDDE00E94341 /* Vote.swift */,
-				0E18E16B1B4A3B8200994647 /* HomeModel.swift */,
+				0E1E63211B4FCA75004965CD /* Vehicle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -796,9 +811,11 @@
 				0E1E62A51B4E7941004965CD /* GenderUpdate.swift in Sources */,
 				0E12090A1B213F9100418D47 /* ImageView.swift in Sources */,
 				0ECD81E41B2066B100054FD2 /* User.swift in Sources */,
+				0E1E631C1B4FB54C004965CD /* VehicleList.swift in Sources */,
 				0E18E1761B4A3BB900994647 /* CardListCell.swift in Sources */,
 				0EC689221B46BDDE00E94341 /* Question.swift in Sources */,
 				0E1208E11B213F9100418D47 /* BaseLoader.swift in Sources */,
+				0E1E63221B4FCA75004965CD /* Vehicle.swift in Sources */,
 				0E18E17A1B4A3BB900994647 /* PageCell.swift in Sources */,
 				0E1208E91B213F9100418D47 /* ListController.swift in Sources */,
 				0E1208EF1B213F9100418D47 /* Array+Extension.swift in Sources */,
@@ -811,6 +828,7 @@
 				0E18E1791B4A3BB900994647 /* CommentCell.swift in Sources */,
 				0E12090F1B213F9100418D47 /* BaseIntro.swift in Sources */,
 				0E1208E81B213F9100418D47 /* CollectionList.swift in Sources */,
+				0E1E63241B4FCB67004965CD /* Conf.swift in Sources */,
 				0ECD81DF1B2066B100054FD2 /* Discover.swift in Sources */,
 				0E1209041B213F9100418D47 /* FileUtils.swift in Sources */,
 				0ECD81DE1B2066B100054FD2 /* CardWebDetail.swift in Sources */,
@@ -822,6 +840,7 @@
 				0E1208F51B213F9100418D47 /* UILabel+Extension.swift in Sources */,
 				0EC689201B46BDDE00E94341 /* Product.swift in Sources */,
 				0E1209111B213F9100418D47 /* BaseSignIn.swift in Sources */,
+				0E1E63201B4FBC43004965CD /* Urls.swift in Sources */,
 				0E1209081B213F9100418D47 /* TSMessage+Extension.swift in Sources */,
 				0E18E1781B4A3BB900994647 /* CardView.swift in Sources */,
 				0ECD81DD1B2066B100054FD2 /* CardList.swift in Sources */,
@@ -853,6 +872,7 @@
 				0EC689281B46BE9200E94341 /* Category.swift in Sources */,
 				0EC6891E1B46BDDE00E94341 /* Like.swift in Sources */,
 				0EC689251B46BDDE00E94341 /* Video.swift in Sources */,
+				0E1E631E1B4FB747004965CD /* VehicleCreate.swift in Sources */,
 				0E12090E1B213F9100418D47 /* AvatarView.swift in Sources */,
 				0E1209101B213F9100418D47 /* BaseSign.swift in Sources */,
 				0E1208E51B213F9100418D47 /* CreateController.swift in Sources */,

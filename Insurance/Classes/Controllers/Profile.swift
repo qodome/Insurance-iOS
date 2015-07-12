@@ -3,12 +3,6 @@
 //
 
 class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdateDelegate {
-    // MARK: - 💖 生命周期 (Lifecycle)
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-//        tableView.reloadData() // TIP: 放在这里而非viewDidAppear中保证回滑时候选中状态平滑消失
-    }
-    
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
@@ -16,22 +10,16 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
-        cell.accessoryType = .DisclosureIndicator
         switch item {
         case "avatar":
             cell.setTranslatesAutoresizingMaskIntoConstraints(false)
             let imageView = AvatarView(frame: CGRectMake(0, 0, 60, 60))
             imageView.image.sd_setImageWithURL(NSURL(string: data!.imageUrl as String))
             cell.accessoryView = imageView
-        case "nickname", "about":
-            cell.detailTextLabel?.text = data?.valueForKey(item) as? String
-        case "username":
-            cell.detailTextLabel?.text = data?.username as? String
-            cell.selectionStyle = .None
-            cell.accessoryType = .None
         case "gender":
             cell.detailTextLabel?.text = getString(GENDER_STRING, data?.gender as? String)
-        default: break
+        default:
+            cell.detailTextLabel?.text = data?.valueForKey(item) as? String
         }
         return cell
     }
@@ -62,27 +50,21 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     // MARK: - 💜 UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = getItem(indexPath)
         switch item {
         case "avatar":
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             startImageSheet()
-        case "nickname", "about":
+        case "about":
             performSegueWithIdentifier("segue.profile-user_edit", sender: self)
-        case "gender":
-            performSegueWithIdentifier("segue.profile-user_check", sender: self)
-        default: break
+        default:
+            super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch getItem(indexPath) {
-        case "avatar":
-            return 80
-        default:
-            return 44
-        }
+        return getItem(indexPath) == "avatar" ? 80 : 44
     }
     
     // MARK: 💜 UIImagePickerControllerDelegate

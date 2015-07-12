@@ -15,7 +15,6 @@ class Me: UserDetail {
     }
     
     override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
-        let cell = super.getItemView(tableView, indexPath: indexPath, data: data, item: item, cell: cell)
         switch item {
         case "vehicles":
             let icon = FAKIonIcons.androidCarIconWithSize(CGSizeSettingsIcon.width)
@@ -32,25 +31,15 @@ class Me: UserDetail {
             let icon = FAKIonIcons.iosGearIconWithSize(CGSizeSettingsIcon.width)
             icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_BLUE))
             cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
-        default: break
+        default:
+            return super.getItemView(tableView, indexPath: indexPath, data: data, item: item, cell: cell)
         }
         return cell
     }
     
-    // MARK: - 💜 UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch getItem(indexPath) {
-        case "":
-            performSegueWithIdentifier("segue.me-profile", sender: self)
-        case "settings":
-            performSegueWithIdentifier("segue.me-settings", sender: self)
-        default: break
-        }
-    }
-    
     // MARK: - 💜 场景切换 (Segue)
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)        
+        super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as! UIViewController
         switch segue.identifier!.componentsSeparatedByString("-")[1] {
         case "profile":

@@ -6,9 +6,9 @@ class UserDetail: TableDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [[""], ["likes"]]
+        items = [["profile"], ["likes"]]
         endpoint = getEndpoint("users/\(userId)")
-        refreshMode = .WillAppear
+        refreshMode = .DidAppear // TIP: 用DidAppear而非WillAppear中保证回滑时候选中状态平滑消失
     }
     
     override func onCreateLoader() -> BaseLoader {
@@ -27,7 +27,6 @@ class UserDetail: TableDetail {
     }
     
     override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
-        cell.accessoryType = .DisclosureIndicator
         switch item {
         case "likes":
             let icon = FAKIonIcons.iosHeartIconWithSize(CGSizeSettingsIcon.width)

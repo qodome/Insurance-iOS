@@ -17,7 +17,6 @@ class About: TableDetail {
             let s = NSMutableAttributedString(string: LocalizedString(getItem(indexPath)))
             s.appendAttributedString(star)
             cell.textLabel?.attributedText = s
-            cell.accessoryType = .DisclosureIndicator
         default: break
         }
         return cell
@@ -33,15 +32,5 @@ class About: TableDetail {
             return "\(name) \(version) (\(build))"
         }
         return nil
-    }
-    
-    // MARK: 💜 UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch getItem(indexPath) {
-        case "review":
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            openAppReviews()
-        default: break
-        }
     }
 }
