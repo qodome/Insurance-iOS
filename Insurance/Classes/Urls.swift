@@ -9,9 +9,23 @@ let urls = [
 //    "orders" : "order_list",
     // 个人信息
     "profile" : "profile",
-    "nickname" : "user_edit",
+    "nickname" : "user_update",
     "gender" : "user_check",
     "settings" : "settings",
     "about" : "about",
     "review" : appReviewsLink()
 ]
+
+
+func getEndpoints(name: String, pk: String? = nil) {
+    if pk == nil {
+        return
+    }
+    
+    return
+}
+
+//let endpoints = [
+//    "user_list" : getEndpoint("users")
+//    "user_detail" : ""
+//]

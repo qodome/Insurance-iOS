@@ -120,7 +120,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="eyP-qp-la9" kind="show" identifier="segue.profile-user_edit" id="n0d-Dw-b0y"/>
+                        <segue destination="eyP-qp-la9" kind="show" identifier="segue.profile-user_update" id="n0d-Dw-b0y"/>
                         <segue destination="5Gn-gh-hv0" kind="show" identifier="segue.profile-user_check" id="G0A-mJ-GI5"/>
                     </connections>
                 </viewController>
@@ -178,7 +178,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="7f3-hw-wYg" kind="show" id="lz5-LH-Mdr"/>
+                        <segue destination="7f3-hw-wYg" kind="show" identifier="segue.vehicle_list-vehicle_create" id="lz5-LH-Mdr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZJ-Wy-XeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

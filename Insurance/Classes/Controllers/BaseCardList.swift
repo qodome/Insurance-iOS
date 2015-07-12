@@ -25,9 +25,9 @@ class BaseCardList: CollectionList {
         return cell
     }
     
-    override func onPerform<T : Card>(id: Int, item: T) {
-        switch id {
-        case Action.Open.rawValue:
+    override func onPerform<T : Card>(action: Action, item: T) {
+        switch action {
+        case .Open:
             if item.site == "App Store" {
                 UIApplication.sharedApplication().openURL(NSURL(string: item.url as String)!)
             } else {
@@ -40,7 +40,7 @@ class BaseCardList: CollectionList {
                 // performSegueWithIdentifier("segue.home-web_card_detail", sender: self)
             }
         default:
-            super.onPerform(id, item: item)
+            super.onPerform(action, item: item)
         }
     }
     

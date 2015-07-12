@@ -44,6 +44,10 @@ class Me: UserDetail {
         switch segue.identifier!.componentsSeparatedByString("-")[1] {
         case "profile":
             dest.setValue(data, forKey: "data")
+        case "vehicle_list":
+            dest.setValue("\(endpoint)vehicles/", forKey: "endpoint")
+        case "order_list":
+            dest.setValue("\(endpoint)orders/", forKey: "endpoint")
         default: break
         }
     }

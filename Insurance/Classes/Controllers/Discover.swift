@@ -20,12 +20,12 @@ class Discover: TableSearch {
         return cell
     }
     
-    override func onPerform<T : Category>(id: Int, item: T) {
-        switch id {
-        case Action.Open.rawValue:
-            performSegueWithIdentifier("segue.discover-card_list", sender: self)
+    override func onPerform<T : Category>(action: Action, item: T) {
+        switch action {
+        case .Open:
+            startActivity("card_list")
         default:
-            super.onPerform(id, item: item)
+            super.onPerform(action, item: item)
         }
     }
     

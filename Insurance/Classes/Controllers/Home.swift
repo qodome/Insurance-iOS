@@ -6,9 +6,6 @@ class Home: MyList {
     
     let pageCellId = "page_list_cell"
     
-    let SEGUE_CARD_LIST = "segue.home-card_list"
-    let SEGUE_CARD_DETAIL = "segue.home-card_detail"
-    
     var featuredCellCount = 0
     var featuredList: [[Featured]] = [[]]
     var specialList: [Special] = []
@@ -146,17 +143,17 @@ class Home: MyList {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PageCell
         selected = getSelected(indexPath, page: cell.page)
         if selected.isKindOfClass(Card) {
-//            performSegueWithIdentifier(SEGUE_CARD_DETAIL, sender: self)
+            // startActivity("card_detail")
         } else if selected.isKindOfClass(Special) {
             destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
-            performSegueWithIdentifier(SEGUE_CARD_LIST, sender: self)
+            startActivity("card_list")
         } else if selected.isKindOfClass(Featured) {
             switch (selected as! Featured).type {
             case "c":
-                performSegueWithIdentifier(SEGUE_CARD_DETAIL, sender: self)
+                startActivity("card_detail")
             case "s":
                 destEndpoint = getEndpoint("specials/\((selected as! Featured).objectId)")
-                performSegueWithIdentifier(SEGUE_CARD_LIST, sender: self)
+                startActivity("card_list")
             default: break
             }
         }
@@ -166,14 +163,15 @@ class Home: MyList {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as! UIViewController
-        if segue.identifier == SEGUE_CARD_LIST {
+        let identifier = segue.identifier!.componentsSeparatedByString("-")[1]
+        if identifier == "card_list" {
             if selected.isKindOfClass(Special) {
                 dest.setValue((selected as! Special).title, forKey: "title")
                 dest.setValue((selected as! Special).cards, forKey: "data")
             }
             dest.setValue(destEndpoint, forKey: "endpoint")
             dest.setValue("cards", forKey: "keyPath")
-        } else if segue.identifier == SEGUE_CARD_DETAIL {
+        } else if identifier == "card_detail" {
             if selected.isKindOfClass(Featured) {
                 dest.setValue("\((selected as! Featured).objectId)", forKey: "pk")
             } else {

@@ -57,7 +57,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             startImageSheet()
         case "about":
-            performSegueWithIdentifier("segue.profile-user_edit", sender: self)
+            startActivity("user_update")
         default:
             super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         }

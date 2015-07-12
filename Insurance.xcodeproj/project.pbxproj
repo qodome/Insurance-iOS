@@ -53,9 +53,9 @@
 		0E12090C1B213F9100418D47 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208D31B213F9100418D47 /* RightDetailCell.swift */; };
 		0E12090D1B213F9100418D47 /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208D41B213F9100418D47 /* SubtitleCell.swift */; };
 		0E12090E1B213F9100418D47 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208D61B213F9100418D47 /* AvatarView.swift */; };
-		0E12090F1B213F9100418D47 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208D71B213F9100418D47 /* SignInController.swift */; };
+		0E12090F1B213F9100418D47 /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208D71B213F9100418D47 /* SocialSignIn.swift */; };
 		0E1209101B213F9100418D47 /* BaseSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208D81B213F9100418D47 /* BaseSign.swift */; };
-		0E1209111B213F9100418D47 /* BaseSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208D91B213F9100418D47 /* BaseSignIn.swift */; };
+		0E1209111B213F9100418D47 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208D91B213F9100418D47 /* SignInController.swift */; };
 		0E1209121B213F9100418D47 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208DA1B213F9100418D47 /* SignUpController.swift */; };
 		0E1209131B213F9100418D47 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208DB1B213F9100418D47 /* TagsView.swift */; };
 		0E1209141B213F9100418D47 /* Default.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E1208DD1B213F9100418D47 /* Default.strings */; };
@@ -82,6 +82,8 @@
 		0E1E63201B4FBC43004965CD /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E631F1B4FBC43004965CD /* Urls.swift */; };
 		0E1E63221B4FCA75004965CD /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63211B4FCA75004965CD /* Vehicle.swift */; };
 		0E1E63241B4FCB67004965CD /* Conf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63231B4FCB67004965CD /* Conf.swift */; };
+		0E91145E1B52BBB300C93BC5 /* TextViewCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */; };
+		0E9114601B52BBC600C93BC5 /* TextFieldCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */; };
 		0EC689001B468F4A00E94341 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC688FE1B468F4A00E94341 /* Me.swift */; };
 		0EC689011B468F4A00E94341 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC688FF1B468F4A00E94341 /* Settings.swift */; };
 		0EC689031B468F5C00E94341 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC689021B468F5C00E94341 /* UserDetail.swift */; };
@@ -118,7 +120,6 @@
 		0ECD81E11B2066B100054FD2 /* SimpleCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD81CB1B2066B100054FD2 /* SimpleCardList.swift */; };
 		0ECD81E21B2066B100054FD2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD81CD1B2066B100054FD2 /* Card.swift */; };
 		0ECD81E41B2066B100054FD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD81CF1B2066B100054FD2 /* User.swift */; };
-		0ECD81E51B2066B100054FD2 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD81D01B2066B100054FD2 /* R.swift */; };
 		0ECD81E61B2066B100054FD2 /* ShareUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD81D21B2066B100054FD2 /* ShareUtils.swift */; };
 		0ECD82721B206A9500054FD2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECD82711B206A9500054FD2 /* libsqlite3.0.dylib */; };
 		0ECD82741B206AA100054FD2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECD82731B206AA100054FD2 /* libz.dylib */; };
@@ -187,9 +188,9 @@
 		0E1208D31B213F9100418D47 /* RightDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailCell.swift; sourceTree = "<group>"; };
 		0E1208D41B213F9100418D47 /* SubtitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		0E1208D61B213F9100418D47 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
-		0E1208D71B213F9100418D47 /* SignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
+		0E1208D71B213F9100418D47 /* SocialSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		0E1208D81B213F9100418D47 /* BaseSign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSign.swift; sourceTree = "<group>"; };
-		0E1208D91B213F9100418D47 /* BaseSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSignIn.swift; sourceTree = "<group>"; };
+		0E1208D91B213F9100418D47 /* SignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		0E1208DA1B213F9100418D47 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		0E1208DB1B213F9100418D47 /* TagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		0E1208DE1B213F9100418D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Default.strings; sourceTree = "<group>"; };
@@ -218,6 +219,8 @@
 		0E1E631F1B4FBC43004965CD /* Urls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
 		0E1E63211B4FCA75004965CD /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		0E1E63231B4FCB67004965CD /* Conf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conf.swift; sourceTree = "<group>"; };
+		0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCreate.swift; sourceTree = "<group>"; };
+		0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCreate.swift; sourceTree = "<group>"; };
 		0EC688FE1B468F4A00E94341 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		0EC688FF1B468F4A00E94341 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0EC689021B468F5C00E94341 /* UserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -257,7 +260,6 @@
 		0ECD81CB1B2066B100054FD2 /* SimpleCardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCardList.swift; sourceTree = "<group>"; };
 		0ECD81CD1B2066B100054FD2 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		0ECD81CF1B2066B100054FD2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		0ECD81D01B2066B100054FD2 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		0ECD81D21B2066B100054FD2 /* ShareUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareUtils.swift; sourceTree = "<group>"; };
 		0ECD826E1B20673C00054FD2 /* Insurance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Insurance-Bridging-Header.h"; sourceTree = "<group>"; };
 		0ECD82711B206A9500054FD2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -340,6 +342,8 @@
 				0E1208A61B213F9100418D47 /* BaseController.swift */,
 				0E1208A81B213F9100418D47 /* BaseDetail.swift */,
 				0E1208A71B213F9100418D47 /* CreateController.swift */,
+				0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */,
+				0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */,
 				0E1E62A61B4E7F17004965CD /* UpdateController.swift */,
 				0E1208A91B213F9100418D47 /* TextFieldUpdate.swift */,
 				0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */,
@@ -423,10 +427,10 @@
 			isa = PBXGroup;
 			children = (
 				0E1208D61B213F9100418D47 /* AvatarView.swift */,
-				0E1208D71B213F9100418D47 /* SignInController.swift */,
 				0E1208D81B213F9100418D47 /* BaseSign.swift */,
-				0E1208D91B213F9100418D47 /* BaseSignIn.swift */,
+				0E1208D91B213F9100418D47 /* SignInController.swift */,
 				0E1208DA1B213F9100418D47 /* SignUpController.swift */,
+				0E1208D71B213F9100418D47 /* SocialSignIn.swift */,
 				0E1208DB1B213F9100418D47 /* TagsView.swift */,
 			);
 			path = Widget;
@@ -515,7 +519,6 @@
 				0ECD81C11B2066B100054FD2 /* AppDelegate.swift */,
 				0ECD81C21B2066B100054FD2 /* Config.swift */,
 				0ECD81C31B2066B100054FD2 /* Constants.swift */,
-				0ECD81D01B2066B100054FD2 /* R.swift */,
 				0E1E631F1B4FBC43004965CD /* Urls.swift */,
 				0ECD81C41B2066B100054FD2 /* Controllers */,
 				0ECD81CC1B2066B100054FD2 /* Models */,
@@ -823,7 +826,7 @@
 				0E1208FE1B213F9100418D47 /* BaseModel.swift in Sources */,
 				0EC6891B1B46BDDE00E94341 /* Featured.swift in Sources */,
 				0E18E1791B4A3BB900994647 /* CommentCell.swift in Sources */,
-				0E12090F1B213F9100418D47 /* SignInController.swift in Sources */,
+				0E12090F1B213F9100418D47 /* SocialSignIn.swift in Sources */,
 				0E1208E81B213F9100418D47 /* CollectionList.swift in Sources */,
 				0E1E63241B4FCB67004965CD /* Conf.swift in Sources */,
 				0ECD81DF1B2066B100054FD2 /* Discover.swift in Sources */,
@@ -836,7 +839,7 @@
 				0E18E1681B4A39B300994647 /* Home.swift in Sources */,
 				0E1208F51B213F9100418D47 /* UILabel+Extension.swift in Sources */,
 				0EC689201B46BDDE00E94341 /* Product.swift in Sources */,
-				0E1209111B213F9100418D47 /* BaseSignIn.swift in Sources */,
+				0E1209111B213F9100418D47 /* SignInController.swift in Sources */,
 				0E1E63201B4FBC43004965CD /* Urls.swift in Sources */,
 				0E1209081B213F9100418D47 /* TSMessage+Extension.swift in Sources */,
 				0E18E1781B4A3BB900994647 /* CardView.swift in Sources */,
@@ -858,10 +861,10 @@
 				0ECD81E11B2066B100054FD2 /* SimpleCardList.swift in Sources */,
 				0ECD81DB1B2066B100054FD2 /* About.swift in Sources */,
 				0EC689231B46BDDE00E94341 /* Special.swift in Sources */,
-				0ECD81E51B2066B100054FD2 /* R.swift in Sources */,
 				0EC689241B46BDDE00E94341 /* Tag.swift in Sources */,
 				0E1209051B213F9100418D47 /* RestKitUtils.swift in Sources */,
 				0E1209091B213F9100418D47 /* Utils.swift in Sources */,
+				0E91145E1B52BBB300C93BC5 /* TextViewCreate.swift in Sources */,
 				0ECD81DC1B2066B100054FD2 /* BaseCardList.swift in Sources */,
 				0E18E1661B4A302F00994647 /* Main.swift in Sources */,
 				0E1208FD1B213F9100418D47 /* BaseData.swift in Sources */,
@@ -895,6 +898,7 @@
 				0E1209011B213F9100418D47 /* UploadParams.swift in Sources */,
 				0E18E17C1B4A3BB900994647 /* SpecialCover.swift in Sources */,
 				0ECD81E21B2066B100054FD2 /* Card.swift in Sources */,
+				0E9114601B52BBC600C93BC5 /* TextFieldCreate.swift in Sources */,
 				0E1208F31B213F9100418D47 /* UIColor+Extension.swift in Sources */,
 				0E1208F81B213F9100418D47 /* UIView+Extension.swift in Sources */,
 				0E1E631A1B4E8F40004965CD /* CheckListUpdate.swift in Sources */,
