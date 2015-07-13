@@ -42,6 +42,6 @@ class UserDetail: TableDetail {
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 80 : 44 // TODO: 怎么不固定44而是动态的
+        return indexPath.section == 0 ? 80 : tableView.rowHeight
     }
 }

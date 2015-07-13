@@ -77,7 +77,6 @@
 		0E18E17C1B4A3BB900994647 /* SpecialCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E1741B4A3BB900994647 /* SpecialCover.swift */; };
 		0E18E17E1B4A3C6F00994647 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E17D1B4A3C6F00994647 /* CardUtils.swift */; };
 		0E18E1801B4A745B00994647 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E17F1B4A745B00994647 /* Profile.swift */; };
-		0E1E62A51B4E7941004965CD /* GenderUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E62A41B4E7941004965CD /* GenderUpdate.swift */; };
 		0E1E62A71B4E7F17004965CD /* UpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E62A61B4E7F17004965CD /* UpdateController.swift */; };
 		0E1E631A1B4E8F40004965CD /* CheckListUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */; };
 		0E1E631C1B4FB54C004965CD /* VehicleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E631B1B4FB54C004965CD /* VehicleList.swift */; };
@@ -215,7 +214,6 @@
 		0E18E1741B4A3BB900994647 /* SpecialCover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialCover.swift; sourceTree = "<group>"; };
 		0E18E17D1B4A3C6F00994647 /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../CardUtils.swift; sourceTree = "<group>"; };
 		0E18E17F1B4A745B00994647 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		0E1E62A41B4E7941004965CD /* GenderUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderUpdate.swift; sourceTree = "<group>"; };
 		0E1E62A61B4E7F17004965CD /* UpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateController.swift; sourceTree = "<group>"; };
 		0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListUpdate.swift; sourceTree = "<group>"; };
 		0E1E631B1B4FB54C004965CD /* VehicleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleList.swift; sourceTree = "<group>"; };
@@ -645,7 +643,6 @@
 				0E18E17F1B4A745B00994647 /* Profile.swift */,
 				0EC688FF1B468F4A00E94341 /* Settings.swift */,
 				0ECD81C51B2066B100054FD2 /* About.swift */,
-				0E1E62A41B4E7941004965CD /* GenderUpdate.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -811,7 +808,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EC689181B46BDDE00E94341 /* Article.swift in Sources */,
-				0E1E62A51B4E7941004965CD /* GenderUpdate.swift in Sources */,
 				0E0C87291B53AD860040AF4D /* OrderList.swift in Sources */,
 				0E12090A1B213F9100418D47 /* ImageView.swift in Sources */,
 				0ECD81E41B2066B100054FD2 /* User.swift in Sources */,

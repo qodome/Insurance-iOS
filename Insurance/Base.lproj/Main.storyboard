@@ -301,10 +301,10 @@
             </objects>
             <point key="canvasLocation" x="3142" y="3566"/>
         </scene>
-        <!--Gender Update-->
+        <!--Check List Update-->
         <scene sceneID="4OW-ie-zpv">
             <objects>
-                <viewController id="5Gn-gh-hv0" customClass="GenderUpdate" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Gn-gh-hv0" customClass="CheckListUpdate" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uq3-0o-mES"/>
                         <viewControllerLayoutGuide type="bottom" id="JHF-By-sOA"/>

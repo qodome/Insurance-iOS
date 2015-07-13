@@ -15,6 +15,10 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             [
                 Item(title: "gender", dest: CheckListUpdate.self, segue: "user_check"),
                 Item(title: "about", dest: TextFieldUpdate.self, segue: "user_update")
+            ],
+            [
+                Item(title: "phoneNumber", dest: TextFieldUpdate.self, segue: "user_update"),
+                Item(title: "idCardNumber", dest: TextFieldUpdate.self, segue: "user_update")
             ]
         ]
     }
@@ -72,7 +76,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return getItem(indexPath).title == "avatar" ? 80 : 44
+        return getItem(indexPath).title == "avatar" ? 80 : tableView.rowHeight
     }
     
     // MARK: 💜 UIImagePickerControllerDelegate
@@ -91,8 +95,12 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         dest.setValue(getItem(tableView.indexPathForSelectedRow()!).title, forKey: "fieldName")
         if dest.isKindOfClass(UpdateController) {
             (dest as! UpdateController).delegate = self
-            (dest as! UpdateController).endpoint = getEndpoint("users/\((data as! User).id)")
-            (dest as! UpdateController).loader = HttpLoader(endpoint: getEndpoint("users/\((data as! User).id)"), type: User.self)
+            let endpoint = getEndpoint("users/\((data as! User).id)")
+            dest.setValue(endpoint, forKey: "endpoint")
+            dest.setValue(HttpLoader(endpoint: endpoint, type: User.self), forKey: "loader")
+            if dest.isKindOfClass(CheckListUpdate) {
+                dest.setValue([[Item(title: "male", segue: "check://m"), Item(title: "female", segue: "check://f")]], forKey: "items")
+            }
         }
     }
 }
