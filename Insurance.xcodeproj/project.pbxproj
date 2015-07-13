@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E0C85FD1B5385D00040AF4D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C85FC1B5385D00040AF4D /* Item.swift */; };
+		0E0C87251B53A5980040AF4D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C87231B53A5980040AF4D /* Item.swift */; };
 		0E1208E11B213F9100418D47 /* BaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208A21B213F9100418D47 /* BaseLoader.swift */; };
 		0E1208E21B213F9100418D47 /* HttpLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208A31B213F9100418D47 /* HttpLoader.swift */; };
 		0E1208E31B213F9100418D47 /* HttpTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208A41B213F9100418D47 /* HttpTask.swift */; };
@@ -141,7 +141,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E0C85FC1B5385D00040AF4D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		0E0C87231B53A5980040AF4D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0E1208A21B213F9100418D47 /* BaseLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoader.swift; sourceTree = "<group>"; };
 		0E1208A31B213F9100418D47 /* HttpLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpLoader.swift; sourceTree = "<group>"; };
 		0E1208A41B213F9100418D47 /* HttpTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTask.swift; sourceTree = "<group>"; };
@@ -389,6 +389,7 @@
 				0E1208C21B213F9100418D47 /* BaseData.swift */,
 				0E1208C31B213F9100418D47 /* BaseModel.swift */,
 				0E1208C41B213F9100418D47 /* BaseUser.swift */,
+				0E0C87231B53A5980040AF4D /* Item.swift */,
 				0E1208C51B213F9100418D47 /* ListModel.swift */,
 				0E1208C61B213F9100418D47 /* UploadParams.swift */,
 				0E1208C71B213F9100418D47 /* WXToken.swift */,
@@ -521,7 +522,6 @@
 				0ECD81D11B2066B100054FD2 /* Util */,
 				0ECD81D31B2066B100054FD2 /* Views */,
 				0ECD826E1B20673C00054FD2 /* Insurance-Bridging-Header.h */,
-				0E0C85FC1B5385D00040AF4D /* Item.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -567,9 +567,9 @@
 				0EC689131B46BDDE00E94341 /* Special.swift */,
 				0EC689141B46BDDE00E94341 /* Tag.swift */,
 				0ECD81CF1B2066B100054FD2 /* User.swift */,
+				0E1E63211B4FCA75004965CD /* Vehicle.swift */,
 				0EC689151B46BDDE00E94341 /* Video.swift */,
 				0EC689161B46BDDE00E94341 /* Vote.swift */,
-				0E1E63211B4FCA75004965CD /* Vehicle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -808,6 +808,7 @@
 				0E1E62A51B4E7941004965CD /* GenderUpdate.swift in Sources */,
 				0E12090A1B213F9100418D47 /* ImageView.swift in Sources */,
 				0ECD81E41B2066B100054FD2 /* User.swift in Sources */,
+				0E0C87251B53A5980040AF4D /* Item.swift in Sources */,
 				0E1E631C1B4FB54C004965CD /* VehicleList.swift in Sources */,
 				0E18E1761B4A3BB900994647 /* CardListCell.swift in Sources */,
 				0EC689221B46BDDE00E94341 /* Question.swift in Sources */,
@@ -854,7 +855,6 @@
 				0E18E16A1B4A3AA200994647 /* MyList.swift in Sources */,
 				0E1208ED1B213F9100418D47 /* TableSearch.swift in Sources */,
 				0ECD81E11B2066B100054FD2 /* SimpleCardList.swift in Sources */,
-				0E0C85FD1B5385D00040AF4D /* Item.swift in Sources */,
 				0ECD81DB1B2066B100054FD2 /* About.swift in Sources */,
 				0EC689231B46BDDE00E94341 /* Special.swift in Sources */,
 				0EC689241B46BDDE00E94341 /* Tag.swift in Sources */,
