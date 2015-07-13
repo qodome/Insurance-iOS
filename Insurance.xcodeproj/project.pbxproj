@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0E0C87251B53A5980040AF4D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C87231B53A5980040AF4D /* Item.swift */; };
+		0E0C87291B53AD860040AF4D /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C87281B53AD860040AF4D /* OrderList.swift */; };
+		0E0C872B1B53AF490040AF4D /* OrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C872A1B53AF490040AF4D /* OrderDetail.swift */; };
 		0E1208E11B213F9100418D47 /* BaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208A21B213F9100418D47 /* BaseLoader.swift */; };
 		0E1208E21B213F9100418D47 /* HttpLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208A31B213F9100418D47 /* HttpLoader.swift */; };
 		0E1208E31B213F9100418D47 /* HttpTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208A41B213F9100418D47 /* HttpTask.swift */; };
@@ -142,6 +144,8 @@
 
 /* Begin PBXFileReference section */
 		0E0C87231B53A5980040AF4D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		0E0C87281B53AD860040AF4D /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
+		0E0C872A1B53AF490040AF4D /* OrderDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetail.swift; sourceTree = "<group>"; };
 		0E1208A21B213F9100418D47 /* BaseLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoader.swift; sourceTree = "<group>"; };
 		0E1208A31B213F9100418D47 /* HttpLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpLoader.swift; sourceTree = "<group>"; };
 		0E1208A41B213F9100418D47 /* HttpTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTask.swift; sourceTree = "<group>"; };
@@ -539,6 +543,8 @@
 				0ECD81C61B2066B100054FD2 /* BaseCardList.swift */,
 				0ECD81C71B2066B100054FD2 /* CardList.swift */,
 				0ECD81C81B2066B100054FD2 /* CardWebDetail.swift */,
+				0E0C87281B53AD860040AF4D /* OrderList.swift */,
+				0E0C872A1B53AF490040AF4D /* OrderDetail.swift */,
 				0ECD81CB1B2066B100054FD2 /* SimpleCardList.swift */,
 				0E1E631B1B4FB54C004965CD /* VehicleList.swift */,
 				0E1E631D1B4FB747004965CD /* VehicleCreate.swift */,
@@ -806,6 +812,7 @@
 			files = (
 				0EC689181B46BDDE00E94341 /* Article.swift in Sources */,
 				0E1E62A51B4E7941004965CD /* GenderUpdate.swift in Sources */,
+				0E0C87291B53AD860040AF4D /* OrderList.swift in Sources */,
 				0E12090A1B213F9100418D47 /* ImageView.swift in Sources */,
 				0ECD81E41B2066B100054FD2 /* User.swift in Sources */,
 				0E0C87251B53A5980040AF4D /* Item.swift in Sources */,
@@ -894,6 +901,7 @@
 				0E1209011B213F9100418D47 /* UploadParams.swift in Sources */,
 				0E18E17C1B4A3BB900994647 /* SpecialCover.swift in Sources */,
 				0ECD81E21B2066B100054FD2 /* Card.swift in Sources */,
+				0E0C872B1B53AF490040AF4D /* OrderDetail.swift in Sources */,
 				0E9114601B52BBC600C93BC5 /* TextFieldCreate.swift in Sources */,
 				0E1208F31B213F9100418D47 /* UIColor+Extension.swift in Sources */,
 				0E1208F81B213F9100418D47 /* UIView+Extension.swift in Sources */,

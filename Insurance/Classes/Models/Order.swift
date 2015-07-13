@@ -3,6 +3,8 @@
 //
 
 class Order: BaseModel {
+    var user: User?
+    var product: Product?
     var id: NSNumber!
     var createdTime: NSDate!
     var name: NSString = ""

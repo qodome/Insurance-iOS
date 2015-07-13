@@ -10,7 +10,7 @@ class Me: UserDetail {
             [
                 Item(title: "vehicles", dest: VehicleList.self),
                 Item(title: "insurances", dest: nil),
-                Item(title: "orders", dest: nil)
+                Item(title: "orders", dest: OrderList.self)
             ],
             [
                 Item(title: "settings", dest: Settings.self)

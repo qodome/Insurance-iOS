@@ -100,6 +100,8 @@
                         <segue destination="Anz-QY-mfo" kind="show" identifier="segue.me-settings" id="aZA-jP-hX7"/>
                         <segue destination="4zV-nt-H0U" kind="show" identifier="segue.me-profile" id="Ngs-tM-FEf"/>
                         <segue destination="OfN-4a-Z3H" kind="show" identifier="segue.me-vehicle_list" id="hxH-Fl-PtC"/>
+                        <segue destination="GZL-Y2-C7S" kind="show" identifier="segue.me-order_list" id="jwX-qF-36m"/>
+                        <segue destination="wrr-3v-del" kind="show" id="vks-Tp-eAw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcY-20-1LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,10 +205,10 @@
             </objects>
             <point key="canvasLocation" x="2330" y="4890"/>
         </scene>
-        <!--View Controller-->
+        <!--Order List-->
         <scene sceneID="ZCY-8s-xXW">
             <objects>
-                <viewController id="GZL-Y2-C7S" sceneMemberID="viewController">
+                <viewController id="GZL-Y2-C7S" customClass="OrderList" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qJe-3e-O2P"/>
                         <viewControllerLayoutGuide type="bottom" id="fNs-Uh-UzJ"/>
@@ -216,15 +218,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="CQB-2V-VdO" kind="show" identifier="segue.order_list-order_detail" id="wqh-RG-Tgq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zyp-80-ihe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2330" y="5552"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Detail-->
         <scene sceneID="T5K-vM-mbC">
             <objects>
-                <viewController id="CQB-2V-VdO" sceneMemberID="viewController">
+                <viewController id="CQB-2V-VdO" customClass="OrderDetail" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kXq-vh-uRj"/>
                         <viewControllerLayoutGuide type="bottom" id="FA3-mQ-0Ux"/>

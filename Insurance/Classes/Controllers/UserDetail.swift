@@ -34,6 +34,7 @@ class UserDetail: TableDetail {
             let icon = FAKIonIcons.iosHeartIconWithSize(CGSizeSettingsIcon.width)
             icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_RED))
             cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
+            cell.detailTextLabel?.text = "\(data?.likes.count)"
         default: break
         }
         return cell
