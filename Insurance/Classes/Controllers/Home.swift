@@ -143,17 +143,17 @@ class Home: MyList {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PageCell
         selected = getSelected(indexPath, page: cell.page)
         if selected.isKindOfClass(Card) {
-            // startActivity("card_detail")
+            // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
         } else if selected.isKindOfClass(Special) {
             destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
-            startActivity("card_list")
+            startActivity(Item(title: "cards", dest: CardList.self))
         } else if selected.isKindOfClass(Featured) {
             switch (selected as! Featured).type {
             case "c":
-                startActivity("card_detail")
+                startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
             case "s":
                 destEndpoint = getEndpoint("specials/\((selected as! Featured).objectId)")
-                startActivity("card_list")
+                startActivity(Item(title: "cards", dest: CardList.self))
             default: break
             }
         }

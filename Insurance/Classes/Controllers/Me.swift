@@ -6,7 +6,17 @@ class Me: UserDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items += [["vehicles", "insurances", "orders"], ["settings"]]
+        items += [
+            [
+                Item(title: "vehicles", dest: VehicleList.self),
+                Item(title: "insurances", dest: nil),
+                Item(title: "orders", dest: nil)
+            ],
+            [
+                Item(title: "settings", dest: Settings.self)
+            ]
+        ]
+        endpoint = getEndpoint("users/\(userId)")
     }
     
     override func onLoadSuccess<E : User>(entity: E) {
@@ -14,8 +24,8 @@ class Me: UserDetail {
         title = LocalizedString("me")
     }
     
-    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
-        switch item {
+    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: Item, cell: C) -> UITableViewCell {
+        switch item.title {
         case "vehicles":
             let icon = FAKIonIcons.androidCarIconWithSize(CGSizeSettingsIcon.width)
             cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)

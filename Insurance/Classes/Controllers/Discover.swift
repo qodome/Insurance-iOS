@@ -23,7 +23,7 @@ class Discover: TableSearch {
     override func onPerform<T : Category>(action: Action, item: T) {
         switch action {
         case .Open:
-            startActivity("card_list")
+            startActivity(Item(title: "cards", dest: CardList.self))
         default:
             super.onPerform(action, item: item)
         }

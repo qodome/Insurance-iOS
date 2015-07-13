@@ -6,11 +6,21 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [["avatar", "nickname", "username"], ["gender", "about"]]
+        items = [
+            [
+                Item(title: "avatar", dest: TextFieldUpdate.self),
+                Item(title: "nickname", dest: TextFieldUpdate.self, segue: "user_update"),
+                Item(title: "username")
+            ],
+            [
+                Item(title: "gender", dest: CheckListUpdate.self, segue: "user_check"),
+                Item(title: "about", dest: TextFieldUpdate.self, segue: "user_update")
+            ]
+        ]
     }
     
-    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
-        switch item {
+    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: Item, cell: C) -> UITableViewCell {
+        switch item.title {
         case "avatar":
             cell.setTranslatesAutoresizingMaskIntoConstraints(false)
             let imageView = AvatarView(frame: CGRectMake(0, 0, 60, 60))
@@ -19,7 +29,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         case "gender":
             cell.detailTextLabel?.text = getString(GENDER_STRING, data?.gender as? String)
         default:
-            cell.detailTextLabel?.text = data?.valueForKey(item) as? String
+            cell.detailTextLabel?.text = data?.valueForKey(item.title) as? String
         }
         return cell
     }
@@ -52,19 +62,17 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     // MARK: - 💜 UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = getItem(indexPath)
-        switch item {
+        switch item.title {
         case "avatar":
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             startImageSheet()
-        case "about":
-            startActivity("user_update")
         default:
             super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return getItem(indexPath) == "avatar" ? 80 : 44
+        return getItem(indexPath).title == "avatar" ? 80 : 44
     }
     
     // MARK: 💜 UIImagePickerControllerDelegate
@@ -80,7 +88,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as! UIViewController
         dest.setValue(data, forKey: "data")
-        dest.setValue(getItem(tableView.indexPathForSelectedRow()!), forKey: "fieldName")
+        dest.setValue(getItem(tableView.indexPathForSelectedRow()!).title, forKey: "fieldName")
         if dest.isKindOfClass(UpdateController) {
             (dest as! UpdateController).delegate = self
             (dest as! UpdateController).endpoint = getEndpoint("users/\((data as! User).id)")

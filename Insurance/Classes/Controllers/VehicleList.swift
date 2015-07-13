@@ -16,6 +16,6 @@ class VehicleList: CollectionList {
     }
     
     func add(sender: AnyObject) {
-        startActivity("vehicle_create")
+        startActivity(Item(title: "vehicle_create", dest: VehicleCreate.self))
     }
 }

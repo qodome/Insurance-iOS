@@ -6,11 +6,14 @@ class Settings: TableDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [["about"], ["sign_out"]]
+        items = [
+            [Item(title: "about", dest: About.self)],
+            [Item(title: "sign_out")]
+        ]
     }
     
-    override func getItemView<T : NSObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
-        switch item {
+    override func getItemView<T : NSObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: Item, cell: C) -> UITableViewCell {
+        switch item.title {
         case "sign_out":
             cell.textLabel?.textColor = UIColor.destructiveColor()
         default: break
@@ -20,7 +23,7 @@ class Settings: TableDetail {
     
     // MARK: - 💜 UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch getItem(indexPath) {
+        switch getItem(indexPath).title {
         case "sign_out":
             tableView.deselectRowAtIndexPath(indexPath, animated: true) // 取消选中
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)

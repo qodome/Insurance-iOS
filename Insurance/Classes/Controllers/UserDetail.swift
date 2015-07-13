@@ -3,17 +3,13 @@
 //
 
 class UserDetail: TableDetail {
-    // MARK: - 💖 生命周期 (Lifecycle)
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//        endpoint = getEndpoint("users/\(userId)")
-//    }
-    
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [["profile"], ["likes"]]
-        endpoint = getEndpoint("users/\(userId)")
+        items = [
+            [Item(title: "profile", dest: Profile.self)],
+            [Item(title: "likes")]
+        ]
         refreshMode = .DidAppear // TIP: 用DidAppear而非WillAppear中保证回滑时候选中状态平滑消失
     }
     
@@ -32,8 +28,8 @@ class UserDetail: TableDetail {
         cell?.detailTextLabel?.text = entity.about as String
     }
     
-    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
-        switch item {
+    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: Item, cell: C) -> UITableViewCell {
+        switch item.title {
         case "likes":
             let icon = FAKIonIcons.iosHeartIconWithSize(CGSizeSettingsIcon.width)
             icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_RED))
