@@ -6,11 +6,11 @@ class About: TableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [[Item(title: "review")]]
+        items = [[Item(title: "review", segue: appReviewsLink())]]
     }
     
     override func getItemView<T : NSObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: Item, cell: C) -> UITableViewCell {
-        switch getItem(indexPath) {
+        switch getItem(indexPath).title {
         case "review":
             let star = NSMutableAttributedString(string: " ☆☆☆☆☆")
             star.addAttributes([NSForegroundColorAttributeName : UIColor.defaultColor()], range: NSMakeRange(1, star.length - 1))
