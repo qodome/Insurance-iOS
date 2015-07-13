@@ -17,8 +17,8 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
                 Item(title: "about", dest: TextFieldUpdate.self, segue: "user_update")
             ],
             [
-                Item(title: "phoneNumber", dest: TextFieldUpdate.self, segue: "user_update"),
-                Item(title: "idCardNumber", dest: TextFieldUpdate.self, segue: "user_update")
+                Item(title: "phone_number", dest: TextFieldUpdate.self, segue: "user_update"),
+                Item(title: "id_card_number", dest: TextFieldUpdate.self, segue: "user_update")
             ]
         ]
     }
@@ -33,7 +33,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         case "gender":
             cell.detailTextLabel?.text = getString(GENDER_STRING, data?.gender as? String)
         default:
-            cell.detailTextLabel?.text = data?.valueForKey(item.title) as? String
+            cell.detailTextLabel?.text = data?.valueForKey(item.title.camelCaseString()) as? String
         }
         return cell
     }
@@ -92,7 +92,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as! UIViewController
         dest.setValue(data, forKey: "data")
-        dest.setValue(getItem(tableView.indexPathForSelectedRow()!).title, forKey: "fieldName")
+        dest.setValue(getItem(tableView.indexPathForSelectedRow()!).title.camelCaseString(), forKey: "fieldName")
         if dest.isKindOfClass(UpdateController) {
             (dest as! UpdateController).delegate = self
             let endpoint = getEndpoint("users/\((data as! User).id)")
