@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E05EFDB1B5525AA00F4F9B2 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05EFDA1B5525AA00F4F9B2 /* Flight.swift */; };
 		0E0C87251B53A5980040AF4D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C87231B53A5980040AF4D /* Item.swift */; };
 		0E0C87291B53AD860040AF4D /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C87281B53AD860040AF4D /* OrderList.swift */; };
 		0E0C872B1B53AF490040AF4D /* OrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C872A1B53AF490040AF4D /* OrderDetail.swift */; };
@@ -142,6 +143,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E05EFDA1B5525AA00F4F9B2 /* Flight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		0E0C87231B53A5980040AF4D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0E0C87281B53AD860040AF4D /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
 		0E0C872A1B53AF490040AF4D /* OrderDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetail.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				0E18E1671B4A39B300994647 /* Home.swift */,
 				0ECD81C91B2066B100054FD2 /* Discover.swift */,
 				0ECD81CA1B2066B100054FD2 /* Compare.swift */,
+				0E05EFDA1B5525AA00F4F9B2 /* Flight.swift */,
 				0EF0BF0E1B46873500D17ECD /* Me */,
 				0ECD81C61B2066B100054FD2 /* BaseCardList.swift */,
 				0ECD81C71B2066B100054FD2 /* CardList.swift */,
@@ -813,6 +816,7 @@
 				0ECD81E41B2066B100054FD2 /* User.swift in Sources */,
 				0E0C87251B53A5980040AF4D /* Item.swift in Sources */,
 				0E1E631C1B4FB54C004965CD /* VehicleList.swift in Sources */,
+				0E05EFDB1B5525AA00F4F9B2 /* Flight.swift in Sources */,
 				0E18E1761B4A3BB900994647 /* CardListCell.swift in Sources */,
 				0EC689221B46BDDE00E94341 /* Question.swift in Sources */,
 				0E1208E11B213F9100418D47 /* BaseLoader.swift in Sources */,

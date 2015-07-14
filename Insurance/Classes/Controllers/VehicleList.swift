@@ -4,8 +4,8 @@
 
 class VehicleList: CollectionList {
     // MARK: - 🐤 Taylor
-    override func onPrepare() {
-        super.onPrepare()
+    override func onPrepare<T : UICollectionView>(listView: T) {
+        super.onPrepare(listView)
         title = LocalizedString("vehicles")
         // if 判断是否出现添加按钮
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")

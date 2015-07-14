@@ -28,13 +28,13 @@ class UserDetail: TableDetail {
         cell?.detailTextLabel?.text = entity.about as String
     }
     
-    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: Item, cell: C) -> UITableViewCell {
+    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
         case "likes":
             let icon = FAKIonIcons.iosHeartIconWithSize(CGSizeSettingsIcon.width)
             icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_RED))
             cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
-            cell.detailTextLabel?.text = "\(data?.likes.count)"
+            cell.detailTextLabel?.text = "\(data.likes.count)"
         default: break
         }
         return cell

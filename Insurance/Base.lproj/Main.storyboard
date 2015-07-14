@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="2330" y="256"/>
         </scene>
-        <!--View Controller-->
+        <!--Flight-->
         <scene sceneID="E4J-8K-FCK">
             <objects>
-                <viewController id="Du3-d0-0BM" sceneMemberID="viewController">
+                <viewController id="Du3-d0-0BM" customClass="Flight" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O65-bO-Fje"/>
                         <viewControllerLayoutGuide type="bottom" id="1WQ-2c-mTt"/>
@@ -352,6 +352,7 @@
                         <segue destination="qQ6-ce-EUQ" kind="relationship" relationship="viewControllers" id="xec-yH-Ohp"/>
                         <segue destination="oM7-Jp-B2X" kind="relationship" relationship="viewControllers" id="OPl-k2-o0J"/>
                         <segue destination="AWo-Zx-Xhe" kind="relationship" relationship="viewControllers" id="sS8-iG-8XG"/>
+                        <segue destination="RSW-NK-wIw" kind="relationship" relationship="viewControllers" id="UaC-JH-7Aw"/>
                         <segue destination="pHd-wp-FK6" kind="relationship" relationship="viewControllers" id="mPi-cB-MbR"/>
                     </connections>
                 </tabBarController>
@@ -416,10 +417,11 @@
             </objects>
             <point key="canvasLocation" x="706" y="918"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--flight-->
         <scene sceneID="482-J2-oXO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RSW-NK-wIw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="flight" image="ic_tab_plane" id="alv-pA-l9O"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kTb-Om-0R0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -519,5 +521,6 @@
         <image name="ic_tab_discover" width="25" height="25"/>
         <image name="ic_tab_home" width="25" height="25"/>
         <image name="ic_tab_me" width="25" height="25"/>
+        <image name="ic_tab_plane" width="25" height="25"/>
     </resources>
 </document>

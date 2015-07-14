@@ -12,7 +12,7 @@ class Main: UITabBarController {
         (tabBar.items![1] as! UITabBarItem).title = LocalizedString("discover")
         (tabBar.items![2] as! UITabBarItem).title = LocalizedString("compare")
         (tabBar.items?.last as! UITabBarItem).title = LocalizedString("me")
-        selectedIndex = 3
+        selectedIndex = 4
     }
     
     // MARK: - 💜 场景切换 (Segue)

@@ -34,12 +34,12 @@ class Home: MyList {
     }
     
     // MARK: - 🐤 继承 Taylor
-    override func onPrepare() {
-        super.onPrepare()
+    override func onPrepare<T : UICollectionView>(listView: T) {
+        super.onPrepare(listView)
         endpoint = getEndpoint("home")
         refreshMode = .WillAppear
-        (listView as! UICollectionView).registerClass(CardCell.self, forCellWithReuseIdentifier: cellId)
-        (listView as! UICollectionView).registerClass(PageCell.self, forCellWithReuseIdentifier: pageCellId)
+        listView.registerClass(CardCell.self, forCellWithReuseIdentifier: cellId)
+        listView.registerClass(PageCell.self, forCellWithReuseIdentifier: pageCellId)
         // 其他
         UIView.setAnimationsEnabled(true) // 从登陆跳转过来后恢复动画
         // 开机画面

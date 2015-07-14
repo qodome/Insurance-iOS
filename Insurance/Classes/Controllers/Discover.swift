@@ -4,8 +4,8 @@
 
 class Discover: TableSearch {
     // MARK: - 🐤 Taylor
-    override func onPrepare() {
-        super.onPrepare()
+    override func onPrepare<T : UITableView>(listView: T) {
+        super.onPrepare(listView)
         endpoint = getEndpoint("popping/categories")
         refreshMode = .DidLoad
         // searchController.searchBar.scopeButtonTitles = ["a", "b"]

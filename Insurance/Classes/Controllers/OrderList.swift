@@ -4,11 +4,11 @@
 
 class OrderList: TableList {
     // MARK: - 🐤 Taylor
-    override func onPrepare() {
-        super.onPrepare()
+    override func onPrepare<T : UITableView>(listView: T) {
+        super.onPrepare(listView)
         title = LocalizedString("orders")
         refreshMode = .DidLoad
-        (listView as! UITableView).registerClass(SubtitleCell.self, forCellReuseIdentifier: cellId)
+        listView.registerClass(SubtitleCell.self, forCellReuseIdentifier: cellId)
     }
     
     override func onCreateLoader() -> BaseLoader? {
@@ -41,6 +41,8 @@ class OrderList: TableList {
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as? UIViewController
         let item = getSelected().first as! Order
-        dest?.setValue(getEndpoint("orders/\(item.id))"), forKey: "endpoint")
+        
+        LOG(getEndpoint("orders/\(item.id)"))
+        dest?.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
     }
 }

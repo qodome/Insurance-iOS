@@ -24,7 +24,7 @@ class Me: UserDetail {
         title = LocalizedString("me")
     }
     
-    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: Item, cell: C) -> UITableViewCell {
+    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
         case "vehicles":
             let icon = FAKIonIcons.androidCarIconWithSize(CGSizeSettingsIcon.width)

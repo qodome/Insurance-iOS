@@ -12,7 +12,7 @@ class Settings: TableDetail {
         ]
     }
     
-    override func getItemView<T : ModelObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: Item, cell: C) -> UITableViewCell {
+    override func getItemView<T : ModelObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
         case "sign_out":
             cell.textLabel?.textColor = UIColor.destructiveColor()

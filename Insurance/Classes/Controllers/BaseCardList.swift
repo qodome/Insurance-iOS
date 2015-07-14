@@ -7,8 +7,8 @@ class BaseCardList: CollectionList {
     var category = Category()
     
     // MARK: - 🐤 Taylor
-    override func onPrepare() {
-        super.onPrepare()
+    override func onPrepare<T : UICollectionView>(listView: T) {
+        super.onPrepare(listView)
         endpoint = getEndpoint("popping/topcharts")
         refreshMode = .DidLoad
     }
