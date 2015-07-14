@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Illegaality: BaseModel {
+class Illegaality: ModelObject {
     var status: NSString = ""
     var uniqueCode: NSString = ""
     var excutelocation: NSString = ""

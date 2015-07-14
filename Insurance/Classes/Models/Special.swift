@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Special: BaseModel {
+class Special: ModelObject {
     var cards = ListModel() // 手动补
     var id: NSNumber!
     var createdTime: NSDate!

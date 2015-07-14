@@ -2,7 +2,7 @@
 //  Copyright (c) 2015年 NY. All rights reserved.
 //
 
-class Category: BaseModel {
+class Category: ModelObject {
     var name: NSString = ""
     
     override class func getMapping() -> [String : String] {

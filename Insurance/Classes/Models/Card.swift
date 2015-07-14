@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Card: BaseModel {
+class Card: ModelObject {
     var article: Article? // 手动补
     var video: Video? // 手动补
     var comments = ListModel() // 手动补

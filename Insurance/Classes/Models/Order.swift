@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Order: BaseModel {
+class Order: ModelObject {
     var user: User?
     var product: Product?
     var id: NSNumber!

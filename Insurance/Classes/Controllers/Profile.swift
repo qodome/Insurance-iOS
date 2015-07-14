@@ -39,7 +39,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     // MARK: - UpdatedDelegate
-    func onBackSegue(data: NSObject?) {
+    func onBackSegue(data: ModelObject?) {
         self.data = data
         tableView.reloadData()
     }
@@ -92,7 +92,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as! UIViewController
         dest.setValue(data, forKey: "data")
-        dest.setValue(getItem(tableView.indexPathForSelectedRow()!).title.camelCaseString(), forKey: "fieldName")
+        dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
         if dest.isKindOfClass(UpdateController) {
             (dest as! UpdateController).delegate = self
             let endpoint = getEndpoint("users/\((data as! User).id)")

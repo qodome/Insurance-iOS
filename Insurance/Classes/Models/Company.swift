@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Company: BaseModel {
+class Company: ModelObject {
     var id: NSNumber!
     var buyTel: NSString = ""
     var host: NSString = ""

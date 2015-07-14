@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Insurance: BaseModel {
+class Insurance: ModelObject {
     var id: NSNumber!
     var state: NSNumber!
     var isHot = false

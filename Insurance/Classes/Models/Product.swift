@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Product: BaseModel {
+class Product: ModelObject {
     var id: NSNumber!
     var createdTime: NSDate!
     var name: NSString = ""

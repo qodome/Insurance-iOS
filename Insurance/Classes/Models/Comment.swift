@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Comment: BaseModel {
+class Comment: ModelObject {
     var id: NSNumber!
     var idStr: NSString = ""
     var createdTime: NSDate!

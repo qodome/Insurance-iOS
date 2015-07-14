@@ -2,7 +2,7 @@
 //  Copyright (c) 2015年 NY. All rights reserved.
 //
 
-class Vehicle: BaseModel {
+class Vehicle: ModelObject {
     var id: NSNumber!
     var user: User?
     var city: NSString = ""

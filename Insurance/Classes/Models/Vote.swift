@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Vote: BaseModel {
+class Vote: ModelObject {
     var id: NSNumber!
     var idStr: NSString = ""
     var user: User?

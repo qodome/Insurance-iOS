@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Article: BaseModel {
+class Article: ModelObject {
     var id: NSNumber!
     var user: User?
     var createdTime: NSDate!

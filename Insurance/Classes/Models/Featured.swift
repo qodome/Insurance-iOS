@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class Featured: BaseModel {
+class Featured: ModelObject {
     var id: NSNumber!
     var user: User?
     var createdTime: NSDate!

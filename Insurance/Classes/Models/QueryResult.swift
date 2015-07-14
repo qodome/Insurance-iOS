@@ -2,7 +2,7 @@
 //  Copyright (c) 2014 NY. All rights reserved.
 //
 
-class QueryResult: BaseModel {
+class QueryResult: ModelObject {
     var insuranceQueryTime: NSNumber!
     var insuranceStartDate: NSDate!
     var errorMsg: NSString = ""
