@@ -4,13 +4,14 @@
 
 let APP_ID = "981373001" // "https://itunes.apple.com/cn/app/id981373001"
 
-let DOMAIN = "test1.xiaomar.com"
+let DOMAIN = "xiaomar.com"
+
 let API_VERSION = "api/v1"
 
 let DEFAULT_TOKEN = "d55c45f1b33d0617fc3212657e36be1abf2e0a71"
 
-let BASE_URL = "http://\(DOMAIN)"
-let MEDIA_URL = "http://media.\(DOMAIN)"
+var BASE_URL = "http://\(DOMAIN)"
+var MEDIA_URL = "http://media.\(DOMAIN)"
 
 // 样式
 let XIAOMAR_RED = 0xFC2C28 // 0xFF2819
@@ -33,3 +34,17 @@ let GENDER_STRING = [
     "m" : LocalizedString("male"),
     "f" : LocalizedString("female")
 ]
+
+var TestEnv = getBool("test_env", defaultValue: false)
+
+func reloadSettings() {
+    if TestEnv {
+        BASE_URL = "http://test1.\(DOMAIN)"
+        MEDIA_URL = "http://test1.media.\(DOMAIN)"
+    } else {
+        BASE_URL = "http://\(DOMAIN)"
+        MEDIA_URL = "http://media.\(DOMAIN)"
+    }
+    RKObjectManager.setSharedManager(RKObjectManager(baseURL: NSURL(string: BASE_URL)))
+    putBool("test_env", TestEnv)
+}

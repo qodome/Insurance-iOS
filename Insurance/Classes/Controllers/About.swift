@@ -9,7 +9,7 @@ class About: TableDetail {
         items = [[Item(title: "review", segue: appReviewsLink())]]
     }
     
-    override func getItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
+    override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch getItem(indexPath).title {
         case "review":
             let star = NSMutableAttributedString(string: " ☆☆☆☆☆")
