@@ -23,7 +23,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         ]
     }
     
-    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T, item: Item, cell: C) -> UITableViewCell {
+    override func getItemView<T : User, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
         case "avatar":
             cell.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -31,7 +31,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             imageView.image.sd_setImageWithURL(NSURL(string: data.imageUrl as String))
             cell.accessoryView = imageView
         case "gender":
-            cell.detailTextLabel?.text = getString(GENDER_STRING, data.gender as? String)
+            cell.detailTextLabel?.text = getString(GENDER_STRING, data.gender as String)
         default:
             cell.detailTextLabel?.text = data.valueForKey(item.title.camelCaseString()) as? String
         }

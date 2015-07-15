@@ -16,7 +16,7 @@ class OrderList: TableList {
         return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
 
-    override func getItemView<V : UITableView, T : Order, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> UIView {
+    override func getItemView<V : UITableView, T : Order, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
 //        cell = listView.dequeueReusableCellWithIdentifier(cellId)
         cell.textLabel?.text = item.name as String
 //        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl as String))
@@ -41,8 +41,6 @@ class OrderList: TableList {
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as? UIViewController
         let item = getSelected().first as! Order
-        
-        LOG(getEndpoint("orders/\(item.id)"))
         dest?.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
     }
 }

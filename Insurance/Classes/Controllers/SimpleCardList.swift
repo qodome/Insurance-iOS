@@ -11,7 +11,7 @@ class SimpleCardList: BaseCardList {
         listView.registerClass(CardTableCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    override func getItemView<V : UICollectionView, T : Card, C : CardTableCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> UIView {
+    override func getItemView<V : UICollectionView, T : Card, C : CardTableCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
         cell.image.sd_setImageWithURL(NSURL(string: item.imageUrl as String))
         cell.captionLabel.text = item.caption as String
         cell.captionLabel.sizeToFit()

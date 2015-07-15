@@ -6,9 +6,11 @@ class UserDetail: TableDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
+        let iconLikes = FAKIonIcons.iosHeartIconWithSize(CGSizeSettingsIcon.width)
+        iconLikes.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_RED))
         items = [
             [Item(title: "profile", dest: Profile.self)],
-            [Item(title: "likes")]
+            [Item(icon: iconLikes.imageWithSize(CGSizeSettingsIcon), title: "likes")]
         ]
         refreshMode = .DidAppear // TIP: 用DidAppear而非WillAppear中保证回滑时候选中状态平滑消失
     }
@@ -28,12 +30,9 @@ class UserDetail: TableDetail {
         cell?.detailTextLabel?.text = entity.about as String
     }
     
-    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T, item: Item, cell: C) -> UITableViewCell {
+    override func getItemView<T : User, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
         case "likes":
-            let icon = FAKIonIcons.iosHeartIconWithSize(CGSizeSettingsIcon.width)
-            icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_RED))
-            cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
             cell.detailTextLabel?.text = "\(data.likes.count)"
         default: break
         }

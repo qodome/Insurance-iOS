@@ -430,8 +430,8 @@
 			children = (
 				0E1208D61B213F9100418D47 /* AvatarView.swift */,
 				0E1208D81B213F9100418D47 /* BaseSign.swift */,
-				0E1208D91B213F9100418D47 /* SignInController.swift */,
 				0E1208DA1B213F9100418D47 /* SignUpController.swift */,
+				0E1208D91B213F9100418D47 /* SignInController.swift */,
 				0E1208D71B213F9100418D47 /* SocialSignIn.swift */,
 				0E1208DB1B213F9100418D47 /* TagsView.swift */,
 			);

@@ -15,7 +15,7 @@ class Discover: TableSearch {
         return HttpLoader(endpoint: endpoint, mapping: smartListMapping(Category.self))
     }
     
-    override func getItemView<V : UITableView, T : Category, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> UIView {
+    override func getItemView<V : UITableView, T : Category, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
         cell.textLabel?.text = item.name as String
         return cell
     }

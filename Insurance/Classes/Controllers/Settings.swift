@@ -8,17 +8,8 @@ class Settings: TableDetail {
         super.onPrepare()
         items = [
             [Item(title: "about", dest: About.self)],
-            [Item(title: "sign_out")]
+            [Item(title: "sign_out", color: UIColor.destructiveColor())]
         ]
-    }
-    
-    override func getItemView<T : ModelObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T, item: Item, cell: C) -> UITableViewCell {
-        switch item.title {
-        case "sign_out":
-            cell.textLabel?.textColor = UIColor.destructiveColor()
-        default: break
-        }
-        return cell
     }
     
     // MARK: - 💜 UITableViewDelegate

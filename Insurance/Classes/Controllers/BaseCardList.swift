@@ -18,7 +18,7 @@ class BaseCardList: CollectionList {
         return HttpLoader(endpoint: endpoint, mapping: mapping, parameters: ["category" : category.name])
     }
     
-    override func getItemView<V : UICollectionView, T : Card, C : CardListCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> UIView {
+    override func getItemView<V : UICollectionView, T : Card, C : CardListCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
         cell.image.sd_setImageWithURL(NSURL(string: item.imageUrl as String))
         cell.captionLabel.text = item.caption as String
         cell.setTips(item.tips as String)

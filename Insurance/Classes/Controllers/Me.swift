@@ -6,14 +6,20 @@ class Me: UserDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
+        let iconInsurances = FAKIonIcons.iosMedicalIconWithSize(CGSizeSettingsIcon.width)
+        iconInsurances.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_GREEN))
+        let iconOrders = FAKIonIcons.iosPaperIconWithSize(CGSizeSettingsIcon.width)
+        iconOrders.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_YELLOW))
+        let iconSettings = FAKIonIcons.iosGearIconWithSize(CGSizeSettingsIcon.width)
+        iconSettings.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_BLUE))
         items += [
             [
-                Item(title: "vehicles", dest: VehicleList.self),
-                Item(title: "insurances", dest: nil),
-                Item(title: "orders", dest: OrderList.self)
+                Item(icon: FAKIonIcons.androidCarIconWithSize(CGSizeSettingsIcon.width).imageWithSize(CGSizeSettingsIcon), title: "vehicles", dest: VehicleList.self),
+                Item(icon: iconInsurances.imageWithSize(CGSizeSettingsIcon), title: "insurances", dest: nil),
+                Item(icon: iconOrders.imageWithSize(CGSizeSettingsIcon), title: "orders", dest: OrderList.self)
             ],
             [
-                Item(title: "settings", dest: Settings.self)
+                Item(icon: iconSettings.imageWithSize(CGSizeSettingsIcon), title: "settings", dest: Settings.self)
             ]
         ]
         endpoint = getEndpoint("users/\(userId)")
@@ -22,29 +28,6 @@ class Me: UserDetail {
     override func onLoadSuccess<E : User>(entity: E) {
         super.onLoadSuccess(entity)
         title = LocalizedString("me")
-    }
-    
-    override func getItemView<T : User, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T, item: Item, cell: C) -> UITableViewCell {
-        switch item.title {
-        case "vehicles":
-            let icon = FAKIonIcons.androidCarIconWithSize(CGSizeSettingsIcon.width)
-            cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
-        case "insurances":
-            let icon = FAKIonIcons.iosMedicalIconWithSize(CGSizeSettingsIcon.width)
-            icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_GREEN))
-            cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
-        case "orders":
-            let icon = FAKIonIcons.iosPaperIconWithSize(CGSizeSettingsIcon.width)
-            icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_YELLOW))
-            cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
-        case "settings":
-            let icon = FAKIonIcons.iosGearIconWithSize(CGSizeSettingsIcon.width)
-            icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_BLUE))
-            cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
-        default:
-            return super.getItemView(tableView, indexPath: indexPath, data: data, item: item, cell: cell)
-        }
-        return cell
     }
     
     // MARK: - 💜 场景切换 (Segue)

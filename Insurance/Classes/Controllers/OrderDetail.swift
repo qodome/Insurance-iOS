@@ -7,6 +7,7 @@ class OrderDetail: TableDetail {
     override func onPrepare() {
         super.onPrepare()
         items = [[
+            Item(title: "price"),
             Item(title: "created_time")
             ]]
         refreshMode = .DidLoad
@@ -14,15 +15,17 @@ class OrderDetail: TableDetail {
     
     override func onCreateLoader() -> BaseLoader? {
         let mapping = smartMapping(Order.self)
-        LOG(endpoint)
         return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
     
-    override func getItemView<T : Order, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T, item: Item, cell: C) -> UITableViewCell {
+    override func getItemView<T : Order, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
+        case "price":
+            let formatter = NSNumberFormatter()
+            formatter.numberStyle = .CurrencyStyle
+            cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: data.price.doubleValue / 100))
         case "created_time":
-            cell.textLabel?.text = item.title
-            cell.detailTextLabel?.text = TTTTimeIntervalFormatter().stringForTimeInterval(data.createdTime.timeIntervalSinceNow)
+            cell.detailTextLabel?.text = TTTTimeIntervalFormatter().stringForTimeInterval(data.valueForKey(item.title.camelCaseString())!.timeIntervalSinceNow)
         default: break
         }
         return cell
