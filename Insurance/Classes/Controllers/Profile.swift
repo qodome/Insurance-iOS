@@ -95,7 +95,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
         if dest.isKindOfClass(UpdateController) {
             (dest as! UpdateController).delegate = self
-            let endpoint = getEndpoint("users/\((data as! User).id)")
+            let endpoint = getEndpoint("users/\((data as? User)?.id)")
             dest.setValue(endpoint, forKey: "endpoint")
             dest.setValue(HttpLoader(endpoint: endpoint, type: User.self), forKey: "loader")
             if dest.isKindOfClass(CheckListUpdate) {

@@ -32,8 +32,8 @@ class Discover: TableSearch {
     // MARK: - 💜 场景切换 (Segue)
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        let item = getSelected().first as! Category
+        let item = getSelected().first as? Category
         segue.destinationViewController.setValue(item, forKey: "category")
-        segue.destinationViewController.setValue(item.name, forKey: "title")
+        segue.destinationViewController.setValue(item?.name, forKey: "title")
     }
 }

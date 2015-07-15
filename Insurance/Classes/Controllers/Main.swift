@@ -8,10 +8,10 @@ class Main: UITabBarController {
         super.viewDidLoad()
         tabBar.tintColor = UIColor.colorWithHex(APP_COLOR)
         UIView.setAnimationsEnabled(true) // 从登陆跳转后恢复动画
-        (tabBar.items?.first as! UITabBarItem).title = LocalizedString("home")
-        (tabBar.items![1] as! UITabBarItem).title = LocalizedString("discover")
-        (tabBar.items![2] as! UITabBarItem).title = LocalizedString("compare")
-        (tabBar.items?.last as! UITabBarItem).title = LocalizedString("me")
+        (tabBar.items?.first as? UITabBarItem)?.title = LocalizedString("home")
+        (tabBar.items![1] as? UITabBarItem)?.title = LocalizedString("discover")
+        (tabBar.items![2] as? UITabBarItem)?.title = LocalizedString("compare")
+        (tabBar.items?.last as? UITabBarItem)?.title = LocalizedString("me")
         selectedIndex = 4
     }
     

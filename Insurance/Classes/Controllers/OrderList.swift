@@ -40,7 +40,7 @@ class OrderList: TableList {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as? UIViewController
-        let item = getSelected().first as! Order
-        dest?.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
+        let item = getSelected().first as? Order
+        dest?.setValue(getEndpoint("orders/\(item?.id)"), forKey: "endpoint")
     }
 }

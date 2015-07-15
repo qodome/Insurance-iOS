@@ -41,7 +41,7 @@ class Settings: TableDetail {
             alert.addAction(UIAlertAction(title: LocalizedString("sign_out"), style: .Destructive) { (action) in
                 NSUserDefaults.standardUserDefaults().removeObjectForKey(TaylorR.Pref.UserToken.rawValue)
                 userToken = DEFAULT_TOKEN
-                RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: String(format: "Token %@", userToken))
+                RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "JWT \(userToken)")
                 userId = 0
 //                userId = getInteger(TaylorR.Pref.UserId.rawValue)
                 showAlert(self, title: "已注销")
