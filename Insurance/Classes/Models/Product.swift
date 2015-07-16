@@ -3,14 +3,18 @@
 //
 
 class Product: ModelObject {
+    var insurances = ListModel()
     var id: NSNumber!
+    var user: User?
     var createdTime: NSDate!
     var name: NSString = ""
     var price: NSNumber!
-    var standardPrice: NSNumber!
     var desc: NSString = ""
+    var state: NSNumber!
     var imageUrl: NSString = ""
-    var saleNum: NSNumber!
+    var type: NSString = ""
+    var isOpen: NSString = ""
+    var sellNumber: NSNumber!
     
     override class func getMapping() -> [String : String] {
         return [
@@ -18,10 +22,12 @@ class Product: ModelObject {
             "created_time" : "createdTime",
             "name" : "name",
             "price" : "price",
-            "standard_price" : "standardPrice",
             "desc" : "desc",
+            "state" : "state",
             "image_url" : "imageUrl",
-            "sale_num" : "saleNum",
+            "type" : "type",
+            "is_open" : "isOpen",
+            "sell_number" : "sellNumber"
         ]
     }
 }

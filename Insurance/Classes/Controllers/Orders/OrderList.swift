@@ -12,15 +12,18 @@ class OrderList: TableList {
     }
     
     override func onCreateLoader() -> BaseLoader? {
-        let mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
+        LOG(endpoint)
+        let mapping = smartListMapping(Order.self)
         return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
-
+    
     override func getItemView<V : UITableView, T : Order, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
 //        cell = listView.dequeueReusableCellWithIdentifier(cellId)
         cell.textLabel?.text = item.name as String
 //        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl as String))
-        cell.detailTextLabel?.text = data?.valueForKey(item.name as String) as? String
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: item.totalFee.doubleValue / 100))
         return cell
     }
     
@@ -40,7 +43,7 @@ class OrderList: TableList {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as? UIViewController
-        let item = getSelected().first as? Order
-        dest?.setValue(getEndpoint("orders/\(item?.id)"), forKey: "endpoint")
+        let item = getSelected().first as! Order
+        dest?.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
     }
 }

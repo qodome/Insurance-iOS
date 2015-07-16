@@ -24,8 +24,17 @@ class OrderCreate: CreateController {
         return HttpLoader(endpoint: endpoint, type: Order.self)
     }
     
+    override func onCreateParameters<T : Order>(data: T?) -> [String : AnyObject]? {
+        return [
+            "product_id" : data!.product!.id,
+            "total_fee" : data!.totalFee,
+            "name" : data!.product!.name
+        ]
+    }
+    
     override func onLoadSuccess<E : Order>(entity: E) {
-        LOG("-----------------------------")
+        super.onLoadSuccess(entity)
+        checkout()
     }
     
     override func getItemView<T : Order, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
@@ -39,12 +48,7 @@ class OrderCreate: CreateController {
         return cell
     }
     
-    override func create(sender: AnyObject) {
-        super.create(sender)
-        checkout(sender)
-    }
-    
-    func checkout(sender: AnyObject) { // 支付
+    func checkout() { // 支付
         let parameters = [
             "appid" : WX_APP_ID,
             "mch_id" : WX_MCH_ID,

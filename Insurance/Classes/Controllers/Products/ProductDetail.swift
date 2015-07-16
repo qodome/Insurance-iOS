@@ -3,6 +3,8 @@
 //
 
 class ProductDetail: TableDetail {
+    var imageView: UIImageView!
+    
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
@@ -23,6 +25,8 @@ class ProductDetail: TableDetail {
 //                Item(title: "price"),
                 Item(title: "created_time")
             ]]
+        imageView = ImageView(frame: CGRectMake(0, 0, view.frame.width, 130))
+        tableView.addSubview(imageView)
         let button = QuickButton(frame: CGRectMake(0, view.frame.height - 44, view.frame.width, 44))
         button.addTarget(self, action: "buy:", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("buy"), forState: .Normal)
@@ -32,6 +36,11 @@ class ProductDetail: TableDetail {
     override func onCreateLoader() -> BaseLoader? {
         let mapping = smartMapping(Product.self)
         return HttpLoader(endpoint: endpoint, mapping: mapping)
+    }
+    
+    override func onLoadSuccess<E : Product>(entity: E) {
+        super.onLoadSuccess(entity)
+        imageView.sd_setImageWithURL(NSURL(string: entity.imageUrl as String))
     }
     
     override func getItemView<T : Product, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
@@ -51,6 +60,11 @@ class ProductDetail: TableDetail {
     
     func buy(sender: AnyObject) {
         performSegueWithIdentifier("segue.product_detail-order_create", sender: self)
+    }
+    
+    // MARK: - 💜 UITableViewDelegate
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? imageView.frame.height : 20
     }
     
     // MARK: - 💜 场景切换 (Segue)

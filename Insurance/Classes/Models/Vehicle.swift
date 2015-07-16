@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright (c) 2014 NY. All rights reserved.
 //
 
 class Vehicle: ModelObject {

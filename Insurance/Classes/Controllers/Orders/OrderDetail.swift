@@ -8,7 +8,8 @@ class OrderDetail: TableDetail {
         super.onPrepare()
         items = [[
             Item(title: "price"),
-            Item(title: "created_time")
+            Item(title: "created_time"),
+            Item(title: "status")
             ]]
         refreshMode = .DidLoad
     }
@@ -26,6 +27,8 @@ class OrderDetail: TableDetail {
             cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: data.totalFee.doubleValue / 100))
         case "created_time":
             cell.detailTextLabel?.text = TTTTimeIntervalFormatter().stringForTimeInterval(data.valueForKey(item.title.camelCaseString())!.timeIntervalSinceNow)
+        case "status":
+            cell.detailTextLabel?.text = data.status as String
         default: break
         }
         return cell

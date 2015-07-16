@@ -3,13 +3,13 @@
 //
 
 class QueryResult: ModelObject {
+    var company_info: Company?
     var insuranceQueryTime: NSNumber!
     var insuranceStartDate: NSDate!
     var errorMsg: NSString = ""
     var totalPrice: NSString = ""
     var status: NSNumber!
     var refererId: NSString = ""
-    var company_info: Company!
     
     override class func getMapping() -> [String : String] {
         return [
