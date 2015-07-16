@@ -34,16 +34,29 @@ let GENDER_STRING = [
     "m" : LocalizedString("male"),
     "f" : LocalizedString("female")
 ]
+// 微信
+let WX_APP_ID = "wxd9d42bf22bc2c7e8"
+let WX_SECRET = "96ecd74ae753e0bdb0ebe017ce2d2663"
+let WX_MCH_ID = "1249194301"
+let WX_SP_KEY = "AB7F441A742AFC4B65824C05EAF79B76"
+var WX_NOTIFY_URL = ""
+// 微博
+let WB_APP_KEY = ""
 
 var TestEnv = getBool("test_env", defaultValue: false)
 
+
 func reloadSettings() {
-    if TestEnv {
+    if TestEnv { // 测试环境
         BASE_URL = "http://test1.\(DOMAIN)"
         MEDIA_URL = "http://test1.media.\(DOMAIN)"
+        // 微信
+        WX_NOTIFY_URL = "http://qodome.com.cn/api/v1/check_sign/"
     } else {
         BASE_URL = "http://\(DOMAIN)"
         MEDIA_URL = "http://media.\(DOMAIN)"
+        // 微信
+        WX_NOTIFY_URL = "http://qodome.com.cn/api/v1/check_sign/"
     }
     RKObjectManager.setSharedManager(RKObjectManager(baseURL: NSURL(string: BASE_URL)))
     putBool("test_env", TestEnv)

@@ -23,7 +23,7 @@ class OrderDetail: TableDetail {
         case "price":
             let formatter = NSNumberFormatter()
             formatter.numberStyle = .CurrencyStyle
-            cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: data.price.doubleValue / 100))
+            cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: data.totalFee.doubleValue / 100))
         case "created_time":
             cell.detailTextLabel?.text = TTTTimeIntervalFormatter().stringForTimeInterval(data.valueForKey(item.title.camelCaseString())!.timeIntervalSinceNow)
         default: break

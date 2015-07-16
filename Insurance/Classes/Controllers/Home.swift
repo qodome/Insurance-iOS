@@ -40,8 +40,6 @@ class Home: MyList {
         refreshMode = .WillAppear
         listView.registerClass(CardCell.self, forCellWithReuseIdentifier: cellId)
         listView.registerClass(PageCell.self, forCellWithReuseIdentifier: pageCellId)
-        // 其他
-        UIView.setAnimationsEnabled(true) // 从登陆跳转过来后恢复动画
         // 开机画面
         launchView = UIImageView(frame: view.bounds)
         launchView.hidden = true
@@ -143,7 +141,11 @@ class Home: MyList {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PageCell
         selected = getSelected(indexPath, page: cell.page)
         if selected.isKindOfClass(Card) {
-            // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
+            if (selected as! Card).type == "p" {
+                startActivity(Item(title: "product", dest: ProductDetail.self))
+            } else {
+               // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
+            }
         } else if selected.isKindOfClass(Special) {
             destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
             startActivity(Item(title: "cards", dest: CardList.self))
@@ -164,6 +166,7 @@ class Home: MyList {
         super.prepareForSegue(segue, sender: sender)
         let dest = segue.destinationViewController as! UIViewController
         let identifier = segue.identifier!.componentsSeparatedByString("-")[1]
+        LOG("💜 \(identifier)")
         if identifier == "card_list" {
             if selected.isKindOfClass(Special) {
                 dest.setValue((selected as! Special).title, forKey: "title")
@@ -178,6 +181,10 @@ class Home: MyList {
                 dest.setValue(selected, forKey: "data")
                 dest.setValue((selected as! Card).idStr, forKey: "pk")
             }
+        } else if identifier == "product_detail" {
+            let endpoint = getEndpoint("products/\((selected as! Card).objectId)")
+            LOG(endpoint)
+            dest.setValue(endpoint, forKey: "endpoint")
         }
     }
     

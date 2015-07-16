@@ -1,3 +1,4 @@
+#import <CommonCrypto/CommonDigest.h>
 #import <Photos/Photos.h>
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>

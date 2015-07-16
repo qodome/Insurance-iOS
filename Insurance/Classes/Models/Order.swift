@@ -6,25 +6,27 @@ class Order: ModelObject {
     var user: User?
     var product: Product?
     var id: NSNumber!
+    var idStr: NSString = ""
     var createdTime: NSDate!
     var name: NSString = ""
     var type: NSString = ""
     var prepayId: NSString = ""
-    var mchId: NSNumber!
+    var mchId: NSString = ""
     var openId: NSString = ""
-    var price: NSNumber!
+    var totalFee: NSNumber!
     var status: NSString = ""
     
     override class func getMapping() -> [String : String] {
         return [
             "id" : "id",
+            "id_str" : "idStr",
             "created_time" : "createdTime",
             "name" : "name",
             "type" : "type",
             "prepay_id" : "prepayId",
             "mch_id" : "mchId",
             "open_id" : "openId",
-            "price" : "price",
+            "total_fee" : "totalFee",
             "status" : "status",
         ]
     }

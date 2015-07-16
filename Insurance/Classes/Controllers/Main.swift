@@ -11,8 +11,9 @@ class Main: UITabBarController {
         (tabBar.items?.first as? UITabBarItem)?.title = LocalizedString("home")
         (tabBar.items![1] as? UITabBarItem)?.title = LocalizedString("discover")
         (tabBar.items![2] as? UITabBarItem)?.title = LocalizedString("compare")
+        (tabBar.items![3] as? UITabBarItem)?.title = LocalizedString("flight")
         (tabBar.items?.last as? UITabBarItem)?.title = LocalizedString("me")
-        selectedIndex = 4
+        selectedIndex = 0
     }
     
     // MARK: - 💜 场景切换 (Segue)
