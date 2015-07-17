@@ -35,7 +35,7 @@ class OrderCreate: CreateController {
     override func onLoadSuccess<E : Order>(entity: E) {
         super.onLoadSuccess(entity)
         // TODO: 防止重复下单
-        checkout()
+        checkout(entity)
     }
     
     override func getItemView<T : Order, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
@@ -49,7 +49,7 @@ class OrderCreate: CreateController {
         return cell
     }
     
-    func checkout() { // 支付
+    func checkout(order: Order) { // 支付
         // TODO: 如果没有APP对应的预支付单号，就申请预支付单号，获取成功就通知服务器，有的话，直接再支付
         let parameters = [
             "appid" : WX_APP_ID,
@@ -57,10 +57,10 @@ class OrderCreate: CreateController {
             "device_info" : "iOS",
             "nonce_str" : "\(rand())",
             "trade_type" : "APP",
-            "body" : data == nil ? "" : (data as! Order).name as String,
+            "body" : order.name as String,
             "notify_url" : WX_NOTIFY_URL,
-            "out_trade_no" : "\(Int(NSDate().timeIntervalSince1970))",
-            "total_fee" : data == nil ? "0" : "\((data as! Order).totalFee)",
+            "out_trade_no" : "\(order.id)",
+            "total_fee" : "\(order.totalFee)",
             "spbill_create_ip": "192.168.1.1"
         ]
         let prepayId = generatePrepay(parameters) // 获得预支付订单号
@@ -83,6 +83,8 @@ class OrderCreate: CreateController {
             request.package = parameters["package"]
             request.sign = parameters["sign"]
             WXApi.sendReq(request)
+        } else {
+            showAlert(self, title: "prepayId error")
         }
     }
 }
