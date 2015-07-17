@@ -28,9 +28,7 @@ class OrderCreate: CreateController {
     
     override func onCreateParameters<T : Order>(data: T?) -> [String : AnyObject]? {
         return [
-            "product_id" : data!.product!.id,
-            "total_fee" : data!.totalFee,
-            "name" : data!.product!.name
+            "product_id" : data!.product!.id
         ]
     }
     
@@ -51,6 +49,7 @@ class OrderCreate: CreateController {
     }
     
     func checkout() { // 支付
+        // TODO: 如果没有APP对应的预支付单号，就申请预支付单号，获取成功就通知服务器，有的话，直接再支付
         let parameters = [
             "appid" : WX_APP_ID,
             "mch_id" : WX_MCH_ID,

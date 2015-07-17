@@ -50,14 +50,13 @@ func reloadSettings() {
     if TestEnv { // 测试环境
         BASE_URL = "http://test1.\(DOMAIN)"
         MEDIA_URL = "http://test1.media.\(DOMAIN)"
-        // 微信
-        WX_NOTIFY_URL = "http://qodome.com.cn/api/v1/check_sign/"
     } else {
         BASE_URL = "http://\(DOMAIN)"
         MEDIA_URL = "http://media.\(DOMAIN)"
-        // 微信
-        WX_NOTIFY_URL = "http://qodome.com.cn/api/v1/check_sign/"
     }
+    // 微信
+    WX_NOTIFY_URL = "\(BASE_URL)/api/v1/check_sign/"
+    //
     RKObjectManager.setSharedManager(RKObjectManager(baseURL: NSURL(string: BASE_URL)))
     putBool("test_env", TestEnv)
 }
