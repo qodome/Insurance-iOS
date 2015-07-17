@@ -14,7 +14,7 @@ class OrderCreate: CreateController {
             [Item(title: "price")
             ]
         ]
-        let button = QuickButton(frame: CGRectMake(0, view.frame.height - 44, view.frame.width, 44))
+        let button = QuickButton(frame: CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT))
         button.addTarget(self, action: "create:", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("confirm"), forState: .Normal)
         view.addSubview(button)
@@ -34,6 +34,7 @@ class OrderCreate: CreateController {
     
     override func onLoadSuccess<E : Order>(entity: E) {
         super.onLoadSuccess(entity)
+        // TODO: 防止重复下单
         checkout()
     }
     
@@ -53,7 +54,7 @@ class OrderCreate: CreateController {
         let parameters = [
             "appid" : WX_APP_ID,
             "mch_id" : WX_MCH_ID,
-            "device_info" : "APP-001",
+            "device_info" : "iOS",
             "nonce_str" : "\(rand())",
             "trade_type" : "APP",
             "body" : data == nil ? "" : (data as! Order).name as String,

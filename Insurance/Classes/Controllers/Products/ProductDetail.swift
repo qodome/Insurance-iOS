@@ -27,7 +27,8 @@ class ProductDetail: TableDetail {
             ]]
         imageView = ImageView(frame: CGRectMake(0, 0, view.frame.width, 130))
         tableView.addSubview(imageView)
-        let button = QuickButton(frame: CGRectMake(0, view.frame.height - 44, view.frame.width, 44))
+        let button = QuickButton(frame: CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT))
+        let but = QuickButton()
         button.addTarget(self, action: "buy:", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("buy"), forState: .Normal)
         view.addSubview(button)
