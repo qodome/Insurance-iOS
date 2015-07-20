@@ -7,13 +7,12 @@ class Main: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = UIColor.colorWithHex(APP_COLOR)
-        UIView.setAnimationsEnabled(true) // 从登陆跳转后恢复动画
-        (tabBar.items?.first as? UITabBarItem)?.title = LocalizedString("home")
-        (tabBar.items![1] as? UITabBarItem)?.title = LocalizedString("discover")
-        (tabBar.items![2] as? UITabBarItem)?.title = LocalizedString("compare")
-        (tabBar.items![3] as? UITabBarItem)?.title = LocalizedString("flight")
-        (tabBar.items?.last as? UITabBarItem)?.title = LocalizedString("me")
-        selectedIndex = 0
+//        UIView.setAnimationsEnabled(true) // 从登陆跳转后恢复动画
+        let items = ["home", /** "discover", */ "compare", "flight", "me"]
+        for i in 0..<items.count {
+            (tabBar.items![i] as? UITabBarItem)?.title = items[i]
+        }
+        selectedIndex = 3
     }
     
     // MARK: - 💜 场景切换 (Segue)

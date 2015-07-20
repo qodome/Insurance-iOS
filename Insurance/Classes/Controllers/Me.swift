@@ -3,6 +3,27 @@
 //
 
 class Me: UserDetail {
+    
+    func checkLogin() {
+        if userToken == DEFAULT_TOKEN { // 未登录
+            let dest = storyboard?.instantiateViewControllerWithIdentifier("sign_in") as! UIViewController
+            presentViewController(UINavigationController(rootViewController: dest), animated: true, completion: nil) // present跳转增加导航栏
+        }
+    }
+    
+    // MARK: - 💖 生命周期 (Lifecycle)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        checkLogin()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        checkLogin()
+        endpoint = getEndpoint("users/\(userId)")
+        loader?.endpoint = endpoint
+    }
+    
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
@@ -22,7 +43,6 @@ class Me: UserDetail {
                 Item(icon: iconSettings.imageWithSize(CGSizeSettingsIcon), title: "settings", dest: Settings.self)
             ]
         ]
-        endpoint = getEndpoint("users/\(userId)")
     }
     
     override func onLoadSuccess<E : User>(entity: E) {

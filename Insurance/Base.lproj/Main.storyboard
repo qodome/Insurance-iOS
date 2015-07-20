@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F6a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kw2-Qs-1xk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F6a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yCg-Rf-ueA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -499,7 +499,7 @@
         <!--Sign In-->
         <scene sceneID="C1V-ip-yQJ">
             <objects>
-                <viewController id="x79-Xl-Y1u" customClass="SignIn" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sign_in" id="x79-Xl-Y1u" customClass="SignIn" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WSp-rA-cX1"/>
                         <viewControllerLayoutGuide type="bottom" id="hpi-JF-CGo"/>
@@ -511,31 +511,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="eKG-JK-hOj"/>
                     <connections>
-                        <segue destination="yCg-Rf-ueA" kind="show" identifier="segue.main" id="MXF-QI-0gN"/>
                         <segue destination="VEl-J6-X1W" kind="show" identifier="segue.sign_up" id="vqv-em-53Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYu-dd-iNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-918" y="918"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wWX-3p-eTg">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kw2-Qs-1xk" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="s9C-Zp-Ccc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="x79-Xl-Y1u" kind="relationship" relationship="rootViewController" id="Ddz-dT-mY1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lnf-EO-3yV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1730" y="918"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="RdL-Pl-MKX">
