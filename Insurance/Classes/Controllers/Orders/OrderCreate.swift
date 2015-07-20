@@ -9,9 +9,16 @@ class OrderCreate: CreateController {
         super.onPrepare()
         endpoint = getEndpoint("orders")
         items = [
-            [Item(title: "total_fee")
+            [
+                Item(title: "name"),
+                Item(title: "total_fee")
             ],
-            [Item(title: "price")
+            [
+                Item(title: "phone_number"),
+                Item(title: "flight_num"),
+                Item(title: "start_time"),
+                Item(title: "end_time"),
+                Item(title: "departure_time")
             ]
         ]
         let button = QuickButton(frame: CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT))

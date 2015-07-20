@@ -44,10 +44,8 @@ class BaseCardList: CollectionList {
         }
     }
     
-    // MARK: - 💜 场景切换 (Segue)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
         let item = getSelected().first
-        segue.destinationViewController.setValue(item, forKey: "data")
+        dest.setValue(item, forKey: "data")
     }
 }

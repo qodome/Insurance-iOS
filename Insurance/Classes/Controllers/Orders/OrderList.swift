@@ -18,6 +18,7 @@ class OrderList: TableList {
     }
     
     override func getItemView<V : UITableView, T : Order, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
+//        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl as String))
 //        cell = listView.dequeueReusableCellWithIdentifier(cellId)
         cell.textLabel?.text = item.name as String
 //        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl as String))
@@ -36,14 +37,13 @@ class OrderList: TableList {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        startActivity(Item(title: "order_list", dest: OrderDetail.self))
+    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+        let item = getSelected().first as! Order
+        dest.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let dest = segue.destinationViewController as? UIViewController
-        let item = getSelected().first as! Order
-        dest?.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
+    // MARK: - 💜 UITableViewDelegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        startActivity(Item(title: "order_list", dest: OrderDetail.self))
     }
 }

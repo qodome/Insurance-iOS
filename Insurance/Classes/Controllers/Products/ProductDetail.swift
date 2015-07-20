@@ -46,14 +46,10 @@ class ProductDetail: TableDetail {
     
     override func getItemView<T : Product, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
-        case "name":
-            cell.detailTextLabel?.text = data.name as String
         case "price":
             let formatter = NSNumberFormatter()
             formatter.numberStyle = .CurrencyStyle
             cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: data.price.doubleValue / 100))
-        case "created_time":
-            cell.detailTextLabel?.text = TTTTimeIntervalFormatter().stringForTimeInterval(data.valueForKey(item.title.camelCaseString())!.timeIntervalSinceNow)
         default: break
         }
         return cell
@@ -63,20 +59,17 @@ class ProductDetail: TableDetail {
         performSegueWithIdentifier("segue.product_detail-order_create", sender: self)
     }
     
-    // MARK: - 💜 UITableViewDelegate
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? imageView.frame.height : 20
-    }
-    
-    // MARK: - 💜 场景切换 (Segue)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let dest = segue.destinationViewController as! UIViewController
+    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
         let product = data as! Product
         let order = Order()
         order.name = product.name
         order.totalFee = product.price
         order.product = product
         dest.setValue(order, forKey: "data")
+    }
+    
+    // MARK: - 💜 UITableViewDelegate
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? imageView.frame.height : 20
     }
 }

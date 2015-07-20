@@ -50,11 +50,8 @@ class Me: UserDetail {
         title = LocalizedString("me")
     }
     
-    // MARK: - 💜 场景切换 (Segue)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let dest = segue.destinationViewController as! UIViewController
-        switch segue.identifier!.componentsSeparatedByString("-")[1] {
+    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+        switch id {
         case "profile":
             dest.setValue(data, forKey: "data")
         case "vehicle_list":

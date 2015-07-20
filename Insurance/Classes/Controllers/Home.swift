@@ -144,7 +144,7 @@ class Home: MyList {
             if (selected as! Card).type == "p" {
                 startActivity(Item(title: "product", dest: ProductDetail.self))
             } else {
-               // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
+                // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
             }
         } else if selected.isKindOfClass(Special) {
             destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
@@ -161,30 +161,29 @@ class Home: MyList {
         }
     }
     
-    // MARK: - 💜 场景切换 (Segue)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let dest = segue.destinationViewController as! UIViewController
-        let identifier = segue.identifier!.componentsSeparatedByString("-")[1]
-        LOG("💜 \(identifier)")
-        if identifier == "card_list" {
+    // MARK: - 场景切换 (Segue)
+    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+        LOG("💜 \(id)")
+        switch id {
+        case "card_list":
             if selected.isKindOfClass(Special) {
                 dest.setValue((selected as! Special).title, forKey: "title")
                 dest.setValue((selected as! Special).cards, forKey: "data")
             }
             dest.setValue(destEndpoint, forKey: "endpoint")
             dest.setValue("cards", forKey: "keyPath")
-        } else if identifier == "card_detail" {
+        case "card_detail":
             if selected.isKindOfClass(Featured) {
                 dest.setValue("\((selected as! Featured).objectId)", forKey: "pk")
             } else {
                 dest.setValue(selected, forKey: "data")
                 dest.setValue((selected as! Card).idStr, forKey: "pk")
             }
-        } else if identifier == "product_detail" {
+        case "product_detail":
             let endpoint = getEndpoint("products/\((selected as! Card).objectId)")
             LOG(endpoint)
             dest.setValue(endpoint, forKey: "endpoint")
+        default: break
         }
     }
     
