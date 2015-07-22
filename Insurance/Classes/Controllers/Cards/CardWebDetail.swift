@@ -8,11 +8,11 @@ class CardWebDetail: WebDetail {
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "share:")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "share")
     }
     
     // MARK: - 💛 Action
-    func share(sender: AnyObject) {
+    func share() {
         startShareActivity(self, [data.caption, data.url], view)
     }
 }

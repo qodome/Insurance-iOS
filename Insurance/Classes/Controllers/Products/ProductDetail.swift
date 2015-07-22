@@ -29,7 +29,7 @@ class ProductDetail: TableDetail {
         tableView.addSubview(imageView)
         let button = QuickButton(frame: CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT))
         let but = QuickButton()
-        button.addTarget(self, action: "buy:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: "buy", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("buy"), forState: .Normal)
         view.addSubview(button)
     }
@@ -55,7 +55,7 @@ class ProductDetail: TableDetail {
         return cell
     }
     
-    func buy(sender: AnyObject) {
+    func buy() {
         performSegueWithIdentifier("segue.product_detail-order_create", sender: self)
     }
     

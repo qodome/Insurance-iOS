@@ -22,7 +22,7 @@ class OrderCreate: CreateController {
             ]
         ]
         let button = QuickButton(frame: CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT))
-        button.addTarget(self, action: "create:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("confirm"), forState: .Normal)
         view.addSubview(button)
     }
