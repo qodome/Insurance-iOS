@@ -44,7 +44,7 @@ class OrderDetail: TableDetail {
         return cell
     }
     
-    // MARK: 💜 UITableViewDataSource
+    // MARK: - 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "" : "子订单 \(section)"
     }

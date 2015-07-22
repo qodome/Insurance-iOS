@@ -70,13 +70,12 @@ class OrderCreate: CreateController {
             "total_fee" : "\(order.totalFee)",
             "spbill_create_ip": "192.168.1.1"
         ]
-        let prepayId = generatePrepay(parameters) // 获得预支付订单号
-        if prepayId != nil {
+        if let prepayId = generatePrepay(parameters) { // 获得预支付订单号
             var parameters = [
                 "appid" : WX_APP_ID,
                 "partnerid" : WX_MCH_ID,
                 "package" : "Sign=WXPay",
-                "prepayid" : "\(prepayId!)",
+                "prepayid" : "\(prepayId)",
                 "noncestr" : "\(Int(NSDate().timeIntervalSince1970))",
                 "timestamp" : "\(Int(NSDate().timeIntervalSince1970))"
             ]
