@@ -1,2 +1,9 @@
 /* Tips */
 tips = "";
+
+compare = "Compare";
+flight = "Flight";
+
+vehicles = "Vehicles";
+insurances = "Insurances";
+orders = "Orders";

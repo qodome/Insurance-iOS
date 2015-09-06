@@ -1,3 +1,4 @@
+#import <CommonCrypto/CommonDigest.h>
 #import <Photos/Photos.h>
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
@@ -5,13 +6,14 @@
 // CTAssetsPickerController https://github.com/chiunam/CTAssetsPickerController
 #import <CTAssetsPickerController/CTAssetsPickerController.h>
 
-// EAIntroView https://github.com/ealeksandrov/EAIntroView
-#import <EAIntroView/EAIntroView.h>
+// DateTools https://github.com/MatthewYork/DateTools
+#import <DateTools/DateTools.h>
 
-// Facebook https://developers.facebook.com/quickstarts
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <FBSDKShareKit/FBSDKShareKit.h>
+// EAIntroView https://github.com/ealeksandrov/EAIntroView
+#import <EAIntroView/EAIntroView.h> 
+
+// FontAwesomeKit https://github.com/PrideChung/FontAwesomeKit
+#import <FontAwesomeKit/FontAwesomeKit.h>
 
 // FormatterKit https://github.com/mattt/FormatterKit
 #import <FormatterKit/TTTTimeIntervalFormatter.h>

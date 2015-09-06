@@ -5,12 +5,12 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: BaseAppDelegate {
+class AppDelegate: SocialAppDelegate {
     // MARK: - 🐤 Taylor
     override func onFinishLaunching(application: UIApplication, options: [NSObject : AnyObject]?) {
         super.onFinishLaunching(application, options: options)
-        userToken = DEFAULT_TOKEN // 上传默认token
-        RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "Token \(userToken)")
+        userToken = DEFAULT_TOKEN // 默认token
+        RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "JWT \(userToken)")
         //        NSUserDefaults.standardUserDefaults().registerDefaults(["userToken" : ""])
         //        NSUserDefaults.standardUserDefaults().synchronize()
     }

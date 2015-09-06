@@ -6,19 +6,17 @@ class About: TableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        title = LocalizedString("about")
-        items = [["review"]]
+        items = [[Item(title: "review", segue: appReviewsLink())]]
     }
     
-    override func getItemView<T : NSObject, C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, data: T?, item: String, cell: C) -> UITableViewCell {
-        switch getItem(indexPath) {
+    override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
+        switch getItem(indexPath).title {
         case "review":
             let star = NSMutableAttributedString(string: " ☆☆☆☆☆")
             star.addAttributes([NSForegroundColorAttributeName : UIColor.defaultColor()], range: NSMakeRange(1, star.length - 1))
-            let s = NSMutableAttributedString(string: LocalizedString(getItem(indexPath)))
+            let s = NSMutableAttributedString(string: LocalizedString(getItem(indexPath).title))
             s.appendAttributedString(star)
             cell.textLabel?.attributedText = s
-            cell.accessoryType = .DisclosureIndicator
         default: break
         }
         return cell
@@ -34,15 +32,5 @@ class About: TableDetail {
             return "\(name) \(version) (\(build))"
         }
         return nil
-    }
-    
-    // MARK: 💜 UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch getItem(indexPath) {
-        case "review":
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            openAppReviews()
-        default: break
-        }
     }
 }
