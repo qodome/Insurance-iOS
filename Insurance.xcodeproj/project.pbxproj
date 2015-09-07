@@ -75,7 +75,6 @@
 		0E1E631A1B4E8F40004965CD /* CheckListUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */; };
 		0E1E63221B4FCA75004965CD /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63211B4FCA75004965CD /* Vehicle.swift */; };
 		0E6F600E1B577F6600CD13C2 /* WeixinUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F600D1B577F6600CD13C2 /* WeixinUtils.swift */; };
-		0E8113DE1B57BAEB00ADD2DF /* QuickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8113DD1B57BAEB00ADD2DF /* QuickButton.swift */; };
 		0E8113E01B57C93E00ADD2DF /* OrderCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8113DF1B57C93E00ADD2DF /* OrderCreate.swift */; };
 		0E91145E1B52BBB300C93BC5 /* TextViewCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */; };
 		0E9114601B52BBC600C93BC5 /* TextFieldCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */; };
@@ -137,6 +136,7 @@
 		0ED9FFC21B574F5B00DA5193 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9FFBD1B574F5B00DA5193 /* SignIn.swift */; };
 		0ED9FFC31B574F5B00DA5193 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9FFBE1B574F5B00DA5193 /* SignUp.swift */; };
 		0ED9FFC51B576DE500DA5193 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9FFC41B576DE500DA5193 /* XML.swift */; };
+		0EE2B8581B71DDB1007DE0C3 /* QuickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2B8571B71DDB1007DE0C3 /* QuickButton.swift */; };
 		BB50681EA16B4E0A002E1396 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E5DF7372E9C8C07A670467E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -221,7 +221,6 @@
 		0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListUpdate.swift; sourceTree = "<group>"; };
 		0E1E63211B4FCA75004965CD /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		0E6F600D1B577F6600CD13C2 /* WeixinUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeixinUtils.swift; sourceTree = "<group>"; };
-		0E8113DD1B57BAEB00ADD2DF /* QuickButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickButton.swift; sourceTree = "<group>"; };
 		0E8113DF1B57C93E00ADD2DF /* OrderCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCreate.swift; sourceTree = "<group>"; };
 		0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCreate.swift; sourceTree = "<group>"; };
 		0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCreate.swift; sourceTree = "<group>"; };
@@ -290,6 +289,7 @@
 		0ED9FFBD1B574F5B00DA5193 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		0ED9FFBE1B574F5B00DA5193 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		0ED9FFC41B576DE500DA5193 /* XML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
+		0EE2B8571B71DDB1007DE0C3 /* QuickButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickButton.swift; sourceTree = "<group>"; };
 		1E5DF7372E9C8C07A670467E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		33460E9F51E1D8AF9D4D6B86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3CDE55435AAF7CBF3FEE012A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -453,6 +453,7 @@
 				0E1208D71B213F9100418D47 /* SocialSignIn.swift */,
 				0E1208DB1B213F9100418D47 /* TagsView.swift */,
 				0EC87AAB1B5F66AD00B88A3C /* CityList.swift */,
+				0EE2B8571B71DDB1007DE0C3 /* QuickButton.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -625,7 +626,6 @@
 				0E18E1721B4A3BB900994647 /* PageCell.swift */,
 				0E18E1731B4A3BB900994647 /* PosterView.swift */,
 				0E18E1741B4A3BB900994647 /* SpecialCover.swift */,
-				0E8113DD1B57BAEB00ADD2DF /* QuickButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -905,7 +905,6 @@
 				0EC6891C1B46BDDE00E94341 /* Illegaality.swift in Sources */,
 				0E12090D1B213F9100418D47 /* SubtitleCell.swift in Sources */,
 				0ECD81D81B2066B100054FD2 /* AppDelegate.swift in Sources */,
-				0E8113DE1B57BAEB00ADD2DF /* QuickButton.swift in Sources */,
 				0E1208F51B213F9100418D47 /* UILabel+Extension.swift in Sources */,
 				0EC689201B46BDDE00E94341 /* Product.swift in Sources */,
 				0E1209111B213F9100418D47 /* SignInController.swift in Sources */,
@@ -936,6 +935,7 @@
 				0EC689241B46BDDE00E94341 /* Tag.swift in Sources */,
 				0E1209051B213F9100418D47 /* RestKitUtils.swift in Sources */,
 				0E1209091B213F9100418D47 /* Utils.swift in Sources */,
+				0EE2B8581B71DDB1007DE0C3 /* QuickButton.swift in Sources */,
 				0E91145E1B52BBB300C93BC5 /* TextViewCreate.swift in Sources */,
 				0E1208FD1B213F9100418D47 /* BaseData.swift in Sources */,
 				0EC689281B46BE9200E94341 /* Category.swift in Sources */,
