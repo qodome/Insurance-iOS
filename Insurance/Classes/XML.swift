@@ -9,12 +9,12 @@ class XML: NSObject, NSXMLParserDelegate {
     
     func startParse(data: NSData) {
         // xml解析
-        let xmlElements = NSArray()
         let xmlParser = NSXMLParser(data: data)
         xmlParser.delegate = self
         xmlParser.parse()
     }
     
+    // MARK: - 💜 NSXMLParserDelegate
     func parser(parser: NSXMLParser, foundCharacters string: String?) {
         contentString = string
     }

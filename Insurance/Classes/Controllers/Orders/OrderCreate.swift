@@ -9,13 +9,20 @@ class OrderCreate: CreateController {
         super.onPrepare()
         endpoint = getEndpoint("orders")
         items = [
-            [Item(title: "total_fee")
+            [
+                Item(title: "name"),
+                Item(title: "total_fee")
             ],
-            [Item(title: "price")
+            [
+                Item(title: "phone_number"),
+                Item(title: "flight_num"),
+                Item(title: "start_time"),
+                Item(title: "end_time"),
+                Item(title: "departure_time")
             ]
         ]
         let button = QuickButton(frame: CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT))
-        button.addTarget(self, action: "create:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("confirm"), forState: .Normal)
         view.addSubview(button)
     }
@@ -63,13 +70,12 @@ class OrderCreate: CreateController {
             "total_fee" : "\(order.totalFee)",
             "spbill_create_ip": "192.168.1.1"
         ]
-        let prepayId = generatePrepay(parameters) // 获得预支付订单号
-        if prepayId != nil {
+        if let prepayId = generatePrepay(parameters) { // 获得预支付订单号
             var parameters = [
                 "appid" : WX_APP_ID,
                 "partnerid" : WX_MCH_ID,
                 "package" : "Sign=WXPay",
-                "prepayid" : "\(prepayId!)",
+                "prepayid" : "\(prepayId)",
                 "noncestr" : "\(Int(NSDate().timeIntervalSince1970))",
                 "timestamp" : "\(Int(NSDate().timeIntervalSince1970))"
             ]

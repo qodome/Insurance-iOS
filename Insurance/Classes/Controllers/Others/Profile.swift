@@ -32,10 +32,23 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             cell.accessoryView = imageView
         case "gender":
             cell.detailTextLabel?.text = getString(GENDER_STRING, data.gender as String)
-        default:
-            cell.detailTextLabel?.text = data.valueForKey(item.title.camelCaseString()) as? String
+        default: break
         }
         return cell
+    }
+    
+    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+        dest.setValue(data, forKey: "data")
+        dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
+        if dest.isKindOfClass(UpdateController) {
+            (dest as! UpdateController).delegate = self
+            let endpoint = getEndpoint("users/\((data as! User).id)")
+            dest.setValue(endpoint, forKey: "endpoint")
+            dest.setValue(HttpLoader(endpoint: endpoint, type: User.self), forKey: "loader")
+            if dest.isKindOfClass(CheckListUpdate) {
+                dest.setValue([[Item(title: "male", segue: "check://m"), Item(title: "female", segue: "check://f")]], forKey: "items")
+            }
+        }
     }
     
     // MARK: - UpdatedDelegate
@@ -84,23 +97,6 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
             // TODO: 上传头像
             picker.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
-    // MARK: - 💜 场景切换 (Segue)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let dest = segue.destinationViewController as! UIViewController
-        dest.setValue(data, forKey: "data")
-        dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
-        if dest.isKindOfClass(UpdateController) {
-            (dest as! UpdateController).delegate = self
-            let endpoint = getEndpoint("users/\((data as? User)?.id)")
-            dest.setValue(endpoint, forKey: "endpoint")
-            dest.setValue(HttpLoader(endpoint: endpoint, type: User.self), forKey: "loader")
-            if dest.isKindOfClass(CheckListUpdate) {
-                dest.setValue([[Item(title: "male", segue: "check://m"), Item(title: "female", segue: "check://f")]], forKey: "items")
-            }
         }
     }
 }

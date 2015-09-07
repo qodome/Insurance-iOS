@@ -5,13 +5,12 @@
 let APP_ID = "981373001" // "https://itunes.apple.com/cn/app/id981373001"
 
 let DOMAIN = "xiaomar.com"
-
 let API_VERSION = "api/v1"
-
-let DEFAULT_TOKEN = "d55c45f1b33d0617fc3212657e36be1abf2e0a71"
 
 var BASE_URL = "http://\(DOMAIN)"
 var MEDIA_URL = "http://media.\(DOMAIN)"
+
+var DEFAULT_TOKEN = ""
 // 微信
 let WX_APP_ID = "wxd9d42bf22bc2c7e8"
 let WX_SECRET = "96ecd74ae753e0bdb0ebe017ce2d2663"
@@ -27,9 +26,11 @@ func reloadSettings() {
     if TestEnv { // 测试环境
         BASE_URL = "http://test1.\(DOMAIN)"
         MEDIA_URL = "http://test1.media.\(DOMAIN)"
+        DEFAULT_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJlbWFpbCI6IiIsImV4cCI6MTQzODQyMTcyNywib3JpZ19pYXQiOjE0MzcxMjU3MjcsInVzZXJuYW1lIjoidGVzdCJ9.-PVwOX1JkQcP3tzoqpI-g56qwQnEaXkBxjjXG9WQ75w"
     } else {
         BASE_URL = "http://\(DOMAIN)"
         MEDIA_URL = "http://media.\(DOMAIN)"
+        DEFAULT_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJlbWFpbCI6IiIsImV4cCI6MTQzODQyMTcyNywib3JpZ19pYXQiOjE0MzcxMjU3MjcsInVzZXJuYW1lIjoidGVzdCJ9.-PVwOX1JkQcP3tzoqpI-g56qwQnEaXkBxjjXG9WQ75w"
     }
     // 微信
     WX_NOTIFY_URL = "\(BASE_URL)/api/v1/check_sign/"

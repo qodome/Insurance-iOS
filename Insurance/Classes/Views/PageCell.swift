@@ -11,7 +11,7 @@ class PageCell: UICollectionViewCell, UIScrollViewDelegate {
     var canCycle = false // 能否循环
     var canAutoRun: Bool = false { // 能否自动滑动
         didSet {
-            if canAutoRun  {
+            if canAutoRun {
                 timerInit()
             } else {
                 timer?.invalidate()

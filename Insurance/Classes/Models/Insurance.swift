@@ -25,7 +25,7 @@ class Insurance: ModelObject {
             "type" : "type",
             "price" : "price",
             "options" : "options",
-            "desc" : "desc",
+            "description" : "desc",
             "image_url" : "imageUrl",
             "expired" : "expired",
         ]

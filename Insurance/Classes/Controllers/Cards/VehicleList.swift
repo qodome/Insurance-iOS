@@ -8,14 +8,14 @@ class VehicleList: CollectionList {
         super.onPrepare(listView)
         title = LocalizedString("vehicles")
         // if 判断是否出现添加按钮
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add")
     }
     
     override func onCreateLoader() -> BaseLoader? {
         return HttpLoader(endpoint: endpoint, type: Vehicle.self)
     }
     
-    func add(sender: AnyObject) {
+    func add() {
         startActivity(Item(title: "vehicle_create", dest: VehicleCreate.self))
     }
 }

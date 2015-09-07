@@ -33,14 +33,13 @@ class ProductList: TableList {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        startActivity(Item(title: "order_list", dest: OrderDetail.self))
+    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+        let item = getSelected().first as? Order
+        dest.setValue(getEndpoint("orders/\(item?.id)"), forKey: "endpoint")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let dest = segue.destinationViewController as? UIViewController
-        let item = getSelected().first as? Order
-        dest?.setValue(getEndpoint("orders/\(item?.id)"), forKey: "endpoint")
+    // MARK: - 💜 UITableViewDelegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        startActivity(Item(title: "order_list", dest: OrderDetail.self))
     }
 }

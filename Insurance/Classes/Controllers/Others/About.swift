@@ -22,7 +22,7 @@ class About: TableDetail {
         return cell
     }
     
-    // MARK: 💜 UITableViewDataSource
+    // MARK: - 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == tableView.numberOfSections() - 1 {
             let bundle = NSBundle.mainBundle()
