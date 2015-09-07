@@ -75,6 +75,7 @@
 		0E1E631A1B4E8F40004965CD /* CheckListUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */; };
 		0E1E63221B4FCA75004965CD /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E63211B4FCA75004965CD /* Vehicle.swift */; };
 		0E6F600E1B577F6600CD13C2 /* WeixinUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F600D1B577F6600CD13C2 /* WeixinUtils.swift */; };
+		0E8082991B9D3843007220CA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8082981B9D3843007220CA /* CoreTelephony.framework */; };
 		0E8113E01B57C93E00ADD2DF /* OrderCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8113DF1B57C93E00ADD2DF /* OrderCreate.swift */; };
 		0E91145E1B52BBB300C93BC5 /* TextViewCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */; };
 		0E9114601B52BBC600C93BC5 /* TextFieldCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */; };
@@ -221,6 +222,7 @@
 		0E1E63191B4E8F40004965CD /* CheckListUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListUpdate.swift; sourceTree = "<group>"; };
 		0E1E63211B4FCA75004965CD /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		0E6F600D1B577F6600CD13C2 /* WeixinUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeixinUtils.swift; sourceTree = "<group>"; };
+		0E8082981B9D3843007220CA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		0E8113DF1B57C93E00ADD2DF /* OrderCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCreate.swift; sourceTree = "<group>"; };
 		0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCreate.swift; sourceTree = "<group>"; };
 		0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCreate.swift; sourceTree = "<group>"; };
@@ -300,9 +302,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E8082991B9D3843007220CA /* CoreTelephony.framework in Frameworks */,
 				0ECD82761B206AA800054FD2 /* libc++.dylib in Frameworks */,
-				0ECD82741B206AA100054FD2 /* libz.dylib in Frameworks */,
 				0ECD82721B206A9500054FD2 /* libsqlite3.0.dylib in Frameworks */,
+				0ECD82741B206AA100054FD2 /* libz.dylib in Frameworks */,
 				BB50681EA16B4E0A002E1396 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +729,7 @@
 		F97566CA4A248F8F7CD060DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E8082981B9D3843007220CA /* CoreTelephony.framework */,
 				0ECD82751B206AA800054FD2 /* libc++.dylib */,
 				0ECD82731B206AA100054FD2 /* libz.dylib */,
 				0ECD82711B206A9500054FD2 /* libsqlite3.0.dylib */,
