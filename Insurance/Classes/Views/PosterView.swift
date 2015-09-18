@@ -7,7 +7,7 @@ class PosterView: UIView {
     var title: UILabel!
     var image: ImageView!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

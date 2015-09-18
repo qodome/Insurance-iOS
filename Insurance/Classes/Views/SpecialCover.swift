@@ -6,7 +6,7 @@ class SpecialCover: PosterView {
     
     var subtitle: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

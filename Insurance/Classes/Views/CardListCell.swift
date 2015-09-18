@@ -7,7 +7,7 @@ class CardListCell: UICollectionViewCell {
     var captionLabel: UILabel!
     var tipLabel: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

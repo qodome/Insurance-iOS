@@ -9,7 +9,7 @@ class CommentCell: UICollectionViewCell {
     var text: UILabel!
     var image: ImageView!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

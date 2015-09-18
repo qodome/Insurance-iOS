@@ -15,9 +15,8 @@ func getType(string: String) -> String {
 
 func getCardCell(item: Card, cell: CardCell) -> CardCell {
     let width = cell.frame.width
-    let height = cell.frame.height
     cell.title.text = item.caption as String
-    cell.subtitle.text = " · ".join([getType(item.type as String), "\(item.comments.count) 评论"])
+    cell.subtitle.text = [getType(item.type as String), "\(item.comments.count) 评论"].joinWithSeparator(" · ")
     // cell.subtitle.text = " · ".join([getType(item.type as String), "\(item.commentCount) 评论", item.tags])
     cell.icon.image = UIImage(named: "ferrari")
     let image = ImageView(frame: CGRectMake(0, 0, width, cell.heightRate * width))

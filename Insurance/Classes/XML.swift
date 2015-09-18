@@ -15,7 +15,7 @@ class XML: NSObject, NSXMLParserDelegate {
     }
     
     // MARK: - 💜 NSXMLParserDelegate
-    func parser(parser: NSXMLParser, foundCharacters string: String?) {
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
         contentString = string
     }
     

@@ -85,7 +85,7 @@ class OrderCreate: CreateController {
             request.partnerId = parameters["partnerid"]
             request.prepayId = parameters["prepayid"]
             request.nonceStr = parameters["noncestr"]
-            request.timeStamp = UInt32(parameters["timestamp"]!.toInt()!)
+            request.timeStamp = UInt32(Int(parameters["timestamp"]!)!)
             request.package = parameters["package"]
             request.sign = parameters["sign"]
             WXApi.sendReq(request)

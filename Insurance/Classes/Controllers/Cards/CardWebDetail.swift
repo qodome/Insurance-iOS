@@ -13,6 +13,6 @@ class CardWebDetail: WebDetail {
     
     // MARK: - 💛 Action
     func share() {
-        startShareActivity(self, [data.caption, data.url], view)
+        startShareActivity(self, items: [data.caption, data.url], view: view)
     }
 }

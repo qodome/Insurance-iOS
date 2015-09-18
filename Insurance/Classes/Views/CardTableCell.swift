@@ -8,7 +8,7 @@ class CardTableCell: UICollectionViewCell {
     var image: UIImageView!
     var tipLabel: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

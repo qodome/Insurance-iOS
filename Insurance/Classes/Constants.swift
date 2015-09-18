@@ -25,7 +25,7 @@ var TestEnv = getBool("test_env", defaultValue: false)
 func reloadSettings() {
     if TestEnv { // 测试环境
         BASE_URL = "http://test1.\(DOMAIN)"
-        MEDIA_URL = "http://test1.media.\(DOMAIN)"
+        MEDIA_URL = "http://test.media.\(DOMAIN)"
         DEFAULT_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJlbWFpbCI6IiIsImV4cCI6MTQzODQyMTcyNywib3JpZ19pYXQiOjE0MzcxMjU3MjcsInVzZXJuYW1lIjoidGVzdCJ9.-PVwOX1JkQcP3tzoqpI-g56qwQnEaXkBxjjXG9WQ75w"
     } else {
         BASE_URL = "http://\(DOMAIN)"
@@ -36,7 +36,7 @@ func reloadSettings() {
     WX_NOTIFY_URL = "\(BASE_URL)/api/v1/check_sign/"
     //
     RKObjectManager.setSharedManager(RKObjectManager(baseURL: NSURL(string: BASE_URL)))
-    putBool("test_env", TestEnv)
+    putBool("test_env", value: TestEnv)
 }
 
 // 样式

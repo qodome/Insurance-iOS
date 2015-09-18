@@ -26,12 +26,12 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     override func getItemView<T : User, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
         case "avatar":
-            cell.setTranslatesAutoresizingMaskIntoConstraints(false)
+            cell.translatesAutoresizingMaskIntoConstraints = false
             let imageView = AvatarView(frame: CGRectMake(0, 0, 60, 60))
             imageView.image.sd_setImageWithURL(NSURL(string: data.imageUrl as String))
             cell.accessoryView = imageView
         case "gender":
-            cell.detailTextLabel?.text = getString(GENDER_STRING, data.gender as String)
+            cell.detailTextLabel?.text = getString(GENDER_STRING, key: data.gender as String)
         default: break
         }
         return cell
@@ -73,7 +73,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             picker.delegate = self
             self.presentViewController(picker, animated: true, completion: nil)
             })
-        showActionSheet(self, alert)
+        showActionSheet(self, alert: alert)
     }
     
     // MARK: - 💜 UITableViewDelegate
@@ -93,7 +93,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     // MARK: 💜 UIImagePickerControllerDelegate
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
             // TODO: 上传头像
             picker.dismissViewControllerAnimated(true, completion: nil)

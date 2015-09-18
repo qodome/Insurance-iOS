@@ -9,14 +9,14 @@ class Main: UITabBarController {
         tabBar.tintColor = UIColor.colorWithHex(APP_COLOR)
         let items = ["home", /** "discover", */ "compare", "flight", "me"]
         for i in 0..<items.count {
-            (tabBar.items![i] as? UITabBarItem)?.title = items[i]
+            tabBar.items?[i].title = items[i]
         }
         selectedIndex = 4
     }
     
     // MARK: - 💜 场景切换 (Segue)
     override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject?) -> UIViewController? {
-        // 8.1以下手动修复http://stackoverflow.com/questions/25654941/unwind-segue-not-working-in-ios-8
+        // 8.1以下手动修复 http://stackoverflow.com/questions/25654941/unwind-segue-not-working-in-ios-8
         return selectedViewController?.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
     }
 }

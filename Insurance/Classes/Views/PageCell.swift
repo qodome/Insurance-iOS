@@ -23,7 +23,7 @@ class PageCell: UICollectionViewCell, UIScrollViewDelegate {
     var timer: NSTimer? // 计时器(用来控制自动滑动)
     
     // MARK: - 💖 生命周期 (Lifecycle)
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

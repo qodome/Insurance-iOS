@@ -44,7 +44,7 @@ class Settings: TableDetail {
                 RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "JWT \(userToken)")
                 showAlert(self, title: "已注销")
                 })
-            showActionSheet(self, alert)
+            showActionSheet(self, alert: alert)
         default:
             super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         }

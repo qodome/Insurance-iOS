@@ -48,7 +48,7 @@ class Home: MyList {
         //        UIView.animateWithDuration(2, animations: {
         //            self.launchView.transform = CGAffineTransformScale(self.launchView.transform, 1.2, 1.2)
         //        })
-        var timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "hiddenBgview",
+        NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "hiddenBgview",
             userInfo: nil, repeats: false)
     }
     
@@ -124,7 +124,7 @@ class Home: MyList {
                 let card = special.cards.results[i] as! Card
                 let view = CardView(frame: CGRectMake(CGFloat(i + 1) * width, 0, width, height))
                 view.title.text = card.caption as String
-                view.subtitle.text = " · ".join([getType(card.type as String), "\(card.likes.count) 喜欢"])
+                view.subtitle.text = [getType(card.type as String), "\(card.likes.count) 喜欢"].joinWithSeparator(" · ")
                 // view.subtitle.text = " · ".join([getType(card.type as String), "\(card.likeCount) 喜欢", card.tags])
                 view.image.sd_setImageWithURL(NSURL(string: card.imageUrl as String))
                 view.icon.image = UIImage(named: "ferrari")
@@ -132,7 +132,7 @@ class Home: MyList {
             }
         } else { // 不考虑卡片不到专题两倍造成的出错情况
             let item = getItem(indexPath.row - featuredCellCount - min(specialList.count, quotient + 1)) as! Card
-            cell = getCardCell(item, collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CardCell)
+            cell = getCardCell(item, cell: collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CardCell)
         }
         return cell
     }
