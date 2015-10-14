@@ -3,7 +3,7 @@
 //
 
 class Category: ModelObject {
-    var name: String = ""
+    var name = ""
     
     override class func getMapping() -> [String : String] {
         return [

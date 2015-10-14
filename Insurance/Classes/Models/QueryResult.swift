@@ -5,10 +5,10 @@
 class QueryResult: ModelObject {
     var insuranceQueryTime: NSNumber!
     var insuranceStartDate: NSDate!
-    var errorMsg: String = ""
+    var errorMsg = ""
     var totalPrice: NSNumber!
     var status: NSNumber!
-    var refererId: String = ""
+    var refererId = ""
     
     override class func getMapping() -> [String : String] {
         return [

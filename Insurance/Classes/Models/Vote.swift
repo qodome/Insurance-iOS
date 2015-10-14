@@ -4,12 +4,12 @@
 
 class Vote: ModelObject {
     var id: NSNumber!
-    var idStr: String = ""
+    var idStr = ""
     var user: User?
     var createdTime: NSDate!
     var isActive = false
     var answerId: NSNumber!
-    var type: String = ""
+    var type = ""
     
     override class func getMapping() -> [String : String] {
         return [

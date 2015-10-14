@@ -4,29 +4,29 @@
 
 class Order: ModelObject {
     var id: NSNumber!
-    var idStr: String = ""
+    var idStr = ""
     var imageUrls = ListModel()
     var user: User?
     var product: Product?
-    var prepayList: String = ""
-    var insurancePolicies: String = ""
+    var prepayList = ""
+    var insurancePolicies = ""
     var createdTime: NSDate!
     var updatedTime: NSDate!
     var isActive = false
-    var idCardNumber: String = ""
-    var phoneNumber: String = ""
-    var name: String = ""
-    var flightNumber: String = ""
-    var carLicenseNumber: String = ""
+    var idCardNumber = ""
+    var phoneNumber = ""
+    var name = ""
+    var flightNumber = ""
+    var carLicenseNumber = ""
     var tradeType: NSNumber!
-    var bankType: String = ""
-    var feeType: String = ""
+    var bankType = ""
+    var feeType = ""
     var startTime: NSDate!
     var totalFee: NSNumber!
     var quantity: NSNumber!
     var status: NSNumber!
-    var buyerMessage: String = ""
-    var remark: String = ""
+    var buyerMessage = ""
+    var remark = ""
     var agentId: NSNumber!
     var offerId: NSNumber!
     

@@ -8,14 +8,14 @@ class Article: ModelObject {
     var imageUrls = ListModel()
     var createdTime: NSDate!
     var isActive = false
-    var title: String = ""
-    var summary: String = ""
-    var tags: String = ""
-    var text: String = ""
-    var imageUrl: String = ""
+    var title = ""
+    var summary = ""
+    var tags = ""
+    var text = ""
+    var imageUrl = ""
     var imageCount: NSNumber!
-    var metaKeywords: String = ""
-    var metaDescription: String = ""
+    var metaKeywords = ""
+    var metaDescription = ""
     var authorId: NSNumber!
     
     override class func getMapping() -> [String : String] {

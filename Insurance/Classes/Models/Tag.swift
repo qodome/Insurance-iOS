@@ -7,9 +7,9 @@ class Tag: ModelObject {
     var user: User?
     var createdTime: NSDate!
     var isActive = false
-    var name: String = ""
-    var type: String = ""
-    var imageUrl: String = ""
+    var name = ""
+    var type = ""
+    var imageUrl = ""
     
     override class func getMapping() -> [String : String] {
         return [

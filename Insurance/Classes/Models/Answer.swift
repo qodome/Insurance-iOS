@@ -8,7 +8,7 @@ class Answer: ModelObject {
     var createdTime: NSDate!
     var isActive = false
     var questionId: NSNumber!
-    var text: String = ""
+    var text = ""
     var upvoteCount: NSNumber!
     var downvoteCount: NSNumber!
     

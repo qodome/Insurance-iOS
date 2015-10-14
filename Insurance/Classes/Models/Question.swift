@@ -7,9 +7,9 @@ class Question: ModelObject {
     var user: User?
     var createdTime: NSDate!
     var isActive = false
-    var title: String = ""
-    var summary: String = ""
-    var tags: String = ""
+    var title = ""
+    var summary = ""
+    var tags = ""
     
     override class func getMapping() -> [String : String] {
         return [

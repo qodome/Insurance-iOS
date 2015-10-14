@@ -5,16 +5,16 @@
 class Vehicle: ModelObject {
     var id: NSNumber!
     var user: User?
-    var city: String = ""
-    var brand: String = ""
+    var city = ""
+    var brand = ""
     var createdTime: NSDate!
     var updatedTime: NSDate!
     var isActive = false
-    var imageUrl: String = ""
+    var imageUrl = ""
     var imageUrls = ListModel()
-    var model: String = ""
-    var carLicense: String = ""
-    var ownerName: String = ""
+    var model = ""
+    var carLicense = ""
+    var ownerName = ""
     
     override class func getMapping() -> [String : String] {
         return [

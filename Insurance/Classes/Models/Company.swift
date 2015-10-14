@@ -4,10 +4,10 @@
 
 class Company: ModelObject {
     var id: NSNumber!
-    var name: String = ""
-    var address: String = ""
-    var phoneNumber: String = ""
-    var host: String = ""
+    var name = ""
+    var address = ""
+    var phoneNumber = ""
+    var host = ""
     
     override class func getMapping() -> [String : String] {
         return [

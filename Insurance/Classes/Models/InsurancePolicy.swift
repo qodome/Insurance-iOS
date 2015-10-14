@@ -4,31 +4,31 @@
 
 class InsurancePolicy: ModelObject {
     var id: NSNumber!
-    var idStr: String = ""
+    var idStr = ""
     var user: User?
-    var settlementRecords: String = ""
-    var orderIdStr: String = ""
-    var content: String = ""
+    var settlementRecords = ""
+    var orderIdStr = ""
+    var content = ""
     var createdTime: NSDate!
     var isActive = false
-    var idCardNumber: String = ""
-    var phoneNumber: String = ""
+    var idCardNumber = ""
+    var phoneNumber = ""
     var skuId: NSNumber!
     var orderId: NSNumber!
     var insuranceAmount: NSNumber!
-    var name: String = ""
+    var name = ""
     var startTime: NSDate!
     var endTime: NSDate!
-    var insurantName: String = ""
-    var insurantIdCardNumber: String = ""
-    var openId: String = ""
-    var mchId: String = ""
-    var flightNumber: String = ""
-    var desc: String = ""
+    var insurantName = ""
+    var insurantIdCardNumber = ""
+    var openId = ""
+    var mchId = ""
+    var flightNumber = ""
+    var desc = ""
     var status: NSNumber!
     var type: NSNumber!
-    var carLicenseNumber: String = ""
-    var remark: String = ""
+    var carLicenseNumber = ""
+    var remark = ""
     
     override class func getMapping() -> [String : String] {
         return [

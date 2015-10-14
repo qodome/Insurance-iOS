@@ -6,14 +6,14 @@ class ClaimRecord: ModelObject {
     var id: NSNumber!
     var createdTime: NSDate!
     var userId: NSNumber!
-    var username: String = ""
-    var userImageUrl: String = ""
+    var username = ""
+    var userImageUrl = ""
     var isActive = false
-    var idCardNumber: String = ""
-    var phoneNumber: String = ""
+    var idCardNumber = ""
+    var phoneNumber = ""
     var insurancePolicyId: NSNumber!
     var claimAmount: NSNumber!
-    var content: String = ""
+    var content = ""
     var status: NSNumber!
     
     override class func getMapping() -> [String : String] {

@@ -4,7 +4,7 @@
 
 class Like: ModelObject {
     var id: NSNumber!
-    var idStr: String = ""
+    var idStr = ""
     var createdTime: NSDate!
     var user: User?
     var card: Card?

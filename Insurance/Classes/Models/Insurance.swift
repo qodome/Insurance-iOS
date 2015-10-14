@@ -8,17 +8,17 @@ class Insurance: ModelObject {
     var imageUrls = ListModel()
     var createdTime: NSDate!
     var userId: NSNumber!
-    var username: String = ""
-    var userImageUrl: String = ""
+    var username = ""
+    var userImageUrl = ""
     var isActive = false
     var skuId: NSNumber!
-    var name: String = ""
+    var name = ""
     var companyId: NSNumber!
-    var type: String = ""
+    var type = ""
     var price: NSNumber!
-    var options: String = ""
-    var desc: String = ""
-    var imageUrl: String = ""
+    var options = ""
+    var desc = ""
+    var imageUrl = ""
     var validityPeriod: NSNumber!
     
     override class func getMapping() -> [String : String] {

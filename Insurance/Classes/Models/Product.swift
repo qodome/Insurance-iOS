@@ -9,12 +9,12 @@ class Product: ModelObject {
     var user: User?
     var createdTime: NSDate!
     var isActive = false
-    var name: String = ""
+    var name = ""
     var price: NSNumber!
-    var desc: String = ""
-    var imageUrl: String = ""
+    var desc = ""
+    var imageUrl = ""
     var imageUrls = ListModel()
-    var type: String = ""
+    var type = ""
     var isSplit: NSNumber!
     var inventory: NSNumber!
     

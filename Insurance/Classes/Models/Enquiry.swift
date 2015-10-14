@@ -6,19 +6,19 @@ class Enquiry: ModelObject {
     var id: NSNumber!
     var user: User?
     var imageUrls = ListModel()
-    var content: String = ""
-    var brand: String = ""
-    var offers: String = ""
+    var content = ""
+    var brand = ""
+    var offers = ""
     var createdTime: NSDate!
     var isActive = false
-    var carLicenseNumber: String = ""
-    var ownerName: String = ""
-    var model: String = ""
-    var vehicleIdentificationNumber: String = ""
-    var engineNumber: String = ""
-    var status: String = ""
-    var buyerMessage: String = ""
-    var city: String = ""
+    var carLicenseNumber = ""
+    var ownerName = ""
+    var model = ""
+    var vehicleIdentificationNumber = ""
+    var engineNumber = ""
+    var status = ""
+    var buyerMessage = ""
+    var city = ""
     
     override class func getMapping() -> [String : String] {
         return [

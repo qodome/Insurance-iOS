@@ -7,10 +7,10 @@ class Special: ModelObject {
     var id: NSNumber!
     var createdTime: NSDate!
     var isActive = false
-    var title: String = ""
-    var summary: String = ""
-    var tags: String = ""
-    var imageUrl: String = ""
+    var title = ""
+    var summary = ""
+    var tags = ""
+    var imageUrl = ""
     
     override class func getMapping() -> [String : String] {
         return [

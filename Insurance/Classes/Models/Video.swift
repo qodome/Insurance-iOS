@@ -7,16 +7,16 @@ class Video: ModelObject {
     var user: User?
     var createdTime: NSDate!
     var isActive = false
-    var title: String = ""
-    var summary: String = ""
-    var tags: String = ""
-    var imageUrl: String = ""
-    var url: String = ""
-    var stream: String = ""
-    var player: String = ""
-    var playerI: String = ""
-    var playerQ: String = ""
-    var playerY: String = ""
+    var title = ""
+    var summary = ""
+    var tags = ""
+    var imageUrl = ""
+    var url = ""
+    var stream = ""
+    var player = ""
+    var playerI = ""
+    var playerQ = ""
+    var playerY = ""
     
     override class func getMapping() -> [String : String] {
         return [

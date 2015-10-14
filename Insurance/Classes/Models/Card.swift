@@ -8,22 +8,22 @@ class Card: ModelObject {
     var comments = ListModel() // 手动补
     var likes = ListModel() // 手动补
     var id: NSNumber!
-    var idStr: String = ""
+    var idStr = ""
     var user: User?
     var imageUrls = ListModel()
-    var site: String = ""
+    var site = ""
     var createdTime: NSDate!
     var isActive = false
-    var caption: String = ""
-    var type: String = ""
-    var imageUrl: String = ""
-    var url: String = ""
-    var tags: String = ""
+    var caption = ""
+    var type = ""
+    var imageUrl = ""
+    var url = ""
+    var tags = ""
     var objectId: NSNumber!
     var imageCount: NSNumber!
-    var stream: String = ""
-    var player: String = ""
-    var tips: String = ""
+    var stream = ""
+    var player = ""
+    var tips = ""
     var repostCount: NSNumber!
     
     override class func getMapping() -> [String : String] {

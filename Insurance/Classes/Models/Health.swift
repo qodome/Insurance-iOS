@@ -6,7 +6,7 @@ class Health: ModelObject {
     var userId: NSNumber!
     var createdTime: NSDate!
     var updatedTime: NSDate!
-    var records: String = ""
+    var records = ""
     var recordCount: NSNumber!
     
     override class func getMapping() -> [String : String] {

@@ -3,22 +3,22 @@
 //
 
 class Illegaality: ModelObject {
-    var status: String = ""
-    var uniqueCode: String = ""
-    var excutelocation: String = ""
-    var locationName: String = ""
-    var latefine: String = ""
-    var department: String = ""
-    var dataSourceId: String = ""
-    var count: String = ""
+    var status = ""
+    var uniqueCode = ""
+    var excutelocation = ""
+    var locationName = ""
+    var latefine = ""
+    var department = ""
+    var dataSourceId = ""
+    var count = ""
     var time: NSDate!
-    var cityCode: String = ""
-    var carNo: String = ""
-    var reason: String = ""
-    var carEngine: String = ""
-    var locationid: String = ""
-    var carCode: String = ""
-    var canprocessMsg: String = ""
+    var cityCode = ""
+    var carNo = ""
+    var reason = ""
+    var carEngine = ""
+    var locationid = ""
+    var carCode = ""
+    var canprocessMsg = ""
     
     override class func getMapping() -> [String : String] {
         return [

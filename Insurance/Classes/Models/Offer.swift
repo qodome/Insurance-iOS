@@ -5,20 +5,20 @@
 class Offer: ModelObject {
     var id: NSNumber!
     var user: User?
-    var idStr: String = ""
+    var idStr = ""
     var imageUrls = ListModel()
-    var content: String = ""
-    var brand: String = ""
-    var agent: String = ""
+    var content = ""
+    var brand = ""
+    var agent = ""
     var createdTime: NSDate!
     var isActive = false
-    var city: String = ""
-    var carLicenseNumber: String = ""
-    var ownerName: String = ""
-    var phoneNumber: String = ""
-    var model: String = ""
-    var vehicleIdentificationNumber: String = ""
-    var engineNumber: String = ""
+    var city = ""
+    var carLicenseNumber = ""
+    var ownerName = ""
+    var phoneNumber = ""
+    var model = ""
+    var vehicleIdentificationNumber = ""
+    var engineNumber = ""
     var agentId: NSNumber!
     var status: NSNumber!
     var mandatory: NSNumber!
@@ -40,7 +40,7 @@ class Offer: ModelObject {
     var spAdditional: NSNumber!
     var motorTaxes: NSNumber!
     var quotedPrice: NSNumber!
-    var remark: String = ""
+    var remark = ""
     var enquiry: Enquiry?
     
     override class func getMapping() -> [String : String] {

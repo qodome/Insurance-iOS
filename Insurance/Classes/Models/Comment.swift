@@ -4,10 +4,10 @@
 
 class Comment: ModelObject {
     var id: NSNumber!
-    var idStr: String = ""
+    var idStr = ""
     var createdTime: NSDate!
     var user: User?
-    var text: String = ""
+    var text = ""
     var likeCount: NSNumber!
     
     override class func getMapping() -> [String : String] {

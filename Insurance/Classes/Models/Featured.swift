@@ -8,12 +8,12 @@ class Featured: ModelObject {
     var imageUrls = ListModel()
     var createdTime: NSDate!
     var isActive = false
-    var title: String = ""
-    var summary: String = ""
-    var tags: String = ""
+    var title = ""
+    var summary = ""
+    var tags = ""
     var objectId: NSNumber!
-    var type: String = ""
-    var imageUrl: String = ""
+    var type = ""
+    var imageUrl = ""
     
     override class func getMapping() -> [String : String] {
         return [

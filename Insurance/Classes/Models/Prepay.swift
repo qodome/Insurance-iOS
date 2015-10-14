@@ -5,10 +5,10 @@
 class Prepay: ModelObject {
     var id: NSNumber!
     var orderId: NSNumber!
-    var mchId: String = ""
-    var prepayId: String = ""
-    var openId: String = ""
-    var codeUrl: String = ""
+    var mchId = ""
+    var prepayId = ""
+    var openId = ""
+    var codeUrl = ""
     
     override class func getMapping() -> [String : String] {
         return [
