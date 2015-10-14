@@ -64,7 +64,7 @@ class OrderCreate: CreateController {
             "device_info" : "iOS",
             "nonce_str" : "\(rand())",
             "trade_type" : "APP",
-            "body" : order.name as String,
+            "body" : order.name,
             "notify_url" : WX_NOTIFY_URL,
             "out_trade_no" : "\(order.id)",
             "total_fee" : "\(order.totalFee)",

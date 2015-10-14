@@ -1,33 +1,35 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright (c) 2015 NY. All rights reserved.
 //
 
 class Product: ModelObject {
     var insurances = ListModel()
+    var coupons = ListModel()
     var id: NSNumber!
     var user: User?
     var createdTime: NSDate!
-    var name: NSString = ""
+    var isActive = false
+    var name: String = ""
     var price: NSNumber!
-    var desc: NSString = ""
-    var state: NSNumber!
-    var imageUrl: NSString = ""
-    var type: NSString = ""
-    var isOpen: NSString = ""
-    var sellNumber: NSNumber!
+    var desc: String = ""
+    var imageUrl: String = ""
+    var imageUrls = ListModel()
+    var type: String = ""
+    var isSplit: NSNumber!
+    var inventory: NSNumber!
     
     override class func getMapping() -> [String : String] {
         return [
             "id" : "id",
             "created_time" : "createdTime",
+            "is_active" : "isActive",
             "name" : "name",
             "price" : "price",
-            "desc" : "desc",
-            "state" : "state",
+            "description" : "desc",
             "image_url" : "imageUrl",
             "type" : "type",
-            "is_open" : "isOpen",
-            "sell_number" : "sellNumber"
+            "is_split" : "isSplit",
+            "inventory" : "inventory",
         ]
     }
 }

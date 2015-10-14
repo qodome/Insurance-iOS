@@ -18,10 +18,10 @@ class OrderList: TableList {
     }
     
     override func getItemView<V : UITableView, T : Order, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
-//        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl as String))
+//        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl))
 //        cell = listView.dequeueReusableCellWithIdentifier(cellId)
-        cell.textLabel?.text = item.name as String
-//        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl as String))
+        cell.textLabel?.text = item.name
+//        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl))
         let formatter = NSNumberFormatter()
         formatter.numberStyle = .CurrencyStyle
         cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: item.totalFee.doubleValue / 100))

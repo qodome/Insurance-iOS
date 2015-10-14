@@ -1,15 +1,14 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright (c) 2015 NY. All rights reserved.
 //
 
 class QueryResult: ModelObject {
-    var company_info: Company?
     var insuranceQueryTime: NSNumber!
     var insuranceStartDate: NSDate!
-    var errorMsg: NSString = ""
-    var totalPrice: NSString = ""
+    var errorMsg: String = ""
+    var totalPrice: NSNumber!
     var status: NSNumber!
-    var refererId: NSString = ""
+    var refererId: String = ""
     
     override class func getMapping() -> [String : String] {
         return [

@@ -1,18 +1,21 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright (c) 2015 NY. All rights reserved.
 //
 
 class Article: ModelObject {
     var id: NSNumber!
     var user: User?
+    var imageUrls = ListModel()
     var createdTime: NSDate!
     var isActive = false
-    var title: NSString = ""
-    var summary: NSString = ""
-    var tags: NSString = ""
-    var text: NSString = ""
-    var imageUrl: NSString = ""
+    var title: String = ""
+    var summary: String = ""
+    var tags: String = ""
+    var text: String = ""
+    var imageUrl: String = ""
     var imageCount: NSNumber!
+    var metaKeywords: String = ""
+    var metaDescription: String = ""
     var authorId: NSNumber!
     
     override class func getMapping() -> [String : String] {
@@ -26,6 +29,8 @@ class Article: ModelObject {
             "text" : "text",
             "image_url" : "imageUrl",
             "image_count" : "imageCount",
+            "meta_keywords" : "metaKeywords",
+            "meta_description" : "metaDescription",
             "author_id" : "authorId",
         ]
     }

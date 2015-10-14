@@ -40,7 +40,7 @@ class ProductDetail: TableDetail {
     
     override func onLoadSuccess<E : Product>(entity: E) {
         super.onLoadSuccess(entity)
-        imageView.sd_setImageWithURL(NSURL(string: entity.imageUrl as String))
+        imageView.sd_setImageWithURL(NSURL(string: entity.imageUrl))
     }
     
     override func getItemView<T : Product, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {

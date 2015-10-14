@@ -21,13 +21,13 @@ class UserDetail: TableDetail {
     
     override func onLoadSuccess<E : User>(entity: E) {
         super.onLoadSuccess(entity)
-        title = entity.nickname as String
+        title = entity.nickname
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
         cell?.imageView?.layer.cornerRadius = 30
-        cell!.imageView?.sd_setImageWithURL(NSURL(string: entity.imageUrl as String), placeholderImage: UIImage.imageWithColor(UIColor.whiteColor().colorWithAlphaComponent(0), size: CGSizeMake(60, 60)))
+        cell!.imageView?.sd_setImageWithURL(NSURL(string: entity.imageUrl), placeholderImage: UIImage.imageWithColor(UIColor.whiteColor().colorWithAlphaComponent(0), size: CGSizeMake(60, 60)))
         cell?.imageView?.frame.size = CGSizeMake(60, 60)
-        cell?.textLabel?.text = entity.nickname as String
-        cell?.detailTextLabel?.text = entity.about as String
+        cell?.textLabel?.text = entity.nickname
+        cell?.detailTextLabel?.text = entity.about
     }
     
     override func getItemView<T : User, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {

@@ -1,24 +1,24 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright (c) 2015 NY. All rights reserved.
 //
 
 class Illegaality: ModelObject {
-    var status: NSString = ""
-    var uniqueCode: NSString = ""
-    var excutelocation: NSString = ""
-    var locationName: NSString = ""
-    var latefine: NSString = ""
-    var department: NSString = ""
-    var dataSourceId: NSString = ""
-    var count: NSString = ""
+    var status: String = ""
+    var uniqueCode: String = ""
+    var excutelocation: String = ""
+    var locationName: String = ""
+    var latefine: String = ""
+    var department: String = ""
+    var dataSourceId: String = ""
+    var count: String = ""
     var time: NSDate!
-    var cityCode: NSString = ""
-    var carNo: NSString = ""
-    var reason: NSString = ""
-    var carEngine: NSString = ""
-    var locationid: NSString = ""
-    var carCode: NSString = ""
-    var canprocessMsg: NSString = ""
+    var cityCode: String = ""
+    var carNo: String = ""
+    var reason: String = ""
+    var carEngine: String = ""
+    var locationid: String = ""
+    var carCode: String = ""
+    var canprocessMsg: String = ""
     
     override class func getMapping() -> [String : String] {
         return [

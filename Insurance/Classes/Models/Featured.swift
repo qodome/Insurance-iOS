@@ -1,18 +1,19 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright (c) 2015 NY. All rights reserved.
 //
 
 class Featured: ModelObject {
     var id: NSNumber!
     var user: User?
+    var imageUrls = ListModel()
     var createdTime: NSDate!
     var isActive = false
-    var title: NSString = ""
-    var summary: NSString = ""
-    var tags: NSString = ""
+    var title: String = ""
+    var summary: String = ""
+    var tags: String = ""
     var objectId: NSNumber!
-    var type: NSString = ""
-    var imageUrl: NSString = ""
+    var type: String = ""
+    var imageUrl: String = ""
     
     override class func getMapping() -> [String : String] {
         return [

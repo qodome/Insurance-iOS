@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright (c) 2015 NY. All rights reserved.
 //
 
 class Answer: ModelObject {
@@ -8,7 +8,7 @@ class Answer: ModelObject {
     var createdTime: NSDate!
     var isActive = false
     var questionId: NSNumber!
-    var text: NSString = ""
+    var text: String = ""
     var upvoteCount: NSNumber!
     var downvoteCount: NSNumber!
     

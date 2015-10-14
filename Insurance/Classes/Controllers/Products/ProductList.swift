@@ -18,9 +18,9 @@ class ProductList: TableList {
 
     override func getItemView<V : UITableView, T : Order, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
 //        cell = listView.dequeueReusableCellWithIdentifier(cellId)
-        cell.textLabel?.text = item.name as String
-//        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl as String))
-        cell.detailTextLabel?.text = data?.valueForKey(item.name as String) as? String
+        cell.textLabel?.text = item.name
+//        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl))
+        cell.detailTextLabel?.text = data?.valueForKey(item.name) as? String
         return cell
     }
     

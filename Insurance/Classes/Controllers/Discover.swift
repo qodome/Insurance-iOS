@@ -16,7 +16,7 @@ class Discover: TableSearch {
     }
     
     override func getItemView<V : UITableView, T : Category, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
-        cell.textLabel?.text = item.name as String
+        cell.textLabel?.text = item.name
         return cell
     }
     

@@ -28,10 +28,10 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         case "avatar":
             cell.translatesAutoresizingMaskIntoConstraints = false
             let imageView = AvatarView(frame: CGRectMake(0, 0, 60, 60))
-            imageView.image.sd_setImageWithURL(NSURL(string: data.imageUrl as String))
+            imageView.image.sd_setImageWithURL(NSURL(string: data.imageUrl))
             cell.accessoryView = imageView
         case "gender":
-            cell.detailTextLabel?.text = getString(GENDER_STRING, key: data.gender as String)
+            cell.detailTextLabel?.text = getString(GENDER_STRING, key: data.gender)
         default: break
         }
         return cell

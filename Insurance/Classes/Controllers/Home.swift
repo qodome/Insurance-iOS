@@ -101,12 +101,12 @@ class Home: MyList {
                 var view: PosterView
                 if (remainder + featuredCellCount) % 2 == 0 {
                     view = SpecialCover(frame: CGRectMake(CGFloat(i) * width, 0, width, height))
-                    (view as! SpecialCover).changeSubtitle(list[i].summary as String)
+                    (view as! SpecialCover).changeSubtitle(list[i].summary)
                 } else {
                     view = PosterView(frame: CGRectMake(CGFloat(i) * width, 0, width, height))
                 }
-                view.image.sd_setImageWithURL(NSURL(string: list[i].imageUrl as String))
-                view.changeTitle(list[i].title as String)
+                view.image.sd_setImageWithURL(NSURL(string: list[i].imageUrl))
+                view.changeTitle(list[i].title)
                 cell.addPage(view)
             }
             if list.count > 1 {
@@ -115,18 +115,17 @@ class Home: MyList {
         } else if remainder == 0 && quotient < specialList.count {
             let special = specialList[quotient]
             let view = SpecialCover(frame: CGRectMake(0, 0, width, height))
-            view.image.sd_setImageWithURL(NSURL(string: special.imageUrl as String))
-            view.changeTitle(special.title as String)
+            view.image.sd_setImageWithURL(NSURL(string: special.imageUrl))
+            view.changeTitle(special.title)
             view.changeSubtitle("\(special.cards.count)个主题")
             view.changeSubtitleBackground(UIColor.colorWithHex(0xB4A66F))
             cell.addPage(view)
             for i in 0..<special.cards.count.integerValue {
                 let card = special.cards.results[i] as! Card
                 let view = CardView(frame: CGRectMake(CGFloat(i + 1) * width, 0, width, height))
-                view.title.text = card.caption as String
-                view.subtitle.text = [getType(card.type as String), "\(card.likes.count) 喜欢"].joinWithSeparator(" · ")
-                // view.subtitle.text = " · ".join([getType(card.type as String), "\(card.likeCount) 喜欢", card.tags])
-                view.image.sd_setImageWithURL(NSURL(string: card.imageUrl as String))
+                view.title.text = card.caption
+                view.subtitle.text = [getType(card.type), "\(card.likes.count) 喜欢"].joinWithSeparator(" · ")
+                view.image.sd_setImageWithURL(NSURL(string: card.imageUrl))
                 view.icon.image = UIImage(named: "ferrari")
                 cell.addPage(view)
             }
