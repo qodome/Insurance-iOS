@@ -45,7 +45,7 @@
 		0E1209031B213F9100418D47 /* TaylorR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208C81B213F9100418D47 /* TaylorR.swift */; };
 		0E1209041B213F9100418D47 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208CA1B213F9100418D47 /* FileUtils.swift */; };
 		0E1209051B213F9100418D47 /* RestKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208CB1B213F9100418D47 /* RestKitUtils.swift */; };
-		0E1209061B213F9100418D47 /* S3Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208CC1B213F9100418D47 /* S3Utils.swift */; };
+		0E1209061B213F9100418D47 /* UploadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208CC1B213F9100418D47 /* UploadUtils.swift */; };
 		0E1209071B213F9100418D47 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208CD1B213F9100418D47 /* Shortcuts.swift */; };
 		0E1209081B213F9100418D47 /* TSMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208CE1B213F9100418D47 /* TSMessage+Extension.swift */; };
 		0E1209091B213F9100418D47 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208CF1B213F9100418D47 /* Utils.swift */; };
@@ -60,7 +60,6 @@
 		0E1209121B213F9100418D47 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208DA1B213F9100418D47 /* SignUpController.swift */; };
 		0E1209131B213F9100418D47 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1208DB1B213F9100418D47 /* TagsView.swift */; };
 		0E1209141B213F9100418D47 /* Default.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E1208DD1B213F9100418D47 /* Default.strings */; };
-		0E1209171B218E2300418D47 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1209161B218E2300418D47 /* CAPSPageMenu.swift */; };
 		0E18E16C1B4A3B8200994647 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E16B1B4A3B8200994647 /* HomeModel.swift */; };
 		0E18E1751B4A3BB900994647 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E16D1B4A3BB900994647 /* CardCell.swift */; };
 		0E18E1761B4A3BB900994647 /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E16E1B4A3BB900994647 /* CardListCell.swift */; };
@@ -79,6 +78,7 @@
 		0E8113E01B57C93E00ADD2DF /* OrderCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8113DF1B57C93E00ADD2DF /* OrderCreate.swift */; };
 		0E91145E1B52BBB300C93BC5 /* TextViewCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */; };
 		0E9114601B52BBC600C93BC5 /* TextFieldCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */; };
+		0EBFEFF01BC7BB5100F69051 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBFEFEF1BC7BB5100F69051 /* CAPSPageMenu.swift */; settings = {ASSET_TAGS = (); }; };
 		0EC689171B46BDDE00E94341 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC689071B46BDDE00E94341 /* Answer.swift */; };
 		0EC689181B46BDDE00E94341 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC689081B46BDDE00E94341 /* Article.swift */; };
 		0EC689191B46BDDE00E94341 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC689091B46BDDE00E94341 /* Comment.swift */; };
@@ -138,7 +138,8 @@
 		0ED9FFC31B574F5B00DA5193 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9FFBE1B574F5B00DA5193 /* SignUp.swift */; };
 		0ED9FFC51B576DE500DA5193 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9FFC41B576DE500DA5193 /* XML.swift */; };
 		0EE2B8581B71DDB1007DE0C3 /* QuickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2B8571B71DDB1007DE0C3 /* QuickButton.swift */; };
-		BB50681EA16B4E0A002E1396 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E5DF7372E9C8C07A670467E /* libPods.a */; };
+		594596F4CE2728B3D0C3E000 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB06B47A107F679B1D74B0F /* libPods.a */; };
+		B164F0A5965B414336774F98 /* Pods_Insurance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4ADCAA1C0ADE5900D24832 /* Pods_Insurance.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,7 +191,7 @@
 		0E1208C81B213F9100418D47 /* TaylorR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylorR.swift; sourceTree = "<group>"; };
 		0E1208CA1B213F9100418D47 /* FileUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
 		0E1208CB1B213F9100418D47 /* RestKitUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestKitUtils.swift; sourceTree = "<group>"; };
-		0E1208CC1B213F9100418D47 /* S3Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3Utils.swift; sourceTree = "<group>"; };
+		0E1208CC1B213F9100418D47 /* UploadUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadUtils.swift; sourceTree = "<group>"; };
 		0E1208CD1B213F9100418D47 /* Shortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		0E1208CE1B213F9100418D47 /* TSMessage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TSMessage+Extension.swift"; sourceTree = "<group>"; };
 		0E1208CF1B213F9100418D47 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -207,7 +208,6 @@
 		0E1208DE1B213F9100418D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Default.strings; sourceTree = "<group>"; };
 		0E1208DF1B213F9100418D47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Default.strings; sourceTree = "<group>"; };
 		0E1208E01B213F9100418D47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Default.strings"; sourceTree = "<group>"; };
-		0E1209161B218E2300418D47 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		0E18E16B1B4A3B8200994647 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		0E18E16D1B4A3BB900994647 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		0E18E16E1B4A3BB900994647 /* CardListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
@@ -226,6 +226,7 @@
 		0E8113DF1B57C93E00ADD2DF /* OrderCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCreate.swift; sourceTree = "<group>"; };
 		0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCreate.swift; sourceTree = "<group>"; };
 		0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCreate.swift; sourceTree = "<group>"; };
+		0EBFEFEF1BC7BB5100F69051 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		0EC689071B46BDDE00E94341 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		0EC689081B46BDDE00E94341 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		0EC689091B46BDDE00E94341 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -292,9 +293,10 @@
 		0ED9FFBE1B574F5B00DA5193 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		0ED9FFC41B576DE500DA5193 /* XML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
 		0EE2B8571B71DDB1007DE0C3 /* QuickButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickButton.swift; sourceTree = "<group>"; };
-		1E5DF7372E9C8C07A670467E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		33460E9F51E1D8AF9D4D6B86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3CDE55435AAF7CBF3FEE012A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9DB06B47A107F679B1D74B0F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC4ADCAA1C0ADE5900D24832 /* Pods_Insurance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Insurance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,7 +308,8 @@
 				0ECD82761B206AA800054FD2 /* libc++.dylib in Frameworks */,
 				0ECD82721B206A9500054FD2 /* libsqlite3.0.dylib in Frameworks */,
 				0ECD82741B206AA100054FD2 /* libz.dylib in Frameworks */,
-				BB50681EA16B4E0A002E1396 /* libPods.a in Frameworks */,
+				B164F0A5965B414336774F98 /* Pods_Insurance.framework in Frameworks */,
+				594596F4CE2728B3D0C3E000 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,9 +430,9 @@
 			children = (
 				0E1208CA1B213F9100418D47 /* FileUtils.swift */,
 				0E1208CB1B213F9100418D47 /* RestKitUtils.swift */,
-				0E1208CC1B213F9100418D47 /* S3Utils.swift */,
 				0E1208CD1B213F9100418D47 /* Shortcuts.swift */,
 				0E1208CE1B213F9100418D47 /* TSMessage+Extension.swift */,
+				0E1208CC1B213F9100418D47 /* UploadUtils.swift */,
 				0E1208CF1B213F9100418D47 /* Utils.swift */,
 			);
 			path = Util;
@@ -469,20 +472,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		0E1209151B218E2300418D47 /* PageMenu */ = {
-			isa = PBXGroup;
-			children = (
-				0E1209161B218E2300418D47 /* CAPSPageMenu.swift */,
-			);
-			path = PageMenu;
-			sourceTree = "<group>";
-		};
 		0E6F600C1B577F5700CD13C2 /* Weixin */ = {
 			isa = PBXGroup;
 			children = (
 				0E6F600D1B577F6600CD13C2 /* WeixinUtils.swift */,
 			);
 			path = Weixin;
+			sourceTree = "<group>";
+		};
+		0EBFEFEE1BC7BB5100F69051 /* PageMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0EBFEFEF1BC7BB5100F69051 /* CAPSPageMenu.swift */,
+			);
+			path = PageMenu;
 			sourceTree = "<group>";
 		};
 		0ECD81901B2059D700054FD2 = {
@@ -651,7 +654,7 @@
 		0ECD81E91B2066CD00054FD2 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				0E1209151B218E2300418D47 /* PageMenu */,
+				0EBFEFEE1BC7BB5100F69051 /* PageMenu */,
 				0E12089F1B213F9100418D47 /* Taylor */,
 			);
 			path = Library;
@@ -733,7 +736,8 @@
 				0ECD82751B206AA800054FD2 /* libc++.dylib */,
 				0ECD82731B206AA100054FD2 /* libz.dylib */,
 				0ECD82711B206A9500054FD2 /* libsqlite3.0.dylib */,
-				1E5DF7372E9C8C07A670467E /* libPods.a */,
+				DC4ADCAA1C0ADE5900D24832 /* Pods_Insurance.framework */,
+				9DB06B47A107F679B1D74B0F /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -750,6 +754,7 @@
 				0ECD81961B2059D700054FD2 /* Frameworks */,
 				0ECD81971B2059D700054FD2 /* Resources */,
 				AB93DB8344DD07264B0E0E06 /* Copy Pods Resources */,
+				86F05CF867A7964C89C7C111 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -859,6 +864,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		86F05CF867A7964C89C7C111 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB93DB8344DD07264B0E0E06 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -932,6 +952,7 @@
 				0E12090C1B213F9100418D47 /* RightDetailCell.swift in Sources */,
 				0ED9FFA61B574EAD00DA5193 /* MyList.swift in Sources */,
 				0ED9FFAC1B574EAD00DA5193 /* Flight.swift in Sources */,
+				0EBFEFF01BC7BB5100F69051 /* CAPSPageMenu.swift in Sources */,
 				0E1208E31B213F9100418D47 /* HttpTask.swift in Sources */,
 				0E1208EA1B213F9100418D47 /* SearchResultsList.swift in Sources */,
 				0ED9FFAD1B574EAD00DA5193 /* Home.swift in Sources */,
@@ -984,9 +1005,8 @@
 				0E1208F31B213F9100418D47 /* UIColor+Extension.swift in Sources */,
 				0E1208F81B213F9100418D47 /* UIView+Extension.swift in Sources */,
 				0E1E631A1B4E8F40004965CD /* CheckListUpdate.swift in Sources */,
-				0E1209061B213F9100418D47 /* S3Utils.swift in Sources */,
+				0E1209061B213F9100418D47 /* UploadUtils.swift in Sources */,
 				0E1209031B213F9100418D47 /* TaylorR.swift in Sources */,
-				0E1209171B218E2300418D47 /* CAPSPageMenu.swift in Sources */,
 				0EC689261B46BDDE00E94341 /* Vote.swift in Sources */,
 				0E1208E41B213F9100418D47 /* BaseController.swift in Sources */,
 				0ED9FFB31B574EAD00DA5193 /* ProductList.swift in Sources */,
