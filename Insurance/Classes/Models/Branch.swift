@@ -4,7 +4,7 @@
 
 class Branch: ModelObject {
     var id: NSNumber!
-    var company = ""
+    var company: Company?
     var name = ""
     var imageUrls = ListModel()
     var address = ""
@@ -17,7 +17,6 @@ class Branch: ModelObject {
     override class func getMapping() -> [String : String] {
         return [
             "id" : "id",
-            "company" : "company",
             "name" : "name",
             "address" : "address",
             "latitude" : "latitude",

@@ -3,8 +3,6 @@
 //
 
 class Product: ModelObject {
-    var insurances = ListModel()
-    var coupons = ListModel()
     var id: NSNumber!
     var user: User?
     var createdTime: NSDate!
@@ -17,6 +15,8 @@ class Product: ModelObject {
     var type = ""
     var isSplit: NSNumber!
     var inventory: NSNumber!
+    var insurances = ListModel()
+    var coupons = ListModel()
     
     override class func getMapping() -> [String : String] {
         return [

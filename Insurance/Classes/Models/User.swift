@@ -3,8 +3,8 @@
 //
 
 class User: BaseUser {
-    var likes: [Like] = [] // 手动补
-    var votes: [Vote] = [] // 手动补
+    var likes = ListModel() // 手动补
+    var votes = ListModel() // 手动补
     var tags = ""
     var type = ""
     var company: Company?

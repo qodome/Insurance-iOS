@@ -81,7 +81,6 @@ class Offer: ModelObject {
             "motor_taxes" : "motorTaxes",
             "quoted_price" : "quotedPrice",
             "remark" : "remark",
-            "enquiry" : "enquiry",
         ]
     }
 }

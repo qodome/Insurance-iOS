@@ -3,7 +3,6 @@
 //
 
 class Insurance: ModelObject {
-    var clauses = ListModel() // 手动补
     var id: NSNumber!
     var imageUrls = ListModel()
     var createdTime: NSDate!
@@ -20,6 +19,7 @@ class Insurance: ModelObject {
     var desc = ""
     var imageUrl = ""
     var validityPeriod: NSNumber!
+    var clauses = ListModel()
     
     override class func getMapping() -> [String : String] {
         return [
