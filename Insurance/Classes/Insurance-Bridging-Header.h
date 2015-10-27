@@ -50,7 +50,7 @@
 #import <TSMessages/TSMessage.h>
 
 // WeiboSDK https://github.com/sinaweibosdk/weibo_ios_sdk/
-#import <WeiboSDK/WeiboSDK.h>
+// #import <WeiboSDK/WeiboSDK.h>
 
 // Weixin https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list
 #import <Weixin/WXApi.h>

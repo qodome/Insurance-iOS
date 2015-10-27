@@ -11,7 +11,7 @@ class Me: UserDetail {
         }
     }
     
-    // MARK: - 💖 生命周期 (Lifecycle)    
+    // MARK: - 💖 生命周期 (Lifecycle)
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         checkLogin()

@@ -99,13 +99,17 @@
 		0E3A28F71BCE3BCD0063A4B7 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3A28D81BCE3BCD0063A4B7 /* Video.swift */; };
 		0E3A28F81BCE3BCD0063A4B7 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3A28D91BCE3BCD0063A4B7 /* Vote.swift */; };
 		0E6F600E1B577F6600CD13C2 /* WeixinUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F600D1B577F6600CD13C2 /* WeixinUtils.swift */; };
-		0E8082991B9D3843007220CA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8082981B9D3843007220CA /* CoreTelephony.framework */; };
 		0E8113E01B57C93E00ADD2DF /* OrderCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8113DF1B57C93E00ADD2DF /* OrderCreate.swift */; };
+		0E88A55C1BDFE26100DBD824 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88A55B1BDFE26100DBD824 /* libPods.a */; };
+		0E88A5991BDFE52B00DBD824 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E918DB71BDFB913003712C6 /* libc++.tbd */; };
+		0E88A59A1BDFE7E100DBD824 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8082981B9D3843007220CA /* CoreTelephony.framework */; };
+		0E88A59C1BDFE82100DBD824 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E918DB21BDFB8AC003712C6 /* libz.tbd */; };
+		0E88A59F1BDFE84A00DBD824 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E918DB41BDFB8C2003712C6 /* libsqlite3.0.tbd */; };
+		0E88A5A11BDFEA7C00DBD824 /* GDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E88A5A01BDFEA7C00DBD824 /* GDS.swift */; };
 		0E91145E1B52BBB300C93BC5 /* TextViewCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */; };
 		0E9114601B52BBC600C93BC5 /* TextFieldCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */; };
 		0E9B913F1BDF53570030329D /* VehicleCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9B913D1BDF53570030329D /* VehicleCreate.swift */; };
 		0E9B91401BDF53570030329D /* VehicleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9B913E1BDF53570030329D /* VehicleList.swift */; };
-		0E9B91421BDF6A2F0030329D /* GDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9B91411BDF6A2F0030329D /* GDS.swift */; };
 		0EBFEFF01BC7BB5100F69051 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBFEFEF1BC7BB5100F69051 /* CAPSPageMenu.swift */; };
 		0EC87AAC1B5F66AD00B88A3C /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC87AAB1B5F66AD00B88A3C /* CityList.swift */; };
 		0EC87AB01B5F7E5000B88A3C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC87AAF1B5F7E5000B88A3C /* City.swift */; };
@@ -116,9 +120,6 @@
 		0ECD81D81B2066B100054FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD81C11B2066B100054FD2 /* AppDelegate.swift */; };
 		0ECD81DA1B2066B100054FD2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD81C31B2066B100054FD2 /* Constants.swift */; };
 		0ECD81E61B2066B100054FD2 /* ShareUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD81D21B2066B100054FD2 /* ShareUtils.swift */; };
-		0ECD82721B206A9500054FD2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECD82711B206A9500054FD2 /* libsqlite3.0.dylib */; };
-		0ECD82741B206AA100054FD2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECD82731B206AA100054FD2 /* libz.dylib */; };
-		0ECD82761B206AA800054FD2 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECD82751B206AA800054FD2 /* libc++.dylib */; };
 		0ECD827C1B206C2000054FD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD827E1B206C2000054FD2 /* InfoPlist.strings */; };
 		0ECD82841B206CDA00054FD2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD82861B206CDA00054FD2 /* Localizable.strings */; };
 		0ED9FFA31B574EAD00DA5193 /* BaseCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9FF881B574EAD00DA5193 /* BaseCardList.swift */; };
@@ -144,8 +145,6 @@
 		0ED9FFC31B574F5B00DA5193 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9FFBE1B574F5B00DA5193 /* SignUp.swift */; };
 		0ED9FFC51B576DE500DA5193 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9FFC41B576DE500DA5193 /* XML.swift */; };
 		0EE2B8581B71DDB1007DE0C3 /* QuickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2B8571B71DDB1007DE0C3 /* QuickButton.swift */; };
-		594596F4CE2728B3D0C3E000 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB06B47A107F679B1D74B0F /* libPods.a */; };
-		B164F0A5965B414336774F98 /* Pods_Insurance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4ADCAA1C0ADE5900D24832 /* Pods_Insurance.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,11 +254,17 @@
 		0E6F600D1B577F6600CD13C2 /* WeixinUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeixinUtils.swift; sourceTree = "<group>"; };
 		0E8082981B9D3843007220CA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		0E8113DF1B57C93E00ADD2DF /* OrderCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCreate.swift; sourceTree = "<group>"; };
+		0E88A55B1BDFE26100DBD824 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		0E88A59D1BDFE83900DBD824 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0E88A5A01BDFEA7C00DBD824 /* GDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDS.swift; sourceTree = "<group>"; };
 		0E91145D1B52BBB300C93BC5 /* TextViewCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCreate.swift; sourceTree = "<group>"; };
 		0E91145F1B52BBC600C93BC5 /* TextFieldCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCreate.swift; sourceTree = "<group>"; };
+		0E918DB01BDFB863003712C6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0E918DB21BDFB8AC003712C6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0E918DB41BDFB8C2003712C6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		0E918DB71BDFB913003712C6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		0E9B913D1BDF53570030329D /* VehicleCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleCreate.swift; sourceTree = "<group>"; };
 		0E9B913E1BDF53570030329D /* VehicleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleList.swift; sourceTree = "<group>"; };
-		0E9B91411BDF6A2F0030329D /* GDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDS.swift; sourceTree = "<group>"; };
 		0EBFEFEF1BC7BB5100F69051 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		0EC87AAB1B5F66AD00B88A3C /* CityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
 		0EC87AAF1B5F7E5000B88A3C /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -316,12 +321,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E8082991B9D3843007220CA /* CoreTelephony.framework in Frameworks */,
-				0ECD82761B206AA800054FD2 /* libc++.dylib in Frameworks */,
-				0ECD82721B206A9500054FD2 /* libsqlite3.0.dylib in Frameworks */,
-				0ECD82741B206AA100054FD2 /* libz.dylib in Frameworks */,
-				B164F0A5965B414336774F98 /* Pods_Insurance.framework in Frameworks */,
-				594596F4CE2728B3D0C3E000 /* libPods.a in Frameworks */,
+				0E88A59A1BDFE7E100DBD824 /* CoreTelephony.framework in Frameworks */,
+				0E88A5991BDFE52B00DBD824 /* libc++.tbd in Frameworks */,
+				0E88A59F1BDFE84A00DBD824 /* libsqlite3.0.tbd in Frameworks */,
+				0E88A59C1BDFE82100DBD824 /* libz.tbd in Frameworks */,
+				0E88A55C1BDFE26100DBD824 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +339,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E0EFEE51BDF6D9A00C9CCEB /* Enquiries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enquiries;
+			sourceTree = "<group>";
+		};
 		0E12089F1B213F9100418D47 /* Taylor */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,6 +540,7 @@
 				0ECD81A41B2059D700054FD2 /* Main.storyboard */,
 				0ECD81A71B2059D700054FD2 /* Images.xcassets */,
 				0ECD81A91B2059D700054FD2 /* LaunchScreen.xib */,
+				0ECD82801B206C9900054FD2 /* Info.plist */,
 				0ECD819C1B2059D700054FD2 /* Supporting Files */,
 			);
 			path = Insurance;
@@ -537,7 +549,6 @@
 		0ECD819C1B2059D700054FD2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0ECD82801B206C9900054FD2 /* Info.plist */,
 				0ECD827E1B206C2000054FD2 /* InfoPlist.strings */,
 				0ECD82861B206CDA00054FD2 /* Localizable.strings */,
 			);
@@ -548,17 +559,9 @@
 			isa = PBXGroup;
 			children = (
 				0ECD81B61B2059D800054FD2 /* InsuranceTests.swift */,
-				0ECD81B41B2059D800054FD2 /* Supporting Files */,
-			);
-			path = InsuranceTests;
-			sourceTree = "<group>";
-		};
-		0ECD81B41B2059D800054FD2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				0ECD81B51B2059D800054FD2 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = InsuranceTests;
 			sourceTree = "<group>";
 		};
 		0ECD81C01B2066B100054FD2 /* Classes */ = {
@@ -582,11 +585,12 @@
 				0ED9FF931B574EAD00DA5193 /* Main.swift */,
 				0ED9FF921B574EAD00DA5193 /* Home.swift */,
 				0ED9FF901B574EAD00DA5193 /* Discover.swift */,
-				0E9B91411BDF6A2F0030329D /* GDS.swift */,
+				0E88A5A01BDFEA7C00DBD824 /* GDS.swift */,
 				0ED9FF8F1B574EAD00DA5193 /* Compare.swift */,
 				0ED9FF911B574EAD00DA5193 /* Flight.swift */,
 				0ED9FF941B574EAD00DA5193 /* Me.swift */,
 				0ED9FF871B574EAD00DA5193 /* Cards */,
+				0E0EFEE51BDF6D9A00C9CCEB /* Enquiries */,
 				0ED9FF951B574EAD00DA5193 /* Orders */,
 				0ED9FF981B574EAD00DA5193 /* Products */,
 				0ED9FF9F1B574EAD00DA5193 /* Users */,
@@ -750,6 +754,12 @@
 		F97566CA4A248F8F7CD060DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E88A59D1BDFE83900DBD824 /* libsqlite3.tbd */,
+				0E88A55B1BDFE26100DBD824 /* libPods.a */,
+				0E918DB71BDFB913003712C6 /* libc++.tbd */,
+				0E918DB41BDFB8C2003712C6 /* libsqlite3.0.tbd */,
+				0E918DB21BDFB8AC003712C6 /* libz.tbd */,
+				0E918DB01BDFB863003712C6 /* SystemConfiguration.framework */,
 				0E8082981B9D3843007220CA /* CoreTelephony.framework */,
 				0ECD82751B206AA800054FD2 /* libc++.dylib */,
 				0ECD82731B206AA100054FD2 /* libz.dylib */,
@@ -1032,7 +1042,7 @@
 				0E1209031B213F9100418D47 /* TaylorR.swift in Sources */,
 				0E3A28DD1BCE3BCD0063A4B7 /* Card.swift in Sources */,
 				0E1208E41B213F9100418D47 /* BaseController.swift in Sources */,
-				0E9B91421BDF6A2F0030329D /* GDS.swift in Sources */,
+				0E88A5A11BDFEA7C00DBD824 /* GDS.swift in Sources */,
 				0ED9FFB31B574EAD00DA5193 /* ProductList.swift in Sources */,
 				0E1208F41B213F9100418D47 /* UIImage+Extension.swift in Sources */,
 				0EC87AB01B5F7E5000B88A3C /* City.swift in Sources */,
@@ -1205,10 +1215,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Insurance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xiaomar.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Insurance/Classes/Insurance-Bridging-Header.h";
@@ -1225,10 +1239,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Insurance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xiaomar.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Insurance/Classes/Insurance-Bridging-Header.h";
