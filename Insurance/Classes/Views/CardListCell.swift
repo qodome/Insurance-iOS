@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class CardListCell: UICollectionViewCell {

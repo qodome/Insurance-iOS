@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 let APP_ID = "981373001" // "https://itunes.apple.com/cn/app/id981373001"

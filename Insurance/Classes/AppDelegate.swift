@@ -1,8 +1,6 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
-
-import UIKit
 
 @UIApplicationMain
 class AppDelegate: SocialAppDelegate {

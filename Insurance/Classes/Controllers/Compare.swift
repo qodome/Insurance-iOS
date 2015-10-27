@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class Compare: BaseController, CAPSPageMenuDelegate {
@@ -40,7 +40,7 @@ class Compare: BaseController, CAPSPageMenuDelegate {
     
     override func onLoadSuccess<E : ListModel>(entity: E) {
         super.onLoadSuccess(entity)
-        var controllerList: [UIViewController] = []
+        var controllerArray: [UIViewController] = []
         var tag = 0
         for item in entity.results {
             let controller: BaseCardList
@@ -52,10 +52,10 @@ class Compare: BaseController, CAPSPageMenuDelegate {
             controller.category = item as! Category
             controller.navController = navigationController
             controller.title = LocalizedString(item.name)
-            controllerList.append(controller)
+            controllerArray.append(controller)
             tag++
         }
-        pageMenu = CAPSPageMenu(viewControllers: controllerList, frame: CGRectMake(0, STATUS_BAR_HEIGHT, view.frame.width, view.frame.height), pageMenuOptions: parameters)
+        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0, STATUS_BAR_HEIGHT, view.frame.width, view.frame.height), pageMenuOptions: parameters)
         view.addSubview(pageMenu.view)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015 NY. All rights reserved.
+//  Copyright © 2015 NY. All rights reserved.
 //
 
 class InsurancePolicy: ModelObject {

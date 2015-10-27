@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class Me: UserDetail {
@@ -11,12 +11,7 @@ class Me: UserDetail {
         }
     }
     
-    // MARK: - 💖 生命周期 (Lifecycle)
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        checkLogin()
-    }
-    
+    // MARK: - 💖 生命周期 (Lifecycle)    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         checkLogin()
