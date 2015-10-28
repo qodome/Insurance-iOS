@@ -12,7 +12,7 @@ pod 'SDWebImage'
 pod 'SZTextView'
 pod 'TLYShyNavBar'
 pod 'TSMessages'
-pod 'Weixin'
+pod 'WXSDKCoreKit'
 # pod 'WeiboSDK' # SB的集成了adsupport库, 会导致审核被拒
 
 target 'Insurance' do

@@ -8,15 +8,13 @@ class OrderDetail: TableDetail {
         super.onPrepare()
         items = [
             [
+                Item(title: "id"),
                 Item(title: "name"),
+                Item(title: "car_license_number"),
                 Item(title: "total_fee"),
-                Item(title: "status"),
-            ],
-            [
                 Item(title: "created_time"),
                 Item(title: "start_time"),
-                Item(title: "end_time"),
-                Item(title: "departure_time")
+                Item(title: "status")
             ]
         ]
         refreshMode = .DidLoad

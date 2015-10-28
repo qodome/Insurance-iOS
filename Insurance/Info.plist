@@ -33,60 +33,16 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>3</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weixin</string>
 	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>sina.cn</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
-			</dict>
-			<key>weibo.cn</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
-			</dict>
-			<key>weibo.com</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
-			</dict>
-			<key>weixin.qq.com</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
-			</dict>
-			<key>xiaomar.com</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<true/>
-			</dict>
-		</dict>
 	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
@@ -96,6 +52,8 @@
 	</array>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>

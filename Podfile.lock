@@ -74,7 +74,7 @@ PODS:
   - TransitionKit (2.1.1)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
-  - Weixin (1.6.1)
+  - WXSDKCoreKit (1.6.1)
 
 DEPENDENCIES:
   - CTAssetsPickerController
@@ -88,7 +88,7 @@ DEPENDENCIES:
   - SZTextView
   - TLYShyNavBar
   - TSMessages
-  - Weixin
+  - WXSDKCoreKit
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
@@ -110,6 +110,6 @@ SPEC CHECKSUMS:
   TLYShyNavBar: abeab693235fc21b5bd9c8de6e971da62fc3d1d9
   TransitionKit: 3a14b6acc7cf2d1dd3e454e24dbad1cfab9a1ef1
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
-  Weixin: 3c91e9479349abd01079703fd77d756f9dc67e2c
+  WXSDKCoreKit: 537e126eca680d228d2cb084c7f8619303669493
 
 COCOAPODS: 0.39.0

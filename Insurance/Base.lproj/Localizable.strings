@@ -6,3 +6,5 @@ flight = "航延险";
 
 vehicles = "车辆";
 insurances = "保险";
+
+car_license_number = "车牌号码";

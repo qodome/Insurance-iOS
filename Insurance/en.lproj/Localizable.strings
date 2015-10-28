@@ -6,3 +6,5 @@ flight = "Flight";
 
 vehicles = "Vehicles";
 insurances = "Insurances";
+
+car_license_number = "Car License Number";
