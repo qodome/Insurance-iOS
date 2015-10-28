@@ -53,6 +53,10 @@ def hello():
     puts('*' * 50)
 
 
+def local_proxy(command):
+    local('proxychains4 {}'.format(command))
+
+
 # =========
 # =  git  =
 # =========
