@@ -1,29 +1,20 @@
 # -*- coding: utf-8 -*-
 
-from contextlib import contextmanager
-import gzip
-import json
-import mimetypes
 import os
 import sys
 
 from pip._vendor.distlib.compat import raw_input
-import requests
 
 from fabric.colors import blue, cyan, green, magenta, red, yellow
-from fabric.context_managers import cd, hide, prefix, settings, path
-from fabric.contrib.files import exists
-from fabric.decorators import task, roles, parallel
-from fabric.operations import local, run, sudo, put, get
+from fabric.decorators import task
+from fabric.operations import local
 from fabric.state import env
-from fabric.tasks import execute
 from fabric.utils import puts
 
 
 """手动配置"""
 env.organization = 'xiaomar'
-env.newrelic_key = '7cba721d377c66139fb07c29ecf1bae50e3dbf43'
-env.git_host = ['GitHub', 'github.com']  # ['GitLab', 'gitlab.com']
+env.git_host = ['GitHub', 'github.com']
 
 # ===========
 # = GLOBALS =
@@ -32,9 +23,8 @@ env.project_name = os.path.basename(os.path.dirname(__file__))
 env.project_path = '~/{0.git_host[0]}/{0.project_name}'.format(env)
 # 其他:
 env.repository = 'git@{0.git_host[1]}:qodome/{0.project_name}.git'.format(env)
-env.cloud = 'aliyun'  # 可选: aws, aliyun
-env.forward_agent = True  # GitHub的代理转发部署方式需要开启这项
 env.colorize_errors = True
+
 
 # ============
 # =  Hello   =
@@ -95,7 +85,6 @@ def update_from_develop():
         puts('不允许在 {} 分支 用 {} 命令直接操作'.format(yellow(branch), get_function_name()))
     elif 'nothing to commit' in output_list[-1]:
         local_proxy('git pull origin develop')
-        local_compilemessages()
     else:
         local('git status')
         puts('当前 {} 分支有更新未提交, 请先执行 fab git_commit 命令提交'.format(yellow(branch)))
@@ -124,22 +113,6 @@ def update_to_develop():
 
 # ============
 # = 工具方法  =
-# ============
-def smartrun(command):
-    with cd(env.project_path):
-        run(command)
-
-
-def smartputs(prefix):
-    if env.host_string in env.roledefs['app']:
-        sputs(prefix, green('【应用服务器】[{}]'.format(env.host_string)))
-    else:
-        sputs(prefix, magenta('🌵 【未知类型服务器】[{}]'.format(env.host_string)))
-
-
-def sputs(prefix, text):
-    puts(yellow(prefix) + ('【测试】' if env.test else '') + yellow('环境') + text + yellow(' --'), show_prefix=False)
-
-
+# ===========
 def get_function_name():
     return sys._getframe(1).f_code.co_name  # _getframe()则是自己的名字
