@@ -4,13 +4,6 @@
 
 class Me: UserDetail {
     
-    func checkLogin() {
-        if userToken == DEFAULT_TOKEN { // 未登录
-            let dest = storyboard!.instantiateViewControllerWithIdentifier("sign_in")
-            presentViewController(UINavigationController(rootViewController: dest), animated: true, completion: nil) // present跳转增加导航栏
-        }
-    }
-    
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

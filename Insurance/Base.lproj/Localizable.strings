@@ -8,3 +8,40 @@ vehicles = "车辆";
 insurances = "保险";
 
 car_license_number = "车牌号码";
+
+call = "客服热线";
+securyaccount = "账户安全";
+securyupdate = "更改密码";
+securyback = "找回密码";
+sure = "完成";
+aboutus = "关于我们";
+
+/* 自主选险 */
+area_list = "地区";
+freedom_list = "自主选险";
+damage = "车辆损失险";
+sp_damage = "不计免赔车损险";
+third_party = "机动车第三者责任保险";
+sp_third_party = "不计免赔三者险";
+theft = "机动车全车盗抢险";
+sp_theft = "不计免赔盗抢险";
+driver = "司机座位责任险";
+passenger = "乘客座位责任险";
+sp_staff = "不计免赔车上人员险";
+windscreen = "玻璃单独破碎险";
+scratch = "车身划痕玻璃险";
+fire = "自燃损失险";
+waterlogged = "发动机涉水损失险";
+specified_factory = "指定专修厂特约条款";
+sp_additional = "不计免赔附加险";
+motor_taxes = "车船税";
+mandatory = "交强险 ";
+
+/* 询价 && 报价 */
+enquiry_create = "询价";
+enquiry_waiting = "询价中";
+enquiry_detail = "询价详情";
+offer_list = "报价列表";
+offer_detail = "报价详情";
+enquiryStatus = "订单状态";
+confirm_orders = "确认下单";

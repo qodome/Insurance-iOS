@@ -1,0 +1,11 @@
+//tid唯一标示
+//name（与服务器端约定的英文名称）
+//label（展示的名称）
+//accessory_type(尾部类型 1 switch 2 picker)
+//switch_enable(开关 0 disable 1 enable)
+//switch_status(开关 0 off 1 on)
+//picker_array(picker数据 array格式)
+//picker_pid(picker选择了的数据的pid)
+//pid（picker数据的唯一标示）
+//pname（picker数据的与服务器端约定的英文名称）
+//plabel(picker数据的展示名称)

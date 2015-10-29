@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="1518" y="256"/>
         </scene>
-        <!--Compare-->
+        <!--GDS-->
         <scene sceneID="31H-eK-Dy3">
             <objects>
-                <viewController id="YLk-5r-fDA" customClass="Compare" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YLk-5r-fDA" customClass="GDS" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1oh-aJ-kQw"/>
                         <viewControllerLayoutGuide type="bottom" id="S1h-8f-PdI"/>
@@ -40,7 +40,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.45944951989999999" blue="0.4236143463" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="kqK-Zq-qdT"/>
                 </viewController>
@@ -121,7 +121,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="iZJ-v4-nZX"/>
                     <connections>

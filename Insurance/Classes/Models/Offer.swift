@@ -8,8 +8,9 @@ class Offer: ModelObject {
     var idStr = ""
     var imageUrls = ListModel()
     var content = ""
-    var brand = ""
-    var agent = ""
+    var brand = Brand()
+    var agent = Branch()
+    var insurance_groups = ListModel()
     var createdTime: NSDate!
     var isActive = false
     var city = ""
@@ -41,15 +42,12 @@ class Offer: ModelObject {
     var motorTaxes: NSNumber!
     var quotedPrice: NSNumber!
     var remark = ""
-    var enquiry: Enquiry?
     
     override class func getMapping() -> [String : String] {
         return [
             "id" : "id",
             "id_str" : "idStr",
             "content" : "content",
-            "brand" : "brand",
-            "agent" : "agent",
             "created_time" : "createdTime",
             "is_active" : "isActive",
             "city" : "city",

@@ -11,7 +11,7 @@ class Main: UITabBarController {
         for i in 0..<items.count {
             tabBar.items?[i].title = items[i]
         }
-        selectedIndex = 3
+        selectedIndex = 1
     }
     
     // MARK: - 💜 场景切换 (Segue)
