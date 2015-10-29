@@ -7,11 +7,6 @@ class AreaList: TableDetail, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var address = Province()
     
-    // MARK: - 💖 生命周期 (Lifecycle)
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
@@ -33,7 +28,7 @@ class AreaList: TableDetail, CLLocationManagerDelegate {
             }
             ProModel.cities = cityArray
             provinces += [ProModel]
-            items[1] += [Item(title: ProModel.name, segue: "")]
+            items[1] += [Item(title: ProModel.name, segue: "none")]
         }
     }
     
@@ -46,31 +41,35 @@ class AreaList: TableDetail, CLLocationManagerDelegate {
             }
             return locationCell
         } else {
-            cell.accessoryType = provinces[indexPath.row].cities.count == 0 ? .None : .DisclosureIndicator
+            cell.accessoryType = provinces[indexPath.row].cities.isEmpty ? .None : .DisclosureIndicator
             cell.textLabel?.text = provinces[indexPath.row].name
         }
         return cell
     }
     
-    // MARK: - 💜 UITableViewDelegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.section == 0  || provinces[indexPath.row].cities.count == 0 {
-            NSNotificationCenter.defaultCenter().postNotificationName("city", object: nil, userInfo: ["city" : indexPath.section == 0 ? address : provinces[indexPath.row]])
-            cancel()
-        } else {
-            let dest = mCityList()
-            dest.cities = provinces[indexPath.row].cities
-            dest.provinceName = provinces[indexPath.row].name
-            navigationController?.pushViewController(dest, animated: true)
+    override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            if indexPath.section == 0 || provinces[indexPath.row].cities.isEmpty {
+                NSNotificationCenter.defaultCenter().postNotificationName("city", object: nil, userInfo: ["city" : indexPath.section == 0 ? address : provinces[indexPath.row]])
+                cancel()
+            } else {
+                let dest = mCityList()
+                dest.title = provinces[indexPath.row].name
+                dest.cities = provinces[indexPath.row].cities
+                navigationController?.pushViewController(dest, animated: true)
+            }
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
         }
     }
     
+    // MARK: - 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "定位到的位置" : "全部"
+        return section == 0 ? LocalizedString("定位到的位置") : LocalizedString("all")
     }
     
-    // MARK: - 💜 CLLocationManagerDelegate
+    // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
         let currentLocation:CLLocation = locations.last!

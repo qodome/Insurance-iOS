@@ -24,7 +24,7 @@ class EnquiryWatting: TableDetail, UIAlertViewDelegate {
             cell.contentView.addSubview(returnLabel())
         } else {
             let button = QuickButton(frame: CGRect(origin: cell.frame.origin, size: CGSizeMake(SCREEN_WIDTH, cell.bounds.height)))
-            button.backgroundColor = endpoint.containsString("orders") ? UIColor.colorWithHex(APP_COLOR).colorWithAlphaComponent(0.7) : .lightGrayColor()
+            button.backgroundColor = endpoint.containsString("orders") ? .colorWithHex(APP_COLOR, alpha: 0.7) : .lightGrayColor()
             button.addTarget(self, action: "cancle", forControlEvents: .TouchUpInside)
             button.setTitle(endpoint.containsString("orders") ? LocalizedString("查看详情") : LocalizedString("取消询价"), forState: .Normal)
             cell.contentView.addSubview(button)

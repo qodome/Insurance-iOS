@@ -19,7 +19,7 @@ class PickerList: TableDetail {
         items = [[]]
         for pickerModel in pickerData {
             selectedId = pickerModel.pid == selectedId ? pickerModel.plabel : selectedId
-            items[0] += [Item(title: pickerModel.plabel, dest: AreaList.self)]
+            items[0] += [Item(title: pickerModel.plabel, segue: "none")]
         }
     }
     
@@ -32,9 +32,13 @@ class PickerList: TableDetail {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        cancel()
-        pickerDelegate!.backPickerModel(pickerData[indexPath.row])
+    override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            cancel()
+            pickerDelegate!.backPickerModel(pickerData[indexPath.row])
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
+        }
     }
 }

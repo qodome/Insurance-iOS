@@ -81,6 +81,35 @@ class Home: MyList {
         super.onLoadSuccess(entity)
     }
     
+    override func onPerform<T : ModelObject>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            let cell = (listView as! UICollectionView).cellForItemAtIndexPath(indexPath) as! PageCell
+            selected = getSelected(indexPath, page: cell.page)
+            if selected.isKindOfClass(Card) {
+                if (selected as! Card).type == "p" {
+                    startActivity(Item(title: "product", dest: ProductDetail.self))
+                } else {
+                    // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
+                }
+            } else if selected.isKindOfClass(Special) {
+                destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
+                startActivity(Item(title: "cards", dest: CardList.self))
+            } else if selected.isKindOfClass(Featured) {
+                switch (selected as! Featured).type {
+                case "c":
+                    startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
+                case "s":
+                    destEndpoint = getEndpoint("specials/\((selected as! Featured).objectId)")
+                    startActivity(Item(title: "cards", dest: CardList.self))
+                default: break
+                }
+            }
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
+        }
+    }
+    
     // MARK: - 💜 UICollectionViewDataSource
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getCount() + specialList.count + featuredCellCount
@@ -118,7 +147,7 @@ class Home: MyList {
             view.image.sd_setImageWithURL(NSURL(string: special.imageUrl))
             view.changeTitle(special.title)
             view.changeSubtitle("\(special.cards.count)个主题")
-            view.changeSubtitleBackground(UIColor.colorWithHex(0xB4A66F))
+            view.changeSubtitleBackground(.colorWithHex(0xB4A66F))
             cell.addPage(view)
             for i in 0..<special.cards.count.integerValue {
                 let card = special.cards.results[i] as! Card
@@ -134,30 +163,6 @@ class Home: MyList {
             cell = getCardCell(item, cell: collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CardCell)
         }
         return cell
-    }
-    
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PageCell
-        selected = getSelected(indexPath, page: cell.page)
-        if selected.isKindOfClass(Card) {
-            if (selected as! Card).type == "p" {
-                startActivity(Item(title: "product", dest: ProductDetail.self))
-            } else {
-                // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
-            }
-        } else if selected.isKindOfClass(Special) {
-            destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
-            startActivity(Item(title: "cards", dest: CardList.self))
-        } else if selected.isKindOfClass(Featured) {
-            switch (selected as! Featured).type {
-            case "c":
-                startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
-            case "s":
-                destEndpoint = getEndpoint("specials/\((selected as! Featured).objectId)")
-                startActivity(Item(title: "cards", dest: CardList.self))
-            default: break
-            }
-        }
     }
     
     // MARK: - 场景切换 (Segue)

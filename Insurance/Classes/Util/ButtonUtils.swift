@@ -9,13 +9,13 @@ enum Style: Int {
 func getButton(frame: CGRect, title: String = "", theme: Theme = STYLE_BUTTON_DARK) -> UIButton {
     // type = 0 是红框 白底 红字
     let button = UIButton(frame: frame)
-    button.backgroundColor = theme.type.rawValue == 0 ? .whiteColor() : UIColor.colorWithHex(theme.color, alpha: theme.alpha)
+    button.backgroundColor = theme.type.rawValue == 0 ? .whiteColor() : .colorWithHex(theme.color, alpha: theme.alpha)
     button.layer.borderWidth = 1
     button.layer.borderColor = UIColor.colorWithHex(theme.color, alpha: theme.alpha).CGColor
     button.layer.cornerRadius = 2
     button.setTitle(title, forState: .Normal)
-    button.setTitleColor(theme.type.rawValue == 0 ? UIColor.colorWithHex(theme.color).colorWithAlphaComponent(theme.alpha) : .whiteColor(), forState: .Normal)
-    button.setTitleColor(theme.type.rawValue == 0 ? UIColor.colorWithHex(theme.color, alpha: 0.5) : UIColor.whiteColor().colorWithAlphaComponent(0.5), forState: .Highlighted)
+    button.setTitleColor(theme.type.rawValue == 0 ? .colorWithHex(theme.color, alpha: theme.alpha) : .whiteColor(), forState: .Normal)
+    button.setTitleColor(theme.type.rawValue == 0 ? .colorWithHex(theme.color, alpha: 0.5) : UIColor.whiteColor().colorWithAlphaComponent(0.5), forState: .Highlighted)
     return button
 }
 

@@ -29,7 +29,7 @@ class PageCell: UICollectionViewCell, UIScrollViewDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = .whiteColor()
         scrollView = UIScrollView(frame: CGRect(origin: CGPointZero, size: frame.size))
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false

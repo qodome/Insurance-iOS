@@ -36,9 +36,9 @@ class EnquiryCreate: TableDetail, UINavigationControllerDelegate, UIImagePickerC
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         items = [
-            [Item(title: LocalizedString("行驶区域"), dest: AreaList.self)],
-            [Item(title: LocalizedString("行驶证正面照片"), dest: AreaList.self)],
-            [Item(title: LocalizedString("车险品牌"), dest: AreaList.self)]
+            [Item(title: LocalizedString("行驶区域"), segue: "none")],
+            [Item(title: LocalizedString("行驶证正面照片"), segue: "none")],
+            [Item(title: LocalizedString("车险品牌"), segue: "none")]
         ]
         let buttonName = ["freedom_list", "enquiry_create"]
         for (index, value) in buttonName.enumerate() {
@@ -84,6 +84,44 @@ class EnquiryCreate: TableDetail, UINavigationControllerDelegate, UIImagePickerC
         default: break
         }
         return cell
+    }
+    
+    override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            switch indexPath.section {
+            case 0:
+                let areaList = AreaList()
+                areaList.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(areaList, animated: true)
+            case 1:
+                let picker = UIImagePickerController()
+                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+                alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { (action) in
+                    if UIImagePickerController.isSourceTypeAvailable(.Camera) { // 模拟器没有相机
+                        picker.sourceType = .Camera
+                        picker.delegate = self
+                        self.presentViewController(picker, animated: true, completion: nil)
+                    }
+                    })
+                alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { (action) in
+                    picker.delegate = self
+                    self.presentViewController(picker, animated: true, completion: nil)
+                    })
+                showActionSheet(self, alert: alert)
+            case 2:
+                let pick =  PickerList()
+                pick.pickerData = brands
+                pick.pickerDelegate = self
+                pick.titleName = (tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!
+                pick.selectedId = (data as! Enquiry).brand
+                pick.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(pick, animated: true)
+            default: break
+            }
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
+        }
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
@@ -136,41 +174,6 @@ class EnquiryCreate: TableDetail, UINavigationControllerDelegate, UIImagePickerC
     }
     
     // MARK: - 💜 UITableViewDelegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        switch indexPath.section {
-        case 0:
-            let areaList = AreaList()
-            areaList.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(areaList, animated: true)
-        case 1:
-            let picker = UIImagePickerController()
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-            alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { (action) in
-                if UIImagePickerController.isSourceTypeAvailable(.Camera) { // 模拟器没有相机
-                    picker.sourceType = .Camera
-                    picker.delegate = self
-                    self.presentViewController(picker, animated: true, completion: nil)
-                }
-                })
-            alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { (action) in
-                picker.delegate = self
-                self.presentViewController(picker, animated: true, completion: nil)
-                })
-            showActionSheet(self, alert: alert)
-        case 2:
-            let pick =  PickerList()
-            pick.pickerData = brands
-            pick.pickerDelegate = self
-            pick.titleName = (tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!
-            pick.selectedId = (data as! Enquiry).brand
-            pick.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(pick, animated: true)
-        default:
-            super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
-        }
-    }
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return indexPath.section == 1 ? 80 : tableView.rowHeight
     }

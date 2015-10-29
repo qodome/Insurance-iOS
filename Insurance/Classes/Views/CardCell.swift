@@ -21,11 +21,11 @@ class CardCell: PageCell {
         super.init(frame: frame)
         let center = frame.height / 2 + frame.width / 3 // 文字区域的中心线
         title = UILabel(frame: CGRectMake(PADDING, center - 22, frame.width - 2 * iconRadius - 2 * PADDING, 20))
-        title.textColor = UIColor.colorWithHex(PRIMARY_TEXT_COLOR)
+        title.textColor = .colorWithHex(PRIMARY_TEXT_COLOR)
         addSubview(title)
         subtitle = UILabel(frame: CGRectMake(PADDING, center + 2, frame.width - 2 * PADDING, 17))
-        subtitle.textColor = UIColor.colorWithHex(SECONDARY_TEXT_COLOR)
-        subtitle.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        subtitle.textColor = .colorWithHex(SECONDARY_TEXT_COLOR)
+        subtitle.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(subtitle)
         icon = ImageView(frame: CGRectMake(frame.width - 2 * iconRadius - PADDING, frame.width * 2 / 3 - iconRadius, 2 * iconRadius, 2 * iconRadius), cornerRadius: iconRadius)
         icon.layer.borderColor = UIColor.whiteColor().CGColor

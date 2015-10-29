@@ -6,7 +6,7 @@ class Main: UITabBarController {
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.tintColor = UIColor.colorWithHex(APP_COLOR)
+        tabBar.tintColor = .colorWithHex(APP_COLOR)
         let items = ["home", /** "discover", */ "compare", "flight", "me"]
         for i in 0..<items.count {
             tabBar.items?[i].title = items[i]

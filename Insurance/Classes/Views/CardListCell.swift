@@ -20,7 +20,7 @@ class CardListCell: UICollectionViewCell {
         addSubview(captionLabel)
         tipLabel = UILabel(frame: CGRectMake(PADDING, CGRectGetMaxY(captionLabel.frame), frame.width - 2 * PADDING, 44))
         tipLabel.numberOfLines = 2
-        tipLabel.textColor = UIColor.redColor()
+        tipLabel.textColor = .redColor()
         addSubview(tipLabel)
     }
     

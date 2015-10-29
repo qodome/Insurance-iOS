@@ -20,12 +20,12 @@ class Discover: TableSearch {
         return cell
     }
     
-    override func onPerform<T : Category>(action: Action, item: T) {
+    override func onPerform<T : Category>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
             startActivity(Item(title: "cards", dest: CardList.self))
         default:
-            super.onPerform(action, item: item)
+            super.onPerform(action, indexPath: indexPath, item: item)
         }
     }
     

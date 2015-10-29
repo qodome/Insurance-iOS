@@ -12,8 +12,8 @@ class OfferList: TableList {
         let brandView = UIView(frame: CGRectMake(0, 0 , SCREEN_WIDTH, 35))
         (listView as UITableView).tableHeaderView = brandView
         headLabel.frame = CGRectMake(10, 0 , SCREEN_WIDTH - 10, 35)
-        headLabel.font = UIFont.systemFontOfSize(14)
-        brandView.backgroundColor = UIColor.colorWithHex(BACKGROUND_COLOR)
+        headLabel.font = .systemFontOfSize(14)
+        brandView.backgroundColor = .colorWithHex(BACKGROUND_COLOR)
         brandView.addSubview(headLabel)
         view.addSubview(brandView)
         refreshMode = .DidLoad
@@ -33,7 +33,7 @@ class OfferList: TableList {
     
     override func onLoadSuccess<E : ListModel>(entity: E) {
         super.onLoadSuccess(entity)
-        headLabel.text = "共计\(listData.count)家报价，请在当日完成交易"
+        headLabel.text = "共计\(getCount())家报价，请在当日完成交易"
     }
     
     override func getItemView<V : UITableView, T : Offer, C : OfferCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
@@ -43,7 +43,7 @@ class OfferList: TableList {
         return cell
     }
     
-    override func onPerform<T : Offer>(action: Action, item: T) {
+    override func onPerform<T : Offer>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
             let offerDetail = OfferDetail()
@@ -51,7 +51,7 @@ class OfferList: TableList {
             offerDetail.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(offerDetail, animated: true)
         default:
-            super.onPerform(action, item: item)
+            super.onPerform(action, indexPath: indexPath, item: item)
         }
     }
     

@@ -10,43 +10,45 @@ class Settings: TableDetail {
         super.onPrepare()
         items = [
             [Item(title: "about", dest: About.self)],
-            [Item(title: "developer")],
-            [Item(title: "sign_out", color: UIColor.destructiveColor())]
+            [Item(title: "developer", segue: "none")],
+            [Item(title: "sign_out", segue: "none", color: .destructiveColor())]
         ]
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         if item.title == "developer" && TestEnv {
-            cell.textLabel?.textColor = UIColor.defaultColor()
+            cell.textLabel?.textColor = .defaultColor()
         }
         return cell
     }
     
-    // MARK: - 💜 UITableViewDelegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let item = getItem(indexPath)
-        switch item.title {
-        case "developer":
-            if counter < 5 {
-                counter++
-            } else {
-                counter = 0
-                TestEnv = !TestEnv
-                reloadSettings()
-                tableView.reloadData()
+    override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            switch item.title {
+            case "developer":
+                if counter < 5 {
+                    counter++
+                } else {
+                    counter = 0
+                    TestEnv = !TestEnv
+                    reloadSettings()
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                }
+            case "sign_out":
+                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+                alert.addAction(UIAlertAction(title: LocalizedString("sign_out"), style: .Destructive) { (action) in
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey(TaylorR.Pref.UserToken.rawValue) // 删除token
+                    userToken = DEFAULT_TOKEN
+                    RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "JWT \(userToken)")
+                    showAlert(self, title: "已注销")
+                    })
+                showActionSheet(self, alert: alert)
+            default:
+                super.onPerform(action, indexPath: indexPath, item: item)
             }
-        case "sign_out":
-            tableView.deselectRowAtIndexPath(indexPath, animated: true) // 取消选中
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-            alert.addAction(UIAlertAction(title: LocalizedString("sign_out"), style: .Destructive) { (action) in
-                NSUserDefaults.standardUserDefaults().removeObjectForKey(TaylorR.Pref.UserToken.rawValue) // 删除token
-                userToken = DEFAULT_TOKEN
-                RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "JWT \(userToken)")
-                showAlert(self, title: "已注销")
-                })
-            showActionSheet(self, alert: alert)
         default:
-            super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+            super.onPerform(action, indexPath: indexPath, item: item)
         }
     }
 }

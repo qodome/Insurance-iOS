@@ -19,13 +19,13 @@ func getCardCell(item: Card, cell: CardCell) -> CardCell {
     cell.subtitle.text = [getType(item.type), "\(item.comments.count) 评论"].joinWithSeparator(" · ")
     cell.icon.image = UIImage(named: "ferrari")
     let image = ImageView(frame: CGRectMake(0, 0, width, cell.heightRate * width))
-    image.backgroundColor = UIColor.lightGrayColor()
+    image.backgroundColor = .lightGrayColor()
     image.sd_setImageWithURL(NSURL(string: item.imageUrl))
     cell.addPage(image)
     if item.imageCount.integerValue > 1 { // 如果图片数大于1
         for i in 2...item.imageCount.integerValue {
             let image = ImageView(frame: CGRectMake(CGFloat(i - 1) * width, 0, width, cell.heightRate * width))
-            image.backgroundColor = UIColor.lightGrayColor()
+            image.backgroundColor = .lightGrayColor()
 //            let url = "\(item.imageUrl.stringByDeletingLastPathComponent)\(i).\(item.imageUrl.pathExtension)" // 注意这样出来的是http:/而非http://
             let url = ""
             image.sd_setImageWithURL(NSURL(string: url))

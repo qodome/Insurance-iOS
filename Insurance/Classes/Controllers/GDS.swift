@@ -7,10 +7,10 @@ class GDS: TableDetail {
         .MenuHeight(NAVIGATION_BAR_HEIGHT),
         .MenuItemFont(UIFont(name: "HelveticaNeue-Light", size: DEFAULT_FONT_SIZE)!),
         .MenuItemWidth(90),
-        .ScrollMenuBackgroundColor(UIColor.whiteColor()),
-        .UnselectedMenuItemLabelColor(UIColor.darkGrayColor()),
-        .SelectedMenuItemLabelColor(UIColor.colorWithHex(APP_COLOR)),
-        .SelectionIndicatorColor(UIColor.colorWithHex(APP_COLOR)),
+        .ScrollMenuBackgroundColor(.whiteColor()),
+        .UnselectedMenuItemLabelColor(.darkGrayColor()),
+        .SelectedMenuItemLabelColor(.colorWithHex(APP_COLOR)),
+        .SelectionIndicatorColor(.colorWithHex(APP_COLOR)),
         .SelectionIndicatorHeight(2)
     ]
     var pageMenu: CAPSPageMenu! // 必须写在外面不能写在viewDidLoad

@@ -22,9 +22,9 @@ class FreedomList: TableDetail, PickerListDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        dataArray = dataArray[0].count == 0 ? [[],[],[],[]] : dataArray
+        dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], [], [Item.emptyItem()]] //两个组的占位
-        if dataArray[0].count == 0 {
+        if dataArray[0].isEmpty {
             let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("autoinsurance", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
             let temp = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! [NSDictionary]
             for (section, sectionValue) in temp .enumerate() {
@@ -33,7 +33,7 @@ class FreedomList: TableDetail, PickerListDelegate {
                     model.setValuesForKeysWithDictionary(rowValue as! [String : AnyObject])
                     let pickArray = rowValue["picker_array"] as! NSArray
                     var pid = ""
-                    if pickArray.count == 0 {
+                    if pickArray.count == 0 { // FIXME: count == 0用isEmpty，先不要用NSArray
                         dataDic[model.name] = model.switch_status
                     } else {
                         pid = model.picker_pid
@@ -104,23 +104,22 @@ class FreedomList: TableDetail, PickerListDelegate {
         return cell
     }
     
-    // MARK: - 💜 UITableViewDelegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        selectedIndexPath = indexPath
-        if  dataArray[indexPath.section][indexPath.row].accessory_type == "2" {
-            let pick =  PickerList()
-            pick.pickerData = dataArray[indexPath.section][indexPath.row].picker_array
-            pick.pickerDelegate = self
-            pick.titleName = (tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!
-            pick.selectedId = dataArray[indexPath.section][indexPath.row].picker_pid
-            pick.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(pick, animated: true)
+    override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            selectedIndexPath = indexPath
+            if dataArray[indexPath.section][indexPath.row].accessory_type == "2" {
+                let pick =  PickerList()
+                pick.pickerData = dataArray[indexPath.section][indexPath.row].picker_array
+                pick.pickerDelegate = self
+                pick.titleName = (tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!
+                pick.selectedId = dataArray[indexPath.section][indexPath.row].picker_pid
+                pick.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(pick, animated: true)
+            }
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
         }
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return titleArray[section]
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
@@ -213,5 +212,10 @@ class FreedomList: TableDetail, PickerListDelegate {
             }
         }
         return Freedom()
+    }
+    
+    // MARK: - 💜 UITableViewDataSource
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return titleArray[section]
     }
 }

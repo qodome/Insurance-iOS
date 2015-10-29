@@ -24,7 +24,7 @@ class UserDetail: TableDetail {
         title = entity.nickname
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
         cell?.imageView?.layer.cornerRadius = 30
-        cell!.imageView?.sd_setImageWithURL(NSURL(string: entity.imageUrl), placeholderImage: UIImage.imageWithColor(UIColor.whiteColor().colorWithAlphaComponent(0), size: CGSizeMake(60, 60)))
+        cell!.imageView?.sd_setImageWithURL(NSURL(string: entity.imageUrl), placeholderImage: .imageWithColor(UIColor.whiteColor().colorWithAlphaComponent(0), size: CGSizeMake(60, 60)))
         cell?.imageView?.frame.size = CGSizeMake(60, 60)
         cell?.textLabel?.text = entity.nickname
         cell?.detailTextLabel?.text = entity.about

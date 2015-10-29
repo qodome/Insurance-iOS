@@ -15,20 +15,20 @@ class CommentCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = .whiteColor()
         image = ImageView(frame: CGRectMake(PADDING, 16, 32, 32), cornerRadius: 16)
         addSubview(image)
         let x = CGRectGetMaxX(image.frame) + PADDING_INNER
         name = UILabel(frame: CGRectMake(x, 16, frame.width, 24))
-        name.textColor = UIColor.colorWithHex(SECONDARY_TEXT_COLOR)
-        name.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        name.textColor = .colorWithHex(SECONDARY_TEXT_COLOR)
+        name.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(name)
         dateLabel = UILabel(frame: CGRectMake(frame.width - 32, 16, frame.width, 24))
-        dateLabel.textColor = UIColor.colorWithHex(SECONDARY_TEXT_COLOR)
-        dateLabel.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        dateLabel.textColor = .colorWithHex(SECONDARY_TEXT_COLOR)
+        dateLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(dateLabel)
         text = UILabel(frame: CGRectMake(x, 40, frame.width - x - PADDING, 32))
-        text.textColor = UIColor.colorWithHex(PRIMARY_TEXT_COLOR)
+        text.textColor = .colorWithHex(PRIMARY_TEXT_COLOR)
         text.numberOfLines = 0
         addSubview(text)
     }

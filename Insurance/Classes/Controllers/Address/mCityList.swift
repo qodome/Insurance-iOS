@@ -2,28 +2,32 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class mCityList: TableDetail {
+class mCityList: TableList {
     var cities: [Province] = []
-    var provinceName = ""
     
     // MARK: - 🐤 继承 Taylor
-    override func onPrepare() {
-        super.onPrepare()
-        title = provinceName
-        items = [[]]
-        for city in cities {
-            items[0] += [Item(title: city.name, segue: "back")]
-        }
+    override func setTableViewStyle() -> UITableViewStyle {
+        refreshControlMode = .None
+        return .Grouped
     }
     
-    override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-//        cell.accessoryType = .None
+    override func onPrepare<T : UITableView>(listView: T) {
+        super.onPrepare(listView)
+        data = cities
+    }
+    
+    override func getItemView<V : UITableView, T : Province, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
+        cell.textLabel?.text = item.name
         return cell
     }
     
-    // MARK: - 💜 UITableViewDelegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NSNotificationCenter.defaultCenter().postNotificationName("city", object: nil, userInfo: ["city" : cities[indexPath.row]])
-        navigationController?.popToRootViewControllerAnimated(true)
+    override func onPerform<T : Province>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            NSNotificationCenter.defaultCenter().postNotificationName("city", object: nil, userInfo: ["city" : cities[indexPath.row]])
+            navigationController?.popToRootViewControllerAnimated(true)
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
+        }
     }
 }

@@ -37,6 +37,21 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         return cell
     }
     
+    override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
+        LOG(item.title)
+        switch action {
+        case .Open:
+            switch item.title {
+            case "avatar":
+                startImageSheet()
+            default:
+                super.onPerform(action, indexPath: indexPath, item: item)
+            }
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
+        }
+    }
+    
     override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
         dest.setValue(data, forKey: "data")
         dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
@@ -76,18 +91,9 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         showActionSheet(self, alert: alert)
     }
     
-    // MARK: - 💜 UITableViewDelegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let item = getItem(indexPath)
-        switch item.title {
-        case "avatar":
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            startImageSheet()
-        default:
-            super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
-        }
-    }
     
+    
+    // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return getItem(indexPath).title == "avatar" ? 80 : tableView.rowHeight
     }
