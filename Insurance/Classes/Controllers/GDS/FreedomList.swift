@@ -90,8 +90,8 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     override func getItemView<T : Enquiry, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         if indexPath.section != tableView.numberOfSections - 1 {
             if  dataArray[indexPath.section][indexPath.row].accessory_type == "1" {
-                (cell.accessoryView as! UISwitch).enabled = dataArray[indexPath.section][indexPath.row].switch_enable == "0" ? false : true
-                (cell.accessoryView as! UISwitch).on = dataArray[indexPath.section][indexPath.row].switch_status == "1" ? true : false
+                (cell.accessoryView as! UISwitch).enabled = dataArray[indexPath.section][indexPath.row].switch_enable != "0"
+                (cell.accessoryView as! UISwitch).on = dataArray[indexPath.section][indexPath.row].switch_status == "1"
             } else {
                 for pickValue in dataArray[indexPath.section][indexPath.row].picker_array {
                     if pickValue.pid == dataArray[indexPath.section][indexPath.row].picker_pid {

@@ -175,7 +175,6 @@
 		0EB111BF1BE2133000C0BF62 /* CardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111631BE2133000C0BF62 /* CardTableCell.swift */; };
 		0EB111C01BE2133000C0BF62 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111641BE2133000C0BF62 /* CardView.swift */; };
 		0EB111C11BE2133000C0BF62 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111651BE2133000C0BF62 /* CommentCell.swift */; };
-		0EB111C21BE2133000C0BF62 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111661BE2133000C0BF62 /* LocationCell.swift */; };
 		0EB111C31BE2133000C0BF62 /* OfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111671BE2133000C0BF62 /* OfferCell.swift */; };
 		0EB111C41BE2133000C0BF62 /* OfferDeatilHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111681BE2133000C0BF62 /* OfferDeatilHead.swift */; };
 		0EB111C51BE2133000C0BF62 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111691BE2133000C0BF62 /* PageCell.swift */; };
@@ -386,7 +385,6 @@
 		0EB111631BE2133000C0BF62 /* CardTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableCell.swift; sourceTree = "<group>"; };
 		0EB111641BE2133000C0BF62 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0EB111651BE2133000C0BF62 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
-		0EB111661BE2133000C0BF62 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		0EB111671BE2133000C0BF62 /* OfferCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
 		0EB111681BE2133000C0BF62 /* OfferDeatilHead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDeatilHead.swift; sourceTree = "<group>"; };
 		0EB111691BE2133000C0BF62 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
@@ -909,7 +907,6 @@
 				0EB111631BE2133000C0BF62 /* CardTableCell.swift */,
 				0EB111641BE2133000C0BF62 /* CardView.swift */,
 				0EB111651BE2133000C0BF62 /* CommentCell.swift */,
-				0EB111661BE2133000C0BF62 /* LocationCell.swift */,
 				0EB111671BE2133000C0BF62 /* OfferCell.swift */,
 				0EB111681BE2133000C0BF62 /* OfferDeatilHead.swift */,
 				0EB111691BE2133000C0BF62 /* PageCell.swift */,
@@ -1184,7 +1181,6 @@
 				0EB111841BE2133000C0BF62 /* OrderCreate.swift in Sources */,
 				0E837A841BE09D2100F3BCCE /* BaseAppDelegate.swift in Sources */,
 				0EB111791BE2133000C0BF62 /* Flight.swift in Sources */,
-				0EB111C21BE2133000C0BF62 /* LocationCell.swift in Sources */,
 				0E837A7E1BE09D2100F3BCCE /* UILabel+Extension.swift in Sources */,
 				0EB111891BE2133000C0BF62 /* Settings.swift in Sources */,
 				0E837A811BE09D2100F3BCCE /* UIView+Extension.swift in Sources */,
