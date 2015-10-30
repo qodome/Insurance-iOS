@@ -101,6 +101,11 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
             // TODO: 上传头像
+            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(info["UIImagePickerControllerOriginalImage"] as! UIImage), 0.6)!, controller: self, success: { (imageUrl) -> Void in
+                HttpLoader(endpoint: getEndpoint("users/\((self.data as! User).id)"), type: User.self).patch(parameters: ["image_url" : "\(MEDIA_URL)/\(imageUrl)"])
+                (self.data as! User).imageUrl = "\(MEDIA_URL)/\(imageUrl)"
+                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+            })
             picker.dismissViewControllerAnimated(true, completion: nil)
         }
     }
