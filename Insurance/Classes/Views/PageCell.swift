@@ -22,7 +22,7 @@ class PageCell: UICollectionViewCell, UIScrollViewDelegate {
     var isOnAutoRun = false // 是否正处于自动滑动
     var timer: NSTimer? // 计时器(用来控制自动滑动)
     
-    // MARK: - 💖 生命周期 (Lifecycle)
+    // MARK: - 💖 初始化
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

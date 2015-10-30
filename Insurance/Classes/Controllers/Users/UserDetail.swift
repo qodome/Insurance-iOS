@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class UserDetail: TableDetail {
+class UserDetail: GroupedTableDetail {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()

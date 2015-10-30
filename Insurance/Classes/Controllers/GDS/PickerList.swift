@@ -6,7 +6,7 @@ protocol PickerListDelegate {
     func backPickerModel(model: PickerModel)
 }
 
-class PickerList: TableDetail {
+class PickerList: GroupedTableDetail {
     var pickerData: [PickerModel] = []
     var pickerDelegate: PickerListDelegate?
     var selectedId = ""
@@ -19,16 +19,12 @@ class PickerList: TableDetail {
         items = [[]]
         for pickerModel in pickerData {
             selectedId = pickerModel.pid == selectedId ? pickerModel.plabel : selectedId
-            items[0] += [Item(title: pickerModel.plabel, segue: "none")]
+            items[0] += [Item(title: pickerModel.plabel, selectable: true)]
         }
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        if selectedId == "" {
-            cell.accessoryType = indexPath.row == 0 ? .Checkmark : .None
-        }else {
-            cell.accessoryType = cell.textLabel?.text == selectedId ? .Checkmark: .None
-        }
+        cell.accessoryType = cell.textLabel?.text == selectedId ? .Checkmark : .None
         return cell
     }
     

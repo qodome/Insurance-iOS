@@ -2,16 +2,16 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class GDS: TableDetail {
+class GDS: GroupedTableDetail {
     var parameters: [CAPSPageMenuOption] = [
-        .MenuHeight(NAVIGATION_BAR_HEIGHT),
-        .MenuItemFont(UIFont(name: "HelveticaNeue-Light", size: DEFAULT_FONT_SIZE)!),
-        .MenuItemWidth(90),
+        .MenuHeight(NAVIGATION_BAR_HEIGHT + STATUS_BAR_HEIGHT),
+        //        .MenuItemFont(UIFont(name: "HelveticaNeue-Light", size: DEFAULT_FONT_SIZE)!),
+        //        .MenuItemWidth(90),
         .ScrollMenuBackgroundColor(.whiteColor()),
-        .UnselectedMenuItemLabelColor(.darkGrayColor()),
-        .SelectedMenuItemLabelColor(.colorWithHex(APP_COLOR)),
-        .SelectionIndicatorColor(.colorWithHex(APP_COLOR)),
-        .SelectionIndicatorHeight(2)
+        //        .UnselectedMenuItemLabelColor(.darkGrayColor()),
+        //        .SelectedMenuItemLabelColor(.colorWithHex(APP_COLOR)),
+        //        .SelectionIndicatorColor(.colorWithHex(APP_COLOR)),
+        //        .SelectionIndicatorHeight(2)
     ]
     var pageMenu: CAPSPageMenu! // 必须写在外面不能写在viewDidLoad
     var pageIndex = -1

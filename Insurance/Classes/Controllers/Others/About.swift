@@ -2,11 +2,11 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class About: TableDetail {
+class About: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [[Item(title: "review", segue: appReviewsLink())]]
+        items = [[Item(title: "review", url: appReviewsLink())]]
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {

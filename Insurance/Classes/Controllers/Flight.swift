@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class Flight: TableDetail {
+class Flight: GroupedTableDetail {
     var parameters: [CAPSPageMenuOption] = [
         .MenuHeight(NAVIGATION_BAR_HEIGHT),
         .MenuItemFont(UIFont(name: "HelveticaNeue-Light", size: DEFAULT_FONT_SIZE)!),

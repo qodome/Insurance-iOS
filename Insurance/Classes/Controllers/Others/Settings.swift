@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class Settings: TableDetail {
+class Settings: GroupedTableDetail {
     var counter = 0
     
     // MARK: - 🐤 继承 Taylor
@@ -10,8 +10,8 @@ class Settings: TableDetail {
         super.onPrepare()
         items = [
             [Item(title: "about", dest: About.self)],
-            [Item(title: "developer", segue: "none")],
-            [Item(title: "sign_out", segue: "none", color: .destructiveColor())]
+            [Item(title: "developer", selectable: true)],
+            [Item(title: "sign_out", color: .destructiveColor(), selectable: true)]
         ]
     }
     

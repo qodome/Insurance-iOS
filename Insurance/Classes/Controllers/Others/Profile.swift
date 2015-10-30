@@ -2,23 +2,23 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdateDelegate {
+class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdateDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
         items = [
             [
                 Item(title: "avatar", dest: TextFieldUpdate.self),
-                Item(title: "nickname", dest: TextFieldUpdate.self, segue: "user_update"),
+                Item(title: "nickname", dest: TextFieldUpdate.self, url: "user_update"),
                 Item(title: "username")
             ],
             [
-                Item(title: "gender", dest: CheckListUpdate.self, segue: "user_check"),
-                Item(title: "about", dest: TextFieldUpdate.self, segue: "user_update")
+                Item(title: "gender", dest: CheckListUpdate.self, url: "user_check"),
+                Item(title: "about", dest: TextFieldUpdate.self, url: "user_update")
             ],
             [
-                Item(title: "phone_number", dest: TextFieldUpdate.self, segue: "user_update"),
-                Item(title: "id_card_number", dest: TextFieldUpdate.self, segue: "user_update")
+                Item(title: "phone_number", dest: TextFieldUpdate.self, url: "user_update"),
+                Item(title: "id_card_number", dest: TextFieldUpdate.self, url: "user_update")
             ]
         ]
     }
@@ -38,7 +38,6 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
-        LOG(item.title)
         switch action {
         case .Open:
             switch item.title {
@@ -61,7 +60,7 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
             dest.setValue(endpoint, forKey: "endpoint")
             dest.setValue(HttpLoader(endpoint: endpoint, type: User.self), forKey: "loader")
             if dest.isKindOfClass(CheckListUpdate) {
-                dest.setValue([[Item(title: "male", segue: "check://m"), Item(title: "female", segue: "check://f")]], forKey: "items")
+                dest.setValue([[Item(title: "male", url: "check://m"), Item(title: "female", url: "check://f")]], forKey: "items")
             }
         }
     }

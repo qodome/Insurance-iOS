@@ -7,7 +7,7 @@ class OfferCell: UITableViewCell {
     var mImage: ImageView!
     var detailLabel: UILabel!
     
-    // MARK: - 💖 生命周期 (Lifecycle)
+    // MARK: - 💖 初始化
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }

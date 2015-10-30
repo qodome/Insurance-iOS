@@ -2,11 +2,11 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class EnquiryWatting: TableDetail, UIAlertViewDelegate {
+class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [[Item.emptyItem()], [Item.emptyItem()]]
+        items = [[.emptyItem()], [.emptyItem()]]
     }
     
     override func onCreateLoader() -> BaseLoader? {

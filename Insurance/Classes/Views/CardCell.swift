@@ -12,7 +12,7 @@ class CardCell: PageCell {
     
     var heightRate: CGFloat = 2 / 3
     
-    // MARK: - 💖 生命周期 (Lifecycle)
+    // MARK: - 💖 初始化
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

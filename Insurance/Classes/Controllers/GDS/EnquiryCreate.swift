@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class EnquiryCreate: TableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate ,CLLocationManagerDelegate, FreedomListDelegate, PickerListDelegate {
+class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate ,CLLocationManagerDelegate, FreedomListDelegate, PickerListDelegate {
     let locationManager = CLLocationManager()
     var imageDic: [String : UIImage] = [:]
     var brands: [PickerModel] = []
@@ -36,9 +36,9 @@ class EnquiryCreate: TableDetail, UINavigationControllerDelegate, UIImagePickerC
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         items = [
-            [Item(title: LocalizedString("行驶区域"), segue: "none")],
-            [Item(title: LocalizedString("行驶证正面照片"), segue: "none")],
-            [Item(title: LocalizedString("车险品牌"), segue: "none")]
+            [Item(title: LocalizedString("行驶区域"), url: "local://")],
+            [Item(title: LocalizedString("行驶证正面照片"), url: "local://")],
+            [Item(title: LocalizedString("车险品牌"), url: "local://")]
         ]
         let buttonName = ["freedom_list", "enquiry_create"]
         for (index, value) in buttonName.enumerate() {

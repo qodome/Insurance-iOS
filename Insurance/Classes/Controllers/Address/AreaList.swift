@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class AreaList: TableDetail, CLLocationManagerDelegate {
+class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     var provinces: [Province] = []
     let locationManager = CLLocationManager()
     var address = Province()
@@ -14,7 +14,7 @@ class AreaList: TableDetail, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        items = [[Item.emptyItem()], []] //两个组的占位
+        items = [[.emptyItem()], []] //两个组的占位
         let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("city", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
         let mProArray = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! NSArray
         for value in mProArray {
@@ -28,7 +28,7 @@ class AreaList: TableDetail, CLLocationManagerDelegate {
             }
             ProModel.cities = cityArray
             provinces += [ProModel]
-            items[1] += [Item(title: ProModel.name, segue: "none")]
+            items[1] += [Item(title: ProModel.name, url: "local://")]
         }
     }
     

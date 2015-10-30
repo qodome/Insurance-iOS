@@ -7,7 +7,7 @@ class LocationCell: UITableViewCell {
     var typeImage: ImageView!
     var ActivityView: UIActivityIndicatorView!
     
-    // MARK: - 💖 生命周期 (Lifecycle)
+    // MARK: - 💖 初始化
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }

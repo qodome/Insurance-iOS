@@ -6,7 +6,7 @@ protocol FreedomListDelegate {
     func backFreedomData(dataDic: NSDictionary, dataArray: [[Freedom]])
 }
 
-class FreedomList: TableDetail, PickerListDelegate {
+class FreedomList: GroupedTableDetail, PickerListDelegate {
     var mDelegate: FreedomListDelegate?
     var dataArray: [[Freedom]] = [[]]
     var imageDic: [String : UIImage] = [:]
@@ -23,7 +23,7 @@ class FreedomList: TableDetail, PickerListDelegate {
     override func onPrepare() {
         super.onPrepare()
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
-        items = [[], [], [], [], [Item.emptyItem()]] //两个组的占位
+        items = [[], [], [], [], [.emptyItem()]] //两个组的占位
         if dataArray[0].isEmpty {
             let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("autoinsurance", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
             let temp = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! [NSDictionary]

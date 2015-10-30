@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class OfferDetail: TableDetail {
+class OfferDetail: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
@@ -10,7 +10,7 @@ class OfferDetail: TableDetail {
         button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("confirm_orders"), forState: .Normal)
         view.addSubview(button)
-        items = [[Item.emptyItem()]]
+        items = [[.emptyItem()]]
         for index in 0..<(data as! Offer).insurance_groups.count.integerValue {
             items += [[]]
             for  insurance in ((data as! Offer).insurance_groups.results[index] as! InsuranceGroup).insurances.results {

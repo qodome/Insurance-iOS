@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class ProductDetail: TableDetail {
+class ProductDetail: GroupedTableDetail {
     var imageView: UIImageView!
     
     // MARK: - 🐤 Taylor
