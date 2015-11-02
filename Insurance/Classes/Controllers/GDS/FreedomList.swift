@@ -31,9 +31,9 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                 for rowValue in sectionValue["result"] as! [NSDictionary] {
                     let model = Freedom()
                     model.setValuesForKeysWithDictionary(rowValue as! [String : AnyObject])
-                    let pickArray = rowValue["picker_array"] as! NSArray
+                    let pickArray = rowValue["picker_array"] as! [[String : AnyObject]]
                     var pid = ""
-                    if pickArray.count == 0 { // FIXME: count == 0用isEmpty，先不要用NSArray
+                    if pickArray.isEmpty { // FIXME: 用isEmpty，先不要用NSArray
                         dataDic[model.name] = model.switch_status
                     } else {
                         pid = model.picker_pid
@@ -41,7 +41,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                     var picker_array: [PickerModel] = []
                     for pickValue in pickArray {
                         let pick = PickerModel()
-                        pick.setValuesForKeysWithDictionary(pickValue as! [String : AnyObject])
+                        pick.setValuesForKeysWithDictionary(pickValue)
                         if pid == pick.pid {
                             dataDic[model.name] = pick.pname
                         }
@@ -49,13 +49,13 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                     }
                     model.picker_array = picker_array
                     dataArray[section] += [model]
-                    items[section] += [Item(title: model.label, dest: model.accessory_type == "1" ? nil : AreaList.self)]
+                    items[section] += [Item(title: model.label, url: model.accessory_type == "1" ? "" : "local://")]
                 }
             }
         } else {
             for (section, sectionValue) in dataArray.enumerate() {
                 for rowValue in sectionValue {
-                    items[section] += [Item(title: rowValue.label, dest: rowValue.accessory_type == "1" ? nil : AreaList.self)]
+                    items[section] += [Item(title: rowValue.label, url: rowValue.accessory_type == "1" ? "" : "local://")]
                 }
             }
         }
@@ -173,7 +173,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     func switchStateChange(sw:UISwitch) {
         let model = dataArray[sw.tag / 10][sw.tag % 10]
         var nextID = model.tid
-        var statue = sw.on ? "1" : "0"
+        var statue = "\(sw.on.hashValue)"
         if sw.on == false {
             switch model.tid {
             case "11":
@@ -198,7 +198,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         getDicWithId(nextID).switch_enable = statue
         getDicWithId(nextID).switch_status = statue
         dataDic[getDicWithId(nextID).name] = statue
-        model.switch_status = sw.on ? "1" : "0"
+        model.switch_status = "\(sw.on.hashValue)"
         dataDic[model.name] = model.switch_status
         tableView.reloadData()
     }

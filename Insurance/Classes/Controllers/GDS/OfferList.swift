@@ -21,7 +21,10 @@ class OfferList: TableList {
     
     override func onCreateLoader() -> BaseLoader? {
         let firstMapping = smartMapping(ListModel.self)
-        let mapping = smartMapping(Offer.self, children: ["brand" : Brand.self, "agent" : Branch.self])
+        let mapping = smartMapping(Offer.self, children: ["brand" : Brand.self])
+        let agentMapping = smartMapping(Branch.self, children: ["credit" : BusinessCredit.self])
+        agentMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "tags", toKeyPath: "tags", withMapping: smartListMapping(Tag.self)))
+        mapping.addRelationshipMappingWithSourceKeyPath("agent", mapping: agentMapping)
         let groupMapping = smartMapping(ListModel.self)
         let groupNext = smartMapping(InsuranceGroup.self)
         groupNext.addRelationshipMappingWithSourceKeyPath("insurances", mapping: smartListMapping(Insurance.self))
@@ -38,7 +41,6 @@ class OfferList: TableList {
     
     override func getItemView<V : UITableView, T : Offer, C : OfferCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
         cell.setData(item)
-        cell.accessoryType = .DisclosureIndicator
         cell.selectionStyle = .None
         return cell
     }

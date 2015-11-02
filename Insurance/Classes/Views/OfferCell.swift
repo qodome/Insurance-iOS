@@ -30,7 +30,7 @@ class OfferCell: UITableViewCell {
         formatter.numberStyle = .CurrencyStyle
         detailLabel.text = "\(formatter.stringFromNumber(NSNumber(double: data.quotedPrice.doubleValue))!)"
         detailLabel.sizeToFit()
-        detailLabel.frame.origin = CGPointMake(SCREEN_WIDTH - detailLabel.bounds.width - 2 * PADDING, (80 - detailLabel.bounds.height) / 2)
+        detailLabel.frame.origin = CGPointMake(SCREEN_WIDTH - detailLabel.bounds.width - PADDING, (80 - detailLabel.bounds.height) / 2)
         detailLabel.textColor = .blackColor()
         title.text = data.agent.name
         title.frame = CGRectMake(1.5 * PADDING + 80, detailLabel.frame.origin.y, SCREEN_WIDTH - (3.5 * PADDING + 80 + detailLabel.bounds.width), detailLabel.bounds.height)

@@ -186,6 +186,10 @@
 		0EB111D01BE2628700C0BF62 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111CF1BE2628700C0BF62 /* SearchResult.swift */; };
 		0EEA46941BE359A00009A09B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEA46931BE359A00009A09B /* UITableView+Extension.swift */; };
 		F924151225BB20A3C9EF1489 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5F62F6E39B514C622137E5 /* libPods.a */; };
+		FF93DC9B1BE7267D00FC8F3A /* OfferDeatilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */; };
+		FF93DCA51BE72D7B00FC8F3A /* BusinessCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */; };
+		FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA81BE748AB00FC8F3A /* ic_order.png */; };
+		FF93DCAB1BE748AB00FC8F3A /* ic_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA91BE748AB00FC8F3A /* ic_wait.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -398,6 +402,10 @@
 		3842DC7F28097D00C2170059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		39711360E4CC77D2B9D726D0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5B5F62F6E39B514C622137E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDeatilCell.swift; sourceTree = "<group>"; };
+		FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCredit.swift; sourceTree = "<group>"; };
+		FF93DCA81BE748AB00FC8F3A /* ic_order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order.png; sourceTree = "<group>"; };
+		FF93DCA91BE748AB00FC8F3A /* ic_wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wait.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -507,6 +515,8 @@
 				0EB110D51BE211A200C0BF62 /* ic_user_s120.png */,
 				0EB110D61BE211A200C0BF62 /* ic_user_s180.png */,
 				0E837AA31BE0AB3F00F3BCCE /* ic_xiaomar.png */,
+				FF93DCA81BE748AB00FC8F3A /* ic_order.png */,
+				FF93DCA91BE748AB00FC8F3A /* ic_wait.png */,
 				0EB110DB1BE2132100C0BF62 /* brandLogo */,
 				0EB110E51BE2132100C0BF62 /* Intro */,
 				0EB110E81BE2132100C0BF62 /* Json */,
@@ -851,6 +861,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB111351BE2133000C0BF62 /* Answer.swift */,
+				FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */,
 				0EB111361BE2133000C0BF62 /* Article.swift */,
 				0EB111371BE2133000C0BF62 /* Branch.swift */,
 				0EB111381BE2133000C0BF62 /* Brand.swift */,
@@ -908,6 +919,7 @@
 				0EB111641BE2133000C0BF62 /* CardView.swift */,
 				0EB111651BE2133000C0BF62 /* CommentCell.swift */,
 				0EB111671BE2133000C0BF62 /* OfferCell.swift */,
+				FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */,
 				0EB111681BE2133000C0BF62 /* OfferDeatilHead.swift */,
 				0EB111691BE2133000C0BF62 /* PageCell.swift */,
 				0EB1116A1BE2133000C0BF62 /* PosterView.swift */,
@@ -1044,6 +1056,7 @@
 			files = (
 				0EB110FF1BE2132100C0BF62 /* city.json in Resources */,
 				0E837AA41BE0AB3F00F3BCCE /* ic_xiaomar.png in Resources */,
+				FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */,
 				0E837AA21BE09D2100F3BCCE /* Default.strings in Resources */,
 				0EB110F81BE2132100C0BF62 /* logo_brand_9.png in Resources */,
 				0EB110F61BE2132100C0BF62 /* logo_brand_7.png in Resources */,
@@ -1059,6 +1072,7 @@
 				0EB110D71BE211A200C0BF62 /* ic_user_c120.png in Resources */,
 				0E837A161BE088FC00F3BCCE /* Localizable.strings in Resources */,
 				0EB111001BE2132100C0BF62 /* company.json in Resources */,
+				FF93DCAB1BE748AB00FC8F3A /* ic_wait.png in Resources */,
 				0EB110FD1BE2132100C0BF62 /* autoinsurance.json in Resources */,
 				0EB110D81BE211A200C0BF62 /* ic_user_c180.png in Resources */,
 				0EB110F51BE2132100C0BF62 /* logo_brand_6.png in Resources */,
@@ -1180,6 +1194,7 @@
 				0EB111881BE2133000C0BF62 /* Profile.swift in Sources */,
 				0EB111841BE2133000C0BF62 /* OrderCreate.swift in Sources */,
 				0E837A841BE09D2100F3BCCE /* BaseAppDelegate.swift in Sources */,
+				FF93DC9B1BE7267D00FC8F3A /* OfferDeatilCell.swift in Sources */,
 				0EB111791BE2133000C0BF62 /* Flight.swift in Sources */,
 				0E837A7E1BE09D2100F3BCCE /* UILabel+Extension.swift in Sources */,
 				0EB111891BE2133000C0BF62 /* Settings.swift in Sources */,
@@ -1251,6 +1266,7 @@
 				0EB111CE1BE25AA900C0BF62 /* DetailController.swift in Sources */,
 				0EB111A41BE2133000C0BF62 /* Insurance.swift in Sources */,
 				0EB1119B1BE2133000C0BF62 /* Comment.swift in Sources */,
+				FF93DCA51BE72D7B00FC8F3A /* BusinessCredit.swift in Sources */,
 				0E837A711BE09D2100F3BCCE /* TableList.swift in Sources */,
 				0EB111BD1BE2133000C0BF62 /* CardCell.swift in Sources */,
 				0EB1117A1BE2133000C0BF62 /* EnquiryCreate.swift in Sources */,

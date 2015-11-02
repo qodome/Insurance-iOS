@@ -19,7 +19,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         let operation = RKObjectRequestOperation(request:request, responseDescriptors:generateDescriptors(smartListMapping(Brand.self)))
         operation.setCompletionBlockWithSuccess({ (operation, result) in
             let result_list = result.firstObject as! ListModel
-            (self.data as! Enquiry).brand = "\((result_list.results.firstObject as! Brand).id)"
+            (self.data as? Enquiry)?.brand = "\((result_list.results.firstObject as? Brand)!.id)"
             self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))?.detailTextLabel?.text = (result_list.results.firstObject as! Brand).name
             for  value in result_list.results {
                 let pick = PickerModel()
@@ -126,7 +126,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     
     // MARK: - 💛 自定义方法 (Custom Method)
     func onBackCity(nf: NSNotification) {
-        (data as! Enquiry).city = (nf.userInfo!["city"] as! Province).name
+        (data as? Enquiry)?.city = (nf.object!["city"] as! Province).name
         tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as! Enquiry).city
     }
     
@@ -165,12 +165,12 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
             }
             contentUrl += "\(key):\(mValue!),"
         }
-        (data as! Enquiry).content = dataDic.count > 0 ? contentUrl : ""
+        (data as? Enquiry)?.content = dataDic.count > 0 ? contentUrl : ""
     }
     
     func backPickerModel(model: PickerModel) {
         tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))?.detailTextLabel?.text = model.plabel
-        (data as! Enquiry).brand = model.pid
+        (data as? Enquiry)?.brand = model.pid
     }
     
     // MARK: - 💜 UITableViewDelegate
@@ -190,10 +190,8 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
-        let currentLocation = locations.last!
-        let addDic = returnAddressWithLatAndlng(currentLocation.coordinate.latitude, lng: currentLocation.coordinate.longitude)
-        let addressDic: AnyObject? = addDic["result"]?.objectForKey("addressComponent")
-        (data as! Enquiry).city = addressDic!["city"] as! String
-        tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as! Enquiry).city
+        let addressDic: AnyObject? = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)["result"]?.objectForKey("addressComponent")
+        (data as? Enquiry)?.city = addressDic!["city"] as! String
+        tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as? Enquiry)?.city
     }
 }

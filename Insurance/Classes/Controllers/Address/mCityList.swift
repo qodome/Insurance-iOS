@@ -17,7 +17,7 @@ class mCityList: TableList {
     override func onPerform<T : Province>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
-            NSNotificationCenter.defaultCenter().postNotificationName("city", object: nil, userInfo: ["city" : data[indexPath.row]])
+            NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : data[indexPath.row]])
             navigationController?.popToRootViewControllerAnimated(true)
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
