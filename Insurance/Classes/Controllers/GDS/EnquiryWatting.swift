@@ -46,7 +46,7 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
         } else {
             let alert = UIAlertController(title: "您确定要取消询价吗", message: nil, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "否", style: .Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "是", style: .Default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "是", style: .Default, handler: { action in
                 (self.loader as! HttpLoader).patch(parameters: ["status" : "c"])
             }))
             presentViewController(alert, animated: true, completion: nil)

@@ -17,7 +17,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         let request = NSMutableURLRequest(URL: NSURL(string: "\(BASE_URL)/\(API_VERSION)/brands/")!)
         request.setValue("JWT \(userToken)", forHTTPHeaderField: "Authorization")
         let operation = RKObjectRequestOperation(request:request, responseDescriptors:generateDescriptors(smartListMapping(Brand.self)))
-        operation.setCompletionBlockWithSuccess({ (operation, result) in
+        operation.setCompletionBlockWithSuccess({ operation, result in
             let result_list = result.firstObject as! ListModel
             (self.data as! Enquiry).brand = "\((result_list.results.firstObject as! Brand).id)"
             self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))?.detailTextLabel?.text = (result_list.results.firstObject as! Brand).name
@@ -27,7 +27,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
                 pick.plabel = value.name
                 self.brands += [pick]
             }
-            }, failure: { (operation, error) in
+            }, failure: { operation, error in
                 showAlert(nil, title: "Error", message: error.localizedRecoverySuggestion)
         })
         operation.start()
@@ -97,14 +97,14 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
             case 1:
                 let picker = UIImagePickerController()
                 let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-                alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { (action) in
+                alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { action in
                     if UIImagePickerController.isSourceTypeAvailable(.Camera) { // 模拟器没有相机
                         picker.sourceType = .Camera
                         picker.delegate = self
                         self.presentViewController(picker, animated: true, completion: nil)
                     }
                     })
-                alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { (action) in
+                alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { action in
                     picker.delegate = self
                     self.presentViewController(picker, animated: true, completion: nil)
                     })
@@ -146,7 +146,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     
     func commit() {
         if imageDic["car_license"] != nil {
-            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(imageDic["car_license"]!), 0.6)!, controller: self, success: { (imageUrl) in
+            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(imageDic["car_license"]!), 0.6)!, controller: self, success: { imageUrl in
                 let mEnquiry = self.data as! Enquiry
                 (self.loader as? HttpLoader)?.post(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "brand" : mEnquiry.brand, "image_urls" : "\(MEDIA_URL)/\(imageUrl)"])
             })
