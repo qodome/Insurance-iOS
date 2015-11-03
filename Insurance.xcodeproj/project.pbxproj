@@ -96,7 +96,6 @@
 		0EB110FD1BE2132100C0BF62 /* autoinsurance.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110EB1BE2132100C0BF62 /* autoinsurance.json */; };
 		0EB110FE1BE2132100C0BF62 /* autoinsurance.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110EC1BE2132100C0BF62 /* autoinsurance.txt */; };
 		0EB110FF1BE2132100C0BF62 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110ED1BE2132100C0BF62 /* city.json */; };
-		0EB111001BE2132100C0BF62 /* company.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110EE1BE2132100C0BF62 /* company.json */; };
 		0EB111011BE2132100C0BF62 /* statues.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110EF1BE2132100C0BF62 /* statues.json */; };
 		0EB1116D1BE2133000C0BF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111031BE2133000C0BF62 /* AppDelegate.swift */; };
 		0EB1116E1BE2133000C0BF62 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111041BE2133000C0BF62 /* Constants.swift */; };
@@ -175,7 +174,7 @@
 		0EB111BF1BE2133000C0BF62 /* CardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111631BE2133000C0BF62 /* CardTableCell.swift */; };
 		0EB111C01BE2133000C0BF62 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111641BE2133000C0BF62 /* CardView.swift */; };
 		0EB111C11BE2133000C0BF62 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111651BE2133000C0BF62 /* CommentCell.swift */; };
-		0EB111C31BE2133000C0BF62 /* OfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111671BE2133000C0BF62 /* OfferCell.swift */; };
+		0EB111C31BE2133000C0BF62 /* OfferListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111671BE2133000C0BF62 /* OfferListCell.swift */; };
 		0EB111C41BE2133000C0BF62 /* OfferDeatilHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111681BE2133000C0BF62 /* OfferDeatilHead.swift */; };
 		0EB111C51BE2133000C0BF62 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111691BE2133000C0BF62 /* PageCell.swift */; };
 		0EB111C61BE2133000C0BF62 /* PosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1116A1BE2133000C0BF62 /* PosterView.swift */; };
@@ -190,6 +189,7 @@
 		FF93DCA51BE72D7B00FC8F3A /* BusinessCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */; };
 		FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA81BE748AB00FC8F3A /* ic_order.png */; };
 		FF93DCAB1BE748AB00FC8F3A /* ic_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA91BE748AB00FC8F3A /* ic_wait.png */; };
+		FFCC580E1BE887130065A44C /* JxxTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC580D1BE887130065A44C /* JxxTagsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -309,7 +309,6 @@
 		0EB110EB1BE2132100C0BF62 /* autoinsurance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = autoinsurance.json; sourceTree = "<group>"; };
 		0EB110EC1BE2132100C0BF62 /* autoinsurance.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = autoinsurance.txt; sourceTree = "<group>"; };
 		0EB110ED1BE2132100C0BF62 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
-		0EB110EE1BE2132100C0BF62 /* company.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = company.json; sourceTree = "<group>"; };
 		0EB110EF1BE2132100C0BF62 /* statues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = statues.json; sourceTree = "<group>"; };
 		0EB111031BE2133000C0BF62 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB111041BE2133000C0BF62 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -389,7 +388,7 @@
 		0EB111631BE2133000C0BF62 /* CardTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableCell.swift; sourceTree = "<group>"; };
 		0EB111641BE2133000C0BF62 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0EB111651BE2133000C0BF62 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
-		0EB111671BE2133000C0BF62 /* OfferCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
+		0EB111671BE2133000C0BF62 /* OfferListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferListCell.swift; sourceTree = "<group>"; };
 		0EB111681BE2133000C0BF62 /* OfferDeatilHead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDeatilHead.swift; sourceTree = "<group>"; };
 		0EB111691BE2133000C0BF62 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		0EB1116A1BE2133000C0BF62 /* PosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterView.swift; sourceTree = "<group>"; };
@@ -406,6 +405,7 @@
 		FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCredit.swift; sourceTree = "<group>"; };
 		FF93DCA81BE748AB00FC8F3A /* ic_order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order.png; sourceTree = "<group>"; };
 		FF93DCA91BE748AB00FC8F3A /* ic_wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wait.png; sourceTree = "<group>"; };
+		FFCC580D1BE887130065A44C /* JxxTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JxxTagsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -725,7 +725,6 @@
 				0EB110EB1BE2132100C0BF62 /* autoinsurance.json */,
 				0EB110EC1BE2132100C0BF62 /* autoinsurance.txt */,
 				0EB110ED1BE2132100C0BF62 /* city.json */,
-				0EB110EE1BE2132100C0BF62 /* company.json */,
 				0EB110EF1BE2132100C0BF62 /* statues.json */,
 			);
 			path = Json;
@@ -914,11 +913,12 @@
 			isa = PBXGroup;
 			children = (
 				0EB111611BE2133000C0BF62 /* CardCell.swift */,
+				FFCC580D1BE887130065A44C /* JxxTagsView.swift */,
 				0EB111621BE2133000C0BF62 /* CardListCell.swift */,
 				0EB111631BE2133000C0BF62 /* CardTableCell.swift */,
 				0EB111641BE2133000C0BF62 /* CardView.swift */,
 				0EB111651BE2133000C0BF62 /* CommentCell.swift */,
-				0EB111671BE2133000C0BF62 /* OfferCell.swift */,
+				0EB111671BE2133000C0BF62 /* OfferListCell.swift */,
 				FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */,
 				0EB111681BE2133000C0BF62 /* OfferDeatilHead.swift */,
 				0EB111691BE2133000C0BF62 /* PageCell.swift */,
@@ -1071,7 +1071,6 @@
 				0EB110D91BE211A200C0BF62 /* ic_user_s120.png in Resources */,
 				0EB110D71BE211A200C0BF62 /* ic_user_c120.png in Resources */,
 				0E837A161BE088FC00F3BCCE /* Localizable.strings in Resources */,
-				0EB111001BE2132100C0BF62 /* company.json in Resources */,
 				FF93DCAB1BE748AB00FC8F3A /* ic_wait.png in Resources */,
 				0EB110FD1BE2132100C0BF62 /* autoinsurance.json in Resources */,
 				0EB110D81BE211A200C0BF62 /* ic_user_c180.png in Resources */,
@@ -1210,6 +1209,7 @@
 				0EB111981BE2133000C0BF62 /* Category.swift in Sources */,
 				0EB111A11BE2133000C0BF62 /* Health.swift in Sources */,
 				0EB111AF1BE2133000C0BF62 /* Province.swift in Sources */,
+				FFCC580E1BE887130065A44C /* JxxTagsView.swift in Sources */,
 				0E837A6C1BE09D2100F3BCCE /* CollectionList.swift in Sources */,
 				0EB111C51BE2133000C0BF62 /* PageCell.swift in Sources */,
 				0E837A9E1BE09D2100F3BCCE /* SignInController.swift in Sources */,
@@ -1298,7 +1298,7 @@
 				0E837A741BE09D2100F3BCCE /* TextFieldUpdate.swift in Sources */,
 				0EB1118E1BE2133000C0BF62 /* UserDetail.swift in Sources */,
 				0EB111821BE2133000C0BF62 /* Main.swift in Sources */,
-				0EB111C31BE2133000C0BF62 /* OfferCell.swift in Sources */,
+				0EB111C31BE2133000C0BF62 /* OfferListCell.swift in Sources */,
 				0E837A721BE09D2100F3BCCE /* TableSearch.swift in Sources */,
 				0EB111B11BE2133000C0BF62 /* Question.swift in Sources */,
 				0EB1117C1BE2133000C0BF62 /* FreedomList.swift in Sources */,

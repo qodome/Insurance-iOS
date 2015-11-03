@@ -8,15 +8,15 @@ class OfferList: TableList {
     // MARK: - 🐤 Taylor
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
-        listView.registerClass(OfferCell.self, forCellReuseIdentifier: cellId)
+        listView.registerClass(OfferListCell.self, forCellReuseIdentifier: cellId)
         let brandView = UIView(frame: CGRectMake(0, 0 , SCREEN_WIDTH, 35))
         (listView as UITableView).tableHeaderView = brandView
         headLabel.frame = CGRectMake(10, 0 , SCREEN_WIDTH - 10, 35)
-        headLabel.font = .systemFontOfSize(14)
+        headLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         brandView.backgroundColor = .colorWithHex(BACKGROUND_COLOR)
         brandView.addSubview(headLabel)
         view.addSubview(brandView)
-        refreshMode = .DidLoad
+        refreshMode = .WillAppear
     }
     
     override func onCreateLoader() -> BaseLoader? {
@@ -39,9 +39,8 @@ class OfferList: TableList {
         headLabel.text = "共计\(getCount())家报价，请在当日完成交易"
     }
     
-    override func getItemView<V : UITableView, T : Offer, C : OfferCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
+    override func getItemView<V : UITableView, T : Offer, C : OfferListCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
         cell.setData(item)
-        cell.selectionStyle = .None
         return cell
     }
     
@@ -59,6 +58,6 @@ class OfferList: TableList {
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 100
     }
 }

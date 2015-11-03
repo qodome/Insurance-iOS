@@ -5,6 +5,7 @@
 class OfferDeatilCell: UITableViewCell {
     var title = UILabel()
     var detailLabel = UILabel()
+    let tagView = JxxTagsView()
     
     // MARK: - 💖 初始化
     required init(coder aDecoder: NSCoder) {
@@ -19,6 +20,8 @@ class OfferDeatilCell: UITableViewCell {
         detailLabel.frame = CGRectMake(PADDING, 30, SCREEN_WIDTH - 2 * PADDING, 20)
         detailLabel.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE - 3)
         addSubview(detailLabel)
+        tagView.frame = CGRectMake(0, 50, SCREEN_WIDTH, 28)
+        addSubview(tagView)
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
@@ -28,15 +31,14 @@ class OfferDeatilCell: UITableViewCell {
         formatter.numberStyle = .PercentStyle
         let precentString = "\(formatter.stringFromNumber(NSNumber(double: (data.agent.credit?.succCount.doubleValue)!/(data.agent.credit?.orderCount.doubleValue)!))!)"
         let string = NSMutableAttributedString(string: "交易量\(data.agent.credit!.orderCount)单 成交率\(precentString)")
-        string.addAttributes([NSForegroundColorAttributeName : UIColor.orangeColor()], range: NSMakeRange(3, "\(data.agent.credit!.orderCount)".length))
-        string.addAttributes([NSForegroundColorAttributeName : UIColor.orangeColor()], range: NSMakeRange(string.length - precentString.length, precentString.length))
+        string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(3, "\(data.agent.credit!.orderCount)".length))
+        string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(string.length - precentString.length, precentString.length))
         detailLabel.attributedText = string
         var tagsArray: [String] = []
         for (_, valueTag) in data.agent.tags.results.enumerate() {
             tagsArray += [valueTag.name]
         }
-        let tagsView = TagsView(frame: CGRectMake(0, 50, SCREEN_WIDTH, 28))
-        tagsView.setTags(tagsArray, target: nil, action: nil)
-         addSubview(tagsView)
+        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
+        tagView.setTags(tagsArray, target: nil, action: nil)
     }
 }

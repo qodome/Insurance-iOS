@@ -32,6 +32,7 @@ class GDS: GroupedTableDetail {
     override func onPrepare() {
         super.onPrepare()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeIndex:"), name: "changeIndex", object: nil)
+        pageMenu = CAPSPageMenu(viewControllers: [], frame: view.frame, options: nil)
     }
     
     override func onCreateLoader() -> BaseLoader? {
@@ -53,14 +54,30 @@ class GDS: GroupedTableDetail {
     
     func moveTo(index: Int) {
         if pageIndex != index {
+            if !pageMenu.controllerArray.isEmpty {
+                pageMenu.removePageAtIndex(0)
+            }
             pageIndex = index
             title = LocalizedString(titles[index])
-            let controller = controllers[index]
+            let controller = getController(index)
             controller.endpoint = getEndpoint(["enquiries", "enquiries/\(objectId)", "enquiries/\(objectId)/offers", "orders/\(objectId)"][index])
-            pageMenu = CAPSPageMenu(viewControllers: [controller], frame: CGRectMake(0, 0, view.frame.width, view.frame.height), pageMenuOptions: parameters)
+            pageMenu = CAPSPageMenu(viewControllers: [controller], frame: view.frame, pageMenuOptions: parameters)
+            pageMenu.controllerScrollView.scrollEnabled = false
             view.addSubview(pageMenu.view)
             addChildViewController(pageMenu) // 加了子页才能代码跳转导航
-            pageMenu.controllerScrollView.scrollEnabled = false
+        }
+    }
+    
+    func getController(index: Int) -> BaseController {
+        switch index {
+        case 1:
+            return EnquiryWatting()
+        case 2:
+            return OfferList()
+        case 3:
+            return EnquiryWatting()
+        default:
+            return EnquiryCreate()
         }
     }
 }

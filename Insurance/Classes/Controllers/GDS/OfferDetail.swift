@@ -45,9 +45,10 @@ class OfferDetail: GroupedTableDetail {
             for (_, valueTag) in (data as! Offer).agent.tags.results.enumerate() {
                 tagsArray += [valueTag.name]
             }
-            let tagsView = TagsView(frame: CGRectMake(0, 0, SCREEN_WIDTH, 28))
-            tagsView.setTags(tagsArray, target: nil, action: nil)
-            return 50 + tagsView.bounds.height
+            let tagView = JxxTagsView(frame: CGRectMake(0, 0, SCREEN_WIDTH, 23))
+            tagView.theme = STYLE_TAGVIEW_SHORT
+            tagView.setTags(tagsArray, target: nil, action: nil)
+            return 50 + tagView.bounds.height
         case 1:
             let strSize = "\((data as! Offer).remark)".boundingRectWithSize(CGSizeMake(SCREEN_WIDTH - 2 * PADDING, 5000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)], context: nil)
             return 60 + ("\((data as! Offer).remark)" == "" ? -10 : strSize.height)

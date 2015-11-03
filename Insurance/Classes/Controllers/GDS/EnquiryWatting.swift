@@ -7,21 +7,23 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
     override func onPrepare() {
         super.onPrepare()
         tableView.backgroundColor = .whiteColor()
-        let imageView = ImageView(frame: CGRectMake(SCREEN_WIDTH / 6, SCREEN_WIDTH / 6, SCREEN_WIDTH / 3 * 2, SCREEN_WIDTH / 3 * 2))
+        let imageView = ImageView(frame: CGRectMake(SCREEN_WIDTH / 6, SCREEN_WIDTH / 6, SCREEN_WIDTH / 3 * 2, SCREEN_WIDTH / 3 * 2), cornerRadius: SCREEN_WIDTH / 3)
         imageView.image = UIImage(named: endpoint.containsString("orders") ? "ic_order.png" : "ic_wait.png")
         tableView.addSubview(imageView)
-        let button = getButton(CGRectMake((SCREEN_WIDTH - 150)/2, tableView.bounds.height - 2 * 64 - PADDING - BUTTON_HEIGHT, 150, BUTTON_HEIGHT), title: endpoint.containsString("orders") ? LocalizedString("查看详情") : LocalizedString("取消询价"), theme: Theme(type: .Light, color: endpoint.containsString("orders") ? APP_COLOR : 0xB2B2B1))
+        LOG("================   \(view.frame.height)")
+        let button = getButton(CGRectMake((SCREEN_WIDTH - 160) / 2, view.frame.height - 49 - PADDING - BUTTON_HEIGHT - 64, 160, BUTTON_HEIGHT), title: endpoint.containsString("orders") ? LocalizedString("查看详情") : LocalizedString("取消询价"), theme: Theme(type: .Light, color: endpoint.containsString("orders") ? APP_COLOR : 0xB2B2B1))
         button.addTarget(self, action: "cancle", forControlEvents: .TouchUpInside)
         tableView.addSubview(button)
-        let detailLabel = UILabel(frame: CGRectMake(PADDING, button.frame.origin.y - 2 * PADDING - 25, SCREEN_WIDTH - 2 * PADDING, 25))
-        detailLabel.textAlignment = .Center
+        let detailLabel = UILabel(frame: CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, 0))
         detailLabel.text = endpoint.containsString("orders") ? "订单进行中，请尽快完成交易" : "保险公司正在为您报价，请稍后查看"
+        detailLabel.sizeToFit()
+        detailLabel.center = CGPointMake(SCREEN_WIDTH / 2, button.frame.origin.y - 2 * PADDING - detailLabel.frame.height / 2)
+        
         tableView.addSubview(detailLabel)
     }
     
     override func onCreateLoader() -> BaseLoader? {
-        let mapping = smartMapping(Enquiry.self)
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
+        return HttpLoader(endpoint: endpoint, mapping: smartMapping(Enquiry.self))
     }
     
     override func onLoadSuccess<E : CheckEnquiry>(entity: E) {
