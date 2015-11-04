@@ -99,14 +99,14 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
             case 1:
                 let picker = UIImagePickerController()
                 let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-                alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { (action) in
+                alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { action in
                     if UIImagePickerController.isSourceTypeAvailable(.Camera) { // 模拟器没有相机
                         picker.sourceType = .Camera
                         picker.delegate = self
                         self.presentViewController(picker, animated: true, completion: nil)
                     }
                     })
-                alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { (action) in
+                alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { action in
                     picker.delegate = self
                     self.presentViewController(picker, animated: true, completion: nil)
                     })
@@ -150,7 +150,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         if imageDic["car_license"] != nil {
             uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(imageDic["car_license"]!), 0.6)!, controller: self, success: { imageUrl in
                 let mEnquiry = self.data as! Enquiry
-                (self.loader as? HttpLoader)?.post(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)","buyer_message" : mEnquiry.buyerMessage])
+                self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
             })
         } else {
             showAlert(self, title: "请上传行驶证照片")

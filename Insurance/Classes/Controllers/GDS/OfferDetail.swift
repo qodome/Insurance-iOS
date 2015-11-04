@@ -51,7 +51,7 @@ class OfferDetail: GroupedTableDetail {
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if data != nil && section != 0 && section != 1 {
+        if data != nil && section > 1 {
             return (data as! Offer).insurance_groups.results[section - 2].name
         }
         return ""

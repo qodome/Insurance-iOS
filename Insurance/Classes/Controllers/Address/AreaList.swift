@@ -96,7 +96,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     
     // MARK: - 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? LocalizedString("定位到的位置") : LocalizedString("all")
+        return LocalizedString(section == 0 ? "定位到的位置" : "all")
     }
     
     // MARK: 💜 CLLocationManagerDelegate

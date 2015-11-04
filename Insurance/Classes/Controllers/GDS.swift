@@ -24,7 +24,7 @@ class GDS: GroupedTableDetail {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if checkLogin() {
-            (loader as? HttpLoader)?.get(getEndpoint("check_enquiry"))
+            loader?.read(getEndpoint("check_enquiry"))
         }
     }
     

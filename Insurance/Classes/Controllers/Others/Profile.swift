@@ -9,16 +9,16 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
         items = [
             [
                 Item(title: "avatar", dest: TextFieldUpdate.self),
-                Item(title: "nickname", dest: TextFieldUpdate.self, url: "user_update"),
+                Item(title: "nickname", dest: TextFieldUpdate.self, url: "local://user_update"),
                 Item(title: "username")
             ],
             [
-                Item(title: "gender", dest: CheckListUpdate.self, url: "user_check"),
-                Item(title: "about", dest: TextFieldUpdate.self, url: "user_update")
+                Item(title: "gender", dest: CheckListUpdate.self, url: "local://user_check"),
+                Item(title: "about", dest: TextFieldUpdate.self, url: "local://user_update")
             ],
             [
-                Item(title: "phone_number", dest: TextFieldUpdate.self, url: "user_update"),
-                Item(title: "id_card_number", dest: TextFieldUpdate.self, url: "user_update")
+                Item(title: "phone_number", dest: TextFieldUpdate.self, url: "local://user_update"),
+                Item(title: "id_card_number", dest: TextFieldUpdate.self, url: "local://user_update")
             ]
         ]
     }
@@ -76,21 +76,19 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { (action) in
+        alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { action in
             if UIImagePickerController.isSourceTypeAvailable(.Camera) { // 模拟器没有相机
                 picker.sourceType = .Camera
                 picker.delegate = self
                 self.presentViewController(picker, animated: true, completion: nil)
             }
             })
-        alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { (action) in
+        alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { action in
             picker.delegate = self
             self.presentViewController(picker, animated: true, completion: nil)
             })
         showActionSheet(self, alert: alert)
     }
-    
-    
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -100,8 +98,7 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
     // MARK: 💜 UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
-            // TODO: 上传头像
-            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(info["UIImagePickerControllerOriginalImage"] as! UIImage), 0.6)!, controller: self, success: { (imageUrl) -> Void in
+            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(info["UIImagePickerControllerOriginalImage"] as! UIImage), 0.6)!, controller: self, success: { imageUrl in
                 HttpLoader(endpoint: getEndpoint("users/\((self.data as! User).id)"), type: User.self).patch(parameters: ["image_url" : "\(MEDIA_URL)/\(imageUrl)"])
                 (self.data as! User).imageUrl = "\(MEDIA_URL)/\(imageUrl)"
                 self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
