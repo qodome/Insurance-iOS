@@ -148,7 +148,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         if imageDic["car_license"] != nil {
             uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(imageDic["car_license"]!), 0.6)!, controller: self, success: { imageUrl in
                 let mEnquiry = self.data as! Enquiry
-                (self.loader as? HttpLoader)?.post(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "brand" : mEnquiry.brand, "image_urls" : "\(MEDIA_URL)/\(imageUrl)"])
+                self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "brand" : mEnquiry.brand, "image_urls" : "\(MEDIA_URL)/\(imageUrl)"])
             })
         } else {
             showAlert(self, title: "请上传行驶证照片")

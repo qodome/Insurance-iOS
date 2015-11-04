@@ -134,7 +134,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         }
         (data as! Enquiry).content = contentUrl
         uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(imageDic["car_license"]!), 0.6)!, controller: self, success: { imageUrl in
-            (self.loader as? HttpLoader)?.post(parameters: ["content" : (self.data as! Enquiry).content, "city" : (self.data as! Enquiry).city, "brand" : (self.data as! Enquiry).brand, "image_urls" : "\(MEDIA_URL)/\(imageUrl)"])
+            self.loader?.create(parameters: ["content" : (self.data as! Enquiry).content, "city" : (self.data as! Enquiry).city, "brand" : (self.data as! Enquiry).brand, "image_urls" : "\(MEDIA_URL)/\(imageUrl)"])
         })
     }
     
