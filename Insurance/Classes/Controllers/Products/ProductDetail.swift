@@ -58,7 +58,7 @@ class ProductDetail: GroupedTableDetail {
         performSegueWithIdentifier("segue.product_detail-order_create", sender: self)
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let product = data as! Product
         let order = Order()
         order.name = product.name

@@ -35,7 +35,7 @@ class OrderList: TableList {
         }
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let item = getSelected().first as! Order
         dest.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
     }

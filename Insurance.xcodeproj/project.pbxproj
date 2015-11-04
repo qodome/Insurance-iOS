@@ -145,7 +145,6 @@
 		0EB1119D1BE2133000C0BF62 /* Enquiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1113F1BE2133000C0BF62 /* Enquiry.swift */; };
 		0EB1119E1BE2133000C0BF62 /* Featured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111401BE2133000C0BF62 /* Featured.swift */; };
 		0EB1119F1BE2133000C0BF62 /* Freedom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111411BE2133000C0BF62 /* Freedom.swift */; };
-		0EB111A11BE2133000C0BF62 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111431BE2133000C0BF62 /* Health.swift */; };
 		0EB111A21BE2133000C0BF62 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111441BE2133000C0BF62 /* HomeModel.swift */; };
 		0EB111A31BE2133000C0BF62 /* Illegaality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111451BE2133000C0BF62 /* Illegaality.swift */; };
 		0EB111A41BE2133000C0BF62 /* Insurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111461BE2133000C0BF62 /* Insurance.swift */; };
@@ -363,7 +362,6 @@
 		0EB1113F1BE2133000C0BF62 /* Enquiry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enquiry.swift; sourceTree = "<group>"; };
 		0EB111401BE2133000C0BF62 /* Featured.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Featured.swift; sourceTree = "<group>"; };
 		0EB111411BE2133000C0BF62 /* Freedom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Freedom.swift; sourceTree = "<group>"; };
-		0EB111431BE2133000C0BF62 /* Health.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		0EB111441BE2133000C0BF62 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		0EB111451BE2133000C0BF62 /* Illegaality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Illegaality.swift; sourceTree = "<group>"; };
 		0EB111461BE2133000C0BF62 /* Insurance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Insurance.swift; sourceTree = "<group>"; };
@@ -877,7 +875,6 @@
 				0EB1113F1BE2133000C0BF62 /* Enquiry.swift */,
 				0EB111401BE2133000C0BF62 /* Featured.swift */,
 				0EB111411BE2133000C0BF62 /* Freedom.swift */,
-				0EB111431BE2133000C0BF62 /* Health.swift */,
 				0EB111441BE2133000C0BF62 /* HomeModel.swift */,
 				0EB111451BE2133000C0BF62 /* Illegaality.swift */,
 				0EB111461BE2133000C0BF62 /* Insurance.swift */,
@@ -1212,7 +1209,6 @@
 				0EB111761BE2133000C0BF62 /* SimpleCardList.swift in Sources */,
 				0E837A9D1BE09D2100F3BCCE /* QuickButton.swift in Sources */,
 				0EB111981BE2133000C0BF62 /* Category.swift in Sources */,
-				0EB111A11BE2133000C0BF62 /* Health.swift in Sources */,
 				0EB111AF1BE2133000C0BF62 /* Province.swift in Sources */,
 				FFCC580E1BE887130065A44C /* JxxTagsView.swift in Sources */,
 				0E837A6C1BE09D2100F3BCCE /* CollectionList.swift in Sources */,

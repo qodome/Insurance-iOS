@@ -38,7 +38,7 @@ class Me: UserDetail {
         title = LocalizedString("me")
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         switch id {
         case "profile":
             dest.setValue(data, forKey: "data")

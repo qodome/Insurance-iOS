@@ -29,7 +29,7 @@ class Discover: TableSearch {
         }
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let item = getSelected().first as? Category
         dest.setValue(item, forKey: "category")
         dest.setValue(item?.name, forKey: "title")

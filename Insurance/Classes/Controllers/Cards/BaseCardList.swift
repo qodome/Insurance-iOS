@@ -44,7 +44,7 @@ class BaseCardList: CollectionList {
         }
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let item = getSelected().first
         dest.setValue(item, forKey: "data")
     }

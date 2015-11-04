@@ -166,7 +166,7 @@ class Home: MyList {
     }
     
     // MARK: - 场景切换 (Segue)
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         LOG("💜 \(id)")
         switch id {
         case "card_list":
