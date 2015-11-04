@@ -22,7 +22,7 @@
 		0E837A6B1BE09D2100F3BCCE /* CheckListUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A231BE09D2100F3BCCE /* CheckListUpdate.swift */; };
 		0E837A6C1BE09D2100F3BCCE /* CollectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A241BE09D2100F3BCCE /* CollectionList.swift */; };
 		0E837A6D1BE09D2100F3BCCE /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A251BE09D2100F3BCCE /* CreateController.swift */; };
-		0E837A6E1BE09D2100F3BCCE /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A261BE09D2100F3BCCE /* ListController.swift */; };
+		0E837A6E1BE09D2100F3BCCE /* ArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A261BE09D2100F3BCCE /* ArrayController.swift */; };
 		0E837A6F1BE09D2100F3BCCE /* SearchResultsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A271BE09D2100F3BCCE /* SearchResultsList.swift */; };
 		0E837A701BE09D2100F3BCCE /* GroupedTableDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A281BE09D2100F3BCCE /* GroupedTableDetail.swift */; };
 		0E837A711BE09D2100F3BCCE /* TableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A291BE09D2100F3BCCE /* TableList.swift */; };
@@ -182,7 +182,7 @@
 		0EB111C71BE2133000C0BF62 /* SpecialCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1116B1BE2133000C0BF62 /* SpecialCover.swift */; };
 		0EB111C81BE2133000C0BF62 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1116C1BE2133000C0BF62 /* XML.swift */; };
 		0EB111CA1BE2151500C0BF62 /* BugUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111C91BE2151500C0BF62 /* BugUtils.swift */; };
-		0EB111CE1BE25AA900C0BF62 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111CD1BE25AA900C0BF62 /* DetailController.swift */; };
+		0EB111CE1BE25AA900C0BF62 /* ObjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111CD1BE25AA900C0BF62 /* ObjectController.swift */; };
 		0EB111D01BE2628700C0BF62 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111CF1BE2628700C0BF62 /* SearchResult.swift */; };
 		0EEA46941BE359A00009A09B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEA46931BE359A00009A09B /* UITableView+Extension.swift */; };
 		F924151225BB20A3C9EF1489 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5F62F6E39B514C622137E5 /* libPods.a */; };
@@ -229,7 +229,7 @@
 		0E837A231BE09D2100F3BCCE /* CheckListUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListUpdate.swift; sourceTree = "<group>"; };
 		0E837A241BE09D2100F3BCCE /* CollectionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionList.swift; sourceTree = "<group>"; };
 		0E837A251BE09D2100F3BCCE /* CreateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
-		0E837A261BE09D2100F3BCCE /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		0E837A261BE09D2100F3BCCE /* ArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayController.swift; sourceTree = "<group>"; };
 		0E837A271BE09D2100F3BCCE /* SearchResultsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsList.swift; sourceTree = "<group>"; };
 		0E837A281BE09D2100F3BCCE /* GroupedTableDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedTableDetail.swift; sourceTree = "<group>"; };
 		0E837A291BE09D2100F3BCCE /* TableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableList.swift; sourceTree = "<group>"; };
@@ -392,7 +392,7 @@
 		0EB1116B1BE2133000C0BF62 /* SpecialCover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialCover.swift; sourceTree = "<group>"; };
 		0EB1116C1BE2133000C0BF62 /* XML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
 		0EB111C91BE2151500C0BF62 /* BugUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugUtils.swift; sourceTree = "<group>"; };
-		0EB111CD1BE25AA900C0BF62 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		0EB111CD1BE25AA900C0BF62 /* ObjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectController.swift; sourceTree = "<group>"; };
 		0EB111CF1BE2628700C0BF62 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		0EEA46931BE359A00009A09B /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		3842DC7F28097D00C2170059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -563,12 +563,12 @@
 			isa = PBXGroup;
 			children = (
 				0E837A211BE09D2100F3BCCE /* BaseController.swift */,
+				0EB111CD1BE25AA900C0BF62 /* ObjectController.swift */,
+				0E837A261BE09D2100F3BCCE /* ArrayController.swift */,
 				0E837A231BE09D2100F3BCCE /* CheckListUpdate.swift */,
 				0E837A241BE09D2100F3BCCE /* CollectionList.swift */,
 				0E837A251BE09D2100F3BCCE /* CreateController.swift */,
-				0EB111CD1BE25AA900C0BF62 /* DetailController.swift */,
 				0E837A281BE09D2100F3BCCE /* GroupedTableDetail.swift */,
-				0E837A261BE09D2100F3BCCE /* ListController.swift */,
 				0E837A271BE09D2100F3BCCE /* SearchResultsList.swift */,
 				0E837A291BE09D2100F3BCCE /* TableList.swift */,
 				0E837A2A1BE09D2100F3BCCE /* TableSearch.swift */,
@@ -1219,7 +1219,7 @@
 				0EB1117D1BE2133000C0BF62 /* OfferDetail.swift in Sources */,
 				0EB111C11BE2133000C0BF62 /* CommentCell.swift in Sources */,
 				0E837A901BE09D2100F3BCCE /* RestKitUtils.swift in Sources */,
-				0E837A6E1BE09D2100F3BCCE /* ListController.swift in Sources */,
+				0E837A6E1BE09D2100F3BCCE /* ArrayController.swift in Sources */,
 				0EB111721BE2133000C0BF62 /* BaseCardList.swift in Sources */,
 				0EB111C41BE2133000C0BF62 /* OfferDeatilHead.swift in Sources */,
 				0E837A921BE09D2100F3BCCE /* TSMessage+Extension.swift in Sources */,
@@ -1248,7 +1248,7 @@
 				0E837A941BE09D2100F3BCCE /* Utils.swift in Sources */,
 				0E837A661BE09D2100F3BCCE /* BaseLoader.swift in Sources */,
 				0EB1117B1BE2133000C0BF62 /* EnquiryWatting.swift in Sources */,
-				0EB111CE1BE25AA900C0BF62 /* DetailController.swift in Sources */,
+				0EB111CE1BE25AA900C0BF62 /* ObjectController.swift in Sources */,
 				0EB111A41BE2133000C0BF62 /* Insurance.swift in Sources */,
 				0EB1119B1BE2133000C0BF62 /* Comment.swift in Sources */,
 				0E837A711BE09D2100F3BCCE /* TableList.swift in Sources */,
