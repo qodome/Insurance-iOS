@@ -7,11 +7,11 @@ class Main: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .colorWithHex(APP_COLOR)
-        let items = ["home", /** "discover", */ "compare", "me"]
+        let items = [/** "home", "discover", */ "compare", "me"]
         for i in 0..<items.count {
             tabBar.items?[i].title = items[i]
         }
-        selectedIndex = 1
+        selectedIndex = 0
     }
     
     // MARK: - 💜 场景切换 (Segue)
