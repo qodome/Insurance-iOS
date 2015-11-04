@@ -31,7 +31,6 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
             [Item.emptyItem()]
         ]
         textField = UITextField()
-        textField.clearButtonMode = .WhileEditing
         textField.returnKeyType = .Done
         textField.delegate = self
         textField.placeholder = "对商家说点什么"

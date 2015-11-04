@@ -11,7 +11,4 @@ class Freedom: ModelObject {
     var switch_status = ""
     var picker_pid = ""
     var picker_array: [PickerModel] = []
-    
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
-    }
 }

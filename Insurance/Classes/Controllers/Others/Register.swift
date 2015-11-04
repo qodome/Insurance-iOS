@@ -39,9 +39,9 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         let mutableString = NSMutableAttributedString(string: "点击注册即表示您已同意《小马保险注册协议》")
         mutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(105070), range: NSMakeRange(11, 10))
         agreementBtn.setAttributedTitle(mutableString, forState: .Normal)
-        agreementBtn.titleLabel!.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        agreementBtn.titleLabel!.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         agreementBtn.sizeToFit()
-        agreementBtn.frame.origin.x = (SCREEN_WIDTH - agreementBtn.frame.width) / 2
+        agreementBtn.center.x = view.center.x
         agreementBtn.addTarget(self, action: "agreement", forControlEvents: .TouchUpInside)
         tableView.addSubview(agreementBtn)
     }
@@ -113,15 +113,15 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         var timeout = 60 //倒计时时间
         let _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
         dispatch_source_set_timer(_timer, dispatch_walltime(nil, 0), NSEC_PER_SEC, 0)
-        dispatch_source_set_event_handler(_timer) { () -> Void in
+        dispatch_source_set_event_handler(_timer) { () in
             self.signOutBtn.userInteractionEnabled = timeout <= 0 ? true : false
             if timeout <= 0 {
                 dispatch_source_cancel(_timer)
-                delay(0.2, closure: { () -> () in
+                delay(0.2, closure: { () in
                     self.signOutBtn.titleLabel?.text = "短信验证"
                 })
             } else {
-                delay(0.2, closure: { () -> () in
+                delay(0.2, closure: { () in
                     self.signOutBtn.titleLabel?.text = "\(timeout == 60 ? 60 : timeout % 60)秒"
                 })
                 timeout--
