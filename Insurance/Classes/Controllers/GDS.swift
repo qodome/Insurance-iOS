@@ -41,7 +41,7 @@ class GDS: GroupedTableDetail {
     
     override func onLoadSuccess<E : CheckEnquiry>(entity: E) {
         super.onLoadSuccess(entity)
-        objectId = entity.status == 3 ? entity.orderId : entity.enquiryId
+        objectId = entity.status == 3 ? "\(entity.orderId)" : "\(entity.enquiryId)"
         moveTo(entity.status.integerValue)
     }
     

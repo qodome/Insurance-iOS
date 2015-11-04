@@ -5,8 +5,8 @@
 class CheckEnquiry: ModelObject {
     var message = ""
     var status: NSNumber!
-    var enquiryId = ""
-    var orderId = ""
+    var enquiryId: NSNumber!
+    var orderId: NSNumber!
     
     override class func getMapping() -> [String : String] {
         return [
