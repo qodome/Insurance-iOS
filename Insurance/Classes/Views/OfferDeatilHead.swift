@@ -20,8 +20,6 @@ class OfferDeatilHead: UITableViewCell {
         mImage.contentMode = .ScaleAspectFit
         addSubview(mImage)
         addSubview(title)
-        moneyLabel.frame = CGRectMake(frame.width - 100 - 2 * PADDING, 5, 100, 0)
-        moneyLabel.textAlignment = .Right
         addSubview(moneyLabel)
         detailLabel.frame = CGRectMake(PADDING, 50, SCREEN_WIDTH - 2 * PADDING, 0)
         detailLabel.numberOfLines = 0
@@ -37,7 +35,7 @@ class OfferDeatilHead: UITableViewCell {
         moneyLabel.sizeToFit()
         moneyLabel.frame.origin = CGPointMake(SCREEN_WIDTH - PADDING - moneyLabel.bounds.width, (50 - moneyLabel.bounds.height) / 2)
         moneyLabel.textColor = .darkGrayColor()
-        title.text = data.brand.name  // data.agent.name
+        title.text = data.brand.name
         title.frame = CGRectMake(1.5 * PADDING + 80, moneyLabel.frame.origin.y, SCREEN_WIDTH - (3.5 * PADDING + 80 + moneyLabel.bounds.width), moneyLabel.bounds.height)
         mImage.sd_setImageWithURL(NSURL(string: data.brand.image_url), placeholderImage: UIImage(named: "logo_brand_2.png"))
         detailLabel.text = "\(data.remark)"

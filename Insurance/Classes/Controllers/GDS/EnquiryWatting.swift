@@ -10,7 +10,6 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
         let imageView = ImageView(frame: CGRectMake(SCREEN_WIDTH / 6, SCREEN_WIDTH / 6, SCREEN_WIDTH / 3 * 2, SCREEN_WIDTH / 3 * 2), cornerRadius: SCREEN_WIDTH / 3)
         imageView.image = UIImage(named: endpoint.containsString("orders") ? "ic_order.png" : "ic_wait.png")
         tableView.addSubview(imageView)
-        LOG("================   \(view.frame.height)")
         let button = getButton(CGRectMake((SCREEN_WIDTH - 160) / 2, view.frame.height - 49 - PADDING - BUTTON_HEIGHT - 64, 160, BUTTON_HEIGHT), title: endpoint.containsString("orders") ? LocalizedString("查看详情") : LocalizedString("取消询价"), theme: Theme(type: .Light, color: endpoint.containsString("orders") ? APP_COLOR : 0xB2B2B1))
         button.addTarget(self, action: "cancle", forControlEvents: .TouchUpInside)
         tableView.addSubview(button)
@@ -18,7 +17,6 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
         detailLabel.text = endpoint.containsString("orders") ? "订单进行中，请尽快完成交易" : "保险公司正在为您报价，请稍后查看"
         detailLabel.sizeToFit()
         detailLabel.center = CGPointMake(SCREEN_WIDTH / 2, button.frame.origin.y - 2 * PADDING - detailLabel.frame.height / 2)
-        
         tableView.addSubview(detailLabel)
     }
     
@@ -41,7 +39,7 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
         } else {
             let alert = UIAlertController(title: "您确定要取消询价吗", message: nil, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "否", style: .Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "是", style: .Default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "是", style: .Default, handler: { action in
                 (self.loader as! HttpLoader).patch(parameters: ["status" : "c"])
             }))
             presentViewController(alert, animated: true, completion: nil)

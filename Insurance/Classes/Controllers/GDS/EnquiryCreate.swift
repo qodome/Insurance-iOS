@@ -66,7 +66,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
             }else {
                 cell.textLabel?.text = onOrOff ? LocalizedString("车辆合格证照片") : LocalizedString("行驶证正面照片")
                 let imageView = UIImageView(frame: CGRectMake(0, 0, 80, 60))
-                imageView.image = UIImage(named: onOrOff ? "logo_brand_1" : "vehiclelicense.png")
+                imageView.image = UIImage(named: onOrOff ? "ic_velicense.png" : "ic_vehiclelicense.png")
                 cell.accessoryView = imageView
             }
         }

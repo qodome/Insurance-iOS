@@ -14,6 +14,7 @@ func getButton(frame: CGRect, title: String = "", theme: Theme = STYLE_BUTTON_DA
     button.layer.borderColor = UIColor.colorWithHex(theme.color, alpha: theme.alpha).CGColor
     button.layer.cornerRadius = 3
     button.setTitle(title, forState: .Normal)
+    button.titleLabel?.textAlignment = .Center
     button.setTitleColor(theme.type.rawValue == 0 ? .colorWithHex(theme.color, alpha: theme.alpha) : .whiteColor(), forState: .Normal)
     button.setTitleColor(theme.type.rawValue == 0 ? .colorWithHex(theme.color, alpha: 0.5) : UIColor.whiteColor().colorWithAlphaComponent(0.5), forState: .Highlighted)
     return button

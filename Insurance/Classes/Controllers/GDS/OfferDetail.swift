@@ -39,23 +39,11 @@ class OfferDetail: GroupedTableDetail {
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            var tagsArray: [String] = []
-            for (_, valueTag) in (data as! Offer).agent.tags.results.enumerate() {
-                tagsArray += [valueTag.name]
-            }
-            let tagView = JxxTagsView(frame: CGRectMake(0, 0, SCREEN_WIDTH, 23))
-            tagView.theme = STYLE_TAGVIEW_SHORT
-            tagView.setTags(tagsArray, target: nil, action: nil)
-            return 50 + tagView.bounds.height
-        case 1:
+        if indexPath.section == 1 {
             let strSize = "\((data as! Offer).remark)".boundingRectWithSize(CGSizeMake(SCREEN_WIDTH - 2 * PADDING, 5000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)], context: nil)
             return 60 + ("\((data as! Offer).remark)" == "" ? -10 : strSize.height)
-        default: break
-            
         }
-        return tableView.rowHeight
+        return indexPath.section == 0 ? 80 : tableView.rowHeight
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -73,10 +61,10 @@ class OfferDetail: GroupedTableDetail {
         let mapping = smartMapping(Order.self)
         let descriptor = RKResponseDescriptor(mapping: mapping, method: .Any, pathPattern: nil, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful))
         RKObjectManager.sharedManager().addResponseDescriptor(descriptor)
-        RKObjectManager.sharedManager().postObject(mapping, path: getEndpoint("orders"), parameters: ["product_id" : "1", "car_license_number" : (data as! Offer).carLicenseNumber, "offer_id" : (data as! Offer).id], success: { (operation, result) in
+        RKObjectManager.sharedManager().postObject(mapping, path: getEndpoint("orders"), parameters: ["product_id" : "1", "car_license_number" : (data as! Offer).carLicenseNumber, "offer_id" : (data as! Offer).id], success: { operation, result in
             NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id": "\((result.firstObject as! Order).id)", "index": "3"])
             self.cancel()
-            }) { (operation, error) in
+            }) { operation, error in
                 showAlert(self, title: "订单生成失败", message: error.localizedDescription)
         }
     }

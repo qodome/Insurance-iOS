@@ -90,7 +90,7 @@
 		0EB110F71BE2132100C0BF62 /* logo_brand_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110E31BE2132100C0BF62 /* logo_brand_8.png */; };
 		0EB110F81BE2132100C0BF62 /* logo_brand_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110E41BE2132100C0BF62 /* logo_brand_9.png */; };
 		0EB110F91BE2132100C0BF62 /* me_portrait_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110E61BE2132100C0BF62 /* me_portrait_default.png */; };
-		0EB110FA1BE2132100C0BF62 /* vehiclelicense.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110E71BE2132100C0BF62 /* vehiclelicense.png */; };
+		0EB110FA1BE2132100C0BF62 /* ic_vehiclelicense.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110E71BE2132100C0BF62 /* ic_vehiclelicense.png */; };
 		0EB110FB1BE2132100C0BF62 /* aboutus.html in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110E91BE2132100C0BF62 /* aboutus.html */; };
 		0EB110FC1BE2132100C0BF62 /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110EA1BE2132100C0BF62 /* agreement.html */; };
 		0EB110FD1BE2132100C0BF62 /* autoinsurance.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB110EB1BE2132100C0BF62 /* autoinsurance.json */; };
@@ -190,6 +190,10 @@
 		FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA81BE748AB00FC8F3A /* ic_order.png */; };
 		FF93DCAB1BE748AB00FC8F3A /* ic_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA91BE748AB00FC8F3A /* ic_wait.png */; };
 		FFCC580E1BE887130065A44C /* JxxTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC580D1BE887130065A44C /* JxxTagsView.swift */; };
+		FFCE78241BE99772003DB584 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE78231BE99772003DB584 /* Register.swift */; };
+		FFCE78261BE99DE0003DB584 /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE78251BE99DE0003DB584 /* AboutUs.swift */; };
+		FFCE78281BE9A2C0003DB584 /* Sms.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE78271BE9A2C0003DB584 /* Sms.swift */; };
+		FFCE782A1BE9CCFD003DB584 /* ic_velicense.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCE78291BE9CCFD003DB584 /* ic_velicense.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,7 +307,7 @@
 		0EB110E31BE2132100C0BF62 /* logo_brand_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_brand_8.png; sourceTree = "<group>"; };
 		0EB110E41BE2132100C0BF62 /* logo_brand_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_brand_9.png; sourceTree = "<group>"; };
 		0EB110E61BE2132100C0BF62 /* me_portrait_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me_portrait_default.png; sourceTree = "<group>"; };
-		0EB110E71BE2132100C0BF62 /* vehiclelicense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vehiclelicense.png; sourceTree = "<group>"; };
+		0EB110E71BE2132100C0BF62 /* ic_vehiclelicense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vehiclelicense.png; sourceTree = "<group>"; };
 		0EB110E91BE2132100C0BF62 /* aboutus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutus.html; sourceTree = "<group>"; };
 		0EB110EA1BE2132100C0BF62 /* agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = agreement.html; sourceTree = "<group>"; };
 		0EB110EB1BE2132100C0BF62 /* autoinsurance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = autoinsurance.json; sourceTree = "<group>"; };
@@ -406,6 +410,10 @@
 		FF93DCA81BE748AB00FC8F3A /* ic_order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order.png; sourceTree = "<group>"; };
 		FF93DCA91BE748AB00FC8F3A /* ic_wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wait.png; sourceTree = "<group>"; };
 		FFCC580D1BE887130065A44C /* JxxTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JxxTagsView.swift; sourceTree = "<group>"; };
+		FFCE78231BE99772003DB584 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		FFCE78251BE99DE0003DB584 /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
+		FFCE78271BE9A2C0003DB584 /* Sms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sms.swift; sourceTree = "<group>"; };
+		FFCE78291BE9CCFD003DB584 /* ic_velicense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_velicense.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -712,7 +720,8 @@
 			isa = PBXGroup;
 			children = (
 				0EB110E61BE2132100C0BF62 /* me_portrait_default.png */,
-				0EB110E71BE2132100C0BF62 /* vehiclelicense.png */,
+				0EB110E71BE2132100C0BF62 /* ic_vehiclelicense.png */,
+				FFCE78291BE9CCFD003DB584 /* ic_velicense.png */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -819,6 +828,8 @@
 				0EB111251BE2133000C0BF62 /* Settings.swift */,
 				0EB111261BE2133000C0BF62 /* SignIn.swift */,
 				0EB111271BE2133000C0BF62 /* SignUp.swift */,
+				FFCE78251BE99DE0003DB584 /* AboutUs.swift */,
+				FFCE78231BE99772003DB584 /* Register.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -860,6 +871,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB111351BE2133000C0BF62 /* Answer.swift */,
+				FFCE78271BE9A2C0003DB584 /* Sms.swift */,
 				FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */,
 				0EB111361BE2133000C0BF62 /* Article.swift */,
 				0EB111371BE2133000C0BF62 /* Branch.swift */,
@@ -1057,11 +1069,12 @@
 				0EB110FF1BE2132100C0BF62 /* city.json in Resources */,
 				0E837AA41BE0AB3F00F3BCCE /* ic_xiaomar.png in Resources */,
 				FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */,
+				FFCE782A1BE9CCFD003DB584 /* ic_velicense.png in Resources */,
 				0E837AA21BE09D2100F3BCCE /* Default.strings in Resources */,
 				0EB110F81BE2132100C0BF62 /* logo_brand_9.png in Resources */,
 				0EB110F61BE2132100C0BF62 /* logo_brand_7.png in Resources */,
 				0EB110FE1BE2132100C0BF62 /* autoinsurance.txt in Resources */,
-				0EB110FA1BE2132100C0BF62 /* vehiclelicense.png in Resources */,
+				0EB110FA1BE2132100C0BF62 /* ic_vehiclelicense.png in Resources */,
 				0EB110F31BE2132100C0BF62 /* logo_brand_4.png in Resources */,
 				0EB110F21BE2132100C0BF62 /* logo_brand_3.png in Resources */,
 				0EB111011BE2132100C0BF62 /* statues.json in Resources */,
@@ -1230,6 +1243,7 @@
 				0EB111991BE2133000C0BF62 /* CheckEnquiry.swift in Sources */,
 				0EB111A51BE2133000C0BF62 /* InsuranceGroup.swift in Sources */,
 				0EB1119E1BE2133000C0BF62 /* Featured.swift in Sources */,
+				FFCE78241BE99772003DB584 /* Register.swift in Sources */,
 				0EB111CA1BE2151500C0BF62 /* BugUtils.swift in Sources */,
 				0EB1117D1BE2133000C0BF62 /* OfferDetail.swift in Sources */,
 				0EB111C11BE2133000C0BF62 /* CommentCell.swift in Sources */,
@@ -1254,6 +1268,7 @@
 				0E837A671BE09D2100F3BCCE /* HttpLoader.swift in Sources */,
 				0EB111AC1BE2133000C0BF62 /* PickModel.swift in Sources */,
 				0E837A9C1BE09D2100F3BCCE /* CityList.swift in Sources */,
+				FFCE78261BE99DE0003DB584 /* AboutUs.swift in Sources */,
 				0E837A8E1BE09D2100F3BCCE /* TaylorR.swift in Sources */,
 				0E837A7D1BE09D2100F3BCCE /* UIImage+Extension.swift in Sources */,
 				0E837A881BE09D2100F3BCCE /* City.swift in Sources */,
@@ -1261,6 +1276,7 @@
 				0E837A7B1BE09D2100F3BCCE /* String+Extension.swift in Sources */,
 				0E837A891BE09D2100F3BCCE /* Item.swift in Sources */,
 				0E837A941BE09D2100F3BCCE /* Utils.swift in Sources */,
+				FFCE78281BE9A2C0003DB584 /* Sms.swift in Sources */,
 				0E837A661BE09D2100F3BCCE /* BaseLoader.swift in Sources */,
 				0EB1117B1BE2133000C0BF62 /* EnquiryWatting.swift in Sources */,
 				0EB111CE1BE25AA900C0BF62 /* DetailController.swift in Sources */,
