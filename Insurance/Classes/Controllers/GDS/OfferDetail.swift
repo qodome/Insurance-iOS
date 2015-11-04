@@ -10,29 +10,39 @@ class OfferDetail: GroupedTableDetail {
         button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("confirm_orders"), forState: .Normal)
         view.addSubview(button)
-        items = [[.emptyItem()]]
+        items = [[.emptyItem()], [.emptyItem()]]
         for index in 0..<(data as! Offer).insurance_groups.count.integerValue {
             items += [[]]
             for  insurance in ((data as! Offer).insurance_groups.results[index] as! InsuranceGroup).insurances.results {
-                items[index + 1] += [Item(title: (insurance as! Insurance).name)]
+                items[index + 2] += [Item(title: (insurance as! Insurance).name)]
             }
         }
     }
     
     override func getItemView<T : Offer, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let headViewCell = OfferDeatilHead(style: .Value1, reuseIdentifier: cellId)
-            headViewCell.setData(data)
-            headViewCell.userInteractionEnabled = false
-            return headViewCell
-        } else {
-            cell.detailTextLabel?.text = ((data.insurance_groups.results[indexPath.section - 1]).insurances.results[indexPath.row] as! Insurance).options
+        switch indexPath.section {
+        case 0:
+            let headFirstCell = OfferDeatilCell(style: .Value1, reuseIdentifier: cellId)
+            headFirstCell.setData(data)
+            headFirstCell.userInteractionEnabled = false
+            return headFirstCell
+        case 1:
+            let headSecondCell = OfferDeatilHead(style: .Value1, reuseIdentifier: cellId)
+            headSecondCell.setData(data)
+            headSecondCell.userInteractionEnabled = false
+            return headSecondCell
+        default:
+            cell.detailTextLabel?.text = ((data.insurance_groups.results[indexPath.section - 2]).insurances.results[indexPath.row] as! Insurance).options
         }
         return cell
     }
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            let strSize = "\((data as! Offer).remark)".boundingRectWithSize(CGSizeMake(SCREEN_WIDTH - 2 * PADDING, 5000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)], context: nil)
+            return 60 + ("\((data as! Offer).remark)" == "" ? -10 : strSize.height)
+        }
         return indexPath.section == 0 ? 80 : tableView.rowHeight
     }
     
@@ -41,8 +51,8 @@ class OfferDetail: GroupedTableDetail {
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if data != nil && section != 0 {
-            return (data as! Offer).insurance_groups.results[section - 1].name
+        if data != nil && section > 1 {
+            return (data as! Offer).insurance_groups.results[section - 2].name
         }
         return ""
     }

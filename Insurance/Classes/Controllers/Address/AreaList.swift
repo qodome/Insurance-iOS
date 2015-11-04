@@ -80,7 +80,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
                 }
             } else {
                 if item.url.isEmpty {
-                    NSNotificationCenter.defaultCenter().postNotificationName("city", object: nil, userInfo: ["city" : provinces[indexPath.row]])
+                    NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : provinces[indexPath.row]])
                     cancel()
                 } else {
                     let dest = mCityList()
