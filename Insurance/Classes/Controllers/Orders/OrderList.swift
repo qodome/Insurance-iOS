@@ -9,16 +9,12 @@ class OrderList: TableList {
         title = LocalizedString("orders")
         mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
         refreshMode = .DidLoad
-        listView.registerClass(SubtitleCell.self, forCellReuseIdentifier: cellId)
+        listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
     }
     
-    override func getItemView<V : UITableView, T : Order, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
-        //        cell = listView.dequeueReusableCellWithIdentifier(cellId)
-        cell.textLabel?.text = item.name
-        //        cell.imageView?.sd_setImageWithURL(NSURL(string: item.product!.imageUrl))
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
-        cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: item.totalFee.doubleValue / 100))
+    override func getItemView<V : UITableView, T : Order, C : OrderCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
+        cell.setData(item)
+        cell.accessoryType = .DisclosureIndicator
         return cell
     }
     
@@ -34,5 +30,9 @@ class OrderList: TableList {
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let item = getSelected().first as! Order
         dest.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75 + PADDING
     }
 }

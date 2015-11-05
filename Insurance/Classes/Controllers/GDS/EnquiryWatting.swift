@@ -11,7 +11,7 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
         let imageView = ImageView(frame: CGRectMake(SCREEN_WIDTH / 6, SCREEN_WIDTH / 6, SCREEN_WIDTH / 3 * 2, SCREEN_WIDTH / 3 * 2), cornerRadius: SCREEN_WIDTH / 3)
         imageView.image = UIImage(named: endpoint.containsString("orders") ? "ic_order.png" : "ic_wait.png")
         tableView.addSubview(imageView)
-        let button = getButton(CGRectMake((SCREEN_WIDTH - 160) / 2, view.frame.height - 49 - PADDING - BUTTON_HEIGHT - 64, 160, BUTTON_HEIGHT), title: endpoint.containsString("orders") ? LocalizedString("查看详情") : LocalizedString("取消询价"), theme: Theme(type: .Light, color: endpoint.containsString("orders") ? APP_COLOR : 0xB2B2B1))
+        let button = getButton(CGRectMake((SCREEN_WIDTH - 160) / 2, view.frame.height - TAB_BAR_HEIGHT - 2 * PADDING - BUTTON_HEIGHT - 64, 160, BUTTON_HEIGHT), title: endpoint.containsString("orders") ? LocalizedString("查看详情") : LocalizedString("取消询价"), theme: Theme(type: .Light, color: endpoint.containsString("orders") ? APP_COLOR : 0xB2B2B1))
         button.addTarget(self, action: "cancle", forControlEvents: .TouchUpInside)
         tableView.addSubview(button)
         let detailLabel = UILabel(frame: CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, 0))

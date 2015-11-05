@@ -41,6 +41,7 @@ class Offer: ModelObject {
     var spAdditional: NSNumber!
     var motorTaxes: NSNumber!
     var quotedPrice: NSNumber!
+    var originalPrice: NSNumber!
     var remark = ""
     
     override class func getMapping() -> [String : String] {
@@ -78,6 +79,7 @@ class Offer: ModelObject {
             "sp_additional" : "spAdditional",
             "motor_taxes" : "motorTaxes",
             "quoted_price" : "quotedPrice",
+            "original_price" : "originalPrice",
             "remark" : "remark",
         ]
     }

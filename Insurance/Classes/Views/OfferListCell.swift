@@ -34,8 +34,8 @@ class OfferListCell: UITableViewCell {
         discountLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         discountLabel.frame = CGRectMake(SCREEN_WIDTH - PADDING - 35, 50, 35, 20)
         addSubview(discountLabel)
-        remarkImage = ImageView(frame: CGRectMake(discountLabel.frame.origin.x - 17, discountLabel.frame.origin.y + (discountLabel.bounds.height - 15) / 2, 15, 15))
-        let remarkSettings = FAKIonIcons.xboxIconWithSize(CGSizeSettingsIcon.width)
+        remarkImage = ImageView(frame: CGRectMake(discountLabel.frame.origin.x - 22, discountLabel.frame.origin.y + (discountLabel.bounds.height - 17) / 2, 17, 17))
+        let remarkSettings =  FAKFontAwesome.giftIconWithSize(CGSizeSettingsIcon.width)
         remarkSettings.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(APP_COLOR))
         remarkImage.image = remarkSettings.imageWithSize(CGSizeSettingsIcon)
         remarkImage.contentMode = .ScaleAspectFit
@@ -48,9 +48,7 @@ class OfferListCell: UITableViewCell {
     // MARK: - 💛 自定义方法 (Custom Method)
     func setData(data: Offer) {
         logoImage.sd_setImageWithURL(NSURL(string: data.brand.image_url), placeholderImage: UIImage(named: "logo_brand_2.png"))
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
-        moneyLabel.text = "\(formatter.stringFromNumber(NSNumber(double: data.quotedPrice.doubleValue))!)"
+        moneyLabel.text = getFormatterPrice(data.quotedPrice)
         moneyLabel.sizeToFit()
         moneyLabel.frame.origin = CGPointMake(SCREEN_WIDTH - moneyLabel.bounds.width - PADDING, (50 - moneyLabel.bounds.height) / 2)
         if data.thirdParty != 0 {
@@ -58,12 +56,14 @@ class OfferListCell: UITableViewCell {
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(0, string.length - 3))
             thirdLabel.attributedText = string
             thirdLabel.sizeToFit()
-            thirdLabel.frame.origin = CGPoint(x: SCREEN_WIDTH - 2 * PADDING_INNER - moneyLabel.frame.width - thirdLabel.frame.width, y: moneyLabel.frame.origin.y + (moneyLabel.frame.height - thirdLabel.frame.height) / 2)
+            thirdLabel.frame.origin.x = SCREEN_WIDTH - 2 * PADDING_INNER - moneyLabel.frame.width - thirdLabel.frame.width
+            thirdLabel.center.y = moneyLabel.center.y
         }
         titleLabel.text = data.agent.name
         titleLabel.sizeToFit()
         remarkImage.hidden = data.remark == ""
-        discountLabel.text = "7.1折"
+        let discount: String = String(format: "%.1f", (data.quotedPrice.floatValue - data.motorTaxes.floatValue) / data.originalPrice.floatValue * 10)
+        discountLabel.text = discount < "7" ? "7.0折" : "\(discount)折"
         if data.agent.credit!.orderCount != 0 {
             let deatilFormatter =  NSNumberFormatter()
             deatilFormatter.numberStyle = .PercentStyle
@@ -72,9 +72,14 @@ class OfferListCell: UITableViewCell {
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(0, "\(data.agent.credit!.orderCount)".length))
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(string.length - precentString.length, precentString.length))
             detailLabel.attributedText = string
-            detailLabel.sizeToFit()
-            detailLabel.frame.origin = CGPointMake(PADDING, titleLabel.bounds.height + titleLabel.frame.origin.y + 10)
+            
+        } else {
+            detailLabel.text = "无成交"
         }
+        discountLabel.center.y = titleLabel.center.y
+        remarkImage.center.y = titleLabel.center.y
+        detailLabel.sizeToFit()
+        detailLabel.frame.origin = CGPointMake(PADDING, titleLabel.bounds.height + titleLabel.frame.origin.y + 10)
         var tagsArray: [String] = []
         for (_, valueTag) in data.agent.tags.results.enumerate() {
             tagsArray += [valueTag.name]

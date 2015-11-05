@@ -31,10 +31,12 @@ class OfferDeatilCell: UITableViewCell {
             let formatter =  NSNumberFormatter()
             formatter.numberStyle = .PercentStyle
             let precentString = "\(formatter.stringFromNumber(NSNumber(double: (data.agent.credit?.succCount.doubleValue)!/(data.agent.credit?.orderCount.doubleValue)!))!)"
-            let string = NSMutableAttributedString(string: "交易量\(data.agent.credit!.orderCount)单 成交率\(precentString)")
+            let string = NSMutableAttributedString(string: "交易量\(data.agent.credit!.orderCount)单 成功率\(precentString)")
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(3, "\(data.agent.credit!.orderCount)".length))
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(string.length - precentString.length, precentString.length))
             detailLabel.attributedText = string
+        } else {
+            detailLabel.text = "无成交"
         }
         var tagsArray: [String] = []
         for (_, valueTag) in data.agent.tags.results.enumerate() {

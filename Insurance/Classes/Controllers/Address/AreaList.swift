@@ -75,7 +75,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         case .Open:
             if indexPath.section == 0 {
                 if data != nil {
-                    NSNotificationCenter.defaultCenter().postNotificationName("city", object: nil, userInfo: ["city" : data!])
+                    NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : data!])
                     cancel()
                 }
             } else {
