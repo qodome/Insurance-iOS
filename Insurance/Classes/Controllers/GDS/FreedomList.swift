@@ -23,7 +23,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     override func onPrepare() {
         super.onPrepare()
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
-        items = [[], [], [], [], [.emptyItem()]] //两个组的占位
+        items = [[], [], [], []] //两个组的占位
         if dataArray[0].isEmpty {
             let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("autoinsurance", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
             let temp = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! [NSDictionary]
@@ -59,6 +59,9 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                 }
             }
         }
+        let button = getButton( CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT), title: LocalizedString("enquiry_create"), theme: STYLE_BUTTON_DARK)
+        button.addTarget(self, action: "enquiryCreate", forControlEvents: .TouchUpInside)
+        view.addSubview(button)
     }
     
     override func onCreateLoader() -> BaseLoader {
@@ -79,10 +82,6 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                 Switch.addTarget(self, action: "switchStateChange:", forControlEvents: .ValueChanged)
                 cell.accessoryView = Switch
             }
-        } else {
-            let button = getButton(cell.frame, title: LocalizedString("enquiry_create"), theme: STYLE_BUTTON_DARK)
-            button.addTarget(self, action: "enquiryCreate", forControlEvents: .TouchUpInside)
-            cell.contentView.addSubview(button)
         }
         return cell
     }
@@ -217,5 +216,9 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     // MARK: - 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return titleArray[section]
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section == tableView.numberOfSections - 1 ? BUTTON_HEIGHT : 0
     }
 }

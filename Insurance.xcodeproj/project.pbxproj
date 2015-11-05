@@ -191,9 +191,12 @@
 		FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA81BE748AB00FC8F3A /* ic_order.png */; };
 		FF93DCAB1BE748AB00FC8F3A /* ic_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA91BE748AB00FC8F3A /* ic_wait.png */; };
 		FFCC580E1BE887130065A44C /* JxxTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC580D1BE887130065A44C /* JxxTagsView.swift */; };
+		FFCD9B5B1BEAFC2A0072C66E /* MeHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCD9B5A1BEAFC2A0072C66E /* MeHeadCell.swift */; };
 		FFCE78241BE99772003DB584 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE78231BE99772003DB584 /* Register.swift */; };
 		FFCE78261BE99DE0003DB584 /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE78251BE99DE0003DB584 /* AboutUs.swift */; };
 		FFCE78281BE9A2C0003DB584 /* Sms.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE78271BE9A2C0003DB584 /* Sms.swift */; };
+		FFCE782C1BE9FB26003DB584 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE782B1BE9FB26003DB584 /* OrderCell.swift */; };
+		FFCE782E1BEA0B19003DB584 /* OtherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE782D1BEA0B19003DB584 /* OtherUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,9 +414,12 @@
 		FF93DCA81BE748AB00FC8F3A /* ic_order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order.png; sourceTree = "<group>"; };
 		FF93DCA91BE748AB00FC8F3A /* ic_wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wait.png; sourceTree = "<group>"; };
 		FFCC580D1BE887130065A44C /* JxxTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JxxTagsView.swift; sourceTree = "<group>"; };
+		FFCD9B5A1BEAFC2A0072C66E /* MeHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeHeadCell.swift; sourceTree = "<group>"; };
 		FFCE78231BE99772003DB584 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		FFCE78251BE99DE0003DB584 /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
 		FFCE78271BE9A2C0003DB584 /* Sms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sms.swift; sourceTree = "<group>"; };
+		FFCE782B1BE9FB26003DB584 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		FFCE782D1BEA0B19003DB584 /* OtherUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -908,6 +914,7 @@
 			children = (
 				0EB1115D1BE2133000C0BF62 /* ButtonUtils.swift */,
 				0EB1115E1BE2133000C0BF62 /* CardUtils.swift */,
+				FFCE782D1BEA0B19003DB584 /* OtherUtils.swift */,
 				0EB1115F1BE2133000C0BF62 /* ShareUtils.swift */,
 			);
 			path = Util;
@@ -917,6 +924,8 @@
 			isa = PBXGroup;
 			children = (
 				0EB111611BE2133000C0BF62 /* CardCell.swift */,
+				FFCD9B5A1BEAFC2A0072C66E /* MeHeadCell.swift */,
+				FFCE782B1BE9FB26003DB584 /* OrderCell.swift */,
 				FFCC580D1BE887130065A44C /* JxxTagsView.swift */,
 				0EB111621BE2133000C0BF62 /* CardListCell.swift */,
 				0EB111631BE2133000C0BF62 /* CardTableCell.swift */,
@@ -1168,6 +1177,7 @@
 				0EB1118F1BE2133000C0BF62 /* VehicleCreate.swift in Sources */,
 				0EB111811BE2133000C0BF62 /* Home.swift in Sources */,
 				0EB111851BE2133000C0BF62 /* OrderDetail.swift in Sources */,
+				FFCD9B5B1BEAFC2A0072C66E /* MeHeadCell.swift in Sources */,
 				0EB111B91BE2133000C0BF62 /* Vote.swift in Sources */,
 				0E837A691BE09D2100F3BCCE /* BaseController.swift in Sources */,
 				0EB111731BE2133000C0BF62 /* CardList.swift in Sources */,
@@ -1261,6 +1271,7 @@
 				0EB111AC1BE2133000C0BF62 /* PickModel.swift in Sources */,
 				0E837A9C1BE09D2100F3BCCE /* CityList.swift in Sources */,
 				FFCE78261BE99DE0003DB584 /* AboutUs.swift in Sources */,
+				FFCE782C1BE9FB26003DB584 /* OrderCell.swift in Sources */,
 				0E837A8E1BE09D2100F3BCCE /* TaylorR.swift in Sources */,
 				0E837A7D1BE09D2100F3BCCE /* UIImage+Extension.swift in Sources */,
 				0E837A881BE09D2100F3BCCE /* City.swift in Sources */,
@@ -1300,6 +1311,7 @@
 				0EB1119D1BE2133000C0BF62 /* Enquiry.swift in Sources */,
 				0EB1118C1BE2133000C0BF62 /* ProductDetail.swift in Sources */,
 				0E837A701BE09D2100F3BCCE /* GroupedTableDetail.swift in Sources */,
+				FFCE782E1BEA0B19003DB584 /* OtherUtils.swift in Sources */,
 				0E837A8C1BE09D2100F3BCCE /* UploadParams.swift in Sources */,
 				0EB111971BE2133000C0BF62 /* Card.swift in Sources */,
 				0EB111B01BE2133000C0BF62 /* QueryResult.swift in Sources */,
@@ -1494,6 +1506,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Insurance/Classes/Insurance-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1511,6 +1524,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiaomar.Insurance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Insurance/Classes/Insurance-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

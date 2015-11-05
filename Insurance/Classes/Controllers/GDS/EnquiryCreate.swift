@@ -27,7 +27,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         locationManager.startUpdatingLocation()
         items = [
             [Item(title: LocalizedString("投保城市"), url: "local://")],
-            [Item(title: LocalizedString("新车未上牌")),Item(title: LocalizedString("行驶证正面照片"), url: "local://")],
+            [Item(title: LocalizedString("新车未上牌")),Item(title: LocalizedString("行驶证正本照片"), url: "local://")],
             [Item.emptyItem()]
         ]
         textField = UITextField()
@@ -63,7 +63,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
                 accessSwitch.addTarget(self, action: "switchStateChange:", forControlEvents: .ValueChanged)
                 cell.accessoryView = accessSwitch
             }else {
-                cell.textLabel?.text = onOrOff ? LocalizedString("车辆合格证照片") : LocalizedString("行驶证正面照片")
+                cell.textLabel?.text = onOrOff ? LocalizedString("车辆合格证照片") : LocalizedString("行驶证正本照片")
                 let imageView = UIImageView(frame: CGRectMake(0, 0, 80, 60))
                 imageView.image = UIImage(named: onOrOff ? "ic_velicense.png" : "ic_vehiclelicense.png")
                 cell.accessoryView = imageView

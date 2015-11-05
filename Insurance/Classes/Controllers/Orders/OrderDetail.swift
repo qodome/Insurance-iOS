@@ -13,7 +13,7 @@ class OrderDetail: GroupedTableDetail {
                 Item(title: "car_license_number"),
                 Item(title: "total_fee"),
                 Item(title: "created_time"),
-                Item(title: "start_time"),
+                Item(title: "updated_time"),
                 Item(title: "status")
             ]
         ]
@@ -33,9 +33,9 @@ class OrderDetail: GroupedTableDetail {
         if indexPath.section == 0 {
             switch item.title {
             case "total_fee":
-                let formatter = NSNumberFormatter()
-                formatter.numberStyle = .CurrencyStyle
-                cell.detailTextLabel?.text = formatter.stringFromNumber(NSNumber(double: data.totalFee.doubleValue / 100))
+                cell.detailTextLabel?.text = getFormatterPrice(data.totalFee)
+            case "status":
+                cell.detailTextLabel?.text = getStatuesString(data.status)
             default: break
             }
         }

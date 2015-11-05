@@ -38,12 +38,6 @@ extension BaseController {
         return UIImage(data: imageData)!
     }
     
-    func getStatusDic() -> NSDictionary {
-        let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("statues", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
-        let temp = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! NSDictionary
-        return temp
-    }
-    
     // 判断是否定位
     func checkAllowLocation(showAlert: Bool) -> Bool {
         if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .AuthorizedAlways || CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {

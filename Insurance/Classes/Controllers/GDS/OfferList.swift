@@ -60,4 +60,8 @@ class OfferList: TableList {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return TAB_BAR_HEIGHT + 64
+    }
 }
