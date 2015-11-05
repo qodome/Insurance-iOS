@@ -31,11 +31,8 @@ class Flight: GroupedTableDetail {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("popping/categories")
+        mapping = smartListMapping(Category.self)
         refreshMode = .DidLoad
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        return HttpLoader(endpoint: endpoint, mapping: smartListMapping(Category.self))
     }
     
     override func onLoadSuccess<E : ListModel>(entity: E) {

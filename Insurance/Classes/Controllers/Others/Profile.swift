@@ -8,17 +8,17 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
         super.onPrepare()
         items = [
             [
-                Item(title: "avatar", dest: TextFieldUpdate.self),
-                Item(title: "nickname", dest: TextFieldUpdate.self, url: "local://user_update"),
+                Item(title: "avatar", selectable: true),
+                Item(title: "nickname", dest: TextFieldUpdate.self, storyboard: false),
                 Item(title: "username")
             ],
             [
-                Item(title: "gender", dest: CheckListUpdate.self, url: "local://user_check"),
-                Item(title: "about", dest: TextFieldUpdate.self, url: "local://user_update")
+                Item(title: "gender", dest: CheckListUpdate.self, storyboard: false),
+                Item(title: "about", dest: TextFieldUpdate.self, storyboard: false)
             ],
             [
-                Item(title: "phone_number", dest: TextFieldUpdate.self, url: "local://user_update"),
-                Item(title: "id_card_number", dest: TextFieldUpdate.self, url: "local://user_update")
+                Item(title: "phone_number", dest: TextFieldUpdate.self, storyboard: false),
+                Item(title: "id_card_number", dest: TextFieldUpdate.self, storyboard: false)
             ]
         ]
     }
@@ -51,7 +51,7 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
         }
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         dest.setValue(data, forKey: "data")
         dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
         if dest.isKindOfClass(UpdateController) {

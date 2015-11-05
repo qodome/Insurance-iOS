@@ -7,18 +7,12 @@ class OrderList: TableList {
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("orders")
+        mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
     }
     
-    override func onCreateLoader() -> BaseLoader? {
-        let mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
-    }
-    
     override func getItemView<V : UITableView, T : Order, C : OrderCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
         cell.setData(item)
         cell.accessoryType = .DisclosureIndicator
         return cell
@@ -33,7 +27,7 @@ class OrderList: TableList {
         }
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let item = getSelected().first as! Order
         dest.setValue(getEndpoint("orders/\(item.id)"), forKey: "endpoint")
     }

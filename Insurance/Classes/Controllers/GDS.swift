@@ -31,12 +31,9 @@ class GDS: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(CheckEnquiry.self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeIndex:"), name: "changeIndex", object: nil)
         pageMenu = CAPSPageMenu(viewControllers: [], frame: view.frame, options: nil)
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        return HttpLoader(endpoint: endpoint, mapping: smartMapping(CheckEnquiry.self))
     }
     
     override func onLoadSuccess<E : CheckEnquiry>(entity: E) {

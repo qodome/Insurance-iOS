@@ -8,6 +8,7 @@ class ProductDetail: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(Product.self)
         refreshMode = .DidLoad
         items = [
             [Item(title: "name")],
@@ -33,11 +34,6 @@ class ProductDetail: GroupedTableDetail {
         view.addSubview(button)
     }
     
-    override func onCreateLoader() -> BaseLoader? {
-        let mapping = smartMapping(Product.self)
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
-    }
-    
     override func onLoadSuccess<E : Product>(entity: E) {
         super.onLoadSuccess(entity)
         imageView.sd_setImageWithURL(NSURL(string: entity.imageUrl))
@@ -58,7 +54,7 @@ class ProductDetail: GroupedTableDetail {
         performSegueWithIdentifier("segue.product_detail-order_create", sender: self)
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let product = data as! Product
         let order = Order()
         order.name = product.name

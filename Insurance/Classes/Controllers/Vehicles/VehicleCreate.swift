@@ -4,7 +4,8 @@
 
 class VehicleCreate: TextFieldCreate {
     // MARK: - 🐤 Taylor
-    override func onCreateLoader() -> BaseLoader? {
-        return HttpLoader(endpoint: endpoint, type: Vehicle.self)
+    override func onPrepare() {
+        super.onPrepare()
+        mapping = smartMapping(Vehicle.self)
     }
 }

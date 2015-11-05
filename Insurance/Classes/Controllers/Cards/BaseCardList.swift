@@ -9,13 +9,9 @@ class BaseCardList: CollectionList {
     // MARK: - 🐤 Taylor
     override func onPrepare<T : UICollectionView>(listView: T) {
         super.onPrepare(listView)
-        endpoint = getEndpoint("popping/topcharts")
+        endpoint = "\(getEndpoint("popping/topcharts"))&category=\(category.name)"
+        mapping = smartListMapping(Card.self)
         refreshMode = .DidLoad
-    }
-    
-    override func onCreateLoader() -> BaseLoader {
-        let mapping = smartListMapping(Card.self)
-        return HttpLoader(endpoint: endpoint, mapping: mapping, parameters: ["category" : category.name])
     }
     
     override func getItemView<V : UICollectionView, T : Card, C : CardListCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
@@ -44,7 +40,7 @@ class BaseCardList: CollectionList {
         }
     }
     
-    override func onSegue(segue: UIStoryboardSegue, dest: UIViewController, id: String) {
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let item = getSelected().first
         dest.setValue(item, forKey: "data")
     }

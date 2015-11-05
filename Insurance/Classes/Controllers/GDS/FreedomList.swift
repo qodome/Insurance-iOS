@@ -22,6 +22,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(Enquiry.self)
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], []] //两个组的占位
         if dataArray[0].isEmpty {
@@ -62,10 +63,6 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         let button = getButton( CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT), title: LocalizedString("enquiry_create"), theme: STYLE_BUTTON_DARK)
         button.addTarget(self, action: "enquiryCreate", forControlEvents: .TouchUpInside)
         view.addSubview(button)
-    }
-    
-    override func onCreateLoader() -> BaseLoader {
-        return HttpLoader(endpoint: getEndpoint("enquiries"), mapping: smartMapping(Enquiry.self))
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
