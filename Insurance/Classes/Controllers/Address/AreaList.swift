@@ -30,7 +30,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
             if cityArray.isEmpty {
                 items[1] += [Item(title: ProModel.name, selectable: true)]
             } else {
-                items[1] += [Item(title: ProModel.name, url: "local://")]
+                items[1] += [Item(title: ProModel.name, dest: mCityList.self, storyboard: false)]
             }
         }
     }
@@ -83,15 +83,18 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
                     NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : provinces[indexPath.row]])
                     cancel()
                 } else {
-                    let dest = mCityList()
-                    dest.title = provinces[indexPath.row].name
-                    dest.data = provinces[indexPath.row].cities
-                    navigationController?.pushViewController(dest, animated: true)
+                    super.onPerform(action, indexPath: indexPath, item: item)
                 }
             }
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
         }
+    }
+    
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        let province = provinces[tableView.indexPathsForSelectedRows!.first!.row]
+        dest.title = province.name
+        dest.setValue(province.cities, forKey: "data")
     }
     
     // MARK: - 💜 UITableViewDataSource

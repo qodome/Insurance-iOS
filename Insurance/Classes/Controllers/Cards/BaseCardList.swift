@@ -28,12 +28,13 @@ class BaseCardList: CollectionList {
                 UIApplication.sharedApplication().openURL(NSURL(string: item.url)!)
             } else {
                 let dest = CardWebDetail()
+                dest.title = item.caption
                 dest.setValue(item.url, forKey: "url")
-                dest.setValue(item.caption, forKey: "title")
                 dest.setValue(item, forKey: "data")
                 dest.hidesBottomBarWhenPushed = true
                 navController?.pushViewController(dest, animated: true) // TODO: 跳转进度条蓝色
                 // performSegueWithIdentifier("segue.home-web_card_detail", sender: self)
+                // 待调整为框架通用模式
             }
         default:
             super.onPerform(action, indexPath: indexPath, item: item)

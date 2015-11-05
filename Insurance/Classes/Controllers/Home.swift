@@ -167,7 +167,7 @@ class Home: MyList {
         switch id {
         case "card_list":
             if selected.isKindOfClass(Special) {
-                dest.setValue((selected as! Special).title, forKey: "title")
+                dest.title = (selected as! Special).title
                 dest.setValue((selected as! Special).cards, forKey: "data")
             }
             dest.setValue(destEndpoint, forKey: "endpoint")

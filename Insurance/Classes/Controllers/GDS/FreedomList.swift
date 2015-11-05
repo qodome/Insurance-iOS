@@ -7,16 +7,16 @@ protocol FreedomListDelegate {
 }
 
 class FreedomList: GroupedTableDetail, PickerListDelegate {
-    var mDelegate: FreedomListDelegate?
+    var delegate: FreedomListDelegate?
     var dataArray: [[Freedom]] = [[]]
     var imageDic: [String : UIImage] = [:]
     var dataDic = NSMutableDictionary()
     var selectedIndexPath = NSIndexPath()
-    let titleArray: [String] = ["基础险", "附加险", "不计免赔", "其他", ""]
+    let titleArray = ["基础险", "附加险", "不计免赔", "其他", ""]
     
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidDisappear(animated: Bool) {
-        mDelegate?.backFreedomData(dataDic, dataArray: dataArray)
+        delegate?.backFreedomData(dataDic, dataArray: dataArray)
     }
     
     // MARK: - 🐤 Taylor

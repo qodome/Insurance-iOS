@@ -43,13 +43,14 @@ class OfferList: TableList {
     override func onPerform<T : Offer>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
-            let offerDetail = OfferDetail()
-            offerDetail.data = item
-            offerDetail.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(offerDetail, animated: true)
+            startActivity(Item(title: "", dest: OfferDetail.self, storyboard: false))
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
         }
+    }
+    
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        dest.setValue(getSelected().first, forKey: "data")
     }
     
     // MARK: - 💜 UITableViewDelegate

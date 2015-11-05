@@ -64,6 +64,11 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        dest.setValue("agreement", forKey: "nameString")
+        dest.setValue("注册协议", forKey: "titleString")
+    }
+    
     // MARK: - 💜 UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if let next = view.viewWithTag(textField.tag + 1) {
@@ -127,9 +132,6 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     }
     
     func agreement() {
-        let dest = AboutUs()
-        dest.nameString = "agreement"
-        dest.titleString = "注册协议"
-        navigationController?.pushViewController(dest, animated: true)
+        startActivity(Item(title: "", dest: AboutUs.self, storyboard: false))
     }
 }

@@ -26,13 +26,14 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : "", "index" : "0"])
     }
     
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        dest.setValue(endpoint, forKey: "endpoint")
+    }
+    
     // MARK: - 💛 自定义方法 (Custom Method)
     func cancle() {
         if endpoint.containsString("orders") {
-            let dest = OrderDetail()
-            dest.endpoint = endpoint
-            dest.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(dest, animated: true)
+            startActivity(Item(title: "", dest: OrderDetail.self, storyboard: false))
         } else {
             let alert = UIAlertController(title: "您确定要取消询价吗", message: nil, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "否", style: .Default, handler: nil))

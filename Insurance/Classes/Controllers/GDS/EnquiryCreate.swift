@@ -27,7 +27,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         items = [
-            [Item(title: LocalizedString("投保城市"), url: "local://")],
+            [Item(title: LocalizedString("投保城市"), dest: AreaList.self, storyboard: false)],
             [Item(title: LocalizedString("新车未上牌")),Item(title: LocalizedString("行驶证正本照片"), url: "local://")],
             [Item.emptyItem()]
         ]
@@ -89,10 +89,6 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         switch action {
         case .Open:
             switch indexPath.section {
-            case 0:
-                let areaList = AreaList()
-                areaList.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(areaList, animated: true)
             case 1:
                 let picker = UIImagePickerController()
                 let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
@@ -117,8 +113,17 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         }
     }
     
-    // MARK: - 💛 自定义方法 (Custom Method)
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        if dest.isKindOfClass(FreedomList.self) {
+            dest.setValue(data, forKey: "data")
+            dest.setValue(imageDic, forKey: "imageDic")
+            dest.setValue(freedomArray, forKey: "dataArray")
+            (dest as! FreedomList).delegate = self
+        }
+    }
     
+    
+    // MARK: - 💛 自定义方法 (Custom Method)
     func switchStateChange(sw:UISwitch) {
         onOrOff = sw.on
         tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 1)], withRowAnimation: .None)
@@ -131,13 +136,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     
     func freedom() {
         if imageDic["car_license"] != nil {
-            let Free = FreedomList()
-            Free.hidesBottomBarWhenPushed = true
-            Free.imageDic = imageDic
-            Free.dataArray = freedomArray
-            Free.data = data
-            Free.mDelegate = self
-            navigationController?.pushViewController(Free, animated: true)
+            startActivity(Item(title: "", dest: FreedomList.self, storyboard: false))
         } else {
             showAlert(self, title: "请上传行驶证照片")
         }
