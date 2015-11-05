@@ -7,12 +7,9 @@ class Discover: TableSearch {
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         endpoint = getEndpoint("popping/categories")
+        mapping = smartListMapping(Category.self)
         refreshMode = .DidLoad
         // searchController.searchBar.scopeButtonTitles = ["a", "b"]
-    }
-    
-    override func onCreateLoader() -> BaseLoader {
-        return HttpLoader(endpoint: endpoint, mapping: smartListMapping(Category.self))
     }
     
     override func getItemView<V : UITableView, T : Category, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {

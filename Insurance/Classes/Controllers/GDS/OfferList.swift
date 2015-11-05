@@ -8,6 +8,17 @@ class OfferList: TableList {
     // MARK: - 🐤 Taylor
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
+        mapping = smartMapping(ListModel.self)
+        let offerMapping = smartMapping(Offer.self, children: ["brand" : Brand.self])
+        let agentMapping = smartMapping(Branch.self, children: ["credit" : BusinessCredit.self])
+        agentMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "tags", toKeyPath: "tags", withMapping: smartListMapping(Tag.self)))
+        offerMapping.addRelationshipMappingWithSourceKeyPath("agent", mapping: agentMapping)
+        let groupMapping = smartMapping(ListModel.self)
+        let groupNext = smartMapping(InsuranceGroup.self)
+        groupNext.addRelationshipMappingWithSourceKeyPath("insurances", mapping: smartListMapping(Insurance.self))
+        groupMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: groupNext))
+        offerMapping.addRelationshipMappingWithSourceKeyPath("insurance_groups", mapping: groupMapping)
+        mapping!.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: offerMapping))
         listView.registerClass(OfferListCell.self, forCellReuseIdentifier: cellId)
         let brandView = UIView(frame: CGRectMake(0, 0 , SCREEN_WIDTH, 35))
         (listView as UITableView).tableHeaderView = brandView
@@ -17,21 +28,6 @@ class OfferList: TableList {
         brandView.addSubview(headLabel)
         view.addSubview(brandView)
         refreshMode = .WillAppear
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        let firstMapping = smartMapping(ListModel.self)
-        let mapping = smartMapping(Offer.self, children: ["brand" : Brand.self])
-        let agentMapping = smartMapping(Branch.self, children: ["credit" : BusinessCredit.self])
-        agentMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "tags", toKeyPath: "tags", withMapping: smartListMapping(Tag.self)))
-        mapping.addRelationshipMappingWithSourceKeyPath("agent", mapping: agentMapping)
-        let groupMapping = smartMapping(ListModel.self)
-        let groupNext = smartMapping(InsuranceGroup.self)
-        groupNext.addRelationshipMappingWithSourceKeyPath("insurances", mapping: smartListMapping(Insurance.self))
-        groupMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: groupNext))
-        mapping.addRelationshipMappingWithSourceKeyPath("insurance_groups", mapping: groupMapping)
-        firstMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: mapping))
-        return HttpLoader(endpoint: endpoint, mapping: firstMapping)
     }
     
     override func onLoadSuccess<E : ListModel>(entity: E) {

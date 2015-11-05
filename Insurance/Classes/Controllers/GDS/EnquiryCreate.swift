@@ -19,6 +19,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(Enquiry.self)
         data = Enquiry()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onBackCity:", name: "city", object: nil)
         // 初始化定位
@@ -45,10 +46,6 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapGesture:")
         tapGesture.delegate = self
         tableView.addGestureRecognizer(tapGesture)
-    }
-    
-    override func onCreateLoader() -> BaseLoader {
-        return HttpLoader(endpoint: endpoint, mapping: smartMapping(Enquiry.self))
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {

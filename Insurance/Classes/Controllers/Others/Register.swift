@@ -21,6 +21,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(User.self)
         textFieldArray = [phoneField, nameField, newSecuryField, nextSecuryField, codeField]
         let placeArray = [ LocalizedString("输入手机号"), LocalizedString("输入昵称"), LocalizedString("输入密码"), LocalizedString("确认密码"), LocalizedString("输入验证码")]
         for (index, field) in textFieldArray.enumerate() {
@@ -57,11 +58,6 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         }
         cell.contentView.addSubview(field)
         return cell
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        let mapping = smartMapping(User.self)
-        return HttpLoader(endpoint: getEndpoint("users"), mapping: mapping)
     }
     
     override func onLoadSuccess<E : User>(entity: E) {

@@ -8,6 +8,7 @@ class ProductDetail: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(Product.self)
         refreshMode = .DidLoad
         items = [
             [Item(title: "name")],
@@ -31,11 +32,6 @@ class ProductDetail: GroupedTableDetail {
         button.addTarget(self, action: "buy", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("buy"), forState: .Normal)
         view.addSubview(button)
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        let mapping = smartMapping(Product.self)
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
     
     override func onLoadSuccess<E : Product>(entity: E) {

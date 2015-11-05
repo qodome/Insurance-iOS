@@ -6,6 +6,7 @@ class OrderDetail: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(Order.self)
         items = [
             [
                 Item(title: "id"),
@@ -18,11 +19,6 @@ class OrderDetail: GroupedTableDetail {
             ]
         ]
         refreshMode = .DidLoad
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        let mapping = smartMapping(Order.self)
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
     
     override func onLoadSuccess<E : Order>(entity: E) {

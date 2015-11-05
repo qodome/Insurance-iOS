@@ -8,6 +8,8 @@ class OrderCreate: CreateController {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("orders")
+        // 不解析Product的话，生成订单取消支付再提交会导致product是nil而报错
+        let mapping = smartMapping(Order.self, children: ["product" : Product.self])
         items = [
             [
                 Item(title: "name"),
@@ -25,12 +27,6 @@ class OrderCreate: CreateController {
         button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("confirm"), forState: .Normal)
         view.addSubview(button)
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        // 不解析Product的话，生成订单取消支付再提交会导致product是nil而报错
-        let mapping = smartMapping(Order.self, children: ["product" : Product.self])
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
     
     override func onCreateParameters<T : Order>(data: T?) -> [String : AnyObject]? {

@@ -6,6 +6,7 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(Enquiry.self)
         tableView.backgroundColor = .whiteColor()
         let imageView = ImageView(frame: CGRectMake(SCREEN_WIDTH / 6, SCREEN_WIDTH / 6, SCREEN_WIDTH / 3 * 2, SCREEN_WIDTH / 3 * 2), cornerRadius: SCREEN_WIDTH / 3)
         imageView.image = UIImage(named: endpoint.containsString("orders") ? "ic_order.png" : "ic_wait.png")
@@ -19,11 +20,7 @@ class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
         detailLabel.center = CGPointMake(SCREEN_WIDTH / 2, button.frame.origin.y - 2 * PADDING - detailLabel.frame.height / 2)
         tableView.addSubview(detailLabel)
     }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        return HttpLoader(endpoint: endpoint, mapping: smartMapping(Enquiry.self))
-    }
-    
+
     override func onLoadSuccess<E : CheckEnquiry>(entity: E) {
         super.onLoadSuccess(entity)
         NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : "", "index" : "0"])

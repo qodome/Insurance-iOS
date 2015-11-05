@@ -7,13 +7,9 @@ class OrderList: TableList {
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("orders")
+        mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
         refreshMode = .DidLoad
         listView.registerClass(SubtitleCell.self, forCellReuseIdentifier: cellId)
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        let mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
     
     override func getItemView<V : UITableView, T : Order, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {

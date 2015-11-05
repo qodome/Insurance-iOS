@@ -37,6 +37,9 @@ class Home: MyList {
     override func onPrepare<T : UICollectionView>(listView: T) {
         super.onPrepare(listView)
         endpoint = getEndpoint("home")
+        mapping = smartListMapping(Card.self, children: ["user" : User.self, "comments" : ListModel.self, "likes" : ListModel.self], rootType: HomeModel.self)
+        mapping!.addRelationshipMappingWithSourceKeyPath("featured", mapping: smartListMapping(Featured.self))
+        mapping!.addRelationshipMappingWithSourceKeyPath("specials", mapping: smartListMapping(Special.self, children: ["cards" : ListModel.self]))
         refreshMode = .WillAppear
         listView.registerClass(CardCell.self, forCellWithReuseIdentifier: cellId)
         listView.registerClass(PageCell.self, forCellWithReuseIdentifier: pageCellId)
@@ -50,13 +53,6 @@ class Home: MyList {
         //        })
         NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "hiddenBgview",
             userInfo: nil, repeats: false)
-    }
-    
-    override func onCreateLoader() -> BaseLoader {
-        let mapping = smartListMapping(Card.self, children: ["user" : User.self, "comments" : ListModel.self, "likes" : ListModel.self], rootType: HomeModel.self)
-        mapping.addRelationshipMappingWithSourceKeyPath("featured", mapping: smartListMapping(Featured.self))
-        mapping.addRelationshipMappingWithSourceKeyPath("specials", mapping: smartListMapping(Special.self, children: ["cards" : ListModel.self]))
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
     
     override func onLoadSuccess<E : HomeModel>(entity: E) {

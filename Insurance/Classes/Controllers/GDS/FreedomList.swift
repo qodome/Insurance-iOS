@@ -22,6 +22,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        mapping = smartMapping(Enquiry.self)
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], [], [.emptyItem()]] //两个组的占位
         if dataArray[0].isEmpty {
@@ -59,10 +60,6 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                 }
             }
         }
-    }
-    
-    override func onCreateLoader() -> BaseLoader {
-        return HttpLoader(endpoint: getEndpoint("enquiries"), mapping: smartMapping(Enquiry.self))
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
