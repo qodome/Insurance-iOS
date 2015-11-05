@@ -10,7 +10,7 @@ class UserDetail: GroupedTableDetail {
         iconLikes.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_RED))
         items = [
             [Item(title: "profile", dest: Profile.self)],
-            [Item(icon: iconLikes.imageWithSize(CGSizeSettingsIcon), title: "likes")]
+//            [Item(icon: iconLikes.imageWithSize(CGSizeSettingsIcon), title: "likes")]
         ]
         refreshMode = .DidAppear // TIP: 用DidAppear而非WillAppear中保证回滑时候选中状态平滑消失
         mapping = smartMapping(User.self)
@@ -28,8 +28,8 @@ class UserDetail: GroupedTableDetail {
             mCell.setHeadViewData(data)
             mCell.accessoryType = .DisclosureIndicator
             return mCell
-        case "likes":
-            cell.detailTextLabel?.text = "\(data.likes.count)"
+//        case "likes":
+//            cell.detailTextLabel?.text = "\(data.likes.count)"
         default: break
         }
         return cell

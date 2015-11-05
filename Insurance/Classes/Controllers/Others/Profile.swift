@@ -17,8 +17,10 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
                 Item(title: "about", dest: TextFieldUpdate.self, storyboard: false)
             ],
             [
+//                Item(title: "phone_number"),
                 Item(title: "phone_number", dest: TextFieldUpdate.self, storyboard: false),
-                Item(title: "id_card_number", dest: TextFieldUpdate.self, storyboard: false)
+                Item(title: "id_card_number")
+//                Item(title: "id_card_number", dest: TextFieldUpdate.self, storyboard: false)
             ]
         ]
     }
@@ -53,7 +55,7 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         dest.setValue(data, forKey: "data")
-        dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
+        dest.setValue(getSelected().first!.title, forKey: "fieldName")
         if dest.isKindOfClass(UpdateController) {
             (dest as! UpdateController).delegate = self
             let endpoint = getEndpoint("users/\((data as! User).id)")
