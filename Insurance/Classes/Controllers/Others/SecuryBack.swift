@@ -45,10 +45,10 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         let field = textFieldArray[indexPath.row]
-        field.frame = CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, cell.frame.height)
+        field.frame = CGRectMake(PADDING, 0, view.frame.width - 2 * PADDING, cell.frame.height)
         if indexPath.row == 3 {
-            field.frame.size.width = SCREEN_WIDTH - 2 * PADDING - 80
-            signOutBtn = getButton(CGRectMake(SCREEN_WIDTH - 80 - PADDING / 2, 5, 80, cell.frame.height - 10), title: LocalizedString("短信验证"), theme: STYLE_BUTTON_LIGHT)
+            field.frame.size.width = view.frame.width - 2 * PADDING - 80
+            signOutBtn = getButton(CGRectMake(view.frame.width - 80 - PADDING / 2, 5, 80, cell.frame.height - 10), title: LocalizedString("短信验证"), theme: STYLE_BUTTON_LIGHT)
             signOutBtn.addTarget(self, action: "getCode", forControlEvents: .TouchUpInside)
             cell.contentView.addSubview(signOutBtn)
         }
