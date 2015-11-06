@@ -20,8 +20,8 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
         detailLabel.center = CGPointMake(SCREEN_WIDTH / 2, button.frame.origin.y - 2 * PADDING - detailLabel.frame.height / 2)
         tableView.addSubview(detailLabel)
     }
-
-    override func onLoadSuccess<E : CheckEnquiry>(entity: E) {
+    
+    override func onLoadSuccess<E : Enquiry>(entity: E) {
         super.onLoadSuccess(entity)
         NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : "", "index" : "0"])
     }
@@ -35,12 +35,9 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
         if endpoint.containsString("orders") {
             startActivity(Item(title: "", dest: OrderDetail.self, storyboard: false))
         } else {
-            let alert = UIAlertController(title: "您确定要取消询价吗", message: nil, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "否", style: .Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "是", style: .Default, handler: { action in
+            showAlert(self, title: LocalizedString("您确定要取消询价吗"), action: UIAlertAction(title: LocalizedString("ok"), style: .Default, handler: { action in
                 self.loader?.update(parameters: ["status" : "c"])
             }))
-            presentViewController(alert, animated: true, completion: nil)
         }
     }
 }

@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate ,CLLocationManagerDelegate, FreedomListDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
+class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
     let locationManager = CLLocationManager()
     var imageDic: [String : UIImage] = [:]
     var brands: [PickerModel] = []
@@ -29,9 +29,15 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         items = [
-            [Item(title: LocalizedString("投保城市"), dest: AreaList.self, storyboard: false)],
-            [Item(title: LocalizedString("新车未上牌")),Item(title: LocalizedString("行驶证正本照片"), url: "local://")],
-            [Item.emptyItem()]
+            [
+                Item(title: LocalizedString("投保城市"), dest: AreaList.self, storyboard: false)],
+            [
+                Item(title: LocalizedString("新车未上牌")),
+                Item(title: LocalizedString("行驶证正本照片"), selectable: true)
+            ],
+            [
+                Item.emptyItem()
+            ]
         ]
         textField.returnKeyType = .Done
         textField.delegate = self
@@ -47,6 +53,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapGesture:")
         tapGesture.delegate = self
         tableView.addGestureRecognizer(tapGesture)
+//        checkAllowLocation(true)
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
@@ -94,21 +101,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         case .Open:
             switch indexPath.section {
             case 1:
-                let picker = UIImagePickerController()
-                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-                alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { action in
-                    if UIImagePickerController.isSourceTypeAvailable(.Camera) { // 模拟器没有相机
-                        picker.sourceType = .Camera
-                        picker.delegate = self
-                        self.presentViewController(picker, animated: true, completion: nil)
-                    }
-                    })
-                alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { action in
-                    picker.delegate = self
-                    self.presentViewController(picker, animated: true, completion: nil)
-                    })
-                showActionSheet(self, alert: alert)
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                startImageSheet()
             default:
                 super.onPerform(action, indexPath: indexPath, item: item)
             }
@@ -148,7 +141,7 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     
     func commit() {
         if imageDic["car_license"] != nil {
-            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(UIImage(data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!)!, 0.6)!, controller: self, success: { imageUrl in
+            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!, controller: self, success: { imageUrl in
                 let mEnquiry = self.data as! Enquiry
                 self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
             })
