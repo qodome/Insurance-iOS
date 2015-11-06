@@ -349,8 +349,8 @@
 		0EB111231BE2133000C0BF62 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		0EB111241BE2133000C0BF62 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		0EB111251BE2133000C0BF62 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		0EB111261BE2133000C0BF62 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
-		0EB111271BE2133000C0BF62 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		0EB111261BE2133000C0BF62 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignIn.swift; path = ../Others/SignIn.swift; sourceTree = "<group>"; };
+		0EB111271BE2133000C0BF62 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUp.swift; path = ../Others/SignUp.swift; sourceTree = "<group>"; };
 		0EB111291BE2133000C0BF62 /* ProductDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		0EB1112C1BE2133000C0BF62 /* UserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
 		0EB1112E1BE2133000C0BF62 /* VehicleCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleCreate.swift; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 		FF93DCA91BE748AB00FC8F3A /* ic_wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wait.png; sourceTree = "<group>"; };
 		FFCC580D1BE887130065A44C /* JxxTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JxxTagsView.swift; sourceTree = "<group>"; };
 		FFCD9B5A1BEAFC2A0072C66E /* MeHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeHeadCell.swift; sourceTree = "<group>"; };
-		FFCE78231BE99772003DB584 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		FFCE78231BE99772003DB584 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Register.swift; path = ../Others/Register.swift; sourceTree = "<group>"; };
 		FFCE78251BE99DE0003DB584 /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
 		FFCE78271BE9A2C0003DB584 /* Sms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sms.swift; sourceTree = "<group>"; };
 		FFCE782B1BE9FB26003DB584 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
@@ -456,6 +456,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E54BA491BECA956008849B4 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				0EB111261BE2133000C0BF62 /* SignIn.swift */,
+				0EB111271BE2133000C0BF62 /* SignUp.swift */,
+				FFCE78231BE99772003DB584 /* Register.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		0E8379321BE07D9400F3BCCE = {
 			isa = PBXGroup;
 			children = (
@@ -766,6 +776,7 @@
 		0EB111051BE2133000C0BF62 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0E54BA491BECA956008849B4 /* Account */,
 				0EB1111C1BE2133000C0BF62 /* Main.swift */,
 				0EB1111B1BE2133000C0BF62 /* Home.swift */,
 				0EB111111BE2133000C0BF62 /* Discover.swift */,
@@ -837,10 +848,7 @@
 				0EB111231BE2133000C0BF62 /* About.swift */,
 				0EB111241BE2133000C0BF62 /* Profile.swift */,
 				0EB111251BE2133000C0BF62 /* Settings.swift */,
-				0EB111261BE2133000C0BF62 /* SignIn.swift */,
-				0EB111271BE2133000C0BF62 /* SignUp.swift */,
 				FFCE78251BE99DE0003DB584 /* AboutUs.swift */,
-				FFCE78231BE99772003DB584 /* Register.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
