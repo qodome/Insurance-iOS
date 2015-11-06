@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdateDelegate {
+class Profile: GroupedTableDetail, UpdateDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
@@ -20,7 +20,10 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
                 //                Item(title: "phone_number"),
                 Item(title: "phone_number", dest: TextFieldUpdate.self, storyboard: false),
                 Item(title: "id_card_number")
+<<<<<<< HEAD
                 //                Item(title: "id_card_number", dest: TextFieldUpdate.self, storyboard: false)
+=======
+>>>>>>> NY
             ]
         ]
     }
@@ -44,7 +47,7 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
         case .Open:
             switch item.title {
             case "avatar":
-                startImageSheet()
+                startImageSheet(true)
             default:
                 super.onPerform(action, indexPath: indexPath, item: item)
             }
@@ -73,25 +76,6 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
         tableView.reloadData()
     }
     
-    // MARK: -
-    func startImageSheet() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { action in
-            if UIImagePickerController.isSourceTypeAvailable(.Camera) { // 模拟器没有相机
-                picker.sourceType = .Camera
-                picker.delegate = self
-                self.presentViewController(picker, animated: true, completion: nil)
-            }
-            })
-        alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { action in
-            picker.delegate = self
-            self.presentViewController(picker, animated: true, completion: nil)
-            })
-        showActionSheet(self, alert: alert)
-    }
-    
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return getItem(indexPath).title == "avatar" ? 80 : tableView.rowHeight
@@ -101,7 +85,7 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
             uploadToCloud("oss", filename: "upload/free/head.jpg", data:
-                UIImageJPEGRepresentation(UIImage(data: UIImageJPEGRepresentation(info["UIImagePickerControllerOriginalImage"] as! UIImage, 0.6)!)!, 0.6)!, controller: self, success: { imageUrl in
+                UIImageJPEGRepresentation(info[UIImagePickerControllerEditedImage] as! UIImage, 0.6)!, controller: self, success: { imageUrl in
                     HttpLoader(endpoint: getEndpoint("users/\((self.data as! User).id)"), type: User.self).patch(parameters: ["image_url" : "\(MEDIA_URL)/\(imageUrl)"])
                     (self.data as! User).imageUrl = "\(MEDIA_URL)/\(imageUrl)"
                     self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)

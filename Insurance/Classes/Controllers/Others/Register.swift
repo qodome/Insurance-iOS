@@ -62,6 +62,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     }
     
     override func onLoadSuccess<E : User>(entity: E) {
+        super.onLoadSuccess(entity)
         cancel()
     }
     

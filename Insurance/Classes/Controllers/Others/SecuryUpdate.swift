@@ -35,6 +35,7 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
     }
     
     override func onLoadSuccess<E : ModelObject>(entity: E) {
+        super.onLoadSuccess(entity)
         cancel()
     }
     

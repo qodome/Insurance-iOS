@@ -7,7 +7,7 @@ class Main: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .colorWithHex(APP_COLOR)
-        let items = [/** "home", "discover", */ "compare", "me"]
+        let items = [/** "home", "discover", */ "gds", "me"]
         for i in 0..<items.count {
             tabBar.items?[i].title = items[i]
         }

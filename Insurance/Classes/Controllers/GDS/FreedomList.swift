@@ -34,7 +34,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                     model.setValuesForKeysWithDictionary(rowValue as! [String : AnyObject])
                     let pickArray = rowValue["picker_array"] as! [[String : AnyObject]]
                     var pid = ""
-                    if pickArray.isEmpty { // FIXME: 用isEmpty，先不要用NSArray
+                    if pickArray.isEmpty {
                         dataDic[model.name] = model.switch_status
                     } else {
                         pid = model.picker_pid
@@ -50,13 +50,13 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                     }
                     model.picker_array = picker_array
                     dataArray[section] += [model]
-                    items[section] += [Item(title: model.label, url: model.accessory_type == "1" ? "" : "local://")]
+                    items[section] += [Item(title: model.label, dest: model.accessory_type == "2" ? PickerList.self : nil, storyboard: false)]
                 }
             }
         } else {
             for (section, sectionValue) in dataArray.enumerate() {
                 for rowValue in sectionValue {
-                    items[section] += [Item(title: rowValue.label, url: rowValue.accessory_type == "1" ? "" : "local://")]
+                    items[section] += [Item(title: rowValue.label, dest: rowValue.accessory_type == "2" ? PickerList.self : nil, storyboard: false)]
                 }
             }
         }
@@ -96,15 +96,12 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         return cell
     }
     
-    override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
-        switch action {
-        case .Open:
-            if dataArray[indexPath.section][indexPath.row].accessory_type == "2" {
-                startActivity(Item(title: "", dest: PickerList.self, storyboard: false))
-            }
-        default:
-            super.onPerform(action, indexPath: indexPath, item: item)
-        }
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        let indexPath = tableView.indexPathsForSelectedRows!.first!
+        dest.setValue(dataArray[indexPath.section][indexPath.row].picker_array, forKey: "pickerData")
+        (dest as! PickerList).pickerDelegate = self
+        dest.setValue((tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!, forKey: "titleName")
+        dest.setValue(dataArray[indexPath.section][indexPath.row].picker_pid, forKey: "selectedId")
     }
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
@@ -126,7 +123,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
             contentUrl += "\(key):\(mValue!),"
         }
         (data as! Enquiry).content = contentUrl
-        uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(UIImage(data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!)!, 0.6)!, controller: self, success: { imageUrl in
+        uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!, controller: self, success: { imageUrl in
             self.loader?.create(self.data, parameters: ["content" : (self.data as! Enquiry).content, "city" : (self.data as! Enquiry).city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : (self.data as! Enquiry).buyerMessage])
         })
     }
