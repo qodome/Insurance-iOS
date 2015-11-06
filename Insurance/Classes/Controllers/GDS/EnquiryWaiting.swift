@@ -7,6 +7,7 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
     override func onPrepare() {
         super.onPrepare()
         mapping = smartMapping(Enquiry.self)
+        LOG(data)
         tableView.backgroundColor = .whiteColor()
         let imageView = ImageView(frame: CGRectMake(SCREEN_WIDTH / 6, SCREEN_WIDTH / 6, SCREEN_WIDTH / 3 * 2, SCREEN_WIDTH / 3 * 2), cornerRadius: SCREEN_WIDTH / 3)
         imageView.image = UIImage(named: endpoint.containsString("orders") ? "ic_order.png" : "ic_wait.png")
@@ -15,7 +16,7 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
         button.addTarget(self, action: "cancle", forControlEvents: .TouchUpInside)
         tableView.addSubview(button)
         let detailLabel = UILabel(frame: CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, 0))
-        detailLabel.text = endpoint.containsString("orders") ? "订单有效期 72 小时，保险机构将尽快与您联系并完成投保，请保持手机畅通" : "询价发起时间 10:30，保险机构正为您报价，请在发起时间2小时后查看报价"
+        detailLabel.text = endpoint.containsString("orders") ? "订单有效期 72 小时，保险机构将尽快与您联系并完成投保，请保持手机畅通" : "询价发起时间 \(getString("createTime"))，保险机构正为您报价，请在发起时间2小时后查看报价"
         detailLabel.numberOfLines = 0
         detailLabel.textAlignment = .Center
         detailLabel.sizeToFit()
@@ -25,7 +26,7 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
         super.onLoadSuccess(entity)
-        NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : "", "index" : "0"])
+        NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : 0, "index" : "0"])
     }
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {

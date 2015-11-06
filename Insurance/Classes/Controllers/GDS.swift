@@ -15,7 +15,7 @@ class GDS: GroupedTableDetail, EAIntroDelegate {
     ]
     var pageMenu: CAPSPageMenu! // 必须写在外面不能写在viewDidLoad
     var pageIndex = -1
-    var objectId = 0 // FIXME: 要求服务器端改成Number型, 并增加id_str
+    var objectId: NSNumber = 0 // iPhone5不支持64位Int
     //
     let controllers: [BaseController.Type] = [EnquiryCreate.self, EnquiryWaiting.self, OfferList.self, EnquiryWaiting.self]
     
@@ -61,14 +61,14 @@ class GDS: GroupedTableDetail, EAIntroDelegate {
     
     override func onLoadSuccess<E : CheckEnquiry>(entity: E) {
         super.onLoadSuccess(entity)
-        objectId = entity.status == 3 ? entity.orderId.integerValue : entity.enquiryId.integerValue
+        objectId = entity.status == 3 ? entity.orderId : entity.enquiryId
         moveTo(entity.status.integerValue)
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
     func changeIndex(notification: NSNotification) {
         let info = notification.object as! NSDictionary
-        objectId = Int(info["id"] as! String)!
+        objectId = info["id"] as! NSNumber
         moveTo(Int("\(info["index"]!)")!)
     }
     

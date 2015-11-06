@@ -186,17 +186,17 @@
            "picker_array": [
                             {
                             "pid": "0",
-                            "pname": "",
+                            "pname": "0",
                             "plabel": "不投"
                             },
                             {
                             "pid": "1",
-                            "pname": "0",
+                            "pname": "1",
                             "plabel": "国产"
                             },
                             {
                             "pid": "2",
-                            "pname": "1",
+                            "pname": "2",
                             "plabel": "进口"
                             }
                             ]
@@ -212,7 +212,7 @@
            "picker_array": [
                             {
                             "pid": "0",
-                            "pname": "",
+                            "pname": "0",
                             "plabel": "不投"
                             },
                             {
