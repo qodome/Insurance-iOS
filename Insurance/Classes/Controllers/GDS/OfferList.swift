@@ -20,9 +20,9 @@ class OfferList: TableList {
         offerMapping.addRelationshipMappingWithSourceKeyPath("insurance_groups", mapping: groupMapping)
         mapping!.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: offerMapping))
         listView.registerClass(OfferListCell.self, forCellReuseIdentifier: cellId)
-        let brandView = UIView(frame: CGRectMake(0, 0 , SCREEN_WIDTH, 35))
+        let brandView = UIView(frame: CGRectMake(0, 0 , view.frame.width, 35))
         (listView as UITableView).tableHeaderView = brandView
-        headLabel.frame = CGRectMake(10, 0 , SCREEN_WIDTH - 10, 35)
+        headLabel.frame = CGRectMake(10, 0 , view.frame.width - 10, 35)
         headLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         brandView.backgroundColor = .colorWithHex(BACKGROUND_COLOR)
         brandView.addSubview(headLabel)

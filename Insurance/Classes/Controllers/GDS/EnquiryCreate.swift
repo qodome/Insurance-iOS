@@ -47,7 +47,11 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         textField.placeholder = "对商家说点什么"
         let buttonName = ["freedom_list", "enquiry_create"]
         for (index, value) in buttonName.enumerate() {
-            let button = getButton(CGRectMake(PADDING + ((SCREEN_WIDTH - 3 * PADDING) / 2 + PADDING) * CGFloat(index), 300 + 54, (SCREEN_WIDTH - 3 * PADDING) / 2, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
+            let width = (view.frame.width - 2 * PADDING - PADDING_INNER) / 2
+            let y = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))?.frame.origin.y
+            LogAlert(y)
+            let button = getButton(CGRectMake(PADDING + (width
+                + PADDING_INNER) * CGFloat(index), 300 + 54, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
             button.addTarget(self, action: index == 0 ? "freedom" : "commit", forControlEvents: .TouchUpInside)
             tableView.addSubview(button)
         }
@@ -78,7 +82,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
                 cell.accessoryView = imageView
             }
         case 2:
-            textField.frame = CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, cell.frame.height)
+            textField.frame = CGRectMake(PADDING, 0, view.frame.width - 2 * PADDING, cell.frame.height)
             cell.addSubview(textField)
         default: break
         }

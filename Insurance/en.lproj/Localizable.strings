@@ -9,6 +9,8 @@ insurances = "Insurances";
 
 car_license_number = "Car License Number";
 
+all = "All";
+
 call = "Call";
 securyaccount = "Secury Account";
 securyupdate = "Secury Update";
