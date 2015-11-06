@@ -8,14 +8,16 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     var brands: [PickerModel] = []
     var freedomArray: [[Freedom]] = [[]]
     var onOrOff: Bool = false
-    var textField: UITextField!
+    var textField = UITextField()
     
+    // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if (data as? Enquiry)?.city != "" && (data as? Enquiry)?.city != "上海市"  {
             showAlert(self, title: "暂不支持“上海市”以外的城市投保")
         }
     }
+    
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
@@ -31,7 +33,6 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
             [Item(title: LocalizedString("新车未上牌")),Item(title: LocalizedString("行驶证正本照片"), url: "local://")],
             [Item.emptyItem()]
         ]
-        textField = UITextField()
         textField.returnKeyType = .Done
         textField.delegate = self
         textField.placeholder = "对商家说点什么"
@@ -54,17 +55,23 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        if indexPath.section == 1 {
-            if indexPath.row == 0 {
+        switch indexPath.section {
+        case 1 :
+            switch indexPath.row {
+            case 0 :
                 let accessSwitch = UISwitch()
                 accessSwitch.addTarget(self, action: "switchStateChange:", forControlEvents: .ValueChanged)
                 cell.accessoryView = accessSwitch
-            }else {
+            default:
                 cell.textLabel?.text = onOrOff ? LocalizedString("车辆合格证照片") : LocalizedString("行驶证正本照片")
                 let imageView = UIImageView(frame: CGRectMake(0, 0, 80, 60))
                 imageView.image = UIImage(named: onOrOff ? "ic_velicense.png" : "ic_vehiclelicense.png")
                 cell.accessoryView = imageView
             }
+        case 2:
+            textField.frame = CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, cell.frame.height)
+            cell.addSubview(textField)
+        default: break
         }
         return cell
     }
@@ -77,9 +84,6 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
             if indexPath.row == 1 && imageDic["car_license"] != nil {
                 (cell.accessoryView as? UIImageView)?.image = imageDic["car_license"]
             }
-        case 2:
-            textField.frame = CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, cell.frame.height)
-            cell.addSubview(textField)
         default: break
         }
         return cell
@@ -138,13 +142,13 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
         if imageDic["car_license"] != nil {
             startActivity(Item(title: "", dest: FreedomList.self, storyboard: false))
         } else {
-            showAlert(self, title: "请上传行驶证照片")
+            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
         }
     }
     
     func commit() {
         if imageDic["car_license"] != nil {
-            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(imageDic["car_license"]!), 0.6)!, controller: self, success: { imageUrl in
+            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(UIImage(data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!)!, 0.6)!, controller: self, success: { imageUrl in
                 let mEnquiry = self.data as! Enquiry
                 self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
             })
@@ -168,12 +172,8 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        if indexPath.section == 1 && indexPath.row == 1 {
-            return 80
-        }
-        return tableView.rowHeight
+        return indexPath.section == 1 && indexPath.row == 1 ? 80 :tableView.rowHeight
     }
-    
     
     // MARK: 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -215,10 +215,10 @@ class EnquiryCreate: GroupedTableDetail, UINavigationControllerDelegate, UIImage
     
     func tapGesture(tap: UITapGestureRecognizer) {
         textField.resignFirstResponder()
+        (data as? Enquiry)?.buyerMessage = textField.text!
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        textField.resignFirstResponder()
-        return false
+        return NSStringFromClass(touch.view!.classForCoder) == "UITableViewCellContentView" ? false : true
     }
 }

@@ -59,11 +59,17 @@ class OfferListCell: UITableViewCell {
             thirdLabel.frame.origin.x = SCREEN_WIDTH - 2 * PADDING_INNER - moneyLabel.frame.width - thirdLabel.frame.width
             thirdLabel.center.y = moneyLabel.center.y
         }
-        titleLabel.text = data.agent.name
+        titleLabel.text = data.agent.shortName
         titleLabel.sizeToFit()
         remarkImage.hidden = data.remark == ""
-        let discount: String = String(format: "%.1f", (data.quotedPrice.floatValue - data.motorTaxes.floatValue) / data.originalPrice.floatValue * 10)
-        discountLabel.text = discount < "7" ? "7.0折" : "\(discount)折"
+        let discount = String(format: "%.1f", (data.quotedPrice.floatValue - data.motorTaxes.floatValue) / data.originalPrice.floatValue * 10)
+        if Float(discount) < 7 {
+            discountLabel.text = "7.0折"
+        } else if Float(discount) > 10 {
+            discountLabel.text = ""
+        } else {
+            discountLabel.text = "\(discount)折"
+        }
         if data.agent.credit!.orderCount != 0 {
             let deatilFormatter =  NSNumberFormatter()
             deatilFormatter.numberStyle = .PercentStyle
@@ -84,7 +90,7 @@ class OfferListCell: UITableViewCell {
         for (_, valueTag) in data.agent.tags.results.enumerate() {
             tagsArray += [valueTag.name]
         }
-        tagView.frame = CGRectMake(2 * PADDING + detailLabel.bounds.width, discountLabel.frame.origin.y + discountLabel.bounds.height , SCREEN_WIDTH - 2 * PADDING - detailLabel.bounds.width, 23)
+        tagView.frame = CGRectMake(2 * PADDING + detailLabel.bounds.width, discountLabel.frame.origin.y + discountLabel.bounds.height + 5, SCREEN_WIDTH - 2 * PADDING - detailLabel.bounds.width, 23)
         for view in tagView.subviews {
             view.removeFromSuperview()
         }

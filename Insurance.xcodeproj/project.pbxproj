@@ -199,6 +199,8 @@
 		FFCE78281BE9A2C0003DB584 /* Sms.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE78271BE9A2C0003DB584 /* Sms.swift */; };
 		FFCE782C1BE9FB26003DB584 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE782B1BE9FB26003DB584 /* OrderCell.swift */; };
 		FFCE782E1BEA0B19003DB584 /* OtherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE782D1BEA0B19003DB584 /* OtherUtils.swift */; };
+		FFED8F751BEC4A8500424D6E /* ic_intro_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFED8F731BEC4A8500424D6E /* ic_intro_1.png */; };
+		FFED8F761BEC4A8500424D6E /* ic_intro_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFED8F741BEC4A8500424D6E /* ic_intro_2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -424,6 +426,8 @@
 		FFCE78271BE9A2C0003DB584 /* Sms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sms.swift; sourceTree = "<group>"; };
 		FFCE782B1BE9FB26003DB584 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		FFCE782D1BEA0B19003DB584 /* OtherUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUtils.swift; sourceTree = "<group>"; };
+		FFED8F731BEC4A8500424D6E /* ic_intro_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_intro_1.png; sourceTree = "<group>"; };
+		FFED8F741BEC4A8500424D6E /* ic_intro_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_intro_2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,6 +533,8 @@
 			isa = PBXGroup;
 			children = (
 				0E1E35AF1BE9F1EF00968F2A /* ic_vehiclelicense.png */,
+				FFED8F731BEC4A8500424D6E /* ic_intro_1.png */,
+				FFED8F741BEC4A8500424D6E /* ic_intro_2.png */,
 				0E1E35B01BE9F1EF00968F2A /* ic_velicense.png */,
 				0E1E35B11BE9F1EF00968F2A /* me_portrait_default.png */,
 				0EB110D31BE211A200C0BF62 /* ic_user_c120.png */,
@@ -1075,12 +1081,14 @@
 			files = (
 				0EB110FF1BE2132100C0BF62 /* city.json in Resources */,
 				0E837AA41BE0AB3F00F3BCCE /* ic_xiaomar.png in Resources */,
+				FFED8F761BEC4A8500424D6E /* ic_intro_2.png in Resources */,
 				FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */,
 				0E837AA21BE09D2100F3BCCE /* Default.strings in Resources */,
 				0EB110F81BE2132100C0BF62 /* logo_brand_9.png in Resources */,
 				0E1E35B21BE9F1EF00968F2A /* ic_vehiclelicense.png in Resources */,
 				0EB110F61BE2132100C0BF62 /* logo_brand_7.png in Resources */,
 				0EB110FE1BE2132100C0BF62 /* autoinsurance.txt in Resources */,
+				FFED8F751BEC4A8500424D6E /* ic_intro_1.png in Resources */,
 				0EB110F31BE2132100C0BF62 /* logo_brand_4.png in Resources */,
 				0E1E35B41BE9F1EF00968F2A /* me_portrait_default.png in Resources */,
 				0EB110F21BE2132100C0BF62 /* logo_brand_3.png in Resources */,

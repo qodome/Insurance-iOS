@@ -21,6 +21,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
+        endpoint = getEndpoint("users")
         mapping = smartMapping(User.self)
         textFieldArray = [phoneField, nameField, newSecuryField, nextSecuryField, codeField]
         let placeArray = [ LocalizedString("输入手机号"), LocalizedString("输入昵称"), LocalizedString("输入密码"), LocalizedString("确认密码"), LocalizedString("输入验证码")]
@@ -61,12 +62,12 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     }
     
     override func onLoadSuccess<E : User>(entity: E) {
-        dismissViewControllerAnimated(true, completion: nil)
+        cancel()
     }
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         dest.setValue("agreement", forKey: "nameString")
-        dest.setValue("注册协议", forKey: "titleString")
+        dest.setValue(LocalizedString("注册协议"), forKey: "title")
     }
     
     // MARK: - 💜 UITextFieldDelegate
@@ -83,13 +84,13 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     func create() {
         if phoneField.text!.isEmpty || codeField.text!.isEmpty || newSecuryField.text!.isEmpty || nextSecuryField.text!.isEmpty {
             showAlert(self, title: "请把信息填写完整", message: "")
-            
+            return
         }
         if newSecuryField.text != nextSecuryField.text {
             showAlert(self, title: "输入的两次密码不一致，请核对后再试", message: "")
         } else {
             RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "")
-            (loader as! HttpLoader).post(nil, parameters: ["nickname" : nameField.text!, "username" : phoneField.text!, "password" : newSecuryField.text!, "code" : codeField.text!])
+            loader?.create(parameters: ["nickname" : nameField.text!, "username" : phoneField.text!, "password" : newSecuryField.text!, "code" : codeField.text!])
         }
     }
     

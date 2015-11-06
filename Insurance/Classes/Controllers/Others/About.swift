@@ -45,7 +45,7 @@ class About: GroupedTableDetail {
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         if dest.isKindOfClass(AboutUs.self) {
             dest.setValue("aboutus", forKey: "nameString")
-            dest.setValue(LocalizedString("aboutus"), forKey: "titleString")
+            dest.setValue(LocalizedString("aboutus"), forKey: "title")
         }
     }
     

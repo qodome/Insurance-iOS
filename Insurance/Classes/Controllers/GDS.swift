@@ -35,10 +35,8 @@ class GDS: GroupedTableDetail, EAIntroDelegate {
         // 引导页
         var pages: [EAIntroPage] = []
         let pageConfigs = [
-            [0x2ED0A7, "logo_brand_1", "我们是小清新的朋友圈", 0],
-            [0xFED631, "logo_brand_2", "我们是自拍狂的朋友圈", 0],
-            [0xD36250, "logo_brand_3", "我们是表达帝的朋友圈", 0xFFFFFF],
-            [0x1B9FD8, "logo_brand_4", "想怎么玩, 就怎么玩 !\n刷爆朋友圈 !", 0xFFFFFF],
+            [0xFFFFFF, "ic_intro_1", "买车险 找小马", 0],
+            [0xFFFFFF, "ic_intro_2", "最便宜的车险", 0],
         ]
         let width = view.frame.width / 8 * 5
         for config in pageConfigs {
@@ -49,16 +47,15 @@ class GDS: GroupedTableDetail, EAIntroDelegate {
             page.titleIconPositionY = (view.frame.height - width) / 2
             page.title = LocalizedString(config[2] as! String)
             page.titleFont = UIFont.systemFontOfSize(20)
-            //            name: "FZSKBXKJW--GB1-0", size:
             page.titleColor = UIColor.colorWithHex(config[3] as! Int)
             pages.append(page)
         }
         let intro = EAIntroView(frame: view.frame, andPages: pages)
         intro.skipButton.hidden = true
         intro.delegate = self
-        //        if NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion")!.integerValue > getInteger("version") {
-        intro.showFullscreenWithAnimateDuration(0)
-        //        }
+        if NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion")!.integerValue > getInteger("version") {
+            intro.showFullscreenWithAnimateDuration(0)
+        }
         pageMenu = CAPSPageMenu(viewControllers: [], frame: view.frame, options: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeIndex:"), name: "changeIndex", object: nil)
     }

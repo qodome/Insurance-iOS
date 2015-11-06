@@ -6,6 +6,7 @@ class Branch: ModelObject {
     var id: NSNumber!
     var company: Company?
     var name = ""
+    var shortName = ""
     var credit: BusinessCredit?
     var tags = ListModel()
     var imageUrls = ListModel()
@@ -20,6 +21,7 @@ class Branch: ModelObject {
         return [
             "id" : "id",
             "name" : "name",
+            "short_name" : "shortName",
             "address" : "address",
             "latitude" : "latitude",
             "longitude" : "longitude",
