@@ -28,6 +28,9 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        delay(0.2) { () -> () in
+            self.checkAllowLocation(true)
+        }
         items = [
             [
                 Item(title: LocalizedString("投保城市"), dest: AreaList.self, storyboard: false)],
@@ -53,7 +56,6 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapGesture:")
         tapGesture.delegate = self
         tableView.addGestureRecognizer(tapGesture)
-//        checkAllowLocation(true)
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
@@ -86,7 +88,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     override func getItemView<T : Enquiry, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            cell.detailTextLabel?.text = data.city
+            cell.detailTextLabel?.text = checkAllowLocation(false) ? data.city : "定位未开启"
         case 1:
             if indexPath.row == 1 && imageDic["car_license"] != nil {
                 (cell.accessoryView as? UIImageView)?.image = imageDic["car_license"]

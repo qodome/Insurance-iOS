@@ -104,14 +104,6 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         dest.setValue(dataArray[indexPath.section][indexPath.row].picker_pid, forKey: "selectedId")
     }
     
-    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
-        let indexPath = tableView.indexPathsForSelectedRows!.first!
-        dest.setValue(dataArray[indexPath.section][indexPath.row].picker_array, forKey: "pickerData")
-        (dest as! PickerList).pickerDelegate = self
-        dest.setValue((tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!, forKey: "titleName")
-        dest.setValue(dataArray[indexPath.section][indexPath.row].picker_pid, forKey: "selectedId")
-    }
-    
     // MARK: - 💛 自定义方法 (Custom Method)
     func enquiryCreate() {
         var contentUrl = ""

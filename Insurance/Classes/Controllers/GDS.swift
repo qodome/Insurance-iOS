@@ -92,10 +92,4 @@ class GDS: GroupedTableDetail, EAIntroDelegate {
         putInteger("version", value: NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion")!.integerValue)
         setNeedsStatusBarAppearanceUpdate()
     }
-    
-    // MARK: - 💙 EAIntroDelegate
-    func introDidFinish(introView: EAIntroView!) {
-        putInteger("version", value: NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion")!.integerValue)
-        setNeedsStatusBarAppearanceUpdate()
-    }
 }

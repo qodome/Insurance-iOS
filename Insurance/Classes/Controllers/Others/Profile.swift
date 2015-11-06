@@ -17,13 +17,8 @@ class Profile: GroupedTableDetail, UpdateDelegate {
                 Item(title: "about", dest: TextFieldUpdate.self, storyboard: false)
             ],
             [
-                //                Item(title: "phone_number"),
                 Item(title: "phone_number", dest: TextFieldUpdate.self, storyboard: false),
                 Item(title: "id_card_number")
-<<<<<<< HEAD
-                //                Item(title: "id_card_number", dest: TextFieldUpdate.self, storyboard: false)
-=======
->>>>>>> NY
             ]
         ]
     }
