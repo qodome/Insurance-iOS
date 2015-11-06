@@ -25,7 +25,7 @@ class MeHeadCell: UITableViewCell {
     }
     
     func setHeadViewData(data: User) {
-        headImageView.sd_setImageWithURL(NSURL(string: data.imageUrl), placeholderImage: .imageWithColor(UIColor.whiteColor().colorWithAlphaComponent(0), size: CGSizeMake(60, 60)))
+        headImageView.sd_setImageWithURL(NSURL(string: data.imageUrl), placeholderImage: UIImage(named: "ic_user_c120.png"))
         nickNameLabel.text = data.nickname
         nickNameLabel.sizeToFit()
         nickNameLabel.frame.size.width = nickNameLabel.frame.width > SCREEN_WIDTH - 4 * PADDING - 60 ?  SCREEN_WIDTH - 4 * PADDING - 60 : nickNameLabel.frame.width

@@ -67,8 +67,9 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
         super.onLoadSuccess(entity)
+        putString("createTime", value: entity.createdTime.formattedDateWithFormat("HH:mm"))
         cancel()
-        NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : "\(entity.id)", "index" : "1"])
+        NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : entity.id, "index" : "1"])
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {

@@ -65,7 +65,7 @@ class OfferListCell: UITableViewCell {
         let discount = String(format: "%.1f", (data.quotedPrice.floatValue - data.motorTaxes.floatValue) / data.originalPrice.floatValue * 10)
         if Float(discount) < 7 {
             discountLabel.text = "7.0折"
-        } else if Float(discount) > 10 {
+        } else if Float(discount) >= 10 {
             discountLabel.text = ""
         } else {
             discountLabel.text = "\(discount)折"

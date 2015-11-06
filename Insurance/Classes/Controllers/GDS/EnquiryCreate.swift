@@ -64,7 +64,8 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
         super.onLoadSuccess(entity)
-        NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : "\(entity.id)", "index" : "1"])
+        putString("createTime", value: entity.createdTime.formattedDateWithFormat("HH:mm"))
+        NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : entity.id, "index" : "1"])
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
@@ -125,7 +126,6 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         }
     }
     
-    
     // MARK: - 💛 自定义方法 (Custom Method)
     func switchStateChange(sw:UISwitch) {
         onOrOff = sw.on
@@ -152,7 +152,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
                 self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
             })
         } else {
-            showAlert(self, title: "请上传行驶证照片")
+            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
         }
     }
     
