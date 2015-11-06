@@ -9,8 +9,9 @@ insurances = "保险";
 
 car_license_number = "车牌号码";
 
+register = "注册";
 call = "客服热线";
-securyaccount = "账户安全";
+securyaccount = "账户与安全";
 securyupdate = "更改密码";
 securyback = "找回密码";
 sure = "完成";

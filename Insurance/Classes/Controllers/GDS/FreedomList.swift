@@ -11,7 +11,6 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     var dataArray: [[Freedom]] = [[]]
     var imageDic: [String : UIImage] = [:]
     var dataDic = NSMutableDictionary()
-    var selectedIndexPath = NSIndexPath()
     let titleArray = ["基础险", "附加险", "不计免赔", "其他", ""]
     
     // MARK: - 💖 生命周期 (Lifecycle)
@@ -22,6 +21,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
+        endpoint = getEndpoint("enquiries")
         mapping = smartMapping(Enquiry.self)
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], []] //两个组的占位
@@ -72,28 +72,24 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        if indexPath.section != tableView.numberOfSections - 1 {
-            if  dataArray[indexPath.section][indexPath.row].accessory_type == "1" {
-                let Switch = UISwitch()
-                Switch.tag = 10 * indexPath.section + indexPath.row
-                Switch.addTarget(self, action: "switchStateChange:", forControlEvents: .ValueChanged)
-                cell.accessoryView = Switch
-            }
+        if  dataArray[indexPath.section][indexPath.row].accessory_type == "1" {
+            let Switch = UISwitch()
+            Switch.tag = 10 * indexPath.section + indexPath.row
+            Switch.addTarget(self, action: "switchStateChange:", forControlEvents: .ValueChanged)
+            cell.accessoryView = Switch
         }
         return cell
     }
     
     override func getItemView<T : Enquiry, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        if indexPath.section != tableView.numberOfSections - 1 {
-            if  dataArray[indexPath.section][indexPath.row].accessory_type == "1" {
-                (cell.accessoryView as! UISwitch).enabled = dataArray[indexPath.section][indexPath.row].switch_enable != "0"
-                (cell.accessoryView as! UISwitch).on = dataArray[indexPath.section][indexPath.row].switch_status == "1"
-            } else {
-                for pickValue in dataArray[indexPath.section][indexPath.row].picker_array {
-                    if pickValue.pid == dataArray[indexPath.section][indexPath.row].picker_pid {
-                        cell.detailTextLabel?.text = pickValue.plabel
-                        break
-                    }
+        if  dataArray[indexPath.section][indexPath.row].accessory_type == "1" {
+            (cell.accessoryView as! UISwitch).enabled = dataArray[indexPath.section][indexPath.row].switch_enable != "0"
+            (cell.accessoryView as! UISwitch).on = dataArray[indexPath.section][indexPath.row].switch_status == "1"
+        } else {
+            for pickValue in dataArray[indexPath.section][indexPath.row].picker_array {
+                if pickValue.pid == dataArray[indexPath.section][indexPath.row].picker_pid {
+                    cell.detailTextLabel?.text = pickValue.plabel
+                    break
                 }
             }
         }
@@ -103,19 +99,20 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
-            selectedIndexPath = indexPath
             if dataArray[indexPath.section][indexPath.row].accessory_type == "2" {
-                let pick =  PickerList()
-                pick.pickerData = dataArray[indexPath.section][indexPath.row].picker_array
-                pick.pickerDelegate = self
-                pick.titleName = (tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!
-                pick.selectedId = dataArray[indexPath.section][indexPath.row].picker_pid
-                pick.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(pick, animated: true)
+                startActivity(Item(title: "", dest: PickerList.self, storyboard: false))
             }
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
         }
+    }
+    
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        let indexPath = tableView.indexPathsForSelectedRows!.first!
+        dest.setValue(dataArray[indexPath.section][indexPath.row].picker_array, forKey: "pickerData")
+        (dest as! PickerList).pickerDelegate = self
+        dest.setValue((tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!, forKey: "titleName")
+        dest.setValue(dataArray[indexPath.section][indexPath.row].picker_pid, forKey: "selectedId")
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
@@ -129,13 +126,14 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
             contentUrl += "\(key):\(mValue!),"
         }
         (data as! Enquiry).content = contentUrl
-        uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(imageDic["car_license"]!), 0.6)!, controller: self, success: { imageUrl in
-            self.loader?.create(parameters: ["content" : (self.data as! Enquiry).content, "city" : (self.data as! Enquiry).city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : (self.data as! Enquiry).buyerMessage])
+        uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(UIImage(data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!)!, 0.6)!, controller: self, success: { imageUrl in
+            self.loader?.create(self.data, parameters: ["content" : (self.data as! Enquiry).content, "city" : (self.data as! Enquiry).city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : (self.data as! Enquiry).buyerMessage])
         })
     }
     
     func backPickerModel(model: PickerModel) {
-        let needDic = dataArray[selectedIndexPath.section][selectedIndexPath.row]
+        let indexPath = tableView.indexPathsForSelectedRows!.first!
+        let needDic = dataArray[indexPath.section][indexPath.row]
         dataDic[needDic.name] = model.pname
         var statue = "1"
         var nextID = needDic.tid

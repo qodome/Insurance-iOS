@@ -18,7 +18,7 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
             ],
             [
                 Item(title: "phone_number", dest: TextFieldUpdate.self, storyboard: false),
-                Item(title: "id_card_number", dest: TextFieldUpdate.self, storyboard: false)
+                Item(title: "id_card_number")
             ]
         ]
     }
@@ -53,7 +53,7 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         dest.setValue(data, forKey: "data")
-        dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
+        dest.setValue(getSelected().first!.title, forKey: "fieldName")
         if dest.isKindOfClass(UpdateController) {
             (dest as! UpdateController).delegate = self
             let endpoint = getEndpoint("users/\((data as! User).id)")
@@ -98,10 +98,11 @@ class Profile: GroupedTableDetail, UINavigationControllerDelegate, UIImagePicker
     // MARK: 💜 UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
-            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(normalResImageForAsset(info["UIImagePickerControllerOriginalImage"] as! UIImage), 0.6)!, controller: self, success: { imageUrl in
-                HttpLoader(endpoint: getEndpoint("users/\((self.data as! User).id)"), type: User.self).patch(parameters: ["image_url" : "\(MEDIA_URL)/\(imageUrl)"])
-                (self.data as! User).imageUrl = "\(MEDIA_URL)/\(imageUrl)"
-                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+            uploadToCloud("oss", filename: "upload/free/head.jpg", data:
+                UIImageJPEGRepresentation(UIImage(data: UIImageJPEGRepresentation(info["UIImagePickerControllerOriginalImage"] as! UIImage, 0.6)!)!, 0.6)!, controller: self, success: { imageUrl in
+                    HttpLoader(endpoint: getEndpoint("users/\((self.data as! User).id)"), type: User.self).patch(parameters: ["image_url" : "\(MEDIA_URL)/\(imageUrl)"])
+                    (self.data as! User).imageUrl = "\(MEDIA_URL)/\(imageUrl)"
+                    self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
             })
             picker.dismissViewControllerAnimated(true, completion: nil)
         }

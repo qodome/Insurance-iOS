@@ -12,32 +12,6 @@ extension BaseController {
         return cityInfo
     }
     
-    // 压缩照片的方法
-    func normalResImageForAsset(pickerimage: UIImage) -> UIImage {
-        let image = pickerimage
-        let maxSize = CGFloat(1024.0)
-        let width = image.size.width
-        let height = image.size.height
-        var newWidth = width
-        var newHeight = height
-        if width > maxSize || height > maxSize {
-            if width > height {
-                newWidth = maxSize
-                newHeight = (height * maxSize) / width
-            }else {
-                newHeight = maxSize
-                newWidth = (width * maxSize) / height
-            }
-        }
-        let newSize = CGSizeMake(newWidth, newHeight)
-        UIGraphicsBeginImageContext(newSize)
-        image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        let imageData = UIImageJPEGRepresentation(newImage, 0.6)!
-        return UIImage(data: imageData)!
-    }
-    
     // 判断是否定位
     func checkAllowLocation(showAlert: Bool) -> Bool {
         if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .AuthorizedAlways || CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {

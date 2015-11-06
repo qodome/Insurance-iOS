@@ -2,8 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class Register: GroupedTableDetail, UITextFieldDelegate {
-    let nameField = UITextField()
+class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
     let phoneField = UITextField()
     let codeField = UITextField()
     let newSecuryField = UITextField()
@@ -21,44 +20,22 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
-        endpoint = getEndpoint("users")
+        endpoint = getEndpoint("repassword")
         mapping = smartMapping(User.self)
-        textFieldArray = [phoneField, nameField, newSecuryField, nextSecuryField, codeField]
-        let placeArray = [ LocalizedString("输入手机号"), LocalizedString("输入昵称"), LocalizedString("输入密码"), LocalizedString("确认密码"), LocalizedString("输入验证码")]
-        for (index, field) in textFieldArray.enumerate() {
+        items = [[Item.emptyItem(), Item.emptyItem(), Item.emptyItem(), Item.emptyItem()]]
+        resignBtn = getButton(CGRectMake(PADDING, 60 + 44 * 4 + PADDING, view.frame.width - 2 * PADDING, 50), title: LocalizedString("完成"), theme: STYLE_BUTTON_DARK)
+        resignBtn.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
+        tableView.addSubview(resignBtn)
+        textFieldArray = [phoneField, newSecuryField, nextSecuryField, codeField]
+        let placeArray: [String] = ["输入手机号", "输入新密码", "确认新密码", "输入验证码"]
+        for (index,field) in textFieldArray.enumerate() {
             field.tag = index
-            field.keyboardType = index == 1 ? .Default : .ASCIICapable
+            field.keyboardType = .ASCIICapable
             field.placeholder = placeArray[index]
             field.clearButtonMode = .WhileEditing
             field.delegate = self
-            field.returnKeyType = index == 4 ? .Done : .Next
+            field.returnKeyType = index == 3 ? .Done :.Next
         }
-        items = [[Item.emptyItem() , Item.emptyItem(), Item.emptyItem(), Item.emptyItem(), Item.emptyItem()]]
-        resignBtn = getButton(CGRectMake(PADDING, 60 + 44 * 5, view.frame.width - 2 * PADDING, 50), title: LocalizedString("register"), theme: STYLE_BUTTON_DARK)
-        resignBtn.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
-        tableView.addSubview(resignBtn)
-        let agreementBtn = UIButton(frame: CGRectMake(PADDING, 60 + 44 * 5 + 50 + PADDING, 0, 0))
-        let mutableString = NSMutableAttributedString(string: "点击注册即表示您已同意《小马保险注册协议》")
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(105070), range: NSMakeRange(11, 10))
-        agreementBtn.setAttributedTitle(mutableString, forState: .Normal)
-        agreementBtn.titleLabel!.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        agreementBtn.sizeToFit()
-        agreementBtn.center.x = view.center.x
-        agreementBtn.addTarget(self, action: "agreement", forControlEvents: .TouchUpInside)
-        tableView.addSubview(agreementBtn)
-    }
-    
-    override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        let field = textFieldArray[indexPath.row]
-        field.frame = CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, cell.frame.height)
-        if indexPath.row == 4 {
-            field.frame.size.width = SCREEN_WIDTH - 2 * PADDING - 80
-            signOutBtn = getButton(CGRectMake(SCREEN_WIDTH - 80 - PADDING / 2, 5, 80, cell.frame.height - 10), title: LocalizedString("短信验证"), theme: STYLE_BUTTON_LIGHT)
-            signOutBtn.addTarget(self, action: "getCode", forControlEvents: .TouchUpInside)
-            cell.contentView.addSubview(signOutBtn)
-        }
-        cell.contentView.addSubview(field)
-        return cell
     }
     
     override func onLoadSuccess<E : User>(entity: E) {
@@ -66,9 +43,17 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         cancel()
     }
     
-    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
-        dest.setValue("agreement", forKey: "nameString")
-        dest.setValue(LocalizedString("注册协议"), forKey: "title")
+    override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
+        let field = textFieldArray[indexPath.row]
+        field.frame = CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, cell.frame.height)
+        if indexPath.row == 3 {
+            field.frame.size.width = SCREEN_WIDTH - 2 * PADDING - 80
+            signOutBtn = getButton(CGRectMake(SCREEN_WIDTH - 80 - PADDING / 2, 5, 80, cell.frame.height - 10), title: LocalizedString("短信验证"), theme: STYLE_BUTTON_LIGHT)
+            signOutBtn.addTarget(self, action: "getCode", forControlEvents: .TouchUpInside)
+            cell.contentView.addSubview(signOutBtn)
+        }
+        cell.contentView.addSubview(field)
+        return cell
     }
     
     // MARK: - 💜 UITextFieldDelegate
@@ -81,6 +66,11 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         return false
     }
     
+    // MARK: 💜 UITableViewDataSource
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "请使用已注册过的手机号找回密码"
+    }
+    
     // MARK: - 💛 自定义方法 (Custom Method)
     func create() {
         if phoneField.text!.isEmpty || codeField.text!.isEmpty || newSecuryField.text!.isEmpty || nextSecuryField.text!.isEmpty {
@@ -88,10 +78,9 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
             return
         }
         if newSecuryField.text != nextSecuryField.text {
-            showAlert(self, title: "输入的两次密码不一致，请核对后再试", message: "")
-        } else {
-            RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "")
-            loader?.create(parameters: ["nickname" : nameField.text!, "username" : phoneField.text!, "password" : newSecuryField.text!, "code" : codeField.text!])
+            showAlert(self, title: "输入的两次新密码不一致，请核对后重试", message: "")
+        }else {
+            loader?.update(parameters: ["username" : phoneField.text!, "password" : newSecuryField.text!, "code" : codeField.text!])
         }
     }
     
@@ -131,9 +120,5 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
             }
         }
         dispatch_resume(_timer)
-    }
-    
-    func agreement() {
-        startActivity(Item(title: "", dest: AboutUs.self, storyboard: false))
     }
 }
