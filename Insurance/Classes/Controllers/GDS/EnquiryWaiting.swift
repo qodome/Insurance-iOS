@@ -2,7 +2,7 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class EnquiryWatting: GroupedTableDetail, UIAlertViewDelegate {
+class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()

@@ -110,7 +110,7 @@
 		0EB111781BE2133000C0BF62 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111111BE2133000C0BF62 /* Discover.swift */; };
 		0EB111791BE2133000C0BF62 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111121BE2133000C0BF62 /* Flight.swift */; };
 		0EB1117A1BE2133000C0BF62 /* EnquiryCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111141BE2133000C0BF62 /* EnquiryCreate.swift */; };
-		0EB1117B1BE2133000C0BF62 /* EnquiryWatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111151BE2133000C0BF62 /* EnquiryWatting.swift */; };
+		0EB1117B1BE2133000C0BF62 /* EnquiryWaiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111151BE2133000C0BF62 /* EnquiryWaiting.swift */; };
 		0EB1117C1BE2133000C0BF62 /* FreedomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111161BE2133000C0BF62 /* FreedomList.swift */; };
 		0EB1117D1BE2133000C0BF62 /* OfferDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111171BE2133000C0BF62 /* OfferDetail.swift */; };
 		0EB1117E1BE2133000C0BF62 /* OfferList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111181BE2133000C0BF62 /* OfferList.swift */; };
@@ -329,7 +329,7 @@
 		0EB111111BE2133000C0BF62 /* Discover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
 		0EB111121BE2133000C0BF62 /* Flight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		0EB111141BE2133000C0BF62 /* EnquiryCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnquiryCreate.swift; sourceTree = "<group>"; };
-		0EB111151BE2133000C0BF62 /* EnquiryWatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnquiryWatting.swift; sourceTree = "<group>"; };
+		0EB111151BE2133000C0BF62 /* EnquiryWaiting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnquiryWaiting.swift; sourceTree = "<group>"; };
 		0EB111161BE2133000C0BF62 /* FreedomList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreedomList.swift; sourceTree = "<group>"; };
 		0EB111171BE2133000C0BF62 /* OfferDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetail.swift; sourceTree = "<group>"; };
 		0EB111181BE2133000C0BF62 /* OfferList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferList.swift; sourceTree = "<group>"; };
@@ -797,7 +797,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB111141BE2133000C0BF62 /* EnquiryCreate.swift */,
-				0EB111151BE2133000C0BF62 /* EnquiryWatting.swift */,
+				0EB111151BE2133000C0BF62 /* EnquiryWaiting.swift */,
 				0EB111161BE2133000C0BF62 /* FreedomList.swift */,
 				0EB111171BE2133000C0BF62 /* OfferDetail.swift */,
 				0EB111181BE2133000C0BF62 /* OfferList.swift */,
@@ -1277,7 +1277,7 @@
 				0E837A941BE09D2100F3BCCE /* Utils.swift in Sources */,
 				FFCE78281BE9A2C0003DB584 /* Sms.swift in Sources */,
 				0E837A661BE09D2100F3BCCE /* BaseLoader.swift in Sources */,
-				0EB1117B1BE2133000C0BF62 /* EnquiryWatting.swift in Sources */,
+				0EB1117B1BE2133000C0BF62 /* EnquiryWaiting.swift in Sources */,
 				0EB111CE1BE25AA900C0BF62 /* ObjectController.swift in Sources */,
 				0EB111A41BE2133000C0BF62 /* Insurance.swift in Sources */,
 				0EB1119B1BE2133000C0BF62 /* Comment.swift in Sources */,
@@ -1492,7 +1492,6 @@
 			baseConfigurationReference = 3842DC7F28097D00C2170059 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Insurance/Info.plist;
@@ -1511,7 +1510,6 @@
 			baseConfigurationReference = 39711360E4CC77D2B9D726D0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Insurance/Info.plist;

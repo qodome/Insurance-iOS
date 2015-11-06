@@ -34,7 +34,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                     model.setValuesForKeysWithDictionary(rowValue as! [String : AnyObject])
                     let pickArray = rowValue["picker_array"] as! [[String : AnyObject]]
                     var pid = ""
-                    if pickArray.isEmpty { // FIXME: 用isEmpty，先不要用NSArray
+                    if pickArray.isEmpty {
                         dataDic[model.name] = model.switch_status
                     } else {
                         pid = model.picker_pid

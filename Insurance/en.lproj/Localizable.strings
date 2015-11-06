@@ -1,7 +1,7 @@
 /* Tips */
 tips = "";
 
-compare = "Compare";
+gds = "GDS";
 flight = "Flight";
 
 vehicles = "Vehicles";
