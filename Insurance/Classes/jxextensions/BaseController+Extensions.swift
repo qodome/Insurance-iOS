@@ -18,10 +18,12 @@ extension BaseController {
             return true
         }
         if CLLocationManager.locationServicesEnabled() {
-            if alert {
-                showAlert(self, title: LocalizedString("您没有设置开启定位服务"), action: UIAlertAction(title: LocalizedString("settings"), style: .Default, handler: { action in
-                    UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!) // 开启设置
-                }))
+            if CLLocationManager.authorizationStatus() != .AuthorizedAlways && CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
+                if alert {
+                    showAlert(self, title: LocalizedString("您没有设置开启定位服务"), action: UIAlertAction(title: LocalizedString("settings"), style: .Default, handler: { action in
+                        UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!) // 开启设置
+                    }))
+                }
             }
         }
         return false

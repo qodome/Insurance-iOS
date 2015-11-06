@@ -15,7 +15,9 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
         button.addTarget(self, action: "cancle", forControlEvents: .TouchUpInside)
         tableView.addSubview(button)
         let detailLabel = UILabel(frame: CGRectMake(PADDING, 0, SCREEN_WIDTH - 2 * PADDING, 0))
-        detailLabel.text = endpoint.containsString("orders") ? "订单进行中，请尽快完成交易" : "保险公司正在为您报价，请稍后查看"
+        detailLabel.text = endpoint.containsString("orders") ? "订单有效期 72 小时，保险机构将尽快与您联系并完成投保，请保持手机畅通" : "询价发起时间 10:30，保险机构正为您报价，请在发起时间2小时后查看报价"
+        detailLabel.numberOfLines = 0
+        detailLabel.textAlignment = .Center
         detailLabel.sizeToFit()
         detailLabel.center = CGPointMake(SCREEN_WIDTH / 2, button.frame.origin.y - 2 * PADDING - detailLabel.frame.height / 2)
         tableView.addSubview(detailLabel)
@@ -35,9 +37,9 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
         if endpoint.containsString("orders") {
             startActivity(Item(title: "", dest: OrderDetail.self, storyboard: false))
         } else {
-            showAlert(self, title: LocalizedString("您确定要取消询价吗"), action: UIAlertAction(title: LocalizedString("ok"), style: .Default, handler: { action in
+            showAlert(self, title: LocalizedString("确认取消询价吗？"), action: UIAlertAction(title: LocalizedString("是"), style: .Default, handler: { action in
                 self.loader?.update(parameters: ["status" : "c"])
-            }))
+            }), cancelButtonTitle: "否")
         }
     }
 }
