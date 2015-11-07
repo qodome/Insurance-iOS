@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class OrderCreate: CreateController {
@@ -8,22 +8,25 @@ class OrderCreate: CreateController {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("orders")
+        // 不解析Product的话，生成订单取消支付再提交会导致product是nil而报错
+        mapping = smartMapping(Order.self, children: ["product" : Product.self])
         items = [
-            [Item(title: "total_fee")
+            [
+                Item(title: "name"),
+                Item(title: "total_fee")
             ],
-            [Item(title: "price")
+            [
+                Item(title: "phone_number"),
+                Item(title: "flight_num"),
+                Item(title: "start_time"),
+                Item(title: "end_time"),
+                Item(title: "departure_time")
             ]
         ]
         let button = QuickButton(frame: CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT))
-        button.addTarget(self, action: "create:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("confirm"), forState: .Normal)
         view.addSubview(button)
-    }
-    
-    override func onCreateLoader() -> BaseLoader? {
-        // 不解析Product的话，生成订单取消支付再提交会导致product是nil而报错
-        let mapping = smartMapping(Order.self, children: ["product" : Product.self])
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
     
     override func onCreateParameters<T : Order>(data: T?) -> [String : AnyObject]? {
@@ -57,19 +60,18 @@ class OrderCreate: CreateController {
             "device_info" : "iOS",
             "nonce_str" : "\(rand())",
             "trade_type" : "APP",
-            "body" : order.name as String,
+            "body" : order.name,
             "notify_url" : WX_NOTIFY_URL,
             "out_trade_no" : "\(order.id)",
             "total_fee" : "\(order.totalFee)",
             "spbill_create_ip": "192.168.1.1"
         ]
-        let prepayId = generatePrepay(parameters) // 获得预支付订单号
-        if prepayId != nil {
+        if let prepayId = generatePrepay(parameters) { // 获得预支付订单号
             var parameters = [
                 "appid" : WX_APP_ID,
                 "partnerid" : WX_MCH_ID,
                 "package" : "Sign=WXPay",
-                "prepayid" : "\(prepayId!)",
+                "prepayid" : "\(prepayId)",
                 "noncestr" : "\(Int(NSDate().timeIntervalSince1970))",
                 "timestamp" : "\(Int(NSDate().timeIntervalSince1970))"
             ]
@@ -79,7 +81,7 @@ class OrderCreate: CreateController {
             request.partnerId = parameters["partnerid"]
             request.prepayId = parameters["prepayid"]
             request.nonceStr = parameters["noncestr"]
-            request.timeStamp = UInt32(parameters["timestamp"]!.toInt()!)
+            request.timeStamp = UInt32(Int(parameters["timestamp"]!)!)
             request.package = parameters["package"]
             request.sign = parameters["sign"]
             WXApi.sendReq(request)

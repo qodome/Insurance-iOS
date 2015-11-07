@@ -1,13 +1,13 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright © 2015 NY. All rights reserved.
 //
 
 class Comment: ModelObject {
     var id: NSNumber!
-    var idStr: NSString = ""
+    var idStr = ""
     var createdTime: NSDate!
     var user: User?
-    var text: NSString = ""
+    var text = ""
     var likeCount: NSNumber!
     
     override class func getMapping() -> [String : String] {

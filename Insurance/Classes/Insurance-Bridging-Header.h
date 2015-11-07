@@ -1,4 +1,5 @@
 #import <CommonCrypto/CommonDigest.h>
+#import <CoreLocation/CoreLocation.h>
 #import <Photos/Photos.h>
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
@@ -10,7 +11,7 @@
 #import <DateTools/DateTools.h>
 
 // EAIntroView https://github.com/ealeksandrov/EAIntroView
-#import <EAIntroView/EAIntroView.h> 
+#import <EAIntroView/EAIntroView.h>
 
 // FontAwesomeKit https://github.com/PrideChung/FontAwesomeKit
 #import <FontAwesomeKit/FontAwesomeKit.h>
@@ -49,10 +50,10 @@
 #import <TSMessages/TSMessage.h>
 
 // WeiboSDK https://github.com/sinaweibosdk/weibo_ios_sdk/
-#import <WeiboSDK/WeiboSDK.h>
+// #import <WeiboSDK/WeiboSDK.h>
 
-// Weixin https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list
-#import <Weixin/WXApi.h>
+// WXSDKCoreKit https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list
+#import <WXSDKCoreKit/WXApi.h>
 
 #ifndef __OPTIMIZE__
 #define NSLog(...) NSLog(__VA_ARGS__)

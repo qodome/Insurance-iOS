@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class XML: NSObject, NSXMLParserDelegate {
@@ -9,13 +9,13 @@ class XML: NSObject, NSXMLParserDelegate {
     
     func startParse(data: NSData) {
         // xml解析
-        let xmlElements = NSArray()
         let xmlParser = NSXMLParser(data: data)
         xmlParser.delegate = self
         xmlParser.parse()
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String?) {
+    // MARK: - 💜 NSXMLParserDelegate
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
         contentString = string
     }
     

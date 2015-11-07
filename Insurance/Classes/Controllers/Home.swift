@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class Home: MyList {
@@ -37,6 +37,9 @@ class Home: MyList {
     override func onPrepare<T : UICollectionView>(listView: T) {
         super.onPrepare(listView)
         endpoint = getEndpoint("home")
+        mapping = smartListMapping(Card.self, children: ["user" : User.self, "comments" : ListModel.self, "likes" : ListModel.self], rootType: HomeModel.self)
+        mapping!.addRelationshipMappingWithSourceKeyPath("featured", mapping: smartListMapping(Featured.self))
+        mapping!.addRelationshipMappingWithSourceKeyPath("specials", mapping: smartListMapping(Special.self, children: ["cards" : ListModel.self]))
         refreshMode = .WillAppear
         listView.registerClass(CardCell.self, forCellWithReuseIdentifier: cellId)
         listView.registerClass(PageCell.self, forCellWithReuseIdentifier: pageCellId)
@@ -48,15 +51,8 @@ class Home: MyList {
         //        UIView.animateWithDuration(2, animations: {
         //            self.launchView.transform = CGAffineTransformScale(self.launchView.transform, 1.2, 1.2)
         //        })
-        var timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "hiddenBgview",
+        NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "hiddenBgview",
             userInfo: nil, repeats: false)
-    }
-    
-    override func onCreateLoader() -> BaseLoader {
-        let mapping = smartListMapping(Card.self, children: ["user" : User.self, "comments" : ListModel.self, "likes" : ListModel.self], rootType: HomeModel.self)
-        mapping.addRelationshipMappingWithSourceKeyPath("featured", mapping: smartListMapping(Featured.self))
-        mapping.addRelationshipMappingWithSourceKeyPath("specials", mapping: smartListMapping(Special.self, children: ["cards" : ListModel.self]))
-        return HttpLoader(endpoint: endpoint, mapping: mapping)
     }
     
     override func onLoadSuccess<E : HomeModel>(entity: E) {
@@ -81,6 +77,35 @@ class Home: MyList {
         super.onLoadSuccess(entity)
     }
     
+    override func onPerform<T : ModelObject>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            let cell = (listView as! UICollectionView).cellForItemAtIndexPath(indexPath) as! PageCell
+            selected = getSelected(indexPath, page: cell.page)
+            if selected.isKindOfClass(Card) {
+                if (selected as! Card).type == "p" {
+                    startActivity(Item(title: "product", dest: ProductDetail.self))
+                } else {
+                    // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
+                }
+            } else if selected.isKindOfClass(Special) {
+                destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
+                startActivity(Item(title: "cards", dest: CardList.self))
+            } else if selected.isKindOfClass(Featured) {
+                switch (selected as! Featured).type {
+                case "c":
+                    startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
+                case "s":
+                    destEndpoint = getEndpoint("specials/\((selected as! Featured).objectId)")
+                    startActivity(Item(title: "cards", dest: CardList.self))
+                default: break
+                }
+            }
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
+        }
+    }
+    
     // MARK: - 💜 UICollectionViewDataSource
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getCount() + specialList.count + featuredCellCount
@@ -101,12 +126,12 @@ class Home: MyList {
                 var view: PosterView
                 if (remainder + featuredCellCount) % 2 == 0 {
                     view = SpecialCover(frame: CGRectMake(CGFloat(i) * width, 0, width, height))
-                    (view as! SpecialCover).changeSubtitle(list[i].summary as String)
+                    (view as! SpecialCover).changeSubtitle(list[i].summary)
                 } else {
                     view = PosterView(frame: CGRectMake(CGFloat(i) * width, 0, width, height))
                 }
-                view.image.sd_setImageWithURL(NSURL(string: list[i].imageUrl as String))
-                view.changeTitle(list[i].title as String)
+                view.image.sd_setImageWithURL(NSURL(string: list[i].imageUrl))
+                view.changeTitle(list[i].title)
                 cell.addPage(view)
             }
             if list.count > 1 {
@@ -115,76 +140,50 @@ class Home: MyList {
         } else if remainder == 0 && quotient < specialList.count {
             let special = specialList[quotient]
             let view = SpecialCover(frame: CGRectMake(0, 0, width, height))
-            view.image.sd_setImageWithURL(NSURL(string: special.imageUrl as String))
-            view.changeTitle(special.title as String)
+            view.image.sd_setImageWithURL(NSURL(string: special.imageUrl))
+            view.changeTitle(special.title)
             view.changeSubtitle("\(special.cards.count)个主题")
-            view.changeSubtitleBackground(UIColor.colorWithHex(0xB4A66F))
+            view.changeSubtitleBackground(.colorWithHex(0xB4A66F))
             cell.addPage(view)
             for i in 0..<special.cards.count.integerValue {
                 let card = special.cards.results[i] as! Card
                 let view = CardView(frame: CGRectMake(CGFloat(i + 1) * width, 0, width, height))
-                view.title.text = card.caption as String
-                view.subtitle.text = " · ".join([getType(card.type as String), "\(card.likes.count) 喜欢"])
-                // view.subtitle.text = " · ".join([getType(card.type as String), "\(card.likeCount) 喜欢", card.tags])
-                view.image.sd_setImageWithURL(NSURL(string: card.imageUrl as String))
+                view.title.text = card.caption
+                view.subtitle.text = [getType(card.type), "\(card.likes.count) 喜欢"].joinWithSeparator(" · ")
+                view.image.sd_setImageWithURL(NSURL(string: card.imageUrl))
                 view.icon.image = UIImage(named: "ferrari")
                 cell.addPage(view)
             }
         } else { // 不考虑卡片不到专题两倍造成的出错情况
             let item = getItem(indexPath.row - featuredCellCount - min(specialList.count, quotient + 1)) as! Card
-            cell = getCardCell(item, collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CardCell)
+            cell = getCardCell(item, cell: collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CardCell)
         }
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PageCell
-        selected = getSelected(indexPath, page: cell.page)
-        if selected.isKindOfClass(Card) {
-            if (selected as! Card).type == "p" {
-                startActivity(Item(title: "product", dest: ProductDetail.self))
-            } else {
-               // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
-            }
-        } else if selected.isKindOfClass(Special) {
-            destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
-            startActivity(Item(title: "cards", dest: CardList.self))
-        } else if selected.isKindOfClass(Featured) {
-            switch (selected as! Featured).type {
-            case "c":
-                startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
-            case "s":
-                destEndpoint = getEndpoint("specials/\((selected as! Featured).objectId)")
-                startActivity(Item(title: "cards", dest: CardList.self))
-            default: break
-            }
-        }
-    }
-    
-    // MARK: - 💜 场景切换 (Segue)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let dest = segue.destinationViewController as! UIViewController
-        let identifier = segue.identifier!.componentsSeparatedByString("-")[1]
-        LOG("💜 \(identifier)")
-        if identifier == "card_list" {
+    // MARK: - 场景切换 (Segue)
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        LOG("💜 \(id)")
+        switch id {
+        case "card_list":
             if selected.isKindOfClass(Special) {
-                dest.setValue((selected as! Special).title, forKey: "title")
+                dest.title = (selected as! Special).title
                 dest.setValue((selected as! Special).cards, forKey: "data")
             }
             dest.setValue(destEndpoint, forKey: "endpoint")
             dest.setValue("cards", forKey: "keyPath")
-        } else if identifier == "card_detail" {
+        case "card_detail":
             if selected.isKindOfClass(Featured) {
                 dest.setValue("\((selected as! Featured).objectId)", forKey: "pk")
             } else {
                 dest.setValue(selected, forKey: "data")
                 dest.setValue((selected as! Card).idStr, forKey: "pk")
             }
-        } else if identifier == "product_detail" {
+        case "product_detail":
             let endpoint = getEndpoint("products/\((selected as! Card).objectId)")
             LOG(endpoint)
             dest.setValue(endpoint, forKey: "endpoint")
+        default: break
         }
     }
     

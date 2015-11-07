@@ -1,24 +1,24 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
-class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdateDelegate {
+class Profile: GroupedTableDetail, UpdateDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
         items = [
             [
-                Item(title: "avatar", dest: TextFieldUpdate.self),
-                Item(title: "nickname", dest: TextFieldUpdate.self, segue: "user_update"),
+                Item(title: "avatar", selectable: true),
+                Item(title: "nickname", dest: TextFieldUpdate.self, storyboard: false),
                 Item(title: "username")
             ],
             [
-                Item(title: "gender", dest: CheckListUpdate.self, segue: "user_check"),
-                Item(title: "about", dest: TextFieldUpdate.self, segue: "user_update")
+                Item(title: "gender", dest: CheckListUpdate.self, storyboard: false),
+                Item(title: "about", dest: TextFieldUpdate.self, storyboard: false)
             ],
             [
-                Item(title: "phone_number", dest: TextFieldUpdate.self, segue: "user_update"),
-                Item(title: "id_card_number", dest: TextFieldUpdate.self, segue: "user_update")
+                Item(title: "phone_number", dest: TextFieldUpdate.self, storyboard: false),
+                Item(title: "id_card_number")
             ]
         ]
     }
@@ -26,16 +26,43 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
     override func getItemView<T : User, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch item.title {
         case "avatar":
-            cell.setTranslatesAutoresizingMaskIntoConstraints(false)
+            cell.translatesAutoresizingMaskIntoConstraints = false
             let imageView = AvatarView(frame: CGRectMake(0, 0, 60, 60))
-            imageView.image.sd_setImageWithURL(NSURL(string: data.imageUrl as String))
+            imageView.image.sd_setImageWithURL(NSURL(string: data.imageUrl))
             cell.accessoryView = imageView
         case "gender":
-            cell.detailTextLabel?.text = getString(GENDER_STRING, data.gender as String)
-        default:
-            cell.detailTextLabel?.text = data.valueForKey(item.title.camelCaseString()) as? String
+            cell.detailTextLabel?.text = getString(GENDER_STRING, key: data.gender)
+        default: break
         }
         return cell
+    }
+    
+    override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
+        switch action {
+        case .Open:
+            switch item.title {
+            case "avatar":
+                startImageSheet(true)
+            default:
+                super.onPerform(action, indexPath: indexPath, item: item)
+            }
+        default:
+            super.onPerform(action, indexPath: indexPath, item: item)
+        }
+    }
+    
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
+        dest.setValue(data, forKey: "data")
+        dest.setValue(getSelected().first!.title, forKey: "fieldName")
+        if dest.isKindOfClass(UpdateController) {
+            (dest as! UpdateController).delegate = self
+            let endpoint = getEndpoint("users/\((data as! User).id)")
+            dest.setValue(endpoint, forKey: "endpoint")
+            dest.setValue(HttpLoader(endpoint: endpoint, type: User.self), forKey: "loader")
+            if dest.isKindOfClass(CheckListUpdate) {
+                dest.setValue([[Item(title: "male", url: "check://m"), Item(title: "female", url: "check://f")]], forKey: "items")
+            }
+        }
     }
     
     // MARK: - UpdatedDelegate
@@ -44,63 +71,21 @@ class Profile: TableDetail, UINavigationControllerDelegate, UIImagePickerControl
         tableView.reloadData()
     }
     
-    // MARK: -
-    func startImageSheet() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alert.addAction(UIAlertAction(title: LocalizedString("camera"), style: .Default) { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.Camera) { // 模拟器没有相机
-                picker.sourceType = .Camera
-                picker.delegate = self
-                self.presentViewController(picker, animated: true, completion: nil)
-            }
-            })
-        alert.addAction(UIAlertAction(title: LocalizedString("photos"), style: .Default) { (action) in
-            picker.delegate = self
-            self.presentViewController(picker, animated: true, completion: nil)
-            })
-        showActionSheet(self, alert)
-    }
-    
     // MARK: - 💜 UITableViewDelegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let item = getItem(indexPath)
-        switch item.title {
-        case "avatar":
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            startImageSheet()
-        default:
-            super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
-        }
-    }
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return getItem(indexPath).title == "avatar" ? 80 : tableView.rowHeight
     }
     
     // MARK: 💜 UIImagePickerControllerDelegate
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
-            // TODO: 上传头像
+            uploadToCloud("oss", filename: "upload/free/head.jpg", data:
+                UIImageJPEGRepresentation(info[UIImagePickerControllerEditedImage] as! UIImage, 0.6)!, controller: self, success: { imageUrl in
+                    HttpLoader(endpoint: getEndpoint("users/\((self.data as! User).id)"), type: User.self).patch(parameters: ["image_url" : "\(MEDIA_URL)/\(imageUrl)"])
+                    (self.data as! User).imageUrl = "\(MEDIA_URL)/\(imageUrl)"
+                    self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+            })
             picker.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
-    // MARK: - 💜 场景切换 (Segue)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let dest = segue.destinationViewController as! UIViewController
-        dest.setValue(data, forKey: "data")
-        dest.setValue(getSelected().first!.title.camelCaseString(), forKey: "fieldName")
-        if dest.isKindOfClass(UpdateController) {
-            (dest as! UpdateController).delegate = self
-            let endpoint = getEndpoint("users/\((data as? User)?.id)")
-            dest.setValue(endpoint, forKey: "endpoint")
-            dest.setValue(HttpLoader(endpoint: endpoint, type: User.self), forKey: "loader")
-            if dest.isKindOfClass(CheckListUpdate) {
-                dest.setValue([[Item(title: "male", segue: "check://m"), Item(title: "female", segue: "check://f")]], forKey: "items")
-            }
         }
     }
 }

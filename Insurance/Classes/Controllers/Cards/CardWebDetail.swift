@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class CardWebDetail: WebDetail {
@@ -8,11 +8,11 @@ class CardWebDetail: WebDetail {
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "share:")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "share")
     }
     
     // MARK: - 💛 Action
-    func share(sender: AnyObject) {
-        startShareActivity(self, [data.caption, data.url], view)
+    func share() {
+        startShareActivity(self, items: [data.caption, data.url], view: view)
     }
 }

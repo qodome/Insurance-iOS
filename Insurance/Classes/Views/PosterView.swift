@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class PosterView: UIView {
@@ -7,7 +7,7 @@ class PosterView: UIView {
     var title: UILabel!
     var image: ImageView!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -16,8 +16,8 @@ class PosterView: UIView {
         image = ImageView(frame: CGRect(origin: CGPointZero, size: frame.size))
         addSubview(image)
         title = UILabel(frame: CGRectMake(0, 0, frame.width - 2 * PADDING, 0))
-        title.font = UIFont.boldSystemFontOfSize(32)
-        title.textColor = UIColor.whiteColor()
+        title.font = .boldSystemFontOfSize(32)
+        title.textColor = .whiteColor()
         title.textAlignment = .Center
         title.numberOfLines = 0
         addSubview(title)

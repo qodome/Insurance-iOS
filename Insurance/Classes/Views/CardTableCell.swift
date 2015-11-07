@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class CardTableCell: UICollectionViewCell {
@@ -8,7 +8,7 @@ class CardTableCell: UICollectionViewCell {
     var image: UIImageView!
     var tipLabel: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -18,16 +18,16 @@ class CardTableCell: UICollectionViewCell {
         image = ImageView(frame: CGRectMake(0, 0, height, height))
         addSubview(image)
         siteLabel = UILabel(frame: CGRectMake(70, 0, frame.width - 80, 20))
-        siteLabel.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        siteLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
 //        addSubview(siteLabel)
         let left = CGRectGetMaxX(image.frame) + PADDING
         captionLabel = UILabel(frame: CGRectMake(left, 0, frame.width - left - PADDING, 28))
         captionLabel.numberOfLines = 2
-        captionLabel.textColor = UIColor.colorWithHex(PRIMARY_TEXT_COLOR)
+        captionLabel.textColor = .colorWithHex(PRIMARY_TEXT_COLOR)
         addSubview(captionLabel)
         tipLabel = UILabel(frame: CGRectMake(left, CGRectGetMaxY(captionLabel.frame), frame.width - left - PADDING, 20))
-        tipLabel.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        tipLabel.textColor = UIColor.redColor()
+        tipLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        tipLabel.textColor = .redColor()
         addSubview(tipLabel)
     }
     

@@ -1,20 +1,20 @@
 //
-//  Copyright (c) 2014年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class SpecialCover: PosterView {
     
     var subtitle: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         subtitle = UILabel(frame: CGRectMake(0, 0, frame.width - 64, 0))
-        subtitle.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        subtitle.textColor = UIColor.whiteColor()
+        subtitle.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        subtitle.textColor = .whiteColor()
         subtitle.textAlignment = .Center
         subtitle.numberOfLines = 0
         addSubview(subtitle)

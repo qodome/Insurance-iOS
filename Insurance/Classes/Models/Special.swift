@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright © 2015 NY. All rights reserved.
 //
 
 class Special: ModelObject {
@@ -7,10 +7,10 @@ class Special: ModelObject {
     var id: NSNumber!
     var createdTime: NSDate!
     var isActive = false
-    var title: NSString = ""
-    var summary: NSString = ""
-    var tags: NSString = ""
-    var imageUrl: NSString = ""
+    var title = ""
+    var summary = ""
+    var tags = ""
+    var imageUrl = ""
     
     override class func getMapping() -> [String : String] {
         return [

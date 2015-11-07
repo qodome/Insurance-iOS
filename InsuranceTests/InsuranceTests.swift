@@ -2,12 +2,12 @@
 //  InsuranceTests.swift
 //  InsuranceTests
 //
-//  Created by NY on 15/6/4.
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Created by NY on 15/10/28.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
-import UIKit
 import XCTest
+@testable import Insurance
 
 class InsuranceTests: XCTestCase {
     
@@ -23,12 +23,12 @@ class InsuranceTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measureBlock {
             // Put the code you want to measure the time of here.
         }
     }

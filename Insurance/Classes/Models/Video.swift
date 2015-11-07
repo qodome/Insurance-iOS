@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright © 2015 NY. All rights reserved.
 //
 
 class Video: ModelObject {
@@ -7,16 +7,16 @@ class Video: ModelObject {
     var user: User?
     var createdTime: NSDate!
     var isActive = false
-    var title: NSString = ""
-    var summary: NSString = ""
-    var tags: NSString = ""
-    var imageUrl: NSString = ""
-    var url: NSString = ""
-    var stream: NSString = ""
-    var player: NSString = ""
-    var playerI: NSString = ""
-    var playerQ: NSString = ""
-    var playerY: NSString = ""
+    var title = ""
+    var summary = ""
+    var tags = ""
+    var imageUrl = ""
+    var url = ""
+    var stream = ""
+    var player = ""
+    var playerI = ""
+    var playerQ = ""
+    var playerY = ""
     
     override class func getMapping() -> [String : String] {
         return [

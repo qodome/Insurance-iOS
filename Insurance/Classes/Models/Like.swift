@@ -1,10 +1,10 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright © 2015 NY. All rights reserved.
 //
 
 class Like: ModelObject {
     var id: NSNumber!
-    var idStr: NSString = ""
+    var idStr = ""
     var createdTime: NSDate!
     var user: User?
     var card: Card?

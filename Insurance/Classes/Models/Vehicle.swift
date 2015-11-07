@@ -1,18 +1,20 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright © 2015 NY. All rights reserved.
 //
 
 class Vehicle: ModelObject {
     var id: NSNumber!
     var user: User?
-    var city: NSString = ""
-    var brand: NSString = ""
+    var city = ""
+    var brand = ""
     var createdTime: NSDate!
     var updatedTime: NSDate!
-    var imageUrl: NSString = ""
-    var model: NSString = ""
-    var carLicense: NSString = ""
-    var ownerName: NSString = ""
+    var isActive = false
+    var imageUrl = ""
+    var imageUrls = ListModel()
+    var model = ""
+    var carLicense = ""
+    var ownerName = ""
     
     override class func getMapping() -> [String : String] {
         return [
@@ -21,6 +23,7 @@ class Vehicle: ModelObject {
             "brand" : "brand",
             "created_time" : "createdTime",
             "updated_time" : "updatedTime",
+            "is_active" : "isActive",
             "image_url" : "imageUrl",
             "model" : "model",
             "car_license" : "carLicense",

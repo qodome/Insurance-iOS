@@ -1,9 +1,9 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class Category: ModelObject {
-    var name: NSString = ""
+    var name = ""
     
     override class func getMapping() -> [String : String] {
         return [

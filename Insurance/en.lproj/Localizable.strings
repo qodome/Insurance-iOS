@@ -1,9 +1,49 @@
 /* Tips */
 tips = "";
 
-compare = "Compare";
+gds = "GDS";
 flight = "Flight";
 
 vehicles = "Vehicles";
 insurances = "Insurances";
-orders = "Orders";
+
+car_license_number = "Car License Number";
+
+all = "All";
+
+call = "Call";
+securyaccount = "Secury Account";
+securyupdate = "Secury Update";
+securyback = "Secury Back";
+sure = "Sure";
+aboutus = "About Us";
+
+/* 自主选险 */
+area_list = "Area List";
+freedom_list = "Freedom List";
+damage = "Physical Damage Coverage";
+third_party = "Third Party Liability Insurance";
+driver = "Driver Lability Insurance";
+passenger = "Passenger Lability Insurance";
+windscreen = "Windscreen Coverage";
+scratch = "Scratch Damage Coverage";
+waterlogged = "Waterlogged Coverage";
+fire = "Fire Coverage";
+theft = "Theft Coverage";
+specified_factory = "Specified Factory Coverage";
+sp_damage = "Damage Coverage Special Clause";
+sp_third_party = "Third Party Liability Special Clause";
+sp_theft = "Theft Coverage Special Clause";
+sp_staff = "Staff Coverage  Special Clause";
+sp_additional = "Additional Insurance Special Clause";
+mandatory = "Mandatory Liability Insurance";
+motor_taxes= "Motor Vehicle And Vessel Taxes";
+
+/* 询价 && 报价 */
+enquiry_create = "Enquiry Create";
+enquiry_watting = "Enquiry Watting";
+enquiry_detail = "Enquiry Detail";
+offer_list = "Offer List";
+offer_detail = "Offer Detail";
+enquiryStatus = "Enquiry Status";
+confirm_orders = "Confirm Orders";

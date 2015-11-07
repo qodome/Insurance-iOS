@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014 NY. All rights reserved.
+//  Copyright © 2015 NY. All rights reserved.
 //
 
 class Card: ModelObject {
@@ -8,22 +8,22 @@ class Card: ModelObject {
     var comments = ListModel() // 手动补
     var likes = ListModel() // 手动补
     var id: NSNumber!
-    var idStr: NSString = ""
+    var idStr = ""
     var user: User?
-    var site: NSString = ""
+    var imageUrls = ListModel()
+    var site = ""
     var createdTime: NSDate!
     var isActive = false
-    var caption: NSString = ""
-    var type: NSString = ""
-    var imageUrl: NSString = ""
-    var url: NSString = ""
-    var tags: NSString = ""
-    var brand: NSString = ""
+    var caption = ""
+    var type = ""
+    var imageUrl = ""
+    var url = ""
+    var tags = ""
     var objectId: NSNumber!
     var imageCount: NSNumber!
-    var stream: NSString = ""
-    var player: NSString = ""
-    var tips: NSString = ""
+    var stream = ""
+    var player = ""
+    var tips = ""
     var repostCount: NSNumber!
     
     override class func getMapping() -> [String : String] {
@@ -38,7 +38,6 @@ class Card: ModelObject {
             "image_url" : "imageUrl",
             "url" : "url",
             "tags" : "tags",
-            "brand" : "brand",
             "object_id" : "objectId",
             "image_count" : "imageCount",
             "stream" : "stream",

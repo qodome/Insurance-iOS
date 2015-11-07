@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class Discover: TableSearch {
@@ -7,33 +7,28 @@ class Discover: TableSearch {
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         endpoint = getEndpoint("popping/categories")
+        mapping = smartListMapping(Category.self)
         refreshMode = .DidLoad
         // searchController.searchBar.scopeButtonTitles = ["a", "b"]
     }
     
-    override func onCreateLoader() -> BaseLoader {
-        return HttpLoader(endpoint: endpoint, mapping: smartListMapping(Category.self))
-    }
-    
     override func getItemView<V : UITableView, T : Category, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
-        cell.textLabel?.text = item.name as String
+        cell.textLabel?.text = item.name
         return cell
     }
     
-    override func onPerform<T : Category>(action: Action, item: T) {
+    override func onPerform<T : Category>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
             startActivity(Item(title: "cards", dest: CardList.self))
         default:
-            super.onPerform(action, item: item)
+            super.onPerform(action, indexPath: indexPath, item: item)
         }
     }
     
-    // MARK: - 💜 场景切换 (Segue)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let item = getSelected().first as? Category
-        segue.destinationViewController.setValue(item, forKey: "category")
-        segue.destinationViewController.setValue(item?.name, forKey: "title")
+        dest.title = item?.name
+        dest.setValue(item, forKey: "category")
     }
 }

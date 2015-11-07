@@ -12,10 +12,10 @@ class SimpleCardList: BaseCardList {
     }
     
     override func getItemView<V : UICollectionView, T : Card, C : CardTableCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
-        cell.image.sd_setImageWithURL(NSURL(string: item.imageUrl as String))
-        cell.captionLabel.text = item.caption as String
+        cell.image.sd_setImageWithURL(NSURL(string: item.imageUrl))
+        cell.captionLabel.text = item.caption
         cell.captionLabel.sizeToFit()
-        cell.setTips(item.tips as String)
+        cell.setTips(item.tips)
         cell.setSite("\(indexPath.row + 1)")
         return cell
     }

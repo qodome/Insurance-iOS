@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class PageCell: UICollectionViewCell, UIScrollViewDelegate {
@@ -11,7 +11,7 @@ class PageCell: UICollectionViewCell, UIScrollViewDelegate {
     var canCycle = false // 能否循环
     var canAutoRun: Bool = false { // 能否自动滑动
         didSet {
-            if canAutoRun  {
+            if canAutoRun {
                 timerInit()
             } else {
                 timer?.invalidate()
@@ -22,14 +22,14 @@ class PageCell: UICollectionViewCell, UIScrollViewDelegate {
     var isOnAutoRun = false // 是否正处于自动滑动
     var timer: NSTimer? // 计时器(用来控制自动滑动)
     
-    // MARK: - 💖 生命周期 (Lifecycle)
-    required init(coder aDecoder: NSCoder) {
+    // MARK: - 💖 初始化
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = .whiteColor()
         scrollView = UIScrollView(frame: CGRect(origin: CGPointZero, size: frame.size))
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false

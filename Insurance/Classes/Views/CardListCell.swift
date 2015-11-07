@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2014年 NY. All rights reserved.
+//  Copyright © 2015年 NY. All rights reserved.
 //
 
 class CardListCell: UICollectionViewCell {
@@ -7,7 +7,7 @@ class CardListCell: UICollectionViewCell {
     var captionLabel: UILabel!
     var tipLabel: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -20,7 +20,7 @@ class CardListCell: UICollectionViewCell {
         addSubview(captionLabel)
         tipLabel = UILabel(frame: CGRectMake(PADDING, CGRectGetMaxY(captionLabel.frame), frame.width - 2 * PADDING, 44))
         tipLabel.numberOfLines = 2
-        tipLabel.textColor = UIColor.redColor()
+        tipLabel.textColor = .redColor()
         addSubview(tipLabel)
     }
     

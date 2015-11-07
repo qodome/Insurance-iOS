@@ -1,4 +1,5 @@
-platform :ios, '7.0' # 保持7.0, 编译的时候少报点Deprecated, 提高速度
+platform :ios, '8.0'
+# use_frameworks! 会造成TSMessage不可用 https://github.com/KrauseFx/TSMessages/issues/213
 
 pod 'CTAssetsPickerController'
 pod 'DateTools'
@@ -6,10 +7,16 @@ pod 'EAIntroView'
 pod 'FontAwesomeKit'
 pod 'FormatterKit'
 pod 'M13ProgressSuite'
-pod 'RestKit'
+pod 'RestKit', :git => "https://github.com/RestKit/RestKit.git", :branch => "seg-bracket-imports"
 pod 'SDWebImage'
 pod 'SZTextView'
 pod 'TLYShyNavBar'
 pod 'TSMessages'
-pod 'WeiboSDK'
-pod 'Weixin'
+pod 'WXSDKCoreKit'
+# pod 'WeiboSDK' # SB的集成了adsupport库, 会导致审核被拒
+
+target 'Insurance' do
+end
+
+target 'InsuranceTests' do
+end
