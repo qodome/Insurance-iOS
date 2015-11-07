@@ -7,7 +7,7 @@ pod 'EAIntroView'
 pod 'FontAwesomeKit'
 pod 'FormatterKit'
 pod 'M13ProgressSuite'
-pod 'RestKit'
+pod 'RestKit', :git => "https://github.com/RestKit/RestKit.git", :branch => "seg-bracket-imports"
 pod 'SDWebImage'
 pod 'SZTextView'
 pod 'TLYShyNavBar'
