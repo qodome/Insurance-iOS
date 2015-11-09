@@ -58,14 +58,16 @@ class OfferDetail: GroupedTableDetail {
     }
     
     func create() {
-        let mapping = smartMapping(Order.self)
-        let descriptor = RKResponseDescriptor(mapping: mapping, method: .Any, pathPattern: nil, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful))
-        RKObjectManager.sharedManager().addResponseDescriptor(descriptor)
-        RKObjectManager.sharedManager().postObject(mapping, path: getEndpoint("orders"), parameters: ["product_id" : "1", "car_license_number" : (data as! Offer).carLicenseNumber, "offer_id" : (data as! Offer).id], success: { operation, result in
-            NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id": (result.firstObject as! Order).id, "index": "3"])
-            self.cancel()
-            }) { operation, error in
-                showAlert(self, title: "订单生成失败", message: error.localizedDescription)
-        }
+        showAlert(self, title: LocalizedString("承保价格以保险公司出单价为准，是否确认下单"), action: UIAlertAction(title: LocalizedString("是"), style: .Default, handler: { action in
+            let mapping = smartMapping(Order.self)
+            let descriptor = RKResponseDescriptor(mapping: mapping, method: .Any, pathPattern: nil, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful))
+            RKObjectManager.sharedManager().addResponseDescriptor(descriptor)
+            RKObjectManager.sharedManager().postObject(mapping, path: getEndpoint("orders"), parameters: ["product_id" : "1", "car_license_number" : (self.data as! Offer).carLicenseNumber, "offer_id" : (self.data as! Offer).id], success: { operation, result in
+                NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id": (result.firstObject as! Order).id, "index": "3"])
+                self.cancel()
+                }) { operation, error in
+                    showAlert(self, title: "订单生成失败", message: error.localizedDescription)
+            }
+        }), cancelButtonTitle: "否")
     }
 }

@@ -58,7 +58,7 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
     
     // MARK: 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "密码只能是6-12位字母和英文字符，暂不支持中文和特殊字符"
+        return "密码只能是6-12位数字或英文字符，暂不支持中文和特殊字符"
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
