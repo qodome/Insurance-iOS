@@ -12,7 +12,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let y = CGRectGetMaxY(tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))) + PADDING_INNER
+        let y = CGRectGetMaxY(tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))) + PADDING_INNER
         let buttonName = ["freedom_list", "enquire"]
         for (index, value) in buttonName.enumerate() {
             let width = (view.frame.width - 2 * PADDING - PADDING_INNER) / 2
