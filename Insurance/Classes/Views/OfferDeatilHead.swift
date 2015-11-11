@@ -21,7 +21,7 @@ class OfferDeatilHead: UITableViewCell {
         addSubview(moneyLabel)
         detailLabel.frame = CGRectMake(PADDING, 50, SCREEN_WIDTH - 2 * PADDING, 0)
         detailLabel.numberOfLines = 0
-        detailLabel.font = UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        detailLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(detailLabel)
     }
     

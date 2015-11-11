@@ -34,7 +34,7 @@ class OfferListCell: UITableViewCell {
         discountLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         discountLabel.frame = CGRectMake(SCREEN_WIDTH - PADDING - 35, 50, 35, 20)
         addSubview(discountLabel)
-        remarkImage = ImageView(frame: CGRectMake(discountLabel.frame.origin.x - 22, discountLabel.frame.origin.y + (discountLabel.bounds.height - 17) / 2, 17, 17))
+        remarkImage = ImageView(frame: CGRectMake(discountLabel.frame.origin.x - 22, 0, 17, 17))
         let remarkSettings =  FAKFontAwesome.giftIconWithSize(CGSizeSettingsIcon.width)
         remarkSettings.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(APP_COLOR))
         remarkImage.image = remarkSettings.imageWithSize(CGSizeSettingsIcon)
@@ -61,7 +61,7 @@ class OfferListCell: UITableViewCell {
         }
         titleLabel.text = data.agent.shortName
         titleLabel.sizeToFit()
-        remarkImage.hidden = data.remark == ""
+        remarkImage.hidden = data.remark.isEmpty
         let discount = String(format: "%.1f", (data.quotedPrice.floatValue - data.motorTaxes.floatValue) / data.originalPrice.floatValue * 10)
         if Float(discount) < 7 {
             discountLabel.text = "7.0折"

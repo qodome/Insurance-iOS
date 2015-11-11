@@ -128,7 +128,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         dataDic[needDic.name] = model.pname
         var statue = "1"
         var nextID = needDic.tid
-        if model.pname == "" {
+        if model.pname.isEmpty {
             statue = "0"
             switch needDic.tid {
             case "6", "7", "9","10":

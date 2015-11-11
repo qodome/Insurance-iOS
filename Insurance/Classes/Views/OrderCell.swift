@@ -3,10 +3,10 @@
 //
 
 class OrderCell: UITableViewCell {
-    var orderTitle = UILabel()
+    var title = UILabel()
     var orderTime = UILabel()
-    var orderPrice = UILabel()
-    var orderStatues = UILabel()
+    var totalFee = UILabel()
+    var status = UILabel()
     
     // MARK: - 💖 生命周期 (Lifecycle)
     required init(coder aDecoder: NSCoder) {
@@ -16,17 +16,17 @@ class OrderCell: UITableViewCell {
     // MARK: - 💜 UITableViewDelegate
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
-        orderTitle.frame = CGRectMake(PADDING, PADDING / 3, frame.width - 2 * PADDING, 25)
-        addSubview(orderTitle)
-        orderStatues.frame = CGRectMake(PADDING, 30 + PADDING / 3, orderTitle.bounds.width / 2, 20)
-        orderStatues.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        orderStatues.textColor = UIColor.colorWithHex(APP_COLOR).colorWithAlphaComponent(0.7)
-        addSubview(orderStatues)
-        orderPrice.frame = CGRectMake(SCREEN_WIDTH - PADDING - orderStatues.bounds.width - 10, orderStatues.frame.origin.y, orderStatues.bounds.width - 10, 20)
-        orderPrice.textAlignment = .Right
-        orderPrice.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        addSubview(orderPrice)
-        orderTime.frame = CGRectMake(PADDING, CGRectGetMaxY(orderPrice.frame) + PADDING / 3, SCREEN_WIDTH - 2 * PADDING, 20)
+        title.frame = CGRectMake(PADDING, PADDING / 3, frame.width - 2 * PADDING, 25)
+        addSubview(title)
+        status.frame = CGRectMake(PADDING, 30 + PADDING / 3, title.bounds.width / 2, 20)
+        status.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        status.textColor = UIColor.colorWithHex(APP_COLOR).colorWithAlphaComponent(0.7)
+        addSubview(status)
+        totalFee.frame = CGRectMake(SCREEN_WIDTH - PADDING - status.bounds.width - 10, status.frame.origin.y, status.bounds.width - 10, 20)
+        totalFee.textAlignment = .Right
+        totalFee.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        addSubview(totalFee)
+        orderTime.frame = CGRectMake(PADDING, CGRectGetMaxY(totalFee.frame) + PADDING / 3, SCREEN_WIDTH - 2 * PADDING, 20)
         orderTime.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         orderTime.textColor = .grayColor()
         addSubview(orderTime)
@@ -34,10 +34,10 @@ class OrderCell: UITableViewCell {
     
     // MARK: - 💛 自定义方法 (Custom Method)
     func setData(item: Order) {
-        orderTitle.text = item.name
+        title.text = item.name
         orderTime.text = item.createdTime.formattedDateWithFormat("yyyy-MM-dd HH:mm:ss")
-        orderPrice.text = getFormatterPrice(item.totalFee)
-        orderStatues.text = getStatuesString(item.status)
-        orderStatues.sizeToFit()
+        totalFee.text = getFormatterPrice(item.totalFee)
+        status.text = getStatuesString(item.status)
+        status.sizeToFit()
     }
 }

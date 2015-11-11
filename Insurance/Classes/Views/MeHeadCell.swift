@@ -3,7 +3,7 @@
 //
 
 class MeHeadCell: UITableViewCell {
-    var headImageView = UIImageView()
+    var headImageView: ImageView!
     var nickNameLabel = UILabel()
     var aboutLabel = UILabel()
     
@@ -15,7 +15,7 @@ class MeHeadCell: UITableViewCell {
     // MARK: - 💜 UITableViewDelegate
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
-        headImageView.frame = CGRectMake(PADDING, 10, 60, 60)
+        headImageView = ImageView(frame: CGRectMake(PADDING, 10, 60, 60), cornerRadius: 30)
         addSubview(headImageView)
         nickNameLabel.frame = CGRectMake(2 * PADDING + 60, 0, 0, 0)
         addSubview(nickNameLabel)
