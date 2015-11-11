@@ -180,9 +180,7 @@ class Home: MyList {
                 dest.setValue((selected as! Card).idStr, forKey: "pk")
             }
         case "product_detail":
-            let endpoint = getEndpoint("products/\((selected as! Card).objectId)")
-            LOG(endpoint)
-            dest.setValue(endpoint, forKey: "endpoint")
+            dest.setValue(getEndpoint("products/\((selected as! Card).objectId)"), forKey: "endpoint")
         default: break
         }
     }

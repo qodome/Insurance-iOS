@@ -8,7 +8,7 @@ class OfferDetail: GroupedTableDetail {
         super.onPrepare()
         let button = getBottomButton(view)
         button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
-        button.setTitle(LocalizedString("confirm_orders"), forState: .Normal)
+        button.setTitle(LocalizedString("confirm_order"), forState: .Normal)
         view.addSubview(button)
         items = [[.emptyItem()], [.emptyItem()]]
         for index in 0..<(data as! Offer).insurance_groups.count.integerValue {

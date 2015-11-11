@@ -62,7 +62,7 @@ class GDS: GroupedTableDetail, EAIntroDelegate {
     override func onLoadSuccess<E : CheckEnquiry>(entity: E) {
         super.onLoadSuccess(entity)
         objectId = entity.status == 3 ? entity.orderId : entity.enquiryId
-        if entity.status == 0 && entity.message != "" {
+        if entity.status == 0 && !entity.message.isEmpty {
             showAlert(self, title: entity.message)
         }
         moveTo(entity.status.integerValue)

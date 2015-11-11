@@ -20,7 +20,7 @@
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 
 // HMSegmentedControl https://github.com/HeshamMegid/HMSegmentedControl
-#import "HMSegmentedControl.h"
+#import <HMSegmentedControl/HMSegmentedControl.h>
 
 // M13ProgressSuite https://github.com/Marxon13/M13ProgressSuite
 #import <M13ProgressSuite/M13ProgressHUD.h>

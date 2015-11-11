@@ -16,7 +16,7 @@ class OrderList: TableList {
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
         let segmentController = HMSegmentedControl(sectionTitles: ["车险", "划痕险", "航延乐"])
         segmentController.selectionIndicatorHeight = 2
-        segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
+        segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)]
         segmentController.indexChangeBlock = { index in
             LOG(index)
         }

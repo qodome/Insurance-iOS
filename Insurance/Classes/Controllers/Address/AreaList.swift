@@ -13,24 +13,24 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        items = [[Item(title: "", selectable: true)], []] // 两个组的占位
+        items = [[Item(selectable: true)], []] // 两个组的占位
         let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("city", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
         let mProArray = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! NSArray
-        for province in mProArray {
-            let ProModel = Province()
-            ProModel.setValuesForKeysWithDictionary(province as! [String : AnyObject])
-            var cityArray: [Province] = []
-            for city in (province["cities"] as! NSArray) {
-                let cityModel = Province()
-                cityModel.setValuesForKeysWithDictionary(city as! [String : AnyObject])
-                cityArray += [cityModel]
+        for provinceData in mProArray {
+            let province = Province()
+            province.setValuesForKeysWithDictionary(provinceData as! [String : AnyObject])
+            var cities: [Province] = []
+            for cityData in (provinceData["cities"] as! NSArray) {
+                let city = Province()
+                city.setValuesForKeysWithDictionary(cityData as! [String : AnyObject])
+                cities += [city]
             }
-            ProModel.cities = cityArray
-            provinces += [ProModel]
-            if cityArray.isEmpty {
-                items[1] += [Item(title: ProModel.name, selectable: true)]
+            province.cities = cities
+            provinces += [province]
+            if cities.isEmpty {
+                items[1] += [Item(title: province.name, selectable: true)]
             } else {
-                items[1] += [Item(title: ProModel.name, dest: mCityList.self, storyboard: false)]
+                items[1] += [Item(title: province.name, dest: mCityList.self, storyboard: false)]
             }
         }
     }

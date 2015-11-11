@@ -40,10 +40,7 @@ mandatory = "Mandatory Liability Insurance";
 motor_taxes= "Motor Vehicle And Vessel Taxes";
 
 /* 询价 && 报价 */
-enquiry_create = "Enquiry Create";
-enquiry_watting = "Enquiry Watting";
-enquiry_detail = "Enquiry Detail";
+enquire = "Enquire";
 offer_list = "Offer List";
 offer_detail = "Offer Detail";
-enquiryStatus = "Enquiry Status";
-confirm_orders = "Confirm Orders";
+confirm_order = "Confirm Order";

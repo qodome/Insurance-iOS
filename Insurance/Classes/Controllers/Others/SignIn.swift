@@ -19,10 +19,10 @@ class SignIn: SignInController {
     
     // MARK: - 💛 Action
     func register() {
-        startActivity(Item(title: "", dest: Register.self, storyboard: false))
+        startActivity(Item(dest: Register.self, storyboard: false))
     }
     
     func securyback() {
-        startActivity(Item(title: "", dest: SecuryBack.self, storyboard: false))
+        startActivity(Item(dest: SecuryBack.self, storyboard: false))
     }
 }

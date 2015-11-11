@@ -59,6 +59,6 @@ enum Color: Int {
 }
 
 let GENDER_STRING = [
-    "m" : LocalizedString("male"),
-    "f" : LocalizedString("female")
+    "m" : "male",
+    "f" : "female"
 ]

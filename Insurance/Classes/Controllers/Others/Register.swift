@@ -134,6 +134,6 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     }
     
     func agreement() {
-        startActivity(Item(title: "", dest: AboutUs.self, storyboard: false))
+        startActivity(Item(dest: AboutUs.self, storyboard: false))
     }
 }

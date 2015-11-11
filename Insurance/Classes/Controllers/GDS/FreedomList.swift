@@ -28,7 +28,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         if dataArray[0].isEmpty {
             let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("autoinsurance", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
             let temp = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! [NSDictionary]
-            for (section, sectionValue) in temp .enumerate() {
+            for (section, sectionValue) in temp.enumerate() {
                 for rowValue in sectionValue["result"] as! [NSDictionary] {
                     let model = Freedom()
                     model.setValuesForKeysWithDictionary(rowValue as! [String : AnyObject])
@@ -60,14 +60,15 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                 }
             }
         }
-        let button = getButton( CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT), title: LocalizedString("enquiry_create"), theme: STYLE_BUTTON_DARK)
+        let button = getBottomButton(view)
+        button.setTitle(LocalizedString("enquire"), forState: .Normal)
         button.addTarget(self, action: "enquiryCreate", forControlEvents: .TouchUpInside)
         view.addSubview(button)
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
         super.onLoadSuccess(entity)
-        putString("createTime", value: entity.createdTime.formattedDateWithFormat("HH:mm"))
+        putString("created_time", value: entity.createdTime.formattedDateWithFormat("HH:mm"))
         cancel()
         NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : entity.id, "index" : "1"])
     }
@@ -100,7 +101,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         let indexPath = tableView.indexPathsForSelectedRows!.first!
         dest.setValue(dataArray[indexPath.section][indexPath.row].picker_array, forKey: "pickerData")
-        (dest as! PickerList).pickerDelegate = self
+        (dest as! PickerList).delegate = self
         dest.setValue((tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!, forKey: "titleName")
         dest.setValue(dataArray[indexPath.section][indexPath.row].picker_pid, forKey: "selectedId")
     }
@@ -121,7 +122,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         })
     }
     
-    func backPickerModel(model: PickerModel) {
+    func onBackSegue(model: PickerModel) {
         let indexPath = tableView.indexPathsForSelectedRows!.first!
         let needDic = dataArray[indexPath.section][indexPath.row]
         dataDic[needDic.name] = model.pname
