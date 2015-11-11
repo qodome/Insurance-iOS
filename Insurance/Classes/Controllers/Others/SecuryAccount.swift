@@ -3,7 +3,6 @@
 //
 
 class SecuryAccount: GroupedTableDetail {
-    
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()

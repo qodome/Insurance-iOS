@@ -481,7 +481,6 @@
         <!--Sign In-->
         <scene sceneID="C1V-ip-yQJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JYu-dd-iNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="sign_in" id="x79-Xl-Y1u" customClass="SignIn" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WSp-rA-cX1"/>
@@ -498,13 +497,13 @@
                         <segue destination="VEl-J6-X1W" kind="show" identifier="segue.sign_up" id="vqv-em-53Q"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYu-dd-iNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-918" y="918"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="RdL-Pl-MKX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UWk-U2-JdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="VEl-J6-X1W" customClass="SignUp" customModule="Insurance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KNq-8J-F0R"/>
@@ -518,6 +517,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="03d-rz-yhI"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWk-U2-JdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-918" y="256"/>
         </scene>

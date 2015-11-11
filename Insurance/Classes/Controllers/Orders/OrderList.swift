@@ -4,12 +4,28 @@
 
 class OrderList: TableList {
     // MARK: - 🐤 Taylor
+    override func setTableViewStyle() -> UITableViewStyle {
+        return .Grouped
+    }
+    
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("orders")
         mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
+        let segmentController = HMSegmentedControl(sectionTitles: ["车险", "划痕险", "航延乐"])
+        segmentController.selectionIndicatorHeight = 2
+        segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
+        segmentController.indexChangeBlock = { index in
+            LOG(index)
+        }
+        segmentController.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)]
+        segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
+        segmentController.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe
+        segmentController.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
+        segmentController.frame = CGRectMake(0, 0, view.frame.width, 35)
+        listView.addSubview(segmentController)
     }
     
     override func getItemView<V : UITableView, T : Order, C : OrderCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
