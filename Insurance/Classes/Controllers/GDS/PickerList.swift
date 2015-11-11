@@ -3,12 +3,12 @@
 //
 
 protocol PickerListDelegate {
-    func backPickerModel(model: PickerModel)
+    func onBackSegue(model: PickerModel)
 }
 
 class PickerList: GroupedTableDetail {
     var pickerData: [PickerModel] = []
-    var pickerDelegate: PickerListDelegate?
+    var delegate: PickerListDelegate?
     var selectedId = ""
     var titleName = ""
     
@@ -32,7 +32,7 @@ class PickerList: GroupedTableDetail {
         switch action {
         case .Open:
             cancel()
-            pickerDelegate!.backPickerModel(pickerData[indexPath.row])
+            delegate?.onBackSegue(pickerData[indexPath.row])
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
         }

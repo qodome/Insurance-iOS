@@ -2,10 +2,9 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
+class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
     let locationManager = CLLocationManager()
     var imageDic: [String : UIImage] = [:]
-    var brands: [PickerModel] = []
     var freedomArray: [[Freedom]] = [[]]
     var onOrOff: Bool = false
     var textField = UITextField()
@@ -13,6 +12,15 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        let y = CGRectGetMaxY(tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))) + PADDING_INNER
+        let buttonName = ["freedom_list", "enquire"]
+        for (index, value) in buttonName.enumerate() {
+            let width = (view.frame.width - 2 * PADDING - PADDING_INNER) / 2
+            let button = getButton(CGRectMake(PADDING + (width
+                + PADDING_INNER) * CGFloat(index), y, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
+            button.addTarget(self, action: index == 0 ? "freedom" : "create", forControlEvents: .TouchUpInside)
+            tableView.addSubview(button)
+        }
         if (data as? Enquiry)?.city != "" && (data as? Enquiry)?.city != "上海市"  {
             showAlert(self, title: "暂不支持“上海市”以外的城市投保")
         }
@@ -45,16 +53,6 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         textField.returnKeyType = .Done
         textField.delegate = self
         textField.placeholder = "对商家说点什么"
-        let buttonName = ["freedom_list", "enquiry_create"]
-        for (index, value) in buttonName.enumerate() {
-            let width = (view.frame.width - 2 * PADDING - PADDING_INNER) / 2
-            let y = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))?.frame.origin.y
-            LogAlert(y)
-            let button = getButton(CGRectMake(PADDING + (width
-                + PADDING_INNER) * CGFloat(index), 300 + 54, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
-            button.addTarget(self, action: index == 0 ? "freedom" : "commit", forControlEvents: .TouchUpInside)
-            tableView.addSubview(button)
-        }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapGesture:")
@@ -64,7 +62,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
         super.onLoadSuccess(entity)
-        putString("createTime", value: entity.createdTime.formattedDateWithFormat("HH:mm"))
+        putString("created_time", value: entity.createdTime.formattedDateWithFormat("HH:mm"))
         NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id" : entity.id, "index" : "1"])
     }
     
@@ -126,6 +124,17 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         }
     }
     
+    override func create() {
+        if imageDic["car_license"] != nil {
+            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!, controller: self, success: { imageUrl in
+                let mEnquiry = self.data as! Enquiry
+                self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
+            })
+        } else {
+            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
+        }
+    }
+    
     // MARK: - 💛 自定义方法 (Custom Method)
     func switchStateChange(sw:UISwitch) {
         onOrOff = sw.on
@@ -139,18 +148,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     
     func freedom() {
         if imageDic["car_license"] != nil {
-            startActivity(Item(title: "", dest: FreedomList.self, storyboard: false))
-        } else {
-            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
-        }
-    }
-    
-    func commit() {
-        if imageDic["car_license"] != nil {
-            uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!, controller: self, success: { imageUrl in
-                let mEnquiry = self.data as! Enquiry
-                self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
-            })
+            startActivity(Item(dest: FreedomList.self, storyboard: false))
         } else {
             showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
         }

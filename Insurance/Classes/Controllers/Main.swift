@@ -9,7 +9,7 @@ class Main: UITabBarController {
         tabBar.tintColor = .colorWithHex(APP_COLOR)
         let items = [/** "home", "discover", */ "gds", "me"]
         for i in 0..<items.count {
-            tabBar.items?[i].title = items[i]
+            tabBar.items?[i].title = LocalizedString(items[i])
         }
         selectedIndex = 0
     }

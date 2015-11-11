@@ -43,7 +43,7 @@ class OfferList: TableList {
     override func onPerform<T : Offer>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
-            startActivity(Item(title: "", dest: OfferDetail.self, storyboard: false))
+            startActivity(Item(dest: OfferDetail.self, storyboard: false))
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
         }
