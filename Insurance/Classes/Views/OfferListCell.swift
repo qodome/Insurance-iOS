@@ -85,12 +85,12 @@ class OfferListCell: UITableViewCell {
         discountLabel.center.y = titleLabel.center.y
         remarkImage.center.y = titleLabel.center.y
         detailLabel.sizeToFit()
-        detailLabel.frame.origin = CGPointMake(PADDING, titleLabel.bounds.height + titleLabel.frame.origin.y + 10)
+        detailLabel.frame.origin = CGPointMake(PADDING, CGRectGetMaxY(titleLabel.frame) + 10)
         var tagsArray: [String] = []
         for (_, valueTag) in data.agent.tags.results.enumerate() {
             tagsArray += [valueTag.name]
         }
-        tagView.frame = CGRectMake(2 * PADDING + detailLabel.bounds.width, discountLabel.frame.origin.y + discountLabel.bounds.height + 5, SCREEN_WIDTH - 2 * PADDING - detailLabel.bounds.width, 23)
+        tagView.frame = CGRectMake(2 * PADDING + detailLabel.bounds.width, CGRectGetMaxY(discountLabel.frame) + 5, SCREEN_WIDTH - 2 * PADDING - detailLabel.bounds.width, 23)
         for view in tagView.subviews {
             view.removeFromSuperview()
         }

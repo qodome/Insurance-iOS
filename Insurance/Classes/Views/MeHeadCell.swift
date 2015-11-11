@@ -32,7 +32,7 @@ class MeHeadCell: UITableViewCell {
         nickNameLabel.center.y = headImageView.center.y
         aboutLabel.text = data.about
         aboutLabel.sizeToFit()
-        aboutLabel.frame.origin.x = nickNameLabel.frame.width + nickNameLabel.frame.origin.x + PADDING
+        aboutLabel.frame.origin.x = CGRectGetMaxX(nickNameLabel.frame) + PADDING
         aboutLabel.frame.size.width = SCREEN_WIDTH - 5 * PADDING - nickNameLabel.frame.width - 65
         aboutLabel.hidden = SCREEN_WIDTH - 5 * PADDING - nickNameLabel.frame.width - 65 > 10 ? false : true
         aboutLabel.center.y = nickNameLabel.center.y

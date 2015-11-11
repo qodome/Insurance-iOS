@@ -26,7 +26,7 @@ class OrderCell: UITableViewCell {
         orderPrice.textAlignment = .Right
         orderPrice.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(orderPrice)
-        orderTime.frame = CGRectMake(PADDING, orderPrice.frame.origin.y + orderPrice.bounds.height + PADDING / 3, SCREEN_WIDTH - 2 * PADDING, 20)
+        orderTime.frame = CGRectMake(PADDING, CGRectGetMaxY(orderPrice.frame) + PADDING / 3, SCREEN_WIDTH - 2 * PADDING, 20)
         orderTime.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         orderTime.textColor = .grayColor()
         addSubview(orderTime)

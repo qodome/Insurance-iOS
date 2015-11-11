@@ -185,6 +185,7 @@
 		0EB111D01BE2628700C0BF62 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111CF1BE2628700C0BF62 /* SearchResult.swift */; };
 		0EEA46941BE359A00009A09B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEA46931BE359A00009A09B /* UITableView+Extension.swift */; };
 		F924151225BB20A3C9EF1489 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5F62F6E39B514C622137E5 /* libPods.a */; };
+		FF16E3B61BF33843001B65FE /* ic_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = FF16E3B51BF33843001B65FE /* ic_banner.png */; };
 		FF23E3101BEB68CD00FBF865 /* SecuryAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30D1BEB68CD00FBF865 /* SecuryAccount.swift */; };
 		FF23E3111BEB68CD00FBF865 /* SecuryBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */; };
 		FF23E3121BEB68CD00FBF865 /* SecuryUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */; };
@@ -412,6 +413,7 @@
 		3842DC7F28097D00C2170059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		39711360E4CC77D2B9D726D0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5B5F62F6E39B514C622137E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF16E3B51BF33843001B65FE /* ic_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_banner.png; sourceTree = "<group>"; };
 		FF23E30D1BEB68CD00FBF865 /* SecuryAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryAccount.swift; sourceTree = "<group>"; };
 		FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryBack.swift; sourceTree = "<group>"; };
 		FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryUpdate.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				0E1E35AF1BE9F1EF00968F2A /* ic_vehiclelicense.png */,
+				FF16E3B51BF33843001B65FE /* ic_banner.png */,
 				FFED8F731BEC4A8500424D6E /* ic_intro_1.png */,
 				FFED8F741BEC4A8500424D6E /* ic_intro_2.png */,
 				0E1E35B01BE9F1EF00968F2A /* ic_velicense.png */,
@@ -1118,6 +1121,7 @@
 				0E8379481BE07D9400F3BCCE /* Assets.xcassets in Resources */,
 				0E8379461BE07D9400F3BCCE /* Main.storyboard in Resources */,
 				0EB110FB1BE2132100C0BF62 /* aboutus.html in Resources */,
+				FF16E3B61BF33843001B65FE /* ic_banner.png in Resources */,
 				0EB110F41BE2132100C0BF62 /* logo_brand_5.png in Resources */,
 				0EB110DA1BE211A200C0BF62 /* ic_user_s180.png in Resources */,
 			);

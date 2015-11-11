@@ -23,7 +23,6 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         super.onPrepare()
         mapping = smartMapping(Enquiry.self)
         data = Enquiry()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onBackCity:", name: "city", object: nil)
         // 初始化定位
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -33,8 +32,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         }
         items = [
             [
-                Item(title: LocalizedString("投保城市"), dest: AreaList.self, storyboard: false)],
-            [
+                Item(title: LocalizedString("投保城市"), dest: AreaList.self, storyboard: false),
                 Item(title: LocalizedString("新车未上牌")),
                 Item(title: LocalizedString("行驶证正本照片"), selectable: true)
             ],
@@ -42,24 +40,28 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
                 Item.emptyItem()
             ]
         ]
+        let imageView = ImageView(frame: CGRectMake(0, 0, view.frame.width, view.frame.width * 0.4))
+        imageView.image = UIImage(named: "ic_banner.png")
+        tableView.tableHeaderView = imageView
         textField.returnKeyType = .Done
         textField.delegate = self
-        textField.placeholder = "对商家说点什么"
+        textField.placeholder = "对商家说点什么(选填)"
         let buttonName = ["freedom_list", "enquiry_create"]
         for (index, value) in buttonName.enumerate() {
             let width = (view.frame.width - 2 * PADDING - PADDING_INNER) / 2
             let y = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))?.frame.origin.y
             LogAlert(y)
             let button = getButton(CGRectMake(PADDING + (width
-                + PADDING_INNER) * CGFloat(index), 300 + 54, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
+                + PADDING_INNER) * CGFloat(index), 300 + 73 + PADDING, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
             button.addTarget(self, action: index == 0 ? "freedom" : "commit", forControlEvents: .TouchUpInside)
             tableView.addSubview(button)
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapGesture:")
         tapGesture.delegate = self
         tableView.addGestureRecognizer(tapGesture)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onBackCity:", name: "city", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
@@ -70,19 +72,21 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         switch indexPath.section {
-        case 1 :
+        case 0 :
             switch indexPath.row {
-            case 0 :
+            case 1 :
                 let accessSwitch = UISwitch()
                 accessSwitch.addTarget(self, action: "switchStateChange:", forControlEvents: .ValueChanged)
                 cell.accessoryView = accessSwitch
-            default:
+            case 2 :
                 cell.textLabel?.text = onOrOff ? LocalizedString("车辆合格证照片") : LocalizedString("行驶证正本照片")
                 let imageView = UIImageView(frame: CGRectMake(0, 0, 80, 60))
                 imageView.image = UIImage(named: onOrOff ? "ic_velicense.png" : "ic_vehiclelicense.png")
                 cell.accessoryView = imageView
+            default :
+                break
             }
-        case 2:
+        case 1:
             textField.frame = CGRectMake(PADDING, 0, view.frame.width - 2 * PADDING, cell.frame.height)
             cell.addSubview(textField)
         default: break
@@ -91,14 +95,16 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     }
     
     override func getItemView<T : Enquiry, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            cell.detailTextLabel?.text = checkAllowLocation(false) ? data.city : "定位未开启"
-        case 1:
-            if indexPath.row == 1 && imageDic["car_license"] != nil {
-                (cell.accessoryView as? UIImageView)?.image = imageDic["car_license"]
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0 :
+                cell.detailTextLabel?.text = checkAllowLocation(false) ? data.city : "定位未开启"
+            case 2 :
+                if imageDic["car_license"] != nil {
+                    (cell.accessoryView as? UIImageView)?.image = imageDic["car_license"]
+                }
+            default: break
             }
-        default: break
         }
         return cell
     }
@@ -106,10 +112,9 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
-            switch indexPath.section {
-            case 1:
+            if indexPath.section == 0 && indexPath.row == 2 {
                 startImageSheet()
-            default:
+            } else {
                 super.onPerform(action, indexPath: indexPath, item: item)
             }
         default:
@@ -129,7 +134,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     // MARK: - 💛 自定义方法 (Custom Method)
     func switchStateChange(sw:UISwitch) {
         onOrOff = sw.on
-        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 1)], withRowAnimation: .None)
+        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: .None)
     }
     
     func onBackCity(nf: NSNotification) {
@@ -171,12 +176,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        return indexPath.section == 1 && indexPath.row == 1 ? 80 :tableView.rowHeight
-    }
-    
-    // MARK: 💜 UITableViewDataSource
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == tableView.numberOfSections - 1 ? LocalizedString("询价留言(选填)") : ""
+        return indexPath.section == 0 && indexPath.row == 2 ? 80 :tableView.rowHeight
     }
     
     // MARK: 💜 UIImagePickerControllerDelegate
@@ -184,7 +184,7 @@ class EnquiryCreate: GroupedTableDetail ,CLLocationManagerDelegate, FreedomListD
         if info[UIImagePickerControllerMediaType] as! CFString == kUTTypeImage {
             imageDic["car_license"] = (info[UIImagePickerControllerOriginalImage] as! UIImage)
             picker.dismissViewControllerAnimated(true, completion: nil)
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 1)], withRowAnimation: .None)
+            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: .None)
         }
     }
     

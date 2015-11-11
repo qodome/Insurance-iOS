@@ -131,7 +131,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
             statue = "0"
             switch needDic.tid {
             case "6", "7", "9","10":
-                nextID = needDic.tid == "7" || needDic.tid == "10" ? "\(Int(needDic.tid as String)! - 1)" : "\(Int(needDic.tid as String)! + 1)"
+                nextID = needDic.tid == "7" || needDic.tid == "10" ? "\(Int(needDic.tid)! - 1)" : "\(Int(needDic.tid)! + 1)"
                 if getDicWithId(nextID).picker_pid != "0" || getDicWithId("11").switch_status == "1" || getDicWithId("12").switch_status == "1" {
                     statue = "1"
                 }
