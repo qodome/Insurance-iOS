@@ -13,13 +13,13 @@ extension BaseController {
     }
     
     // 判断是否定位
-    func checkAllowLocation(alert: Bool) -> Bool {
+    func checkAllowsLocation(allowsAlert allowsAlert: Bool = false) -> Bool {
         if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .AuthorizedAlways || CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             return true
         }
         if CLLocationManager.locationServicesEnabled() {
             if CLLocationManager.authorizationStatus() != .AuthorizedAlways && CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
-                if alert {
+                if allowsAlert {
                     showAlert(self, title: LocalizedString("您没有设置开启定位服务"), action: UIAlertAction(title: LocalizedString("settings"), style: .Default, handler: { action in
                         UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!) // 开启设置
                     }))

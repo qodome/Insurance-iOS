@@ -46,6 +46,7 @@ class OfferListCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         for view in tagView.subviews {
             view.removeFromSuperview()
         }

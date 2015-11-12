@@ -47,8 +47,7 @@ class PageCell: UICollectionViewCell, UIScrollViewDelegate {
         canAutoRun = false
         timer?.invalidate() // TODO: 这句和下一句的正确写法
         timer = nil
-        let views = scrollView.subviews
-        for view in views { // 不移掉的话永远在
+        for view in scrollView.subviews { // 不移掉的话永远在
             view.removeFromSuperview()
         }
     }

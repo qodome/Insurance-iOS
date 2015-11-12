@@ -58,6 +58,25 @@ enum Color: Int {
     case XiaomarYellow = 0xFDB333 // 0xFFB419
 }
 
+enum Style: Int {
+    case Light, Dark
+}
+
+class Theme {
+    var color: Int!
+    var alpha: CGFloat!
+    var style: Style!
+    
+    init(style: Style = .Dark, color: Int = APP_COLOR, alpha: CGFloat = 1) {
+        self.style = style
+        self.color = color
+        self.alpha = alpha
+    }
+}
+
+let STYLE_BUTTON_DARK = Theme(alpha: 0.7)
+let STYLE_BUTTON_LIGHT = Theme(style: .Light)
+
 let GENDER_STRING = [
     "m" : "male",
     "f" : "female"

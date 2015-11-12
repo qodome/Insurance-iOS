@@ -13,4 +13,5 @@ class AppDelegate: SocialAppDelegate {
         //        NSUserDefaults.standardUserDefaults().registerDefaults(["userToken" : ""])
         //        NSUserDefaults.standardUserDefaults().synchronize()
     }
+    
 }

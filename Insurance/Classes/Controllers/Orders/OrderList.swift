@@ -30,8 +30,21 @@ class OrderList: TableList {
         segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
         segmentController.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe
         segmentController.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
-        segmentController.frame = CGRectMake(0, 0, view.frame.width, 35)
-        listView.addSubview(segmentController)
+        segmentController.frame = CGRectMake(0, STATUS_BAR_HEIGHT + NAVIGATION_BAR_HEIGHT, view.frame.width, 35)
+        view.addSubview(segmentController)
+    }
+    
+    override func onLoadSuccess<E : ListModel>(entity: E) {
+        super.onLoadSuccess(entity)
+        allData = data
+        insuranceData.removeAll()
+        for orderData in data {
+            if (orderData as! Order).productId == 1 {
+                insuranceData.append(orderData)
+            }
+        }
+        data = selectedIndex == 0 ? allData : insuranceData
+        (listView as! UITableView).reloadData()
     }
     
     override func onLoadSuccess<E : ListModel>(entity: E) {

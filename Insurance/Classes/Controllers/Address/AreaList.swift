@@ -2,9 +2,14 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
+enum LocationState: Int {
+    case Loading, Success, Failure
+}
+
 class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var provinces: [Province] = []
+    var locationState = LocationState.Failure
     
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
@@ -13,6 +18,8 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        locationState = checkAllowsLocation() ? .Loading : .Failure
+        //
         items = [[Item(selectable: true)], []] // 两个组的占位
         let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("city", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
         let mProArray = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! NSArray
@@ -37,35 +44,32 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         if indexPath.section == 0 {
-            cell.userInteractionEnabled = checkAllowLocation(false)
-            if  checkAllowLocation(false) {
-                cell.imageView?.image = UIImage.imageWithColor(.clearColor(), size: CGSizeSettingsIcon)
-                cell.textLabel?.text = LocalizedString("定位中...")
-                let activityView = UIActivityIndicatorView(frame: CGRect(origin: CGPoint(x: PADDING, y: 7), size: CGSizeSettingsIcon))
-                activityView.activityIndicatorViewStyle = .Gray
-                activityView.startAnimating()
-                cell.contentView.addSubview(activityView)
-            } else {
-                let iconLocation = FAKIonIcons.androidWarningIconWithSize(CGSizeSettingsIcon.width)
-                iconLocation.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(APP_COLOR))
-                cell.imageView?.image = iconLocation.imageWithSize(CGSizeSettingsIcon)
+            switch locationState {
+            case .Success:
+                cell.userInteractionEnabled = true
+                let icon = FAKIonIcons.locationIconWithSize(CGSizeSettingsIcon.width)
+                icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_GREEN))
+                cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
+            case .Failure:
+                cell.userInteractionEnabled = false
+                let icon = FAKIonIcons.androidWarningIconWithSize(CGSizeSettingsIcon.width)
+                icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.destructiveColor())
+                cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
                 cell.textLabel?.text = LocalizedString("无法获取你的位置信息")
+            default:
+                cell.userInteractionEnabled = false
+                cell.imageView?.image = .imageWithColor(.clearColor(), size: CGSizeSettingsIcon)
+                cell.textLabel?.text = LocalizedString("定位中...")
+                let indicator = UIActivityIndicatorView(frame: CGRectMake(PADDING + 4.5, cell.frame.height / 2 - 10, 20, 20))
+                indicator.activityIndicatorViewStyle = .Gray
+                indicator.startAnimating()
+                cell.contentView.addSubview(indicator)
             }
         }
         return cell
     }
     
     override func getItemView<T : Province, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        if indexPath.section == 0 {
-            for subView in cell.contentView.subviews {
-                if subView.isKindOfClass(UIActivityIndicatorView) {
-                    subView.removeFromSuperview()
-                }
-            }
-            let iconLocation = FAKIonIcons.locationIconWithSize(CGSizeSettingsIcon.width)
-            iconLocation.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_GREEN))
-            cell.imageView?.image = iconLocation.imageWithSize(CGSizeSettingsIcon)
-        }
         cell.textLabel?.text = indexPath.section == 0 ? "\(data.name)" : provinces[indexPath.row].name
         return cell
     }
@@ -73,18 +77,12 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     override func onPerform<T : Item>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
-            if indexPath.section == 0 {
-                if data != nil {
-                    NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : data!])
-                    cancel()
-                }
+            if item.url.isEmpty {
+                data = indexPath.section == 0 ? data : provinces[indexPath.row]
+                NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : data!])
+                cancel()
             } else {
-                if item.url.isEmpty {
-                    NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : provinces[indexPath.row]])
-                    cancel()
-                } else {
-                    super.onPerform(action, indexPath: indexPath, item: item)
-                }
+                super.onPerform(action, indexPath: indexPath, item: item)
             }
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
@@ -104,12 +102,15 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     
     // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
+        manager.stopUpdatingLocation()
         let info = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)
         let addressDic: AnyObject? = info["result"]?["addressComponent"]
         data = Province()
         (data as? Province)?.code = info["result"]?["cityCode"] as! NSNumber
         (data as? Province)?.name = addressDic!["city"] as! String
-        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+        locationState = .Success
+        delay(0.5) {
+            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+        }
     }
 }
