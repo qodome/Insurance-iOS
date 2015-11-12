@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1466781BF4978D00A5ABB0 /* LocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1466771BF4978D00A5ABB0 /* LocationUtils.swift */; };
 		0E1E35B21BE9F1EF00968F2A /* ic_vehiclelicense.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1E35AF1BE9F1EF00968F2A /* ic_vehiclelicense.png */; };
 		0E1E35B31BE9F1EF00968F2A /* ic_velicense.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1E35B01BE9F1EF00968F2A /* ic_velicense.png */; };
 		0E1E35B41BE9F1EF00968F2A /* me_portrait_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1E35B11BE9F1EF00968F2A /* me_portrait_default.png */; };
@@ -131,7 +132,6 @@
 		0EB1118E1BE2133000C0BF62 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1112C1BE2133000C0BF62 /* UserDetail.swift */; };
 		0EB1118F1BE2133000C0BF62 /* VehicleCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1112E1BE2133000C0BF62 /* VehicleCreate.swift */; };
 		0EB111901BE2133000C0BF62 /* VehicleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1112F1BE2133000C0BF62 /* VehicleList.swift */; };
-		0EB111911BE2133000C0BF62 /* BaseController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111321BE2133000C0BF62 /* BaseController+Extensions.swift */; };
 		0EB111931BE2133000C0BF62 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111351BE2133000C0BF62 /* Answer.swift */; };
 		0EB111941BE2133000C0BF62 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111361BE2133000C0BF62 /* Article.swift */; };
 		0EB111951BE2133000C0BF62 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111371BE2133000C0BF62 /* Branch.swift */; };
@@ -220,6 +220,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E1466771BF4978D00A5ABB0 /* LocationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationUtils.swift; sourceTree = "<group>"; };
 		0E1E35AF1BE9F1EF00968F2A /* ic_vehiclelicense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vehiclelicense.png; sourceTree = "<group>"; };
 		0E1E35B01BE9F1EF00968F2A /* ic_velicense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_velicense.png; sourceTree = "<group>"; };
 		0E1E35B11BE9F1EF00968F2A /* me_portrait_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me_portrait_default.png; sourceTree = "<group>"; };
@@ -355,7 +356,6 @@
 		0EB1112E1BE2133000C0BF62 /* VehicleCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleCreate.swift; sourceTree = "<group>"; };
 		0EB1112F1BE2133000C0BF62 /* VehicleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleList.swift; sourceTree = "<group>"; };
 		0EB111301BE2133000C0BF62 /* Insurance-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Insurance-Bridging-Header.h"; sourceTree = "<group>"; };
-		0EB111321BE2133000C0BF62 /* BaseController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseController+Extensions.swift"; sourceTree = "<group>"; };
 		0EB111351BE2133000C0BF62 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		0EB111361BE2133000C0BF62 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		0EB111371BE2133000C0BF62 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
@@ -676,6 +676,7 @@
 			children = (
 				0EB111C91BE2151500C0BF62 /* BugUtils.swift */,
 				0E837A4B1BE09D2100F3BCCE /* FileUtils.swift */,
+				0E1466771BF4978D00A5ABB0 /* LocationUtils.swift */,
 				0E837A4C1BE09D2100F3BCCE /* RestKitUtils.swift */,
 				0E837A4D1BE09D2100F3BCCE /* Shortcuts.swift */,
 				0E837A4E1BE09D2100F3BCCE /* TSMessage+Extension.swift */,
@@ -764,7 +765,6 @@
 				0EB111041BE2133000C0BF62 /* Constants.swift */,
 				0EB1116C1BE2133000C0BF62 /* XML.swift */,
 				0EB111051BE2133000C0BF62 /* Controllers */,
-				0EB111311BE2133000C0BF62 /* jxextensions */,
 				0EB111331BE2133000C0BF62 /* Models */,
 				0EB1115C1BE2133000C0BF62 /* Util */,
 				0EB111601BE2133000C0BF62 /* Views */,
@@ -874,14 +874,6 @@
 				0EB1112F1BE2133000C0BF62 /* VehicleList.swift */,
 			);
 			path = Vehicles;
-			sourceTree = "<group>";
-		};
-		0EB111311BE2133000C0BF62 /* jxextensions */ = {
-			isa = PBXGroup;
-			children = (
-				0EB111321BE2133000C0BF62 /* BaseController+Extensions.swift */,
-			);
-			path = jxextensions;
 			sourceTree = "<group>";
 		};
 		0EB111331BE2133000C0BF62 /* Models */ = {
@@ -1223,7 +1215,6 @@
 				0EB111901BE2133000C0BF62 /* VehicleList.swift in Sources */,
 				0E837A801BE09D2100F3BCCE /* UITextField+Extension.swift in Sources */,
 				0E837A771BE09D2100F3BCCE /* WebDetail.swift in Sources */,
-				0EB111911BE2133000C0BF62 /* BaseController+Extensions.swift in Sources */,
 				0EB1119F1BE2133000C0BF62 /* Freedom.swift in Sources */,
 				0E837A831BE09D2100F3BCCE /* UIVisualEffectView+Extension.swift in Sources */,
 				0EB111881BE2133000C0BF62 /* Profile.swift in Sources */,
@@ -1326,6 +1317,7 @@
 				0EB111861BE2133000C0BF62 /* OrderList.swift in Sources */,
 				0E837AA11BE09D2100F3BCCE /* TagsView.swift in Sources */,
 				0EEA46941BE359A00009A09B /* UITableView+Extension.swift in Sources */,
+				0E1466781BF4978D00A5ABB0 /* LocationUtils.swift in Sources */,
 				0E837A951BE09D2100F3BCCE /* ImageView.swift in Sources */,
 				0E837A7A1BE09D2100F3BCCE /* NSDate+Extension.swift in Sources */,
 				0EB1119D1BE2133000C0BF62 /* Enquiry.swift in Sources */,

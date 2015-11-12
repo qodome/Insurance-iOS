@@ -103,7 +103,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
-        let info = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)
+        let info = getAddress(latitude: locations.last!.coordinate.latitude, longitude: locations.last!.coordinate.longitude)
         let addressDic: AnyObject? = info["result"]?["addressComponent"]
         data = Province()
         (data as? Province)?.code = info["result"]?["cityCode"] as! NSNumber

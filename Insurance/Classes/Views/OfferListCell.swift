@@ -46,14 +46,10 @@ class OfferListCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-<<<<<<< HEAD
         super.prepareForReuse()
-        
-=======
         for view in tagView.subviews {
             view.removeFromSuperview()
         }
->>>>>>> 4cb8045bee36a88da0e18957e0941c92d41a96a5
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)

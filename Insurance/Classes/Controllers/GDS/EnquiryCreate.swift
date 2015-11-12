@@ -36,18 +36,6 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
                 Item.emptyItem()
             ]
         ]
-        delay(0.2) {
-            self.checkAllowLocation(true)
-            let y = CGRectGetMaxY(self.tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))) + PADDING_INNER
-            let buttonName = ["freedom_list", "enquire"]
-            for (index, value) in buttonName.enumerate() {
-                let width = (self.view.frame.width - 2 * PADDING - PADDING_INNER) / 2
-                let button = getButton(CGRectMake(PADDING + (width
-                    + PADDING_INNER) * CGFloat(index), y, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
-                button.addTarget(self, action: index == 0 ? "freedom" : "create", forControlEvents: .TouchUpInside)
-                self.tableView.addSubview(button)
-            }
-        }
         let imageView = ImageView(frame: CGRectMake(0, 0, view.frame.width, view.frame.width * 0.4))
         imageView.image = UIImage(named: "ic_banner.png")
         tableView.tableHeaderView = imageView
@@ -61,7 +49,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         delay(0.2) {
-            self.checkAllowsLocation(allowsAlert: true)
+            checkAllowsLocation(allowsAlert: true)
             let y = CGRectGetMaxY(self.tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))) + PADDING_INNER
             let buttonName = ["freedom_list", "enquire"]
             for (index, value) in buttonName.enumerate() {
@@ -202,7 +190,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
-        let info = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)
+        let info = getAddress(latitude: locations.last!.coordinate.latitude, longitude: locations.last!.coordinate.longitude)
         let addressDic: AnyObject? = info["result"]?["addressComponent"]
         (data as? Enquiry)?.cityCode = info["result"]?["cityCode"] as! NSNumber
         (data as? Enquiry)?.city = addressDic!["city"] as! String

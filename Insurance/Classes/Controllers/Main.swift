@@ -9,6 +9,8 @@ class Main: UITabBarController {
         tabBar.tintColor = .colorWithHex(APP_COLOR)
         let items = [/** "home", "discover", */ "gds", "me"]
         for i in 0..<items.count {
+//            let iconOrders = FAKIonIcons.iosPaperIconWithSize(CGSizeTabBarIcon.width)
+//            tabBar.items?[i].image = iconOrders.imageWithSize(CGSizeTabBarIcon)
             tabBar.items?[i].title = LocalizedString(items[i])
         }
         selectedIndex = 0
