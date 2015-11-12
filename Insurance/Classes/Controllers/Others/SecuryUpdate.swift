@@ -3,8 +3,8 @@
 //
 
 class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
-    let newSecury = UITextField()
-    let newNextSecury = UITextField()
+    let newSecuryField = UITextField()
+    let nextSecuryField = UITextField()
     var textFieldArray: [UITextField] = []
     
     // MARK: - 💖 生命周期 (Lifecycle)
@@ -21,8 +21,8 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "create")
         navigationItem.rightBarButtonItem?.enabled = false
         items = [[Item.emptyItem(), Item.emptyItem()]]
-        textFieldArray = [newSecury,newNextSecury]
-        let placeArray: [String] = ["输入新密码", "再次输入新密码"]
+        textFieldArray = [newSecuryField,nextSecuryField]
+        let placeArray = [LocalizedString("输入新密码"), LocalizedString("确认新密码")]
         for (index, field) in textFieldArray.enumerate() {
             field.tag = index
             field.keyboardType = .ASCIICapable
@@ -30,6 +30,9 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
             field.clearButtonMode = .WhileEditing
             field.delegate = self
             field.returnKeyType = index == 1 ? .Done : .Next
+            if index == 0 {
+                field.becomeFirstResponder()
+            }
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enable", name: UITextFieldTextDidChangeNotification, object: nil)
     }
@@ -56,21 +59,16 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
         return false
     }
     
-    // MARK: 💜 UITableViewDataSource
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "密码只能是6-12位数字或英文字符，暂不支持中文和特殊字符"
-    }
-    
     // MARK: - 💛 自定义方法 (Custom Method)
     func enable() {
-        navigationItem.rightBarButtonItem?.enabled = !newSecury.text!.isEmpty && !newNextSecury.text!.isEmpty ? true : false
+        navigationItem.rightBarButtonItem?.enabled = !newSecuryField.text!.isEmpty && !nextSecuryField.text!.isEmpty ? true : false
     }
     
     func create() {
-        if newSecury.text != newNextSecury.text {
-            showAlert(self, title: "输入的两次新密码不一致，请核对后重试", message: "")
+        if newSecuryField.text != nextSecuryField.text {
+            showAlert(self, title: LocalizedString("输入的两次新密码不一致，请核对后重试"), message: "")
         } else {
-            loader?.update(parameters: ["password" : newNextSecury.text!])
+            loader?.update(parameters: ["password" : nextSecuryField.text!])
         }
     }
 }

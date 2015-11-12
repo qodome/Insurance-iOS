@@ -36,6 +36,18 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
                 Item.emptyItem()
             ]
         ]
+        delay(0.2) {
+            self.checkAllowLocation(true)
+            let y = CGRectGetMaxY(self.tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))) + PADDING_INNER
+            let buttonName = ["freedom_list", "enquire"]
+            for (index, value) in buttonName.enumerate() {
+                let width = (self.view.frame.width - 2 * PADDING - PADDING_INNER) / 2
+                let button = getButton(CGRectMake(PADDING + (width
+                    + PADDING_INNER) * CGFloat(index), y, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
+                button.addTarget(self, action: index == 0 ? "freedom" : "create", forControlEvents: .TouchUpInside)
+                self.tableView.addSubview(button)
+            }
+        }
         let imageView = ImageView(frame: CGRectMake(0, 0, view.frame.width, view.frame.width * 0.4))
         imageView.image = UIImage(named: "ic_banner.png")
         tableView.tableHeaderView = imageView
@@ -133,7 +145,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         if imageDic["car_license"] != nil {
             uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!, controller: self, success: { imageUrl in
                 let mEnquiry = self.data as! Enquiry
-                self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
+                self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "city_code" : mEnquiry.cityCode, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
             })
         } else {
             showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
@@ -148,6 +160,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     
     func onBackCity(nf: NSNotification) {
         (data as? Enquiry)?.city = (nf.object!["city"] as! Province).name
+        (data as? Enquiry)?.cityCode = (nf.object!["city"] as! Province).code
         tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as! Enquiry).city
     }
     
@@ -189,7 +202,9 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
-        let addressDic: AnyObject? = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)["result"]?.objectForKey("addressComponent")
+        let info = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)
+        let addressDic: AnyObject? = info["result"]?["addressComponent"]
+        (data as? Enquiry)?.cityCode = info["result"]?["cityCode"] as! NSNumber
         (data as? Enquiry)?.city = addressDic!["city"] as! String
         tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as? Enquiry)?.city
     }

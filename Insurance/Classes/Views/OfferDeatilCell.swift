@@ -12,7 +12,6 @@ class OfferDeatilCell: UITableViewCell {
         super.init(coder: aDecoder)!
     }
     
-    // MARK: - 💜 UITableViewDelegate
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
         title.frame = CGRectMake(PADDING, 5, SCREEN_WIDTH - 2 * PADDING, 20)
@@ -21,6 +20,7 @@ class OfferDeatilCell: UITableViewCell {
         detailLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(detailLabel)
         tagView.frame = CGRectMake(0, 50, SCREEN_WIDTH, 28)
+        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
         addSubview(tagView)
     }
     
@@ -39,10 +39,9 @@ class OfferDeatilCell: UITableViewCell {
             detailLabel.text = "无成交"
         }
         var tagsArray: [String] = []
-        for (_, valueTag) in data.agent.tags.results.enumerate() {
+        for valueTag in data.agent.tags.results {
             tagsArray += [valueTag.name]
         }
-        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
         tagView.setTags(tagsArray, target: nil, action: nil)
     }
 }

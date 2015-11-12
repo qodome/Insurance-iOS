@@ -6,6 +6,10 @@ class OfferList: TableList {
     let headLabel = UILabel()
     
     // MARK: - 🐤 Taylor
+    override func setTableViewStyle() -> UITableViewStyle {
+        return .Grouped
+    }
+    
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         mapping = smartMapping(ListModel.self)
@@ -21,10 +25,9 @@ class OfferList: TableList {
         mapping!.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: offerMapping))
         listView.registerClass(OfferListCell.self, forCellReuseIdentifier: cellId)
         let brandView = UIView(frame: CGRectMake(0, 0 , view.frame.width, 35))
-        (listView as UITableView).tableHeaderView = brandView
         headLabel.frame = CGRectMake(10, 0 , view.frame.width - 10, 35)
         headLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        brandView.backgroundColor = .colorWithHex(BACKGROUND_COLOR)
+        brandView.backgroundColor = .groupTableViewBackgroundColor()
         brandView.addSubview(headLabel)
         view.addSubview(brandView)
         refreshMode = .WillAppear

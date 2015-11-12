@@ -41,7 +41,7 @@ class OfferDetail: GroupedTableDetail {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 1 {
             let strSize = "\((data as! Offer).remark)".boundingRectWithSize(CGSizeMake(view.frame.width - 2 * PADDING, 5000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)], context: nil)
-            return 60 + ("\((data as! Offer).remark)" == "" ? -10 : strSize.height)
+            return 60 + ("\((data as! Offer).remark)".isEmpty ? -10 : strSize.height)
         }
         return indexPath.section == 0 ? 80 : tableView.rowHeight
     }
@@ -66,8 +66,8 @@ class OfferDetail: GroupedTableDetail {
                 NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id": (result.firstObject as! Order).id, "index": "3"])
                 self.cancel()
                 }) { operation, error in
-                    showAlert(self, title: "订单生成失败", message: error.localizedDescription)
+                    showAlert(self, title: LocalizedString("订单生成失败"), message: error.localizedDescription)
             }
-        }), cancelButtonTitle: "否")
+        }), cancelButtonTitle: LocalizedString("否"))
     }
 }

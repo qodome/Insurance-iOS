@@ -4,6 +4,7 @@
 
 class Province: ModelObject {
     var name = ""
-    var code = ""
+    var code: NSNumber!
+    var state: NSNumber!
     var cities = [Province]()
 }
