@@ -17,7 +17,6 @@ class OfferListCell: UITableViewCell {
         super.init(coder: aDecoder)!
     }
     
-    // MARK: - 💜 UITableViewDelegate
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
         logoImage = ImageView(frame: CGRectMake(PADDING, 5, 80, 40))
@@ -42,7 +41,14 @@ class OfferListCell: UITableViewCell {
         addSubview(remarkImage)
         detailLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(detailLabel)
+        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
         addSubview(tagView)
+    }
+    
+    override func prepareForReuse() {
+        for view in tagView.subviews {
+            view.removeFromSuperview()
+        }
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
@@ -87,14 +93,10 @@ class OfferListCell: UITableViewCell {
         detailLabel.sizeToFit()
         detailLabel.frame.origin = CGPointMake(PADDING, CGRectGetMaxY(titleLabel.frame) + 10)
         var tagsArray: [String] = []
-        for (_, valueTag) in data.agent.tags.results.enumerate() {
+        for valueTag in data.agent.tags.results {
             tagsArray += [valueTag.name]
         }
         tagView.frame = CGRectMake(2 * PADDING + detailLabel.bounds.width, CGRectGetMaxY(discountLabel.frame) + 5, SCREEN_WIDTH - 2 * PADDING - detailLabel.bounds.width, 23)
-        for view in tagView.subviews {
-            view.removeFromSuperview()
-        }
-        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
         tagView.setTags(tagsArray, target: nil, action: nil)
         tagView.frame.origin.x = SCREEN_WIDTH - PADDING - tagView.getWidth()
     }

@@ -13,9 +13,9 @@ class OrderCell: UITableViewCell {
         super.init(coder: aDecoder)!
     }
     
-    // MARK: - 💜 UITableViewDelegate
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
+        accessoryType = .DisclosureIndicator
         title.frame = CGRectMake(PADDING, PADDING / 3, frame.width - 2 * PADDING, 25)
         addSubview(title)
         status.frame = CGRectMake(PADDING, 30 + PADDING / 3, title.bounds.width / 2, 20)

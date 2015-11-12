@@ -11,7 +11,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     var dataArray: [[Freedom]] = [[]]
     var imageDic: [String : UIImage] = [:]
     var dataDic = NSMutableDictionary()
-    let titleArray = ["基础险", "附加险", "不计免赔", "其他", ""]
+    let titleArray = [LocalizedString("基础险"), LocalizedString("附加险"), LocalizedString("不计免赔"), LocalizedString("其他"), ""]
     
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidDisappear(animated: Bool) {
@@ -118,7 +118,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         }
         (data as! Enquiry).content = contentUrl
         uploadToCloud("oss", filename: "upload/free/head.jpg", data: UIImageJPEGRepresentation(imageDic["car_license"]!, 0.6)!, controller: self, success: { imageUrl in
-            self.loader?.create(self.data, parameters: ["content" : (self.data as! Enquiry).content, "city" : (self.data as! Enquiry).city, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : (self.data as! Enquiry).buyerMessage])
+            self.loader?.create(self.data, parameters: ["content" : (self.data as! Enquiry).content, "city" : (self.data as! Enquiry).city, "city_code" : (self.data as! Enquiry).cityCode, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : (self.data as! Enquiry).buyerMessage])
         })
     }
     

@@ -26,6 +26,6 @@ class CardListCell: UICollectionViewCell {
     
     func setTips(string: String) {
         tipLabel.text = string
-        tipLabel.frame.origin.y = captionLabel.frame.origin.y + captionLabel.frame.height
+        tipLabel.frame.origin.y = CGRectGetMaxY(captionLabel.frame)
     }
 }

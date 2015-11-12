@@ -12,7 +12,6 @@ class OfferDeatilHead: UITableViewCell {
         super.init(coder: aDecoder)!
     }
     
-    // MARK: - 💜 UITableViewDelegate
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
         mImage = ImageView(frame: CGRectMake(PADDING, 5, 80, 40))

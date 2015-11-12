@@ -66,8 +66,8 @@ class OfferDetail: GroupedTableDetail {
                 NSNotificationCenter.defaultCenter().postNotificationName("changeIndex", object: ["id": (result.firstObject as! Order).id, "index": "3"])
                 self.cancel()
                 }) { operation, error in
-                    showAlert(self, title: "订单生成失败", message: error.localizedDescription)
+                    showAlert(self, title: LocalizedString("订单生成失败"), message: error.localizedDescription)
             }
-        }), cancelButtonTitle: "否")
+        }), cancelButtonTitle: LocalizedString("否"))
     }
 }

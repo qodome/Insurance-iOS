@@ -27,7 +27,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
         resignBtn.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         tableView.addSubview(resignBtn)
         textFieldArray = [phoneField, newSecuryField, nextSecuryField, codeField]
-        let placeArray: [String] = ["输入手机号", "输入新密码", "确认新密码", "输入验证码"]
+        let placeArray = [LocalizedString("输入手机号"), LocalizedString("输入新密码"), LocalizedString("确认新密码"), LocalizedString("输入验证码")]
         for (index,field) in textFieldArray.enumerate() {
             field.tag = index
             field.keyboardType = .ASCIICapable
@@ -68,17 +68,17 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
     
     // MARK: 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "请使用已注册过的手机号找回密码"
+        return LocalizedString("请使用已注册过的手机号找回密码")
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
     func create() {
         if phoneField.text!.isEmpty || codeField.text!.isEmpty || newSecuryField.text!.isEmpty || nextSecuryField.text!.isEmpty {
-            showAlert(self, title: "请把信息填写完整", message: "")
+            showAlert(self, title: LocalizedString("请把信息填写完整"), message: "")
             return
         }
         if newSecuryField.text != nextSecuryField.text {
-            showAlert(self, title: "输入的两次新密码不一致，请核对后重试", message: "")
+            showAlert(self, title: LocalizedString("输入的两次新密码不一致，请核对后重试"), message: "")
         }else {
             loader?.update(parameters: ["username" : phoneField.text!, "password" : newSecuryField.text!, "code" : codeField.text!])
         }
@@ -86,7 +86,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
     
     func getCode() {
         if phoneField.text?.length != 11 {
-            showAlert(self, title: "请填写正确的手机号", message: "")
+            showAlert(self, title: LocalizedString("请填写正确的手机号"), message: "")
             return
         }
         let mapping = smartMapping(Sms.self)
@@ -109,13 +109,13 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
             self.signOutBtn.userInteractionEnabled = timeout <= 0 ? true : false
             if timeout <= 0 {
                 dispatch_source_cancel(_timer)
-                delay(0.2, closure: { () in
-                    self.signOutBtn.titleLabel?.text = "短信验证"
-                })
+                delay(0.2) {
+                    self.signOutBtn.titleLabel?.text = LocalizedString("短信验证")
+                }
             } else {
-                delay(0.2, closure: { () in
+                delay(0.2) {
                     self.signOutBtn.titleLabel?.text = "\(timeout == 60 ? 60 : timeout % 60)秒"
-                })
+                }
                 timeout--
             }
         }

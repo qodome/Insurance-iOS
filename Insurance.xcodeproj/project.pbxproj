@@ -186,7 +186,6 @@
 		0EEA46941BE359A00009A09B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEA46931BE359A00009A09B /* UITableView+Extension.swift */; };
 		F924151225BB20A3C9EF1489 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5F62F6E39B514C622137E5 /* libPods.a */; };
 		FF16E3B61BF33843001B65FE /* ic_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = FF16E3B51BF33843001B65FE /* ic_banner.png */; };
-		FF23E3101BEB68CD00FBF865 /* SecuryAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30D1BEB68CD00FBF865 /* SecuryAccount.swift */; };
 		FF23E3111BEB68CD00FBF865 /* SecuryBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */; };
 		FF23E3121BEB68CD00FBF865 /* SecuryUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */; };
 		FF93DC9B1BE7267D00FC8F3A /* OfferDeatilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */; };
@@ -414,7 +413,6 @@
 		39711360E4CC77D2B9D726D0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5B5F62F6E39B514C622137E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF16E3B51BF33843001B65FE /* ic_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_banner.png; sourceTree = "<group>"; };
-		FF23E30D1BEB68CD00FBF865 /* SecuryAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryAccount.swift; sourceTree = "<group>"; };
 		FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryBack.swift; sourceTree = "<group>"; };
 		FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryUpdate.swift; sourceTree = "<group>"; };
 		FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDeatilCell.swift; sourceTree = "<group>"; };
@@ -845,7 +843,6 @@
 		0EB111221BE2133000C0BF62 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				FF23E30D1BEB68CD00FBF865 /* SecuryAccount.swift */,
 				FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */,
 				FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */,
 				0EB111231BE2133000C0BF62 /* About.swift */,
@@ -1263,7 +1260,6 @@
 				0EB111741BE2133000C0BF62 /* CardWebDetail.swift in Sources */,
 				0EB111A81BE2133000C0BF62 /* Like.swift in Sources */,
 				0EB111711BE2133000C0BF62 /* mCityList.swift in Sources */,
-				FF23E3101BEB68CD00FBF865 /* SecuryAccount.swift in Sources */,
 				0E837A8A1BE09D2100F3BCCE /* ListModel.swift in Sources */,
 				0EB111C81BE2133000C0BF62 /* XML.swift in Sources */,
 				0E837A991BE09D2100F3BCCE /* WeixinUtils.swift in Sources */,

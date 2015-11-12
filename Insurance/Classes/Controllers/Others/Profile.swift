@@ -18,7 +18,8 @@ class Profile: GroupedTableDetail, UpdateDelegate {
             ],
             [
                 Item(title: "phone_number", dest: TextFieldUpdate.self, storyboard: false),
-                Item(title: "id_card_number")
+                Item(title: "id_card_number"),
+                Item(title: "securyupdate", dest: SecuryUpdate.self, storyboard: false)
             ]
         ]
     }

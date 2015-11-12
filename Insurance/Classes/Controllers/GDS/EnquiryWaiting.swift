@@ -39,7 +39,7 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
         } else {
             showAlert(self, title: LocalizedString("确认取消询价吗？"), action: UIAlertAction(title: LocalizedString("是"), style: .Default, handler: { action in
                 self.loader?.update(parameters: ["status" : "c"])
-            }), cancelButtonTitle: "否")
+            }), cancelButtonTitle: LocalizedString("否"))
         }
     }
 }

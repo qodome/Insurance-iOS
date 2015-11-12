@@ -99,14 +99,16 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     
     // MARK: - 💜 UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return LocalizedString(section == 0 ? "定位到的位置" : "all")
+        return LocalizedString(section == 0 ? LocalizedString("定位到的位置") : "all")
     }
     
     // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
-        let addressDic: AnyObject? = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)["result"]?["addressComponent"]
+        let info = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)
+        let addressDic: AnyObject? = info["result"]?["addressComponent"]
         data = Province()
+        (data as? Province)?.code = info["result"]?["cityCode"] as! NSNumber
         (data as? Province)?.name = addressDic!["city"] as! String
         tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
     }

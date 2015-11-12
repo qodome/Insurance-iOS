@@ -29,6 +29,7 @@ class Order: ModelObject {
     var remark = ""
     var agentId: NSNumber!
     var offerId: NSNumber!
+    var productId: NSNumber!
     
     override class func getMapping() -> [String : String] {
         return [
@@ -55,6 +56,7 @@ class Order: ModelObject {
             "remark" : "remark",
             "agent_id" : "agentId",
             "offer_id" : "offerId",
+            "product_id" : "productId",
         ]
     }
 }

@@ -3,6 +3,10 @@
 //
 
 class OrderList: TableList {
+    var allData: [ModelObject] = []
+    var insuranceData : [ModelObject] = []
+    var selectedIndex: Int = 0
+    
     // MARK: - 🐤 Taylor
     override func setTableViewStyle() -> UITableViewStyle {
         return .Grouped
@@ -14,11 +18,13 @@ class OrderList: TableList {
         mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
-        let segmentController = HMSegmentedControl(sectionTitles: ["车险", "划痕险", "航延乐"])
+        let segmentController = HMSegmentedControl(sectionTitles: ["全部", "车险"])
         segmentController.selectionIndicatorHeight = 2
         segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)]
         segmentController.indexChangeBlock = { index in
-            LOG(index)
+            self.selectedIndex = index
+            self.data = index == 0 ? self.allData : self.insuranceData
+            (listView as UITableView).reloadData()
         }
         segmentController.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)]
         segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
@@ -28,9 +34,21 @@ class OrderList: TableList {
         listView.addSubview(segmentController)
     }
     
+    override func onLoadSuccess<E : ListModel>(entity: E) {
+        super.onLoadSuccess(entity)
+        allData = data
+        insuranceData.removeAll()
+        for orderData in data {
+            if (orderData as! Order).productId == 1 {
+                insuranceData.append(orderData)
+            }
+        }
+        data = selectedIndex == 0 ? allData : insuranceData
+        (listView as! UITableView).reloadData()
+    }
+    
     override func getItemView<V : UITableView, T : Order, C : OrderCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
         cell.setData(item)
-        cell.accessoryType = .DisclosureIndicator
         return cell
     }
     
