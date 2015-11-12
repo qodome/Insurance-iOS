@@ -24,8 +24,8 @@ class OrderList: TableList {
         segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
         segmentController.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe
         segmentController.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
-        segmentController.frame = CGRectMake(0, 0, view.frame.width, 35)
-        listView.addSubview(segmentController)
+        segmentController.frame = CGRectMake(0, STATUS_BAR_HEIGHT + NAVIGATION_BAR_HEIGHT, view.frame.width, 35)
+        view.addSubview(segmentController)
     }
     
     override func getItemView<V : UITableView, T : Order, C : OrderCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {

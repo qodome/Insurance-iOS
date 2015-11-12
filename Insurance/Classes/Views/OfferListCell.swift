@@ -45,6 +45,11 @@ class OfferListCell: UITableViewCell {
         addSubview(tagView)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+    }
+    
     // MARK: - 💛 自定义方法 (Custom Method)
     func setData(data: Offer) {
         logoImage.sd_setImageWithURL(NSURL(string: data.brand.image_url), placeholderImage: UIImage(named: "logo_brand_2.png"))
@@ -91,7 +96,7 @@ class OfferListCell: UITableViewCell {
             tagsArray += [valueTag.name]
         }
         tagView.frame = CGRectMake(2 * PADDING + detailLabel.bounds.width, CGRectGetMaxY(discountLabel.frame) + 5, SCREEN_WIDTH - 2 * PADDING - detailLabel.bounds.width, 23)
-        for view in tagView.subviews {
+        for view in tagView.subviews { // TODO: 初始化都写到prepareForReuse里去
             view.removeFromSuperview()
         }
         tagView.theme = TagsTheme(color: XIAOMAR_BLUE)

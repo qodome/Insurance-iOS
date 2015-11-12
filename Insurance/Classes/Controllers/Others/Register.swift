@@ -34,7 +34,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
             field.returnKeyType = index == 4 ? .Done : .Next
         }
         items = [[Item.emptyItem() , Item.emptyItem(), Item.emptyItem(), Item.emptyItem(), Item.emptyItem()]]
-        resignBtn = getButton(CGRectMake(PADDING, 60 + 44 * 5, view.frame.width - 2 * PADDING, 50), title: LocalizedString("register"), theme: STYLE_BUTTON_DARK)
+        resignBtn = QuickButton(frame: CGRectMake(PADDING, 60 + 44 * 5, view.frame.width - 2 * PADDING, 50), title: LocalizedString("register"), theme: STYLE_BUTTON_DARK)
         resignBtn.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         tableView.addSubview(resignBtn)
         let agreementBtn = UIButton(frame: CGRectMake(PADDING, 60 + 44 * 5 + 50 + PADDING, 0, 0))
@@ -53,7 +53,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         field.frame = CGRectMake(PADDING, 0, view.frame.width - 2 * PADDING, cell.frame.height)
         if indexPath.row == 4 {
             field.frame.size.width = view.frame.width - 2 * PADDING - 80
-            signOutBtn = getButton(CGRectMake(view.frame.width - 80 - PADDING / 2, 5, 80, cell.frame.height - 10), title: LocalizedString("短信验证"), theme: STYLE_BUTTON_LIGHT)
+            signOutBtn = QuickButton(frame: CGRectMake(view.frame.width - 80 - PADDING / 2, 5, 80, cell.frame.height - 10), title: LocalizedString("短信验证"), theme: STYLE_BUTTON_LIGHT)
             signOutBtn.addTarget(self, action: "getCode", forControlEvents: .TouchUpInside)
             cell.contentView.addSubview(signOutBtn)
         }

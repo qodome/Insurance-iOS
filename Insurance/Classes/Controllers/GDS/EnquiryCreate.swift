@@ -12,15 +12,6 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let y = CGRectGetMaxY(tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))) + PADDING_INNER
-        let buttonName = ["freedom_list", "enquire"]
-        for (index, value) in buttonName.enumerate() {
-            let width = (view.frame.width - 2 * PADDING - PADDING_INNER) / 2
-            let button = getButton(CGRectMake(PADDING + (width
-                + PADDING_INNER) * CGFloat(index), y, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
-            button.addTarget(self, action: index == 0 ? "freedom" : "create", forControlEvents: .TouchUpInside)
-            tableView.addSubview(button)
-        }
         if (data as? Enquiry)?.city != "" && (data as? Enquiry)?.city != "上海市"  {
             showAlert(self, title: "暂不支持“上海市”以外的城市投保")
         }
@@ -35,9 +26,6 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        delay(0.2) { () -> () in
-            self.checkAllowLocation(true)
-        }
         items = [
             [
                 Item(title: LocalizedString("投保城市"), dest: AreaList.self, storyboard: false),
@@ -60,6 +48,18 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onBackCity:", name: "city", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        delay(0.2) {
+            self.checkAllowsLocation(allowsAlert: true)
+            let y = CGRectGetMaxY(self.tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))) + PADDING_INNER
+            let buttonName = ["freedom_list", "enquire"]
+            for (index, value) in buttonName.enumerate() {
+                let width = (self.view.frame.width - 2 * PADDING - PADDING_INNER) / 2
+                let button = QuickButton(frame: CGRectMake(PADDING + (width
+                    + PADDING_INNER) * CGFloat(index), y, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
+                button.addTarget(self, action: index == 0 ? "freedom" : "create", forControlEvents: .TouchUpInside)
+                self.tableView.addSubview(button)
+            }
+        }
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
@@ -96,7 +96,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0 :
-                cell.detailTextLabel?.text = checkAllowLocation(false) ? data.city : "定位未开启"
+                cell.detailTextLabel?.text = checkAllowsLocation() ? data.city : "定位未开启"
             case 2 :
                 if imageDic["car_license"] != nil {
                     (cell.accessoryView as? UIImageView)?.image = imageDic["car_license"]

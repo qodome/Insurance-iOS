@@ -11,7 +11,7 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
         let imageView = ImageView(frame: CGRectMake(view.frame.width / 6, view.frame.width / 6, view.frame.width / 3 * 2, view.frame.width / 3 * 2), cornerRadius: view.frame.width / 3)
         imageView.image = UIImage(named: endpoint.containsString("orders") ? "ic_order.png" : "ic_wait.png")
         tableView.addSubview(imageView)
-        let button = getButton(CGRectMake((view.frame.width - 160) / 2, view.frame.height - TAB_BAR_HEIGHT - 2 * PADDING - BUTTON_HEIGHT - 64, 160, BUTTON_HEIGHT), title: endpoint.containsString("orders") ? LocalizedString("查看详情") : LocalizedString("取消询价"), theme: Theme(type: .Light, color: endpoint.containsString("orders") ? APP_COLOR : 0xB2B2B1))
+        let button = QuickButton(frame: CGRectMake((view.frame.width - 160) / 2, view.frame.height - TAB_BAR_HEIGHT - 2 * PADDING - BUTTON_HEIGHT - 64, 160, BUTTON_HEIGHT), title: endpoint.containsString("orders") ? LocalizedString("查看详情") : LocalizedString("取消询价"), theme: Theme(style: .Light, color: endpoint.containsString("orders") ? APP_COLOR : 0xB2B2B1))
         button.addTarget(self, action: "cancle", forControlEvents: .TouchUpInside)
         tableView.addSubview(button)
         let detailLabel = UILabel(frame: CGRectMake(PADDING, 0, view.frame.width - 2 * PADDING, 0))

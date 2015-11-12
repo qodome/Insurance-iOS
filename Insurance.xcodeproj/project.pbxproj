@@ -166,7 +166,6 @@
 		0EB111B71BE2133000C0BF62 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111591BE2133000C0BF62 /* Vehicle.swift */; };
 		0EB111B81BE2133000C0BF62 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1115A1BE2133000C0BF62 /* Video.swift */; };
 		0EB111B91BE2133000C0BF62 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1115B1BE2133000C0BF62 /* Vote.swift */; };
-		0EB111BA1BE2133000C0BF62 /* ButtonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1115D1BE2133000C0BF62 /* ButtonUtils.swift */; };
 		0EB111BB1BE2133000C0BF62 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1115E1BE2133000C0BF62 /* CardUtils.swift */; };
 		0EB111BC1BE2133000C0BF62 /* ShareUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1115F1BE2133000C0BF62 /* ShareUtils.swift */; };
 		0EB111BD1BE2133000C0BF62 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111611BE2133000C0BF62 /* CardCell.swift */; };
@@ -392,7 +391,6 @@
 		0EB111591BE2133000C0BF62 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		0EB1115A1BE2133000C0BF62 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		0EB1115B1BE2133000C0BF62 /* Vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
-		0EB1115D1BE2133000C0BF62 /* ButtonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonUtils.swift; sourceTree = "<group>"; };
 		0EB1115E1BE2133000C0BF62 /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUtils.swift; sourceTree = "<group>"; };
 		0EB1115F1BE2133000C0BF62 /* ShareUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareUtils.swift; sourceTree = "<group>"; };
 		0EB111611BE2133000C0BF62 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
@@ -935,7 +933,6 @@
 		0EB1115C1BE2133000C0BF62 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				0EB1115D1BE2133000C0BF62 /* ButtonUtils.swift */,
 				0EB1115E1BE2133000C0BF62 /* CardUtils.swift */,
 				FFCE782D1BEA0B19003DB584 /* OtherUtils.swift */,
 				0EB1115F1BE2133000C0BF62 /* ShareUtils.swift */,
@@ -1283,7 +1280,6 @@
 				0E837A921BE09D2100F3BCCE /* TSMessage+Extension.swift in Sources */,
 				0EB111AA1BE2133000C0BF62 /* Offer.swift in Sources */,
 				0E837A761BE09D2100F3BCCE /* UpdateController.swift in Sources */,
-				0EB111BA1BE2133000C0BF62 /* ButtonUtils.swift in Sources */,
 				0E837A8F1BE09D2100F3BCCE /* FileUtils.swift in Sources */,
 				0EB111D01BE2628700C0BF62 /* SearchResult.swift in Sources */,
 				0EB1119C1BE2133000C0BF62 /* Company.swift in Sources */,
