@@ -2,10 +2,6 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-enum LocationState: Int {
-    case Loading, Success, Failure
-}
-
 class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var provinces: [Province] = []
@@ -14,6 +10,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
+        title = LocalizedString("region")
         // 初始化定位
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -47,13 +44,13 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
             switch locationState {
             case .Success:
                 cell.userInteractionEnabled = true
-                let icon = FAKIonIcons.locationIconWithSize(CGSizeSettingsIcon.width)
+                let icon = FAKIonIcons.androidPinIconWithSize(CGSizeSettingsIcon.width)
                 icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_GREEN))
                 cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
             case .Failure:
                 cell.userInteractionEnabled = false
-                let icon = FAKIonIcons.androidWarningIconWithSize(CGSizeSettingsIcon.width)
-                icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.destructiveColor())
+                let icon = FAKIonIcons.androidAlertIconWithSize(CGSizeSettingsIcon.width)
+                icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.systemDestructiveColor())
                 cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
                 cell.textLabel?.text = LocalizedString("无法获取你的位置信息")
             default:

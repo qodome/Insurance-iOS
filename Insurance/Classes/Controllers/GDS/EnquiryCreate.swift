@@ -96,7 +96,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0 :
-                cell.detailTextLabel?.text = checkAllowsLocation() ? data.city : "定位未开启"
+                cell.detailTextLabel?.text = checkAllowsLocation() ? data.city : "定位服务关闭"
             case 2 :
                 if imageDic["car_license"] != nil {
                     (cell.accessoryView as? UIImageView)?.image = imageDic["car_license"]

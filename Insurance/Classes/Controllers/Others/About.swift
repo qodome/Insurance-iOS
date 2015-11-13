@@ -33,7 +33,7 @@ class About: GroupedTableDetail {
             cell.detailTextLabel?.text = "400-968-3968"
         case "review":
             let star = NSMutableAttributedString(string: " ☆☆☆☆☆")
-            star.addAttributes([NSForegroundColorAttributeName : UIColor.defaultColor()], range: NSMakeRange(1, star.length - 1))
+            star.addAttributes([NSForegroundColorAttributeName : UIColor.systemDefaultColor()], range: NSMakeRange(1, star.length - 1))
             let s = NSMutableAttributedString(string: LocalizedString(getItem(indexPath).title))
             s.appendAttributedString(star)
             cell.textLabel?.attributedText = s
