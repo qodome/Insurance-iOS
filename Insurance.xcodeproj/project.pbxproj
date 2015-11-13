@@ -131,7 +131,6 @@
 		0EB1118E1BE2133000C0BF62 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1112C1BE2133000C0BF62 /* UserDetail.swift */; };
 		0EB1118F1BE2133000C0BF62 /* VehicleCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1112E1BE2133000C0BF62 /* VehicleCreate.swift */; };
 		0EB111901BE2133000C0BF62 /* VehicleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1112F1BE2133000C0BF62 /* VehicleList.swift */; };
-		0EB111911BE2133000C0BF62 /* BaseController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111321BE2133000C0BF62 /* BaseController+Extensions.swift */; };
 		0EB111931BE2133000C0BF62 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111351BE2133000C0BF62 /* Answer.swift */; };
 		0EB111941BE2133000C0BF62 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111361BE2133000C0BF62 /* Article.swift */; };
 		0EB111951BE2133000C0BF62 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111371BE2133000C0BF62 /* Branch.swift */; };
@@ -355,7 +354,6 @@
 		0EB1112E1BE2133000C0BF62 /* VehicleCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleCreate.swift; sourceTree = "<group>"; };
 		0EB1112F1BE2133000C0BF62 /* VehicleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleList.swift; sourceTree = "<group>"; };
 		0EB111301BE2133000C0BF62 /* Insurance-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Insurance-Bridging-Header.h"; sourceTree = "<group>"; };
-		0EB111321BE2133000C0BF62 /* BaseController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseController+Extensions.swift"; sourceTree = "<group>"; };
 		0EB111351BE2133000C0BF62 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		0EB111361BE2133000C0BF62 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		0EB111371BE2133000C0BF62 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
@@ -764,7 +762,6 @@
 				0EB111041BE2133000C0BF62 /* Constants.swift */,
 				0EB1116C1BE2133000C0BF62 /* XML.swift */,
 				0EB111051BE2133000C0BF62 /* Controllers */,
-				0EB111311BE2133000C0BF62 /* jxextensions */,
 				0EB111331BE2133000C0BF62 /* Models */,
 				0EB1115C1BE2133000C0BF62 /* Util */,
 				0EB111601BE2133000C0BF62 /* Views */,
@@ -874,14 +871,6 @@
 				0EB1112F1BE2133000C0BF62 /* VehicleList.swift */,
 			);
 			path = Vehicles;
-			sourceTree = "<group>";
-		};
-		0EB111311BE2133000C0BF62 /* jxextensions */ = {
-			isa = PBXGroup;
-			children = (
-				0EB111321BE2133000C0BF62 /* BaseController+Extensions.swift */,
-			);
-			path = jxextensions;
 			sourceTree = "<group>";
 		};
 		0EB111331BE2133000C0BF62 /* Models */ = {
@@ -1223,7 +1212,6 @@
 				0EB111901BE2133000C0BF62 /* VehicleList.swift in Sources */,
 				0E837A801BE09D2100F3BCCE /* UITextField+Extension.swift in Sources */,
 				0E837A771BE09D2100F3BCCE /* WebDetail.swift in Sources */,
-				0EB111911BE2133000C0BF62 /* BaseController+Extensions.swift in Sources */,
 				0EB1119F1BE2133000C0BF62 /* Freedom.swift in Sources */,
 				0E837A831BE09D2100F3BCCE /* UIVisualEffectView+Extension.swift in Sources */,
 				0EB111881BE2133000C0BF62 /* Profile.swift in Sources */,
