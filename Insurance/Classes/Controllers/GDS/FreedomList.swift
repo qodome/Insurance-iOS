@@ -26,26 +26,22 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], []] //两个组的占位
         if dataArray[0].isEmpty {
-            let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("autoinsurance", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
-            let temp = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! [NSDictionary]
-            for (section, sectionValue) in temp.enumerate() {
-                for rowValue in sectionValue["result"] as! [NSDictionary] {
+            let json = JSON(data:NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("autoinsurance", ofType: "json")!)!)
+            for section in 0..<json.count {
+                for row in 0..<json[section]["result"].count {
                     let model = Freedom()
-                    model.setValuesForKeysWithDictionary(rowValue as! [String : AnyObject])
-                    let pickArray = rowValue["picker_array"] as! [[String : AnyObject]]
+                    model.setValuesForKeysWithDictionary(json[section]["result"][row].dictionaryObject!)
                     var pid = ""
-                    if pickArray.isEmpty {
+                    if json[section]["result"][row]["picker_array"].isEmpty {
                         dataDic[model.name] = model.switch_status
                     } else {
                         pid = model.picker_pid
                     }
                     var picker_array: [PickerModel] = []
-                    for pickValue in pickArray {
+                    for pickRow in 0..<json[section]["result"][row]["picker_array"].count {
                         let pick = PickerModel()
-                        pick.setValuesForKeysWithDictionary(pickValue)
-                        if pid == pick.pid {
-                            dataDic[model.name] = pick.pname
-                        }
+                        pick.setValuesForKeysWithDictionary(json[section]["result"][row]["picker_array"][pickRow].dictionaryObject!)
+                        dataDic[model.name] =  pid == pick.pid ? pick.pname : ""
                         picker_array += [pick]
                     }
                     model.picker_array = picker_array
@@ -64,6 +60,18 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         button.setTitle(LocalizedString("enquire"), forState: .Normal)
         button.addTarget(self, action: "enquiryCreate", forControlEvents: .TouchUpInside)
         view.addSubview(button)
+        let segmentController = HMSegmentedControl(sectionTitles: [LocalizedString("大众版"), LocalizedString("豪华版"), LocalizedString("自定义"), LocalizedString("重置")])
+        segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
+        segmentController.selectionIndicatorHeight = 2
+        segmentController.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
+        segmentController.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe
+        segmentController.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)]
+        segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkTextColor(), NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)]
+        segmentController.indexChangeBlock = { index in
+            LOG(index)
+        }
+        segmentController.frame = CGRectMake(0, STATUS_BAR_HEIGHT + NAVIGATION_BAR_HEIGHT, view.frame.width, 36)
+        view.addSubview(segmentController)
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {

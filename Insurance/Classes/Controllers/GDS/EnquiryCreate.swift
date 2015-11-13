@@ -8,12 +8,13 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     var freedomArray: [[Freedom]] = [[]]
     var onOrOff: Bool = false
     var textField = UITextField()
+    var locationData = Province() // 创造这个临时变量是为了提示用的
     
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if (data as? Enquiry)?.city != "" && (data as? Enquiry)?.status == "0"  {
-            showAlert(self, title: "暂不支持“\((data as? Enquiry)!.city)”投保")
+        if locationData.name != "" && ([0, 2].contains(locationData.state)){
+            showAlert(self, title: "暂不支持“\(locationData.name)”投保")
         }
     }
     
@@ -149,16 +150,16 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     func onBackCity(nf: NSNotification) {
         (data as? Enquiry)?.city = (nf.object!["city"] as! Province).name
         (data as? Enquiry)?.cityCode = (nf.object!["city"] as! Province).code
-        (data as? Enquiry)?.status = "\((nf.object!["city"] as! Province).state)" // Enqury 中得status 没有用到 暂时存储省份的状态，为了是都提示用，不额外创建变量
+        locationData = (nf.object!["city"] as! Province)
         tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as! Enquiry).city
     }
     
     func freedom() {
-        if imageDic["car_license"] != nil {
-            startActivity(Item(dest: FreedomList.self, storyboard: false))
-        } else {
-            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
-        }
+        //        if imageDic["car_license"] != nil {
+        startActivity(Item(dest: FreedomList.self, storyboard: false))
+        //        } else {
+        //            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
+        //        }
     }
     
     func backFreedomData(dataDic: NSDictionary, dataArray: [[Freedom]]) {
