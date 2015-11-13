@@ -49,7 +49,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         delay(0.2) {
-            self.checkAllowsLocation(allowsAlert: true)
+            checkAllowsLocation(allowsAlert: true)
             let y = CGRectGetMaxY(self.tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))) + PADDING_INNER
             let buttonName = ["freedom_list", "enquire"]
             for (index, value) in buttonName.enumerate() {
@@ -96,7 +96,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0 :
-                cell.detailTextLabel?.text = checkAllowsLocation() ? data.city : "定位未开启"
+                cell.detailTextLabel?.text = checkAllowsLocation() ? data.city : "定位服务关闭"
             case 2 :
                 if imageDic["car_license"] != nil {
                     (cell.accessoryView as? UIImageView)?.image = imageDic["car_license"]
@@ -149,7 +149,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     func onBackCity(nf: NSNotification) {
         (data as? Enquiry)?.city = (nf.object!["city"] as! Province).name
         (data as? Enquiry)?.cityCode = (nf.object!["city"] as! Province).code
-        (data as? Enquiry)?.status = "\((nf.object!["city"] as! Province).state)" //Enqury 中得status 没有用到 暂时存储省份的状态 ，为了是都提示用，不额外创建变量
+        (data as? Enquiry)?.status = "\((nf.object!["city"] as! Province).state)" // Enqury 中得status 没有用到 暂时存储省份的状态，为了是都提示用，不额外创建变量
         tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as! Enquiry).city
     }
     
@@ -191,7 +191,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
-        let info = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)
+        let info = getAddress(latitude: locations.last!.coordinate.latitude, longitude: locations.last!.coordinate.longitude)
         let addressDic: AnyObject? = info["result"]?["addressComponent"]
         (data as? Enquiry)?.cityCode = info["result"]?["cityCode"] as! NSNumber
         (data as? Enquiry)?.city = addressDic!["city"] as! String

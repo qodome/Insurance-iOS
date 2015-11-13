@@ -7,6 +7,8 @@ flight = "航延险";
 vehicles = "车辆";
 insurances = "保险";
 
+auto_insurance = "车险";
+
 car_license_number = "车牌号码";
 
 all = "全部";
@@ -19,7 +21,6 @@ sure = "完成";
 aboutus = "关于我们";
 
 /* 自主选险 */
-area_list = "地区";
 freedom_list = "自主选险";
 damage = "车辆损失险";
 sp_damage = "不计免赔车损险";

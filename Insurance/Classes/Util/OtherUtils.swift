@@ -10,16 +10,16 @@ func getFormatterPrice(origial: NSNumber) -> String {
 }
 
 // 获取状态的中文显示字
-func getStatuesString(statues: NSNumber) -> String {
-    let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("statues", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
+func getStatusString(status: NSNumber) -> String {
+    let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("order_status", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
     let temp = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! [String : String]
-    return temp["\(statues)"] == nil ? "" :temp["\(statues)"]!
+    return temp["\(status)"] == nil ? "" :temp["\(status)"]!
 }
 
 // 类似AppStore上获取按钮
 func getAppStoreButton(title:String) -> UIButton {
     let button = UIButton()
-    let color = UIColor.defaultColor()
+    let color = UIColor.systemDefaultColor()
     button.setTitle(title, forState: .Normal)
     button.setTitleColor(color, forState: .Normal)
     button.setTitleColor(.whiteColor(), forState: .Highlighted)

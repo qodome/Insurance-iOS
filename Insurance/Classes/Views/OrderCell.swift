@@ -36,7 +36,7 @@ class OrderCell: UITableViewCell {
         title.text = item.name
         createdTime.text = item.createdTime.formattedDateWithFormat("yyyy-MM-dd HH:mm:ss")
         totalFee.text = getFormatterPrice(item.totalFee)
-        status.text = getStatuesString(item.status)
+        status.text = getStatusString(item.status)
         status.sizeToFit()
     }
 }

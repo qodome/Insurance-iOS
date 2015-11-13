@@ -12,13 +12,13 @@ class Settings: GroupedTableDetail {
 //            [Item(title: "securyaccount", dest: SecuryAccount.self, storyboard: false)],
             [Item(title: "about", dest: About.self)],
             [Item(title: "developer", selectable: true)],
-            [Item(title: "sign_out", color: .destructiveColor(), selectable: true)]
+            [Item(title: "sign_out", color: .systemDestructiveColor(), selectable: true)]
         ]
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         if item.title == "developer" && TestEnv {
-            cell.textLabel?.textColor = .defaultColor()
+            cell.textLabel?.textColor = .systemDefaultColor()
         }
         return cell
     }

@@ -35,7 +35,10 @@ func reloadSettings() {
     // 微信
     WX_NOTIFY_URL = "\(BASE_URL)/api/v1/check_sign/"
     //
+    RKMIMETypeSerialization.registerClass(RKNSJSONSerialization.self, forMIMEType: "text/plain") // 微信接口返回json都为text
     RKObjectManager.setSharedManager(RKObjectManager(baseURL: NSURL(string: BASE_URL)))
+    RKObjectManager.sharedManager().HTTPClient.allowsInvalidSSLCertificate = true // 增加无证书的https支持
+    RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Accept-Encoding", value: "gzip, deflate")
     putBool("test_env", value: TestEnv)
 }
 

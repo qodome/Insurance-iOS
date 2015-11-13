@@ -2,10 +2,6 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-enum LocationState: Int {
-    case Loading, Success, Failure
-}
-
 class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var locationState = LocationState.Failure
@@ -14,6 +10,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
+        title = LocalizedString("region")
         endpoint = getEndpoint("provinces")
         mapping = smartMapping(ListModel.self)
         let groupNext = smartMapping(Province.self)
@@ -46,13 +43,13 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
             switch locationState {
             case .Success:
                 cell.userInteractionEnabled = true
-                let icon = FAKIonIcons.locationIconWithSize(CGSizeSettingsIcon.width)
+                let icon = FAKIonIcons.androidPinIconWithSize(CGSizeSettingsIcon.width)
                 icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(XIAOMAR_GREEN))
                 cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
             case .Failure:
                 cell.userInteractionEnabled = false
-                let icon = FAKIonIcons.androidWarningIconWithSize(CGSizeSettingsIcon.width)
-                icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.destructiveColor())
+                let icon = FAKIonIcons.androidAlertIconWithSize(CGSizeSettingsIcon.width)
+                icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.systemDestructiveColor())
                 cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
                 cell.textLabel?.text = LocalizedString("无法获取你的位置信息")
             default:
@@ -74,7 +71,6 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         } else {
             LOG((data.results[indexPath.row] as! Province).state)
         }
-        
         return cell
     }
     
@@ -107,7 +103,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     // MARK: 💜 CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
-        let info = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)
+        let info = getAddress(latitude: locations.last!.coordinate.latitude, longitude: locations.last!.coordinate.longitude)
         let addressDic: AnyObject? = info["result"]?["addressComponent"]
         locationData.code = info["result"]?["cityCode"] as! NSNumber
         locationData.name = addressDic!["city"] as! String
