@@ -10,12 +10,10 @@ class PickerList: GroupedTableDetail {
     var pickerData: [PickerModel] = []
     var delegate: PickerListDelegate?
     var selectedId = ""
-    var titleName = ""
     
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        title = titleName
         items = [[]]
         for pickerModel in pickerData {
             selectedId = pickerModel.pid == selectedId ? pickerModel.plabel : selectedId

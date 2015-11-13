@@ -15,14 +15,13 @@ class OrderCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
-        accessoryType = .DisclosureIndicator
         title.frame = CGRectMake(PADDING, PADDING / 3, frame.width - 2 * PADDING, 25)
         addSubview(title)
         status.frame = CGRectMake(PADDING, 30 + PADDING / 3, title.bounds.width / 2, 20)
         status.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         status.textColor = UIColor.colorWithHex(APP_COLOR).colorWithAlphaComponent(0.7)
         addSubview(status)
-        totalFee.frame = CGRectMake(SCREEN_WIDTH - PADDING - status.bounds.width - 10, status.frame.origin.y, status.bounds.width - 10, 20)
+        totalFee.frame = CGRectMake(SCREEN_WIDTH - PADDING - status.bounds.width, status.frame.origin.y, status.bounds.width - 10, 20)
         totalFee.textAlignment = .Right
         totalFee.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(totalFee)

@@ -15,6 +15,7 @@ class OrderList: TableList {
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("orders")
+        LOG(endpoint)
         mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)

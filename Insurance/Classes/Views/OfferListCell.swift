@@ -3,13 +3,13 @@
 //
 
 class OfferListCell: UITableViewCell {
-    var thirdLabel = UILabel()
+    var thirdParty = UILabel()
     var logoImage: ImageView!
-    var moneyLabel = UILabel()
+    var quotedPrice = UILabel()
     var titleLabel = UILabel()
     var remarkImage: ImageView!
     var discountLabel = UILabel()
-    var detailLabel = UILabel()
+    var subTitle = UILabel()
     let tagView = JxxTagsView()
     
     // MARK: - 💖 初始化
@@ -25,11 +25,11 @@ class OfferListCell: UITableViewCell {
         titleLabel.frame = CGRectMake(PADDING, 50, 0, 0)
         titleLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(titleLabel)
-        moneyLabel.textColor = .colorWithHex(APP_COLOR)
-        moneyLabel.textAlignment = .Right
-        addSubview(moneyLabel)
-        thirdLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        addSubview(thirdLabel)
+        quotedPrice.textColor = .colorWithHex(APP_COLOR)
+        quotedPrice.textAlignment = .Right
+        addSubview(quotedPrice)
+        thirdParty.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        addSubview(thirdParty)
         discountLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         discountLabel.frame = CGRectMake(SCREEN_WIDTH - PADDING - 35, 50, 35, 20)
         addSubview(discountLabel)
@@ -39,8 +39,8 @@ class OfferListCell: UITableViewCell {
         remarkImage.image = remarkSettings.imageWithSize(CGSizeSettingsIcon)
         remarkImage.contentMode = .ScaleAspectFit
         addSubview(remarkImage)
-        detailLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        addSubview(detailLabel)
+        subTitle.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        addSubview(subTitle)
         tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
         addSubview(tagView)
     }
@@ -55,16 +55,16 @@ class OfferListCell: UITableViewCell {
     // MARK: - 💛 自定义方法 (Custom Method)
     func setData(data: Offer) {
         logoImage.sd_setImageWithURL(NSURL(string: data.brand.image_url), placeholderImage: UIImage(named: "logo_brand_2.png"))
-        moneyLabel.text = getFormatterPrice(data.quotedPrice)
-        moneyLabel.sizeToFit()
-        moneyLabel.frame.origin = CGPointMake(SCREEN_WIDTH - moneyLabel.bounds.width - PADDING, (50 - moneyLabel.bounds.height) / 2)
+        quotedPrice.text = getFormatterPrice(data.quotedPrice)
+        quotedPrice.sizeToFit()
+        quotedPrice.frame.origin = CGPointMake(SCREEN_WIDTH - quotedPrice.bounds.width - PADDING, (50 - quotedPrice.bounds.height) / 2)
         if data.thirdParty != 0 {
             let string = NSMutableAttributedString(string: "\(data.thirdParty.integerValue / 10000)万三者")
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(0, string.length - 3))
-            thirdLabel.attributedText = string
-            thirdLabel.sizeToFit()
-            thirdLabel.frame.origin.x = SCREEN_WIDTH - 2 * PADDING_INNER - moneyLabel.frame.width - thirdLabel.frame.width
-            thirdLabel.center.y = moneyLabel.center.y
+            thirdParty.attributedText = string
+            thirdParty.sizeToFit()
+            thirdParty.frame.origin.x = SCREEN_WIDTH - 2 * PADDING_INNER - quotedPrice.frame.width - thirdParty.frame.width
+            thirdParty.center.y = quotedPrice.center.y
         }
         titleLabel.text = data.agent.shortName
         titleLabel.sizeToFit()
@@ -84,20 +84,20 @@ class OfferListCell: UITableViewCell {
             let string = NSMutableAttributedString(string: "\(data.agent.credit!.orderCount)单 成功率\(precentString)")
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(0, "\(data.agent.credit!.orderCount)".length))
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(string.length - precentString.length, precentString.length))
-            detailLabel.attributedText = string
+            subTitle.attributedText = string
             
         } else {
-            detailLabel.text = "无成交"
+            subTitle.text = "无成交"
         }
         discountLabel.center.y = titleLabel.center.y
         remarkImage.center.y = titleLabel.center.y
-        detailLabel.sizeToFit()
-        detailLabel.frame.origin = CGPointMake(PADDING, CGRectGetMaxY(titleLabel.frame) + 10)
+        subTitle.sizeToFit()
+        subTitle.frame.origin = CGPointMake(PADDING, CGRectGetMaxY(titleLabel.frame) + 10)
         var tagsArray: [String] = []
         for valueTag in data.agent.tags.results {
             tagsArray += [valueTag.name]
         }
-        tagView.frame = CGRectMake(2 * PADDING + detailLabel.bounds.width, CGRectGetMaxY(discountLabel.frame) + 5, SCREEN_WIDTH - 2 * PADDING - detailLabel.bounds.width, 23)
+        tagView.frame = CGRectMake(2 * PADDING + subTitle.bounds.width, CGRectGetMaxY(discountLabel.frame) + 5, SCREEN_WIDTH - 2 * PADDING - subTitle.bounds.width, 23)
         tagView.setTags(tagsArray, target: nil, action: nil)
         tagView.frame.origin.x = SCREEN_WIDTH - PADDING - tagView.getWidth()
     }

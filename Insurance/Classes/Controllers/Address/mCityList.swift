@@ -11,6 +11,7 @@ class mCityList: TableList {
     
     override func getItemView<V : UITableView, T : Province, C : UITableViewCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
         cell.textLabel?.text = item.name
+//        cell.accessoryView = getAppStoreButton(LocalizedString("费改"))
         return cell
     }
     
