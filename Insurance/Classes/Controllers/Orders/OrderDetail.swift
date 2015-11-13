@@ -31,7 +31,7 @@ class OrderDetail: GroupedTableDetail {
             case "total_fee":
                 cell.detailTextLabel?.text = getFormatterPrice(data.totalFee)
             case "status":
-                cell.detailTextLabel?.text = getStatuesString(data.status)
+                cell.detailTextLabel?.text = getStatusString(data.status)
             default: break
             }
         }
