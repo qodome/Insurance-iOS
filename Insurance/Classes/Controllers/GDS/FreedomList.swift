@@ -102,7 +102,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         let indexPath = tableView.indexPathsForSelectedRows!.first!
         dest.setValue(dataArray[indexPath.section][indexPath.row].picker_array, forKey: "pickerData")
         (dest as! PickerList).delegate = self
-        dest.setValue((tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!, forKey: "titleName")
+        dest.setValue((tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text)!, forKey: "title")
         dest.setValue(dataArray[indexPath.section][indexPath.row].picker_pid, forKey: "selectedId")
     }
     

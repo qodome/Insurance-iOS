@@ -12,8 +12,8 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if (data as? Enquiry)?.city != "" && (data as? Enquiry)?.city != "上海市"  {
-            showAlert(self, title: "暂不支持“上海市”以外的城市投保")
+        if (data as? Enquiry)?.city != "" && (data as? Enquiry)?.status == "0"  {
+            showAlert(self, title: "暂不支持“\((data as? Enquiry)!.city)”投保")
         }
     }
     
@@ -36,18 +36,6 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
                 Item.emptyItem()
             ]
         ]
-        delay(0.2) {
-            self.checkAllowLocation(true)
-            let y = CGRectGetMaxY(self.tableView.rectForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1))) + PADDING_INNER
-            let buttonName = ["freedom_list", "enquire"]
-            for (index, value) in buttonName.enumerate() {
-                let width = (self.view.frame.width - 2 * PADDING - PADDING_INNER) / 2
-                let button = getButton(CGRectMake(PADDING + (width
-                    + PADDING_INNER) * CGFloat(index), y, width, BUTTON_HEIGHT), title: LocalizedString(value), theme: index == 0 ? STYLE_BUTTON_LIGHT : STYLE_BUTTON_DARK)
-                button.addTarget(self, action: index == 0 ? "freedom" : "create", forControlEvents: .TouchUpInside)
-                self.tableView.addSubview(button)
-            }
-        }
         let imageView = ImageView(frame: CGRectMake(0, 0, view.frame.width, view.frame.width * 0.4))
         imageView.image = UIImage(named: "ic_banner.png")
         tableView.tableHeaderView = imageView
@@ -161,6 +149,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     func onBackCity(nf: NSNotification) {
         (data as? Enquiry)?.city = (nf.object!["city"] as! Province).name
         (data as? Enquiry)?.cityCode = (nf.object!["city"] as! Province).code
+        (data as? Enquiry)?.status = "\((nf.object!["city"] as! Province).state)" //Enqury 中得status 没有用到 暂时存储省份的状态 ，为了是都提示用，不额外创建变量
         tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as! Enquiry).city
     }
     

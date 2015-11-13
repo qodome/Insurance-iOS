@@ -8,12 +8,18 @@ enum LocationState: Int {
 
 class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
-    var provinces: [Province] = []
     var locationState = LocationState.Failure
+    var locationData = Province()
     
     // MARK: - 🐤 继承 Taylor
     override func onPrepare() {
         super.onPrepare()
+        endpoint = getEndpoint("provinces")
+        mapping = smartMapping(ListModel.self)
+        let groupNext = smartMapping(Province.self)
+        groupNext.addRelationshipMappingWithSourceKeyPath("cities", mapping: smartListMapping(Province.self))
+        mapping!.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: groupNext))
+        refreshMode = .DidLoad
         // 初始化定位
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -21,25 +27,18 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         locationState = checkAllowsLocation() ? .Loading : .Failure
         //
         items = [[Item(selectable: true)], []] // 两个组的占位
-        let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("city", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
-        let mProArray = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! NSArray
-        for provinceData in mProArray {
-            let province = Province()
-            province.setValuesForKeysWithDictionary(provinceData as! [String : AnyObject])
-            var cities: [Province] = []
-            for cityData in (provinceData["cities"] as! NSArray) {
-                let city = Province()
-                city.setValuesForKeysWithDictionary(cityData as! [String : AnyObject])
-                cities += [city]
-            }
-            province.cities = cities
-            provinces += [province]
-            if cities.isEmpty {
-                items[1] += [Item(title: province.name, selectable: true)]
+    }
+    
+    override func onLoadSuccess<E : ListModel>(entity: E) {
+        super.onLoadSuccess(entity)
+        for province in entity.results {
+            if (province as! Province).cities.results.count == 1 {
+                items[1] += [Item(title: ((province as! Province).cities.results.firstObject as! Province).name, selectable: true)]
             } else {
                 items[1] += [Item(title: province.name, dest: mCityList.self, storyboard: false)]
             }
         }
+        tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .None)
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
@@ -69,8 +68,13 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         return cell
     }
     
-    override func getItemView<T : Province, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
-        cell.textLabel?.text = indexPath.section == 0 ? "\(data.name)" : provinces[indexPath.row].name
+    override func getItemView<T : ListModel, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
+        if indexPath.section == 0 && locationState == .Success {
+            cell.textLabel?.text = locationData.name
+        } else {
+            LOG((data.results[indexPath.row] as! Province).state)
+        }
+        
         return cell
     }
     
@@ -78,8 +82,8 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         switch action {
         case .Open:
             if item.url.isEmpty {
-                data = indexPath.section == 0 ? data : provinces[indexPath.row]
-                NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : data!])
+                locationData = indexPath.section == 0 ? locationData : ((data as! ListModel).results[(indexPath.row)] as! Province).cities.results.firstObject as! Province
+                NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : locationData])
                 cancel()
             } else {
                 super.onPerform(action, indexPath: indexPath, item: item)
@@ -90,9 +94,9 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     }
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
-        let province = provinces[tableView.indexPathsForSelectedRows!.first!.row]
-        dest.title = province.name
-        dest.setValue(province.cities, forKey: "data")
+        let indexPath = tableView.indexPathsForSelectedRows?.first!
+        dest.title = ((data as! ListModel).results[(indexPath?.row)!] as! Province).name
+        dest.setValue(((data as! ListModel).results[(indexPath?.row)!] as! Province).cities.results, forKey: "data")
     }
     
     // MARK: - 💜 UITableViewDataSource
@@ -105,9 +109,8 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         manager.stopUpdatingLocation()
         let info = returnAddressWithLatAndlng(locations.last!.coordinate.latitude, lng: locations.last!.coordinate.longitude)
         let addressDic: AnyObject? = info["result"]?["addressComponent"]
-        data = Province()
-        (data as? Province)?.code = info["result"]?["cityCode"] as! NSNumber
-        (data as? Province)?.name = addressDic!["city"] as! String
+        locationData.code = info["result"]?["cityCode"] as! NSNumber
+        locationData.name = addressDic!["city"] as! String
         locationState = .Success
         delay(0.5) {
             self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)

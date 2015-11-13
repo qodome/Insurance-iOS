@@ -15,6 +15,7 @@ class OrderList: TableList {
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("orders")
+        LOG(endpoint)
         mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
@@ -32,19 +33,6 @@ class OrderList: TableList {
         segmentController.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
         segmentController.frame = CGRectMake(0, STATUS_BAR_HEIGHT + NAVIGATION_BAR_HEIGHT, view.frame.width, 35)
         view.addSubview(segmentController)
-    }
-    
-    override func onLoadSuccess<E : ListModel>(entity: E) {
-        super.onLoadSuccess(entity)
-        allData = data
-        insuranceData.removeAll()
-        for orderData in data {
-            if (orderData as! Order).productId == 1 {
-                insuranceData.append(orderData)
-            }
-        }
-        data = selectedIndex == 0 ? allData : insuranceData
-        (listView as! UITableView).reloadData()
     }
     
     override func onLoadSuccess<E : ListModel>(entity: E) {
