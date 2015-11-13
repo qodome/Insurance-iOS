@@ -52,7 +52,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
             case .Failure:
                 cell.userInteractionEnabled = false
                 let icon = FAKIonIcons.androidWarningIconWithSize(CGSizeSettingsIcon.width)
-                icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.destructiveColor())
+                icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.systemDestructiveColor())
                 cell.imageView?.image = icon.imageWithSize(CGSizeSettingsIcon)
                 cell.textLabel?.text = LocalizedString("无法获取你的位置信息")
             default:
