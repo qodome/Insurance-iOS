@@ -13,7 +13,7 @@ func getFormatterPrice(origial: NSNumber) -> String {
 func getStatusString(status: NSNumber) -> String {
     let jsonData = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("order_status", ofType: "json")!, encoding: NSUTF8StringEncoding).dataUsingEncoding(NSUTF8StringEncoding)
     let temp = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! [String : String]
-    return temp["\(status)"] == nil ? "" :temp["\(status)"]!
+    return temp["\(status)"] ?? ""
 }
 
 // 类似AppStore上获取按钮
@@ -23,7 +23,7 @@ func getAppStoreButton(title:String) -> UIButton {
     button.setTitle(title, forState: .Normal)
     button.setTitleColor(color, forState: .Normal)
     button.setTitleColor(.whiteColor(), forState: .Highlighted)
-    button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 13) // IOS9 SanFrancisco
+    button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 13) // iOS9 SanFrancisco .SFUIText-Regular .SFUIText-Semibold .SFUIText-Heavy iOS8 HelveticaNeue-Bold
     button.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10)
     button.sizeToFit()
     button.layer.masksToBounds = true  // 不写这个方法，高亮状态button背景是填充满的，没有截取

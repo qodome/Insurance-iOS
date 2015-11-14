@@ -97,7 +97,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
             let getResult = result.firstObject as! Sms
             getResult.code == 0 ? self.waitingCode() : showAlert(self, title: "Error", message: getResult.reason)
             }) { operation, error in
-                showAlert(nil, title: "Send SMS Error", message: error.localizedDescription)
+                showAlert(self, title: "Send SMS Error", message: error.localizedDescription)
         }
     }
     
