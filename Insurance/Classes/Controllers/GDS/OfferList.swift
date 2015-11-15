@@ -35,7 +35,7 @@ class OfferList: TableList {
     
     override func onLoadSuccess<E : ListModel>(entity: E) {
         super.onLoadSuccess(entity)
-        headLabel.text = "共计\(getCount())家报价，报价有效期24小时"
+        headLabel.text = "共计\(getTotal())家报价，报价有效期24小时"
     }
     
     override func getItemView<V : UITableView, T : Offer, C : OfferListCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
