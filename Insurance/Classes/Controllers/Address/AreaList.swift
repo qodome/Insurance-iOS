@@ -25,9 +25,9 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     
     override func onLoadSuccess<E : ListModel>(entity: E) {
         super.onLoadSuccess(entity)
-        for province in entity.results {
-            if (province as! Province).cities.results.count == 1 {
-                items[1] += [Item(title: ((province as! Province).cities.results.firstObject as! Province).name, selectable: true)]
+        for province in entity.results as! [Province] {
+            if province.cities.results.count == 1 {
+                items[1] += [Item(title: (province.cities.results[0] as! Province).name, selectable: true)]
             } else {
                 items[1] += [Item(title: province.name, dest: mCityList.self, storyboard: false)]
             }
@@ -75,7 +75,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         switch action {
         case .Open:
             if item.url.isEmpty {
-                locationData = indexPath.section == 0 ? locationData : ((data as! ListModel).results[(indexPath.row)] as! Province).cities.results.firstObject as! Province
+                locationData = indexPath.section == 0 ? locationData : ((data as! ListModel).results[(indexPath.row)] as! Province).cities.results[0] as! Province
                 NSNotificationCenter.defaultCenter().postNotificationName("city", object: ["city" : locationData])
                 cancel()
             } else {

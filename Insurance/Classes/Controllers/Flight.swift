@@ -39,14 +39,14 @@ class Flight: GroupedTableDetail {
         super.onLoadSuccess(entity)
         var controllerArray: [UIViewController] = []
         var tag = 0
-        for item in entity.results {
+        for item in entity.results as! [Category] {
             let controller: BaseCardList
             if tag == 0 {
                 controller = CardList()
             } else {
                 controller = storyboard?.instantiateViewControllerWithIdentifier("card_list") as! BaseCardList
             }
-            controller.category = item as! Category
+            controller.category = item
             controller.navController = navigationController
             controller.title = LocalizedString(item.name)
             controllerArray.append(controller)

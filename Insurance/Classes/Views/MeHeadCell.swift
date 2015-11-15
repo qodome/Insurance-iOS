@@ -5,7 +5,7 @@
 class MeHeadCell: UITableViewCell {
     var headImageView: ImageView!
     var title = UILabel()
-    var subTitle = UILabel()
+    var subtitle = UILabel()
     
     // MARK: - 💖 初始化
     required init?(coder aDecoder: NSCoder) {
@@ -19,9 +19,9 @@ class MeHeadCell: UITableViewCell {
         addSubview(headImageView)
         title.frame = CGRectMake(2 * PADDING + 60, 0, 0, 0)
         addSubview(title)
-        subTitle.textColor = .grayColor()
-        subTitle.textAlignment = .Right
-        addSubview(subTitle)
+        subtitle.textColor = .grayColor()
+        subtitle.textAlignment = .Right
+        addSubview(subtitle)
     }
     
     func setHeadViewData(data: User) {
@@ -30,11 +30,11 @@ class MeHeadCell: UITableViewCell {
         title.sizeToFit()
         title.frame.size.width = title.frame.width > SCREEN_WIDTH - 4 * PADDING - 60 ?  SCREEN_WIDTH - 4 * PADDING - 60 : title.frame.width
         title.center.y = headImageView.center.y
-        subTitle.text = data.about
-        subTitle.sizeToFit()
-        subTitle.frame.origin.x = CGRectGetMaxX(title.frame) + PADDING
-        subTitle.frame.size.width = SCREEN_WIDTH - 2 * PADDING - 3 * PADDING_INNER - title.frame.width - 65
-        subTitle.hidden = subTitle.frame.width > 10 ? false : true
-        subTitle.center.y = title.center.y
+        subtitle.text = data.about
+        subtitle.sizeToFit()
+        subtitle.frame.origin.x = CGRectGetMaxX(title.frame) + PADDING
+        subtitle.frame.size.width = SCREEN_WIDTH - 2 * PADDING - 3 * PADDING_INNER - title.frame.width - 65
+        subtitle.hidden = subtitle.frame.width > 10 ? false : true
+        subtitle.center.y = title.center.y
     }
 }

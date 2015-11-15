@@ -32,7 +32,7 @@ class OfferDetail: GroupedTableDetail {
             headSecondCell.userInteractionEnabled = false
             return headSecondCell
         default:
-            cell.detailTextLabel?.text = ((data.insurance_groups.results[indexPath.section - 2]).insurances.results[indexPath.row] as! Insurance).options
+            cell.detailTextLabel?.text = (((data.insurance_groups.results[indexPath.section - 2]) as! InsuranceGroup).insurances.results[indexPath.row] as! Insurance).options
         }
         return cell
     }
@@ -52,7 +52,7 @@ class OfferDetail: GroupedTableDetail {
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if data != nil && section > 1 {
-            return (data as! Offer).insurance_groups.results[section - 2].name
+            return ((data as! Offer).insurance_groups.results[section - 2] as! InsuranceGroup).name
         }
         return ""
     }

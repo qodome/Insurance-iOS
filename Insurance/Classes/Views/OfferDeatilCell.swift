@@ -4,8 +4,8 @@
 
 class OfferDeatilCell: UITableViewCell {
     var title = UILabel()
-    var subTitle = UILabel()
-    let tagView = JxxTagsView()
+    var subtitle = UILabel()
+    let tagsView = JxxTagsView()
     
     // MARK: - 💖 初始化
     required init?(coder aDecoder: NSCoder) {
@@ -16,12 +16,12 @@ class OfferDeatilCell: UITableViewCell {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
         title.frame = CGRectMake(PADDING, 5, SCREEN_WIDTH - 2 * PADDING, 20)
         addSubview(title)
-        subTitle.frame = CGRectMake(PADDING, 30, SCREEN_WIDTH - 2 * PADDING, 20)
-        subTitle.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        addSubview(subTitle)
-        tagView.frame = CGRectMake(0, 50, SCREEN_WIDTH, 28)
-        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
-        addSubview(tagView)
+        subtitle.frame = CGRectMake(PADDING, 30, SCREEN_WIDTH - 2 * PADDING, 20)
+        subtitle.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        addSubview(subtitle)
+        tagsView.frame = CGRectMake(0, 50, SCREEN_WIDTH, 28)
+        tagsView.theme = TagsTheme(color: XIAOMAR_BLUE)
+        addSubview(tagsView)
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
@@ -34,14 +34,14 @@ class OfferDeatilCell: UITableViewCell {
             let string = NSMutableAttributedString(string: "交易量\(data.agent.credit!.orderCount)单 成功率\(precentString)")
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(3, "\(data.agent.credit!.orderCount)".length))
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(string.length - precentString.length, precentString.length))
-            subTitle.attributedText = string
+            subtitle.attributedText = string
         } else {
-            subTitle.text = "无成交"
+            subtitle.text = "无成交"
         }
         var tagsArray: [String] = []
-        for valueTag in data.agent.tags.results {
-            tagsArray += [valueTag.name]
+        for tag in data.agent.tags.results as! [Tag] {
+            tagsArray += [tag.name]
         }
-        tagView.setTags(tagsArray, target: nil, action: nil)
+        tagsView.setTags(tagsArray, target: nil, action: nil)
     }
 }
