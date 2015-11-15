@@ -18,7 +18,7 @@ class About: GroupedTableDetail {
         case .Open:
             switch indexPath.section {
             case 1:
-            UIApplication.sharedApplication().openURL(NSURL(string: "telprompt://4009683968")!)
+                UIApplication.sharedApplication().openURL(NSURL(string: "telprompt://4009683968")!)
             default:
                 super.onPerform(action, indexPath: indexPath, item: item)
             }
@@ -43,7 +43,7 @@ class About: GroupedTableDetail {
     }
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
-        if dest.isKindOfClass(AboutUs.self) {
+        if dest.isMemberOfClass(AboutUs.self) {
             dest.setValue("aboutus", forKey: "nameString")
             dest.setValue(LocalizedString("aboutus"), forKey: "title")
         }

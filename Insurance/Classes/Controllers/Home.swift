@@ -37,9 +37,9 @@ class Home: MyList {
     override func onPrepare<T : UICollectionView>(listView: T) {
         super.onPrepare(listView)
         endpoint = getEndpoint("home")
-        mapping = smartListMapping(Card.self, children: ["user" : User.self, "comments" : ListModel.self, "likes" : ListModel.self], rootType: HomeModel.self)
+        mapping = smartListMapping(Card.self, children: [RKChild(path: "user", type: User.self), RKChild(path: "comments", type: Comment.self, isList: true), RKChild(path: "likes", type: Like.self, isList: true)], rootType: HomeModel.self)
         mapping!.addRelationshipMappingWithSourceKeyPath("featured", mapping: smartListMapping(Featured.self))
-        mapping!.addRelationshipMappingWithSourceKeyPath("specials", mapping: smartListMapping(Special.self, children: ["cards" : ListModel.self]))
+        mapping!.addRelationshipMappingWithSourceKeyPath("specials", mapping: smartListMapping(Special.self, children: [RKChild(path: "cards", type: Card.self, isList: true)]))
         refreshMode = .WillAppear
         listView.registerClass(CardCell.self, forCellWithReuseIdentifier: cellId)
         listView.registerClass(PageCell.self, forCellWithReuseIdentifier: pageCellId)
@@ -82,16 +82,16 @@ class Home: MyList {
         case .Open:
             let cell = (listView as! UICollectionView).cellForItemAtIndexPath(indexPath) as! PageCell
             selected = getSelected(indexPath, page: cell.page)
-            if selected.isKindOfClass(Card) {
+            if selected.isMemberOfClass(Card) {
                 if (selected as! Card).type == "p" {
                     startActivity(Item(title: "product", dest: ProductDetail.self))
                 } else {
                     // startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
                 }
-            } else if selected.isKindOfClass(Special) {
+            } else if selected.isMemberOfClass(Special) {
                 destEndpoint = getEndpoint("specials/\((selected as! Special).id)")
                 startActivity(Item(title: "cards", dest: CardList.self))
-            } else if selected.isKindOfClass(Featured) {
+            } else if selected.isMemberOfClass(Featured) {
                 switch (selected as! Featured).type {
                 case "c":
                     startActivity(Item(title: "cards/:pk", dest: CardWebDetail.self))
@@ -166,14 +166,14 @@ class Home: MyList {
         LOG("💜 \(id)")
         switch id {
         case "card_list":
-            if selected.isKindOfClass(Special) {
+            if selected.isMemberOfClass(Special) {
                 dest.title = (selected as! Special).title
                 dest.setValue((selected as! Special).cards, forKey: "data")
             }
             dest.setValue(destEndpoint, forKey: "endpoint")
             dest.setValue("cards", forKey: "keyPath")
         case "card_detail":
-            if selected.isKindOfClass(Featured) {
+            if selected.isMemberOfClass(Featured) {
                 dest.setValue("\((selected as! Featured).objectId)", forKey: "pk")
             } else {
                 dest.setValue(selected, forKey: "data")

@@ -14,7 +14,6 @@ class PickerList: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        items = [[]]
         for pickerModel in pickerData {
             selectedId = pickerModel.pid == selectedId ? pickerModel.plabel : selectedId
             items[0] += [Item(title: pickerModel.plabel, selectable: true)]

@@ -12,10 +12,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         super.onPrepare()
         title = LocalizedString("region")
         endpoint = getEndpoint("provinces")
-        mapping = smartMapping(ListModel.self)
-        let groupNext = smartMapping(Province.self)
-        groupNext.addRelationshipMappingWithSourceKeyPath("cities", mapping: smartListMapping(Province.self))
-        mapping!.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: groupNext))
+        mapping = smartListMapping(Province.self, children: [RKChild(path: "cities", type: Province.self, isList: true)])
         refreshMode = .DidLoad
         // 初始化定位
         locationManager.delegate = self

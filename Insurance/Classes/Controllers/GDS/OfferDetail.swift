@@ -13,7 +13,7 @@ class OfferDetail: GroupedTableDetail {
         items = [[.emptyItem()], [.emptyItem()]]
         for index in 0..<(data as! Offer).insurance_groups.count.integerValue {
             items += [[]]
-            for  insurance in ((data as! Offer).insurance_groups.results[index] as! InsuranceGroup).insurances.results {
+            for insurance in ((data as! Offer).insurance_groups.results[index] as! InsuranceGroup).insurances.results {
                 items[index + 2] += [Item(title: (insurance as! Insurance).name)]
             }
         }
@@ -39,8 +39,8 @@ class OfferDetail: GroupedTableDetail {
     
     // MARK: - 💜 UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 1 {
-            let strSize = "\((data as! Offer).remark)".boundingRectWithSize(CGSizeMake(view.frame.width - 2 * PADDING, 5000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)], context: nil)
+        if indexPath.section == 1 { // TODO: 什么意思
+            let strSize = "\((data as! Offer).remark)".boundingRectWithSize(CGSizeMake(view.frame.width - 2 * PADDING, 5000), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)], context: nil)
             return 60 + ("\((data as! Offer).remark)".isEmpty ? -10 : strSize.height)
         }
         return indexPath.section == 0 ? 80 : tableView.rowHeight

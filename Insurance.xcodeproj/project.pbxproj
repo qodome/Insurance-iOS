@@ -10,6 +10,7 @@
 		0E1466781BF4978D00A5ABB0 /* LocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1466771BF4978D00A5ABB0 /* LocationUtils.swift */; };
 		0E1E35B21BE9F1EF00968F2A /* ic_vehiclelicense.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1E35AF1BE9F1EF00968F2A /* ic_vehiclelicense.png */; };
 		0E1E35B31BE9F1EF00968F2A /* ic_velicense.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1E35B01BE9F1EF00968F2A /* ic_velicense.png */; };
+		0E702DC21BF8FF7600D7C6F0 /* TaylorR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E702DC11BF8FF7600D7C6F0 /* TaylorR.swift */; };
 		0E788BE81BF57E1100E768AA /* GCDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E788BE71BF57E1100E768AA /* GCDUtils.swift */; };
 		0E8379461BE07D9400F3BCCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8379441BE07D9400F3BCCE /* Main.storyboard */; };
 		0E8379481BE07D9400F3BCCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8379471BE07D9400F3BCCE /* Assets.xcassets */; };
@@ -58,7 +59,6 @@
 		0E837A8B1BE09D2100F3BCCE /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A461BE09D2100F3BCCE /* ModelObject.swift */; };
 		0E837A8C1BE09D2100F3BCCE /* UploadParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A471BE09D2100F3BCCE /* UploadParams.swift */; };
 		0E837A8D1BE09D2100F3BCCE /* WXToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A481BE09D2100F3BCCE /* WXToken.swift */; };
-		0E837A8E1BE09D2100F3BCCE /* TaylorR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A491BE09D2100F3BCCE /* TaylorR.swift */; };
 		0E837A8F1BE09D2100F3BCCE /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A4B1BE09D2100F3BCCE /* FileUtils.swift */; };
 		0E837A901BE09D2100F3BCCE /* RestKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A4C1BE09D2100F3BCCE /* RestKitUtils.swift */; };
 		0E837A911BE09D2100F3BCCE /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E837A4D1BE09D2100F3BCCE /* Shortcuts.swift */; };
@@ -178,6 +178,7 @@
 		0EB111CA1BE2151500C0BF62 /* BugUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111C91BE2151500C0BF62 /* BugUtils.swift */; };
 		0EB111CE1BE25AA900C0BF62 /* ObjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111CD1BE25AA900C0BF62 /* ObjectController.swift */; };
 		0EB111D01BE2628700C0BF62 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB111CF1BE2628700C0BF62 /* SearchResult.swift */; };
+		0EE7002B1BF7AB67006CD58D /* Taylor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE7002A1BF7AB67006CD58D /* Taylor.swift */; };
 		0EE72CB91BF72A6B00E2B97C /* LogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE72CB81BF72A6B00E2B97C /* LogUtils.swift */; };
 		0EE72CC01BF7392600E2B97C /* ic_user_c120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE72CBB1BF7392600E2B97C /* ic_user_c120.png */; };
 		0EE72CC11BF7392600E2B97C /* ic_user_c180.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE72CBC1BF7392600E2B97C /* ic_user_c180.png */; };
@@ -225,6 +226,7 @@
 		0E1466771BF4978D00A5ABB0 /* LocationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationUtils.swift; sourceTree = "<group>"; };
 		0E1E35AF1BE9F1EF00968F2A /* ic_vehiclelicense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vehiclelicense.png; sourceTree = "<group>"; };
 		0E1E35B01BE9F1EF00968F2A /* ic_velicense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_velicense.png; sourceTree = "<group>"; };
+		0E702DC11BF8FF7600D7C6F0 /* TaylorR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylorR.swift; sourceTree = "<group>"; };
 		0E788BE71BF57E1100E768AA /* GCDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtils.swift; sourceTree = "<group>"; };
 		0E83793B1BE07D9400F3BCCE /* Insurance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insurance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8379451BE07D9400F3BCCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -281,7 +283,6 @@
 		0E837A461BE09D2100F3BCCE /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObject.swift; sourceTree = "<group>"; };
 		0E837A471BE09D2100F3BCCE /* UploadParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadParams.swift; sourceTree = "<group>"; };
 		0E837A481BE09D2100F3BCCE /* WXToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXToken.swift; sourceTree = "<group>"; };
-		0E837A491BE09D2100F3BCCE /* TaylorR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylorR.swift; sourceTree = "<group>"; };
 		0E837A4B1BE09D2100F3BCCE /* FileUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
 		0E837A4C1BE09D2100F3BCCE /* RestKitUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestKitUtils.swift; sourceTree = "<group>"; };
 		0E837A4D1BE09D2100F3BCCE /* Shortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
@@ -404,6 +405,7 @@
 		0EB111C91BE2151500C0BF62 /* BugUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugUtils.swift; sourceTree = "<group>"; };
 		0EB111CD1BE25AA900C0BF62 /* ObjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectController.swift; sourceTree = "<group>"; };
 		0EB111CF1BE2628700C0BF62 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		0EE7002A1BF7AB67006CD58D /* Taylor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taylor.swift; sourceTree = "<group>"; };
 		0EE72CB81BF72A6B00E2B97C /* LogUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogUtils.swift; sourceTree = "<group>"; };
 		0EE72CBB1BF7392600E2B97C /* ic_user_c120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_user_c120.png; sourceTree = "<group>"; };
 		0EE72CBC1BF7392600E2B97C /* ic_user_c180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_user_c180.png; sourceTree = "<group>"; };
@@ -579,7 +581,8 @@
 		0E837A1B1BE09D2100F3BCCE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0E837A491BE09D2100F3BCCE /* TaylorR.swift */,
+				0EE7002A1BF7AB67006CD58D /* Taylor.swift */,
+				0E702DC11BF8FF7600D7C6F0 /* TaylorR.swift */,
 				0E837A1C1BE09D2100F3BCCE /* Content */,
 				0E837A201BE09D2100F3BCCE /* Controllers */,
 				0E837A301BE09D2100F3BCCE /* Extensions */,
@@ -1295,9 +1298,9 @@
 				0E837A671BE09D2100F3BCCE /* HttpLoader.swift in Sources */,
 				0EB111AC1BE2133000C0BF62 /* PickModel.swift in Sources */,
 				0E837A9C1BE09D2100F3BCCE /* CityList.swift in Sources */,
+				0E702DC21BF8FF7600D7C6F0 /* TaylorR.swift in Sources */,
 				FFCE78261BE99DE0003DB584 /* AboutUs.swift in Sources */,
 				FFCE782C1BE9FB26003DB584 /* OrderCell.swift in Sources */,
-				0E837A8E1BE09D2100F3BCCE /* TaylorR.swift in Sources */,
 				0E837A7D1BE09D2100F3BCCE /* UIImage+Extension.swift in Sources */,
 				0E837A881BE09D2100F3BCCE /* City.swift in Sources */,
 				0EB111871BE2133000C0BF62 /* About.swift in Sources */,
@@ -1325,6 +1328,7 @@
 				0E837A981BE09D2100F3BCCE /* SubtitleCell.swift in Sources */,
 				0EB111AB1BE2133000C0BF62 /* Order.swift in Sources */,
 				0EB111AD1BE2133000C0BF62 /* Prepay.swift in Sources */,
+				0EE7002B1BF7AB67006CD58D /* Taylor.swift in Sources */,
 				0E837A041BE082F200F3BCCE /* CAPSPageMenu.swift in Sources */,
 				0EB1116E1BE2133000C0BF62 /* Constants.swift in Sources */,
 				0E837A9A1BE09D2100F3BCCE /* AvatarView.swift in Sources */,
