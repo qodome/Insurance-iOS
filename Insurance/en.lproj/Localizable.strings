@@ -11,11 +11,12 @@ auto_insurance = "Auto Insurance";
 
 car_license_number = "Car License Number";
 
+register = "Register";
 call = "Call";
 securyupdate = "Secury Update";
 securyback = "Secury Back";
 sure = "Sure";
-aboutus = "About Us";
+about_us = "About Us";
 
 /* 自主选险 */
 freedom_list = "Freedom List";

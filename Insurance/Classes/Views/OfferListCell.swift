@@ -14,7 +14,7 @@ class OfferListCell: UITableViewCell {
     
     // MARK: - 💖 初始化
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+        fatalError("init(coder:) has not been implemented")
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

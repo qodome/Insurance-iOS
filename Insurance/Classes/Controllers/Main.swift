@@ -8,10 +8,10 @@ class Main: UITabBarController {
         super.viewDidLoad()
         tabBar.tintColor = .colorWithHex(APP_COLOR)
         let items = [/** "home", "discover", */ "gds", "me"]
-        for i in 0..<items.count {
+        for (i, item) in items.enumerate() {
 //            let iconOrders = FAKIonIcons.iosPaperIconWithSize(CGSizeTabBarIcon.width)
 //            tabBar.items?[i].image = iconOrders.imageWithSize(CGSizeTabBarIcon)
-            tabBar.items?[i].title = LocalizedString(items[i])
+            tabBar.items?[i].title = LocalizedString(item)
         }
         selectedIndex = 0
     }

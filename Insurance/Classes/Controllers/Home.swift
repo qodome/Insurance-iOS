@@ -122,16 +122,16 @@ class Home: MyList {
             let list = featuredList[remainder + featuredCellCount]
             cell.canCycle = true
             cell.canAutoRun = remainder == -featuredCellCount && list.count > 1
-            for i in 0..<list.count {
-                var view: PosterView
+            for (i, featured) in list.enumerate() {
+                let view: PosterView
                 if (remainder + featuredCellCount) % 2 == 0 {
                     view = SpecialCover(frame: CGRectMake(CGFloat(i) * width, 0, width, height))
-                    (view as! SpecialCover).changeSubtitle(list[i].summary)
+                    (view as! SpecialCover).changeSubtitle(featured.summary)
                 } else {
                     view = PosterView(frame: CGRectMake(CGFloat(i) * width, 0, width, height))
                 }
-                view.image.sd_setImageWithURL(NSURL(string: list[i].imageUrl))
-                view.changeTitle(list[i].title)
+                view.image.sd_setImageWithURL(NSURL(string: featured.imageUrl))
+                view.changeTitle(featured.title)
                 cell.addPage(view)
             }
             if list.count > 1 {
@@ -145,8 +145,7 @@ class Home: MyList {
             view.changeSubtitle("\(special.cards.count)个主题")
             view.changeSubtitleBackground(.colorWithHex(0xB4A66F))
             cell.addPage(view)
-            for i in 0..<special.cards.count.integerValue {
-                let card = special.cards.results[i] as! Card
+            for (i, card) in (special.cards.results as! [Card]).enumerate() {
                 let view = CardView(frame: CGRectMake(CGFloat(i + 1) * width, 0, width, height))
                 view.title.text = card.caption
                 view.subtitle.text = [getType(card.type), "\(card.likes.count) 喜欢"].joinWithSeparator(" · ")
