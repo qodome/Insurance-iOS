@@ -8,7 +8,7 @@
            "label": "车辆损失险",
            "accessory_type": "1",
            "switch_enable": "1",
-           "switch_status": "1",
+           "switch_status": "0",
            "picker_pid": "",
            "picker_array": []
            },
@@ -19,7 +19,7 @@
            "accessory_type": "2",
            "switch_enable": "",
            "switch_status": "",
-           "picker_pid": "5",
+           "picker_pid": "0",
            "picker_array": [
                             {
                             "pid": "0",
@@ -267,8 +267,8 @@
            "name": "sp_damage",
            "label": "不计免赔车损险",
            "accessory_type": "1",
-           "switch_enable": "1",
-           "switch_status": "1",
+           "switch_enable": "0",
+           "switch_status": "0",
            "picker_pid": "",
            "picker_array": []
            },
@@ -277,8 +277,8 @@
            "name": "sp_third_party",
            "label": "不计免赔三者险",
            "accessory_type": "1",
-           "switch_enable": "1",
-           "switch_status": "1",
+           "switch_enable": "0",
+           "switch_status": "0",
            "picker_pid": "",
            "picker_array": []
            },
@@ -323,7 +323,7 @@
            "label": "交强险 & 车船税",
            "accessory_type": "1",
            "switch_enable": "1",
-           "switch_status": "1",
+           "switch_status": "0",
            "picker_pid": "",
            "picker_array": []
            }

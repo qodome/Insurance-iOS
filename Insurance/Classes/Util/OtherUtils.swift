@@ -5,8 +5,8 @@
 // 只处理价格
 func getFormatterPrice(origial: NSNumber) -> String {
     let formatter = NSNumberFormatter()
-    formatter.numberStyle = .NoStyle
-    formatter.maximumFractionDigits = 0
+    formatter.numberStyle = .DecimalStyle
+    formatter.maximumFractionDigits = 2
     return  "￥\(formatter.stringFromNumber(NSNumber(double: origial.doubleValue / 100))!)"
 }
 

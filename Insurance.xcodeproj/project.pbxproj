@@ -202,6 +202,7 @@
 		FFCE782E1BEA0B19003DB584 /* OtherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCE782D1BEA0B19003DB584 /* OtherUtils.swift */; };
 		FFED8F751BEC4A8500424D6E /* ic_intro_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFED8F731BEC4A8500424D6E /* ic_intro_1.png */; };
 		FFED8F761BEC4A8500424D6E /* ic_intro_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFED8F741BEC4A8500424D6E /* ic_intro_2.png */; };
+		FFF658DB1BF8BCA20021A4EA /* remarkinsurance.json in Resources */ = {isa = PBXBuildFile; fileRef = FFF658DA1BF8BCA20021A4EA /* remarkinsurance.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,6 +432,7 @@
 		FFCE782D1BEA0B19003DB584 /* OtherUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUtils.swift; sourceTree = "<group>"; };
 		FFED8F731BEC4A8500424D6E /* ic_intro_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_intro_1.png; sourceTree = "<group>"; };
 		FFED8F741BEC4A8500424D6E /* ic_intro_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_intro_2.png; sourceTree = "<group>"; };
+		FFF658DA1BF8BCA20021A4EA /* remarkinsurance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = remarkinsurance.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -756,6 +758,7 @@
 				0EB110E91BE2132100C0BF62 /* aboutus.html */,
 				0EB110EA1BE2132100C0BF62 /* agreement.html */,
 				0EB110EB1BE2132100C0BF62 /* autoinsurance.json */,
+				FFF658DA1BF8BCA20021A4EA /* remarkinsurance.json */,
 				0EB110EC1BE2132100C0BF62 /* autoinsurance.txt */,
 				0EB110ED1BE2132100C0BF62 /* city.json */,
 				0EB110EF1BE2132100C0BF62 /* order_status.json */,
@@ -1097,6 +1100,7 @@
 				0EB110F31BE2132100C0BF62 /* logo_brand_4.png in Resources */,
 				0E1E35B41BE9F1EF00968F2A /* me_portrait_default.png in Resources */,
 				0EB110F21BE2132100C0BF62 /* logo_brand_3.png in Resources */,
+				FFF658DB1BF8BCA20021A4EA /* remarkinsurance.json in Resources */,
 				0EB111011BE2132100C0BF62 /* order_status.json in Resources */,
 				0EB110F01BE2132100C0BF62 /* logo_brand_1.png in Resources */,
 				0EB110F11BE2132100C0BF62 /* logo_brand_2.png in Resources */,

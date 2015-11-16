@@ -26,29 +26,8 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], []] //两个组的占位
         if dataArray[0].isEmpty {
-            let json = JSON(data:NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("autoinsurance", ofType: "json")!)!)
-            for section in 0..<json.count {
-                for row in 0..<json[section]["result"].count {
-                    let model = Freedom()
-                    model.setValuesForKeysWithDictionary(json[section]["result"][row].dictionaryObject!)
-                    var pid = ""
-                    if json[section]["result"][row]["picker_array"].isEmpty {
-                        dataDic[model.name] = model.switch_status
-                    } else {
-                        pid = model.picker_pid
-                    }
-                    var picker_array: [PickerModel] = []
-                    for pickRow in 0..<json[section]["result"][row]["picker_array"].count {
-                        let pick = PickerModel()
-                        pick.setValuesForKeysWithDictionary(json[section]["result"][row]["picker_array"][pickRow].dictionaryObject!)
-                        dataDic[model.name] =  pid == pick.pid ? pick.pname : ""
-                        picker_array += [pick]
-                    }
-                    model.picker_array = picker_array
-                    dataArray[section] += [model]
-                    items[section] += [Item(title: model.label, dest: model.accessory_type == "2" ? PickerList.self : nil, storyboard: false)]
-                }
-            }
+            getDataWithFirst(0, type: true)
+            
         } else {
             for (section, sectionValue) in dataArray.enumerate() {
                 for rowValue in sectionValue {
@@ -68,7 +47,8 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         segmentController.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)]
         segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkTextColor(), NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)]
         segmentController.indexChangeBlock = { index in
-            LOG(index)
+            self.getDataWithFirst(index, type: false)
+            self.tableView.reloadData()
         }
         segmentController.frame = CGRectMake(0, STATUS_BAR_HEIGHT + NAVIGATION_BAR_HEIGHT, view.frame.width, 36)
         view.addSubview(segmentController)
@@ -115,6 +95,35 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
+    func getDataWithFirst(index: Int, type: Bool) {
+        dataArray = [[], [], [], []]
+        let json = JSON(data:NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(["autoinsurance", "remarkinsurance", "autoinsurance", "remarkinsurance"][index], ofType: "json")!)!)
+        for section in 0..<json.count {
+            for row in 0..<json[section]["result"].count {
+                let model = Freedom()
+                model.setValuesForKeysWithDictionary(json[section]["result"][row].dictionaryObject!)
+                var pid = ""
+                if json[section]["result"][row]["picker_array"].isEmpty {
+                    dataDic[model.name] = model.switch_status
+                } else {
+                    pid = model.picker_pid
+                }
+                var picker_array: [PickerModel] = []
+                for pickRow in 0..<json[section]["result"][row]["picker_array"].count {
+                    let pick = PickerModel()
+                    pick.setValuesForKeysWithDictionary(json[section]["result"][row]["picker_array"][pickRow].dictionaryObject!)
+                    dataDic[model.name] =  pid == pick.pid ? pick.pname : ""
+                    picker_array += [pick]
+                }
+                model.picker_array = picker_array
+                dataArray[section] += [model]
+                if type {
+                    items[section] += [Item(title: model.label, dest: model.accessory_type == "2" ? PickerList.self : nil, storyboard: false)]
+                }
+            }
+        }
+    }
+    
     func enquiryCreate() {
         var contentUrl = ""
         for key in dataDic.allKeys {
@@ -175,7 +184,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                 nextID = "11"
             default: break
             }
-            if getDicWithId(nextID).switch_status == "1" || getDicWithId("9").picker_pid != "0" || getDicWithId("10").picker_pid != "0" {
+            if nextID != model.tid && (getDicWithId(nextID).switch_status == "1" || getDicWithId("9").picker_pid != "0" || getDicWithId("10").picker_pid != "0"){
                 statue = "1"
             }
         }
@@ -188,7 +197,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
             nextID = "14"
         default: break
         }
-        getDicWithId(nextID).switch_enable = statue
+        getDicWithId(nextID).switch_enable = nextID != model.tid ? statue : getDicWithId(nextID).switch_enable
         getDicWithId(nextID).switch_status = statue
         dataDic[getDicWithId(nextID).name] = statue
         model.switch_status = "\(sw.on.hashValue)"
