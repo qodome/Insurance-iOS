@@ -3,8 +3,8 @@
 //
 
 class OfferDeatilCell: UITableViewCell {
-    var title = UILabel()
-    var subtitle = UILabel()
+    let title = UILabel()
+    let subtitle = UILabel()
     let tagsView = JxxTagsView()
     
     // MARK: - 💖 初始化

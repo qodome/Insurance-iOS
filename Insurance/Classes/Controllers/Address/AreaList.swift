@@ -32,7 +32,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
                 items[1] += [Item(title: province.name, dest: mCityList.self, storyboard: false)]
             }
         }
-        tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .None)
+        tableView.reloadData()
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
@@ -66,7 +66,15 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         if indexPath.section == 0 && locationState == .Success {
             cell.textLabel?.text = locationData.name
         } else {
-            LOG((data.results[indexPath.row] as! Province).state)
+            delay(0.1) {
+                if [2, 3].contains((data.results[indexPath.row] as! Province).state) {
+                    let button = getAppStoreButton(LocalizedString("费改"))
+                    button.frame.origin.x = CGRectGetMaxX((tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.frame)!) + PADDING
+                    button.center.y = tableView.cellForRowAtIndexPath(indexPath)!.textLabel!.center.y
+                    button.addTarget(self, action: "feigai", forControlEvents: .TouchUpInside)
+                    cell.contentView.addSubview(button)
+                }
+            }
         }
         return cell
     }
@@ -108,5 +116,10 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         delay(0.5) {
             self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
         }
+    }
+    
+    // MARK: - 💛 自定义方法 (Custom Method)
+    func feigai() {
+        showAlert(self, title: "费改税，也称税费改革，是指在对现有的政府收费进行清理整顿的基础上，用税收取代一些具有税收特征的收费，通过进一步深化财税体制改革，初步建立起以税收为主，少量的、必要的政府收费为辅的政府收入体系。其实质是为规范政府收入机制而必须采取的一项重大改革举措。")
     }
 }
