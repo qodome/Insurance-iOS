@@ -191,6 +191,7 @@
 		FF16E3B61BF33843001B65FE /* ic_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = FF16E3B51BF33843001B65FE /* ic_banner.png */; };
 		FF23E3111BEB68CD00FBF865 /* SecuryBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */; };
 		FF23E3121BEB68CD00FBF865 /* SecuryUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */; };
+		FF2A2EE91BF9AEEB007C43E0 /* totalinsurance.json in Resources */ = {isa = PBXBuildFile; fileRef = FF2A2EE81BF9AEEB007C43E0 /* totalinsurance.json */; };
 		FF93DC9B1BE7267D00FC8F3A /* OfferDeatilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */; };
 		FF93DCA51BE72D7B00FC8F3A /* BusinessCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */; };
 		FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA81BE748AB00FC8F3A /* ic_order.png */; };
@@ -423,6 +424,7 @@
 		FF16E3B51BF33843001B65FE /* ic_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_banner.png; sourceTree = "<group>"; };
 		FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryBack.swift; sourceTree = "<group>"; };
 		FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryUpdate.swift; sourceTree = "<group>"; };
+		FF2A2EE81BF9AEEB007C43E0 /* totalinsurance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = totalinsurance.json; sourceTree = "<group>"; };
 		FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDeatilCell.swift; sourceTree = "<group>"; };
 		FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCredit.swift; sourceTree = "<group>"; };
 		FF93DCA81BE748AB00FC8F3A /* ic_order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order.png; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 				0EB110EA1BE2132100C0BF62 /* agreement.html */,
 				0EB110EB1BE2132100C0BF62 /* autoinsurance.json */,
 				FFF658DA1BF8BCA20021A4EA /* remarkinsurance.json */,
+				FF2A2EE81BF9AEEB007C43E0 /* totalinsurance.json */,
 				0EB110EC1BE2132100C0BF62 /* autoinsurance.txt */,
 				0EB110ED1BE2132100C0BF62 /* city.json */,
 				0EB110EF1BE2132100C0BF62 /* order_status.json */,
@@ -1144,6 +1147,7 @@
 				FF16E3B61BF33843001B65FE /* ic_banner.png in Resources */,
 				0EB110F41BE2132100C0BF62 /* logo_brand_5.png in Resources */,
 				0EE72CC31BF7392600E2B97C /* ic_user_s180.png in Resources */,
+				FF2A2EE91BF9AEEB007C43E0 /* totalinsurance.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

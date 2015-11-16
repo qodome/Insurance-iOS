@@ -3,10 +3,6 @@
 //
 
 class OrderList: TableList {
-    var allData: [ModelObject] = []
-    var insuranceData : [ModelObject] = []
-    var selectedIndex: Int = 0
-    
     // MARK: - 🐤 Taylor
     override func setTableViewStyle() -> UITableViewStyle {
         return .Grouped
@@ -15,6 +11,7 @@ class OrderList: TableList {
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("orders")
+        LOG(endpoint)
         mapping = smartListMapping(Order.self, children: [RKChild(path: "user", type: User.self), RKChild(path: "product", type: Product.self)])
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
@@ -27,25 +24,10 @@ class OrderList: TableList {
         segmentController.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)]
         segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkTextColor(), NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)]
         segmentController.indexChangeBlock = { index in
-            self.selectedIndex = index
-            self.data = index == 0 ? self.allData : self.insuranceData
-            listView.reloadData()
+            index == 0 ? self.loader?.read() : self.loader?.read(self.endpoint, parameters: ["product_id" : "1"])
         }
         segmentController.frame = CGRectMake(0, STATUS_BAR_HEIGHT + NAVIGATION_BAR_HEIGHT, view.frame.width, 36)
         view.addSubview(segmentController)
-    }
-    
-    override func onLoadSuccess<E : ListModel>(entity: E) {
-        super.onLoadSuccess(entity)
-        allData = data
-        insuranceData.removeAll()
-        for orderData in data {
-            if (orderData as! Order).productId == 1 {
-                insuranceData.append(orderData)
-            }
-        }
-        data = selectedIndex == 0 ? allData : insuranceData
-        (listView as! UITableView).reloadData()
     }
     
     override func getItemView<V : UITableView, T : Order, C : OrderCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {

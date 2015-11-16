@@ -3,13 +3,13 @@
 //
 
 class OfferListCell: UITableViewCell {
-    var thirdParty = UILabel()
+    let thirdParty = UILabel()
     var logoImage: ImageView!
-    var quotedPrice = UILabel()
-    var titleLabel = UILabel()
+    let quotedPrice = UILabel()
+    let titleLabel = UILabel()
     var remarkImage: ImageView!
-    var discountLabel = UILabel()
-    var subtitle = UILabel()
+    let discountLabel = UILabel()
+    let subtitle = UILabel()
     let tagsView = JxxTagsView()
     
     // MARK: - 💖 初始化

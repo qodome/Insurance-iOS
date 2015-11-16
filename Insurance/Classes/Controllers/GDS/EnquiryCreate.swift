@@ -6,6 +6,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     let locationManager = CLLocationManager()
     var imageDic: [String : UIImage] = [:]
     var freedomArray: [[Freedom]] = [[]]
+    var freedomIndex = 0
     var onOrOff: Bool = false
     var textField = UITextField()
     var locationData = Province() // 创造这个临时变量是为了提示用的
@@ -125,6 +126,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         if dest.isMemberOfClass(FreedomList.self) {
             dest.setValue(data, forKey: "data")
             dest.setValue(imageDic, forKey: "imageDic")
+            dest.setValue(freedomIndex, forKey: "selectedIndex")
             dest.setValue(freedomArray, forKey: "dataArray")
             (dest as! FreedomList).delegate = self
         }
@@ -155,14 +157,16 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     }
     
     func freedom() {
-        //        if imageDic["car_license"] != nil {
-        startActivity(Item(dest: FreedomList.self, storyboard: false))
-        //        } else {
-        //            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
-        //        }
+        if imageDic["car_license"] != nil {
+            startActivity(Item(dest: FreedomList.self, storyboard: false))
+        } else {
+            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
+        }
     }
     
-    func backFreedomData(dataDic: NSDictionary, dataArray: [[Freedom]]) {
+    func backFreedomData(dataDic: NSDictionary, dataArray: [[Freedom]], selectedIndex: Int)
+    {
+        freedomIndex = selectedIndex
         freedomArray = dataArray
         var contentUrl = ""
         for key in dataDic.allKeys {

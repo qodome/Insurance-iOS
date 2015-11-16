@@ -4,8 +4,8 @@
 
 class OfferDeatilHead: UITableViewCell {
     var logoImage: ImageView!
-    var quotedPrice = UILabel()
-    var remark = UILabel()
+    let quotedPrice = UILabel()
+    let remark = UILabel()
     
     // MARK: - 💖 初始化
     required init?(coder aDecoder: NSCoder) {
