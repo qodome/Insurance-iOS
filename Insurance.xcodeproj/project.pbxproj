@@ -186,11 +186,11 @@
 		0EE72CC31BF7392600E2B97C /* ic_user_s180.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE72CBE1BF7392600E2B97C /* ic_user_s180.png */; };
 		0EE72CC41BF7392600E2B97C /* me_portrait_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE72CBF1BF7392600E2B97C /* me_portrait_default.png */; };
 		0EEA46941BE359A00009A09B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEA46931BE359A00009A09B /* UITableView+Extension.swift */; };
+		0EF60EAB1BF97D70000F3361 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF60EAA1BF97D70000F3361 /* SwiftyJSON.swift */; };
 		F924151225BB20A3C9EF1489 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5F62F6E39B514C622137E5 /* libPods.a */; };
 		FF16E3B61BF33843001B65FE /* ic_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = FF16E3B51BF33843001B65FE /* ic_banner.png */; };
 		FF23E3111BEB68CD00FBF865 /* SecuryBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */; };
 		FF23E3121BEB68CD00FBF865 /* SecuryUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */; };
-		FF6C47F91BF5C6B6002867CA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C47F81BF5C6B6002867CA /* SwiftyJSON.swift */; };
 		FF93DC9B1BE7267D00FC8F3A /* OfferDeatilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */; };
 		FF93DCA51BE72D7B00FC8F3A /* BusinessCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */; };
 		FF93DCAA1BE748AB00FC8F3A /* ic_order.png in Resources */ = {isa = PBXBuildFile; fileRef = FF93DCA81BE748AB00FC8F3A /* ic_order.png */; };
@@ -415,14 +415,14 @@
 		0EE72CBE1BF7392600E2B97C /* ic_user_s180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_user_s180.png; sourceTree = "<group>"; };
 		0EE72CBF1BF7392600E2B97C /* me_portrait_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me_portrait_default.png; sourceTree = "<group>"; };
 		0EEA46931BE359A00009A09B /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		0EF60EA91BF97D70000F3361 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
+		0EF60EAA1BF97D70000F3361 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3842DC7F28097D00C2170059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		39711360E4CC77D2B9D726D0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5B5F62F6E39B514C622137E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF16E3B51BF33843001B65FE /* ic_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_banner.png; sourceTree = "<group>"; };
 		FF23E30E1BEB68CD00FBF865 /* SecuryBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryBack.swift; sourceTree = "<group>"; };
 		FF23E30F1BEB68CD00FBF865 /* SecuryUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuryUpdate.swift; sourceTree = "<group>"; };
-		FF6C47F71BF5C6B6002867CA /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
-		FF6C47F81BF5C6B6002867CA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		FF93DC9A1BE7267D00FC8F3A /* OfferDeatilCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDeatilCell.swift; sourceTree = "<group>"; };
 		FF93DCA41BE72D7B00FC8F3A /* BusinessCredit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCredit.swift; sourceTree = "<group>"; };
 		FF93DCA81BE748AB00FC8F3A /* ic_order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order.png; sourceTree = "<group>"; };
@@ -534,6 +534,7 @@
 		0E837A011BE082F200F3BCCE /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0EF60EA81BF97D70000F3361 /* SwiftyJSON */,
 				0E837A021BE082F200F3BCCE /* PageMenu */,
 				0E837A1A1BE09D2100F3BCCE /* Taylor */,
 			);
@@ -775,8 +776,6 @@
 				0EB111031BE2133000C0BF62 /* AppDelegate.swift */,
 				0EB111041BE2133000C0BF62 /* Constants.swift */,
 				0EB1116C1BE2133000C0BF62 /* XML.swift */,
-				FF6C47F71BF5C6B6002867CA /* SwiftyJSON.h */,
-				FF6C47F81BF5C6B6002867CA /* SwiftyJSON.swift */,
 				0EB111051BE2133000C0BF62 /* Controllers */,
 				0EB111331BE2133000C0BF62 /* Models */,
 				0EB1115C1BE2133000C0BF62 /* Util */,
@@ -973,6 +972,15 @@
 				0EE72CBF1BF7392600E2B97C /* me_portrait_default.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		0EF60EA81BF97D70000F3361 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				0EF60EA91BF97D70000F3361 /* SwiftyJSON.h */,
+				0EF60EAA1BF97D70000F3361 /* SwiftyJSON.swift */,
+			);
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 		80B25E7C88C7A5D686F97EA9 /* Frameworks */ = {
@@ -1251,6 +1259,7 @@
 				0E837A7E1BE09D2100F3BCCE /* UILabel+Extension.swift in Sources */,
 				0EB111891BE2133000C0BF62 /* Settings.swift in Sources */,
 				0E837A811BE09D2100F3BCCE /* UIView+Extension.swift in Sources */,
+				0EF60EAB1BF97D70000F3361 /* SwiftyJSON.swift in Sources */,
 				0E837A781BE09D2100F3BCCE /* Array+Extension.swift in Sources */,
 				0EB1117F1BE2133000C0BF62 /* PickerList.swift in Sources */,
 				0EB111C01BE2133000C0BF62 /* CardView.swift in Sources */,
@@ -1347,7 +1356,6 @@
 				0EEA46941BE359A00009A09B /* UITableView+Extension.swift in Sources */,
 				0E1466781BF4978D00A5ABB0 /* LocationUtils.swift in Sources */,
 				0E837A951BE09D2100F3BCCE /* ImageView.swift in Sources */,
-				FF6C47F91BF5C6B6002867CA /* SwiftyJSON.swift in Sources */,
 				0E837A7A1BE09D2100F3BCCE /* NSDate+Extension.swift in Sources */,
 				0E788BE81BF57E1100E768AA /* GCDUtils.swift in Sources */,
 				0EB1119D1BE2133000C0BF62 /* Enquiry.swift in Sources */,
