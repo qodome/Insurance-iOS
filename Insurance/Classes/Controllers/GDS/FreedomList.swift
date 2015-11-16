@@ -62,7 +62,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         }
         let button = getBottomButton(view)
         button.setTitle(LocalizedString("enquire"), forState: .Normal)
-        button.addTarget(self, action: "enquiryCreate", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         view.addSubview(button)
     }
     
@@ -107,7 +107,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
-    func enquiryCreate() {
+    func create() {
         var contentUrl = ""
         for key in dataDic.allKeys {
             let mValue = dataDic["\(key)"]
