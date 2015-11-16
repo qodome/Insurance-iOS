@@ -15,7 +15,7 @@ class OrderList: TableList {
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("orders")
-        mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
+        mapping = smartListMapping(Order.self, children: [RKChild(path: "user", type: User.self), RKChild(path: "product", type: Product.self)])
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
         let segmentController = HMSegmentedControl(sectionTitles: [LocalizedString("all"), LocalizedString("auto_insurance")])

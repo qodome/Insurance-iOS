@@ -24,7 +24,7 @@ class PageCell: UICollectionViewCell, UIScrollViewDelegate {
     
     // MARK: - 💖 初始化
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override init(frame: CGRect) {

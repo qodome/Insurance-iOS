@@ -3,13 +3,13 @@
 //
 
 class OfferDeatilCell: UITableViewCell {
-    var title = UILabel()
-    var subtitle = UILabel()
-    let tagView = JxxTagsView()
+    let title = UILabel()
+    let subtitle = UILabel()
+    let tagsView = JxxTagsView()
     
     // MARK: - 💖 初始化
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -19,9 +19,9 @@ class OfferDeatilCell: UITableViewCell {
         subtitle.frame = CGRectMake(PADDING, 30, SCREEN_WIDTH - 2 * PADDING, 20)
         subtitle.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(subtitle)
-        tagView.frame = CGRectMake(0, 50, SCREEN_WIDTH, 28)
-        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
-        addSubview(tagView)
+        tagsView.frame = CGRectMake(0, 50, SCREEN_WIDTH, 28)
+        tagsView.theme = TagsTheme(color: XIAOMAR_BLUE)
+        addSubview(tagsView)
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
@@ -39,9 +39,9 @@ class OfferDeatilCell: UITableViewCell {
             subtitle.text = "无成交"
         }
         var tagsArray: [String] = []
-        for valueTag in data.agent.tags.results {
-            tagsArray += [valueTag.name]
+        for tag in data.agent.tags.results as! [Tag] {
+            tagsArray += [tag.name]
         }
-        tagView.setTags(tagsArray, target: nil, action: nil)
+        tagsView.setTags(tagsArray, target: nil, action: nil)
     }
 }

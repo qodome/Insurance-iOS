@@ -52,12 +52,12 @@ class Profile: GroupedTableDetail, UpdateDelegate {
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         dest.setValue(data, forKey: "data")
-        if dest.isKindOfClass(UpdateController) {
+        if dest is UpdateController {
             dest.setValue(getSelected().first!.title, forKey: "fieldName")
             (dest as! UpdateController).delegate = self
             dest.setValue(getEndpoint("users/\((data as! User).id)"), forKey: "endpoint")
             dest.setValue(smartMapping(User.self), forKey: "mapping")
-            if dest.isKindOfClass(CheckListUpdate) {
+            if dest.isMemberOfClass(CheckListUpdate) {
                 var items: [[Item]]  = [[]]
                 for (key, value) in getSelected().first!.options! {
                     items[0] += [Item(title: value, url: "local://check/\(key)")]

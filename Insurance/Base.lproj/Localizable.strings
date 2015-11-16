@@ -11,14 +11,12 @@ auto_insurance = "车险";
 
 car_license_number = "车牌号码";
 
-all = "全部";
-
 register = "注册";
 call = "客服热线";
 securyupdate = "更改密码";
 securyback = "找回密码";
 sure = "完成";
-aboutus = "关于我们";
+about_us = "关于我们";
 
 /* 自主选险 */
 freedom_list = "自主选险";

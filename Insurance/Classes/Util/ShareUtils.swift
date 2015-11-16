@@ -15,12 +15,13 @@ func startShareActivity(controller: UIViewController, items: [AnyObject], view: 
         UIActivityTypeAirDrop]
     // http://stackoverflow.com/questions/25644054/uiactivityviewcontroller-crashing-on-ios8-ipads
     if dest.respondsToSelector("popoverPresentationController") { // 适配iPad
-        if view != nil {
-            dest.popoverPresentationController?.sourceView = view
-            dest.popoverPresentationController?.sourceRect = CGRectMake(view!.frame.width / 2, 0, 0, 0)
-        } else {
+        switch view {
+        case nil:
             dest.popoverPresentationController?.sourceView = controller.view
             dest.popoverPresentationController?.sourceRect = CGRectMake(0, 0, controller.view.frame.width, controller.view.frame.height / 2)
+        default:
+            dest.popoverPresentationController?.sourceView = view
+            dest.popoverPresentationController?.sourceRect = CGRectMake(view!.frame.width / 2, 0, 0, 0)
         }
     }
     controller.presentViewController(dest, animated: true, completion: nil)

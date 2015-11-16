@@ -37,7 +37,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         }
         let button = getBottomButton(view)
         button.setTitle(LocalizedString("enquire"), forState: .Normal)
-        button.addTarget(self, action: "enquiryCreate", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         view.addSubview(button)
         let segmentController = HMSegmentedControl(sectionTitles: [LocalizedString("大众版"), LocalizedString("豪华版"), LocalizedString("自定义"), LocalizedString("重置")])
         segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
@@ -124,7 +124,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         }
     }
     
-    func enquiryCreate() {
+    func create() {
         var contentUrl = ""
         for key in dataDic.allKeys {
             let mValue = dataDic["\(key)"]

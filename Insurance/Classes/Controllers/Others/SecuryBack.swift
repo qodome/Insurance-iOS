@@ -28,7 +28,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
         tableView.addSubview(resignBtn)
         textFieldArray = [phoneField, newSecuryField, nextSecuryField, codeField]
         let placeArray = [LocalizedString("输入手机号"), LocalizedString("输入新密码"), LocalizedString("确认新密码"), LocalizedString("输入验证码")]
-        for (index,field) in textFieldArray.enumerate() {
+        for (index, field) in textFieldArray.enumerate() {
             field.tag = index
             field.keyboardType = .ASCIICapable
             field.placeholder = placeArray[index]
@@ -97,7 +97,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
             let getResult = result.firstObject as! Sms
             getResult.code == 0 ? self.waitingCode() : showAlert(self, title: "Error", message: getResult.reason)
             }) { operation, error in
-                showAlert(nil, title: "Send SMS Error", message: error.localizedDescription)
+                showAlert(self, title: "Send SMS Error", message: error.localizedDescription)
         }
     }
     

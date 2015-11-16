@@ -122,7 +122,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     }
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
-        if dest.isKindOfClass(FreedomList.self) {
+        if dest.isMemberOfClass(FreedomList.self) {
             dest.setValue(data, forKey: "data")
             dest.setValue(imageDic, forKey: "imageDic")
             dest.setValue(freedomArray, forKey: "dataArray")
@@ -221,6 +221,6 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        return NSStringFromClass(touch.view!.classForCoder) == "UITableViewCellContentView" ? false : true
+        return String(touch.view!.classForCoder) == "UITableViewCellContentView" ? false : true
     }
 }
