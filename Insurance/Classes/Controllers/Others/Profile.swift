@@ -56,7 +56,7 @@ class Profile: GroupedTableDetail, UpdateDelegate {
             dest.setValue(getSelected().first!.title, forKey: "fieldName")
             (dest as! UpdateController).delegate = self
             dest.setValue(getEndpoint("users/\((data as! User).id)"), forKey: "endpoint")
-            dest.setValue(smartMapping(User.self), forKey: "mapping")
+            dest.setValue(getDetailMapping(User.self), forKey: "mapping")
             if dest.isMemberOfClass(CheckListUpdate) {
                 var items: [[Item]]  = [[]]
                 for (key, value) in getSelected().first!.options! {

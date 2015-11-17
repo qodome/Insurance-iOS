@@ -7,7 +7,7 @@ class VehicleList: CollectionList {
     override func onPrepare<T : UICollectionView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("vehicles")
-        mapping = smartMapping(Vehicle.self)
+        mapping = getDetailMapping(Vehicle.self)
         // if 判断是否出现添加按钮
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add")
     }

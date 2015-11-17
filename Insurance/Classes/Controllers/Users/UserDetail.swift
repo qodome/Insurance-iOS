@@ -13,7 +13,7 @@ class UserDetail: GroupedTableDetail {
 //            [Item(icon: iconLikes.imageWithSize(CGSizeSettingsIcon), title: "likes")]
         ]
         refreshMode = .DidAppear // TIP: 用DidAppear而非WillAppear中保证回滑时候选中状态平滑消失
-        mapping = smartMapping(User.self)
+        mapping = getDetailMapping(User.self)
     }
     
     override func onLoadSuccess<E : User>(entity: E) {

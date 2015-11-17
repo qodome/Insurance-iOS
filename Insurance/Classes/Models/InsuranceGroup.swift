@@ -2,13 +2,13 @@
 //  Copyright © 2015年 NY. All rights reserved.
 //
 
-class InsuranceGroup: ModelObject {
+class InsuranceGroup: ListModel {
     var name = ""
     var insurances  = ListModel()
     
     override class func getMapping() -> [String : String] {
-        return [
-            "name" : "name",
-        ]
+        var dict = super.getMapping()
+        dict["name"] = "name"
+        return dict
     }
 }

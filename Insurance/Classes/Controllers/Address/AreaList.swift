@@ -12,7 +12,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         super.onPrepare()
         title = LocalizedString("region")
         endpoint = getEndpoint("provinces")
-        mapping = smartListMapping(Province.self, children: [RKChild(path: "cities", type: Province.self, isList: true)])
+        mapping = getListMapping(Province.self, children: [RKChild(path: "cities", type: Province.self, isList: true)])
         refreshMode = .DidLoad
         // 初始化定位
         locationManager.delegate = self
@@ -68,7 +68,7 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
         } else {
             delay(0.1) {
                 if [2, 3].contains((data.results[indexPath.row] as! Province).state) {
-                    let button = getAppStoreButton(LocalizedString("费改"))
+                    let button = getAppStoreButton(LocalizedString("费改"), color: UIColor.iOSDarkRedColor())
                     button.frame.origin.x = CGRectGetMaxX((tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.frame)!) + PADDING
                     button.center.y = tableView.cellForRowAtIndexPath(indexPath)!.textLabel!.center.y
                     button.addTarget(self, action: "feigai", forControlEvents: .TouchUpInside)

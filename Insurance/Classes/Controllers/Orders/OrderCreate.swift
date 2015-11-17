@@ -9,7 +9,7 @@ class OrderCreate: CreateController {
         super.onPrepare()
         endpoint = getEndpoint("orders")
         // 不解析Product的话，生成订单取消支付再提交会导致product是nil而报错
-        mapping = smartMapping(Order.self, children: [RKChild(path: "product", type: Product.self)])
+        mapping = getDetailMapping(Order.self, children: [RKChild(path: "product", type: Product.self)])
         items = [
             [
                 Item(title: "name"),

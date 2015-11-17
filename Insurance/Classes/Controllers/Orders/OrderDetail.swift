@@ -6,7 +6,7 @@ class OrderDetail: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        mapping = smartMapping(Order.self)
+        mapping = getDetailMapping(Order.self)
         items = [
             [
                 Item(title: "id"),

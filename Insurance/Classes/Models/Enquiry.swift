@@ -1,5 +1,5 @@
 //
-//  Copyright © 2015 NY. All rights reserved.
+//  Copyright (c) 2015 NY. All rights reserved.
 //
 
 class Enquiry: ModelObject {

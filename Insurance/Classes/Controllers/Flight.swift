@@ -31,7 +31,7 @@ class Flight: GroupedTableDetail {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("popping/categories")
-        mapping = smartListMapping(Category.self)
+        mapping = getListMapping(Category.self)
         refreshMode = .DidLoad
     }
     

@@ -10,7 +10,7 @@ class BaseCardList: CollectionList {
     override func onPrepare<T : UICollectionView>(listView: T) {
         super.onPrepare(listView)
         endpoint = "\(getEndpoint("popping/topcharts"))&category=\(category.name)"
-        mapping = smartListMapping(Card.self)
+        mapping = getListMapping(Card.self)
         refreshMode = .DidLoad
     }
     
