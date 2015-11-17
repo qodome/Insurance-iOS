@@ -37,9 +37,9 @@ class Home: MyList {
     override func onPrepare<T : UICollectionView>(listView: T) {
         super.onPrepare(listView)
         endpoint = getEndpoint("home")
-        mapping = smartListMapping(Card.self, children: [RKChild(path: "user", type: User.self), RKChild(path: "comments", type: Comment.self, isList: true), RKChild(path: "likes", type: Like.self, isList: true)], rootType: HomeModel.self)
-        mapping!.addRelationshipMappingWithSourceKeyPath("featured", mapping: smartListMapping(Featured.self))
-        mapping!.addRelationshipMappingWithSourceKeyPath("specials", mapping: smartListMapping(Special.self, children: [RKChild(path: "cards", type: Card.self, isList: true)]))
+        mapping = getListMapping(Card.self, children: [RKChild(path: "user", type: User.self), RKChild(path: "comments", type: Comment.self, isList: true), RKChild(path: "likes", type: Like.self, isList: true)], rootType: HomeModel.self)
+        mapping!.addRelationshipMappingWithSourceKeyPath("featured", mapping: getListMapping(Featured.self))
+        mapping!.addRelationshipMappingWithSourceKeyPath("specials", mapping: getListMapping(Special.self, children: [RKChild(path: "cards", type: Card.self, isList: true)]))
         refreshMode = .WillAppear
         listView.registerClass(CardCell.self, forCellWithReuseIdentifier: cellId)
         listView.registerClass(PageCell.self, forCellWithReuseIdentifier: pageCellId)

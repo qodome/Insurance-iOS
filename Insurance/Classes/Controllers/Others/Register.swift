@@ -22,7 +22,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("users")
-        mapping = smartMapping(User.self)
+        mapping = getDetailMapping(User.self)
         textFieldArray = [phoneField, nameField, newSecuryField, nextSecuryField, codeField]
         let placeArray = [LocalizedString("输入手机号"), LocalizedString("输入昵称"), LocalizedString("输入密码"), LocalizedString("确认密码"), LocalizedString("输入验证码")]
         for (index, field) in textFieldArray.enumerate() {
@@ -100,7 +100,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
             showAlert(self, title: LocalizedString("请填写正确的手机号"), message: "")
             return
         }
-        let mapping = smartMapping(Sms.self)
+        let mapping = getDetailMapping(Sms.self)
         let descriptor = RKResponseDescriptor(mapping: mapping, method: .Any, pathPattern: nil, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful))
         RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "")
         RKObjectManager.sharedManager().addResponseDescriptor(descriptor)

@@ -24,7 +24,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("enquiries")
-        mapping = smartMapping(Enquiry.self)
+        mapping = getDetailMapping(Enquiry.self)
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], []] //两个组的占位
         let button = getBottomButton(view)

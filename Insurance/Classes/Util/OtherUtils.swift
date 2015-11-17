@@ -12,14 +12,13 @@ func getFormatterPrice(origial: NSNumber) -> String {
 
 // 获取状态的中文显示字
 func getStatusString(status: NSNumber) -> String {
-    let json = JSON(data:NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("order_status", ofType: "json")!)!)
+    let json = JSON(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("order_status", ofType: "json")!)!)
     return json["\(status)"].string ?? ""
 }
 
 // 类似AppStore上获取按钮
-func getAppStoreButton(title:String) -> UIButton {
+func getAppStoreButton(title:String, color: UIColor = .systemDefaultColor()) -> UIButton {
     let button = UIButton()
-    let color = UIColor.systemDefaultColor()
     button.setTitle(title, forState: .Normal)
     button.setTitleColor(color, forState: .Normal)
     button.setTitleColor(.whiteColor(), forState: .Highlighted)

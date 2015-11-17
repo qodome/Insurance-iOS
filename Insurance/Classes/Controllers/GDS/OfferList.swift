@@ -12,27 +12,9 @@ class OfferList: TableList {
     
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
-        LOG(endpoint)
-        //        let agentChild =  RKChild(path: "agent", type: Branch.self, children: [RKChild(path: "credit", type: BusinessCredit.self), RKChild(path: "tags", type: Tag.self, isList: true)])
-        //        let insuranceChild = RKChild(path: "insurance_groups", type: InsuranceGroup.self, children: [RKChild(path: "insurances", type: Insurance.self, isList: true)],isList: true)
-        //        mapping = smartListMapping(Offer.self, children: [RKChild(path: "brand", type: Brand.self), agentChild, insuranceChild])
-        
-        mapping = smartMapping(ListModel.self)
-        let offerMapping = smartMapping(Offer.self, children: [RKChild(path: "brand", type: Brand.self)])
-        let agentMapping = smartMapping(Branch.self, children: [RKChild(path: "credit", type: BusinessCredit.self)])
-        agentMapping.addRelationshipMappingWithSourceKeyPath("tags", mapping: smartListMapping(Tag.self))
-        offerMapping.addRelationshipMappingWithSourceKeyPath("agent", mapping: agentMapping)
-        let groupListMapping = smartMapping(ListModel.self)
-        
-        let insuranceGroupMapping = smartMapping(InsuranceGroup.self)
-        
-        groupListMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: insuranceGroupMapping))
-        offerMapping.addRelationshipMappingWithSourceKeyPath("insurance_groups", mapping: groupListMapping)
-        
-        insuranceGroupMapping.addRelationshipMappingWithSourceKeyPath("insurances", mapping: smartListMapping(Insurance.self))
-
-        mapping!.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: offerMapping))
-        
+        let agentChild =  RKChild(path: "agent", type: Branch.self, children: [RKChild(path: "credit", type: BusinessCredit.self), RKChild(path: "tags", type: Tag.self, isList: true)])
+        let insuranceChild = RKChild(path: "insurance_groups", type: InsuranceGroup.self, children: [RKChild(path: "insurances", type: Insurance.self, isList: true)],isList: true)
+        mapping = getListMapping(Offer.self, children: [RKChild(path: "brand", type: Brand.self), agentChild, insuranceChild])
         listView.registerClass(OfferListCell.self, forCellReuseIdentifier: cellId)
         let brandView = UIView(frame: CGRectMake(0, 0 , view.frame.width, 35))
         headLabel.frame = CGRectMake(10, 0 , view.frame.width - 10, 35)

@@ -22,7 +22,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        mapping = smartMapping(Enquiry.self)
+        mapping = getDetailMapping(Enquiry.self)
         data = Enquiry()
         // 初始化定位
         locationManager.delegate = self

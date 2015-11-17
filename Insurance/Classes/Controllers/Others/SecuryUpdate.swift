@@ -17,7 +17,7 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("users/\(userId)/password")
-        mapping = smartMapping(User.self)
+        mapping = getDetailMapping(User.self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "create")
         navigationItem.rightBarButtonItem?.enabled = false
         items = [[Item.emptyItem(), Item.emptyItem()]]
