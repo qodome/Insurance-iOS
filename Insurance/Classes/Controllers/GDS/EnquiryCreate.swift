@@ -6,14 +6,15 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     let locationManager = CLLocationManager()
     var imageDic: [String : UIImage] = [:]
     var freedomArray: [[Freedom]] = [[]]
+    var freedomIndex = 0
     var onOrOff: Bool = false
-    var textField = UITextField()
+    let textField = UITextField()
     var locationData = Province() // 创造这个临时变量是为了提示用的
     
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if locationData.name != "" && ([0, 2].contains(locationData.state)){
+        if locationData.state != nil && ([0, 2].contains(locationData.state)){
             showAlert(self, title: "暂不支持“\(locationData.name)”投保")
         }
     }
@@ -125,6 +126,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         if dest.isMemberOfClass(FreedomList.self) {
             dest.setValue(data, forKey: "data")
             dest.setValue(imageDic, forKey: "imageDic")
+            dest.setValue(freedomIndex, forKey: "selectedIndex")
             dest.setValue(freedomArray, forKey: "dataArray")
             (dest as! FreedomList).delegate = self
         }
@@ -151,18 +153,20 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         (data as? Enquiry)?.city = (nf.object!["city"] as! Province).name
         (data as? Enquiry)?.cityCode = (nf.object!["city"] as! Province).code
         locationData = (nf.object!["city"] as! Province)
-        tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as! Enquiry).city
+        tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as? Enquiry)?.city
     }
     
     func freedom() {
-        //        if imageDic["car_license"] != nil {
-        startActivity(Item(dest: FreedomList.self, storyboard: false))
-        //        } else {
-        //            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
-        //        }
+        if imageDic["car_license"] != nil {
+            startActivity(Item(dest: FreedomList.self, storyboard: false))
+        } else {
+            showAlert(self, title: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
+        }
     }
     
-    func backFreedomData(dataDic: NSDictionary, dataArray: [[Freedom]]) {
+    func backFreedomData(dataDic: NSDictionary, dataArray: [[Freedom]], selectedIndex: Int)
+    {
+        freedomIndex = selectedIndex
         freedomArray = dataArray
         var contentUrl = ""
         for key in dataDic.allKeys {

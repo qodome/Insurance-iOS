@@ -1,0 +1,332 @@
+[
+ {
+ "name":"基础险",
+ "result":[
+           {
+           "tid": "0",
+           "name": "damage",
+           "label": "车辆损失险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           },
+           {
+           "tid": "2",
+           "name": "third_party",
+           "label": "机动车第三者责任保险",
+           "accessory_type": "2",
+           "switch_enable": "",
+           "switch_status": "",
+           "picker_pid": "6",
+           "picker_array": [
+                            {
+                            "pid": "0",
+                            "pname": "",
+                            "plabel": "不投"
+                            },
+                            {
+                            "pid": "1",
+                            "pname": "50000",
+                            "plabel": "5万"
+                            },
+                            {
+                            "pid": "2",
+                            "pname": "100000",
+                            "plabel": "10万"
+                            },
+                            {
+                            "pid": "3",
+                            "pname": "200000",
+                            "plabel": "20万"
+                            },
+                            {
+                            "pid": "4",
+                            "pname": "300000",
+                            "plabel": "30万"
+                            },
+                            {
+                            "pid": "5",
+                            "pname": "500000",
+                            "plabel": "50万"
+                            },
+                            {
+                            "pid": "6",
+                            "pname": "1000000",
+                            "plabel": "100万"
+                            }
+                            ]
+           },
+           {
+           "tid": "6",
+           "name": "driver",
+           "label": "司机座位责任险",
+           "accessory_type": "2",
+           "switch_enable": "",
+           "switch_status": "",
+           "picker_pid": "1",
+           "picker_array": [
+                            {
+                            "pid": "0",
+                            "pname": "",
+                            "plabel": "不投"
+                            },
+                            {
+                            "pid": "1",
+                            "pname": "10000",
+                            "plabel": "1万"
+                            },
+                            {
+                            "pid": "2",
+                            "pname": "20000",
+                            "plabel": "2万"
+                            },
+                            {
+                            "pid": "3",
+                            "pname": "30000",
+                            "plabel": "3万"
+                            },
+                            {
+                            "pid": "4",
+                            "pname": "40000",
+                            "plabel": "4万"
+                            },
+                            {
+                            "pid": "5",
+                            "pname": "50000",
+                            "plabel": "5万"
+                            },
+                            {
+                            "pid": "6",
+                            "pname": "100000",
+                            "plabel": "10万"
+                            },
+                            {
+                            "pid": "7",
+                            "pname": "200000",
+                            "plabel": "20万"
+                            }
+                            ]
+           },
+           {
+           "tid": "7",
+           "name": "passenger",
+           "label": "乘客座位责任险",
+           "accessory_type": "2",
+           "switch_enable": "",
+           "switch_status": "",
+           "picker_pid": "1",
+           "picker_array": [
+                            {
+                            "pid": "0",
+                            "pname": "",
+                            "plabel": "不投"
+                            },
+                            {
+                            "pid": "1",
+                            "pname": "10000",
+                            "plabel": "1万"
+                            },
+                            {
+                            "pid": "2",
+                            "pname": "20000",
+                            "plabel": "2万"
+                            },
+                            {
+                            "pid": "3",
+                            "pname": "30000",
+                            "plabel": "3万"
+                            },
+                            {
+                            "pid": "4",
+                            "pname": "40000",
+                            "plabel": "4万"
+                            },
+                            {
+                            "pid": "5",
+                            "pname": "50000",
+                            "plabel": "5万"
+                            },
+                            {
+                            "pid": "6",
+                            "pname": "100000",
+                            "plabel": "10万"
+                            },
+                            {
+                            "pid": "7",
+                            "pname": "200000",
+                            "plabel": "20万"
+                            }
+                            ]
+           },
+           {
+           "tid": "4",
+           "name": "theft",
+           "label": "机动车全车盗抢险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           }
+           ]
+ },
+ {
+ "name":"附加险",
+ "result":[
+           {
+           "tid": "9",
+           "name": "windscreen",
+           "label": "玻璃单独破碎险",
+           "accessory_type": "2",
+           "switch_enable": "",
+           "switch_status": "",
+           "picker_pid": "1",
+           "picker_array": [
+                            {
+                            "pid": "0",
+                            "pname": "",
+                            "plabel": "不投"
+                            },
+                            {
+                            "pid": "1",
+                            "pname": "1",
+                            "plabel": "国产"
+                            },
+                            {
+                            "pid": "2",
+                            "pname": "2",
+                            "plabel": "进口"
+                            }
+                            ]
+           },
+           {
+           "tid": "10",
+           "name": "scratch",
+           "label": "车身划痕险",
+           "accessory_type": "2",
+           "switch_enable": "",
+           "switch_status": "",
+           "picker_pid": "0",
+           "picker_array": [
+                            {
+                            "pid": "0",
+                            "pname": "",
+                            "plabel": "不投"
+                            },
+                            {
+                            "pid": "1",
+                            "pname": "2000",
+                            "plabel": "2000元"
+                            },
+                            {
+                            "pid": "2",
+                            "pname": "5000",
+                            "plabel": "5000元"
+                            }
+                            ]
+           },
+           {
+           "tid": "11",
+           "name": "fire",
+           "label": "自燃损失险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           },
+           {
+           "tid": "12",
+           "name": "waterlogged",
+           "label": "发动机涉水损失险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "0",
+           "picker_pid": "",
+           "picker_array": []
+           },
+           {
+           "tid": "13",
+           "name": "specified_factory",
+           "label": "指定专修厂特约条款",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "0",
+           "picker_pid": "",
+           "picker_array": []
+           }
+           ]
+ },
+ {
+ "name":"不计免赔",
+ "result":[
+           {
+           "tid": "1",
+           "name": "sp_damage",
+           "label": "不计免赔车损险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           },
+           {
+           "tid": "3",
+           "name": "sp_third_party",
+           "label": "不计免赔三者险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           },
+           {
+           "tid": "5",
+           "name": "sp_theft",
+           "label": "不计免赔盗抢险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           },
+           {
+           "tid": "8",
+           "name": "sp_staff",
+           "label": "不计免赔车上人员险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           },
+           {
+           "tid": "14",
+           "name": "sp_additional",
+           "label": "不计免赔附加险",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           }
+           ]
+ },
+ {
+ "name":"其他",
+ "result":[
+           {
+           "tid": "15",
+           "name": "motor_taxes",
+           "label": "交强险 & 车船税",
+           "accessory_type": "1",
+           "switch_enable": "1",
+           "switch_status": "1",
+           "picker_pid": "",
+           "picker_array": []
+           }
+           ]
+ }
+ ]

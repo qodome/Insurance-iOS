@@ -3,10 +3,10 @@
 //
 
 class OrderCell: UITableViewCell {
-    var title = UILabel()
-    var createdTime = UILabel()
-    var totalFee = UILabel()
-    var status = UILabel()
+    let title = UILabel()
+    let createdTime = UILabel()
+    let totalFee = UILabel()
+    let status = UILabel()
     
     // MARK: - 💖 生命周期 (Lifecycle)
     required init?(coder aDecoder: NSCoder) {

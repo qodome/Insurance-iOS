@@ -3,19 +3,21 @@
 //
 
 protocol FreedomListDelegate {
-    func backFreedomData(dataDic: NSDictionary, dataArray: [[Freedom]])
+    func backFreedomData(dataDic: NSDictionary, dataArray: [[Freedom]], selectedIndex: Int)
 }
 
 class FreedomList: GroupedTableDetail, PickerListDelegate {
     var delegate: FreedomListDelegate?
     var dataArray: [[Freedom]] = [[]]
     var imageDic: [String : UIImage] = [:]
-    var dataDic = NSMutableDictionary()
+    let dataDic = NSMutableDictionary()
     let titleArray = [LocalizedString("基础险"), LocalizedString("附加险"), LocalizedString("不计免赔"), LocalizedString("其他"), ""]
+    var segmentController: HMSegmentedControl!
+    var selectedIndex = 0
     
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidDisappear(animated: Bool) {
-        delegate?.backFreedomData(dataDic, dataArray: dataArray)
+        delegate?.backFreedomData(dataDic, dataArray: dataArray, selectedIndex: selectedIndex)
     }
     
     // MARK: - 🐤 Taylor
@@ -25,21 +27,11 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         mapping = getDetailMapping(Enquiry.self)
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], []] //两个组的占位
-        if dataArray[0].isEmpty {
-            getDataWithFirst(0, type: true)
-            
-        } else {
-            for (section, sectionValue) in dataArray.enumerate() {
-                for rowValue in sectionValue {
-                    items[section] += [Item(title: rowValue.label, dest: rowValue.accessory_type == "2" ? PickerList.self : nil, storyboard: false)]
-                }
-            }
-        }
         let button = getBottomButton(view)
         button.setTitle(LocalizedString("enquire"), forState: .Normal)
         button.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
         view.addSubview(button)
-        let segmentController = HMSegmentedControl(sectionTitles: [LocalizedString("大众版"), LocalizedString("豪华版"), LocalizedString("自定义"), LocalizedString("重置")])
+        segmentController = HMSegmentedControl(sectionTitles: [LocalizedString("大众版"), LocalizedString("全面版"), LocalizedString("自定义"), LocalizedString("重置")])
         segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
         segmentController.selectionIndicatorHeight = 2
         segmentController.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
@@ -47,11 +39,22 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         segmentController.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)]
         segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkTextColor(), NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)]
         segmentController.indexChangeBlock = { index in
+            self.selectedIndex = index
             self.getDataWithFirst(index, type: false)
             self.tableView.reloadData()
         }
         segmentController.frame = CGRectMake(0, STATUS_BAR_HEIGHT + NAVIGATION_BAR_HEIGHT, view.frame.width, 36)
         view.addSubview(segmentController)
+        if dataArray[0].isEmpty {
+            getDataWithFirst(0, type: true)
+        } else {
+            segmentController.selectedSegmentIndex = selectedIndex
+            for (section, sectionValue) in dataArray.enumerate() {
+                for rowValue in sectionValue {
+                    items[section] += [Item(title: rowValue.label, dest: rowValue.accessory_type == "2" ? PickerList.self : nil, storyboard: false)]
+                }
+            }
+        }
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {
@@ -97,21 +100,21 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     // MARK: - 💛 自定义方法 (Custom Method)
     func getDataWithFirst(index: Int, type: Bool) {
         dataArray = [[], [], [], []]
-        let json = JSON(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(["autoinsurance", "remarkinsurance", "autoinsurance", "remarkinsurance"][index], ofType: "json")!)!)
+        let json = JSON(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(["autoinsurance", "totalinsurance", "remarkinsurance", "remarkinsurance"][index], ofType: "json")!)!)
         for section in 0..<json.count {
-            for row in 0..<json[section]["result"].count {
+            for (_, subJson) : (String, JSON) in json[section]["result"] {
                 let model = Freedom()
-                model.setValuesForKeysWithDictionary(json[section]["result"][row].dictionaryObject!)
+                model.setValuesForKeysWithDictionary(subJson.dictionaryObject!)
                 var pid = ""
-                if json[section]["result"][row]["picker_array"].isEmpty {
+                if subJson["picker_array"].isEmpty {
                     dataDic[model.name] = model.switch_status
                 } else {
                     pid = model.picker_pid
                 }
                 var picker_array: [PickerModel] = []
-                for pickRow in 0..<json[section]["result"][row]["picker_array"].count {
+                for (_, pickJson) : (String, JSON) in subJson["picker_array"] {
                     let pick = PickerModel()
-                    pick.setValuesForKeysWithDictionary(json[section]["result"][row]["picker_array"][pickRow].dictionaryObject!)
+                    pick.setValuesForKeysWithDictionary(pickJson.dictionaryObject!)
                     dataDic[model.name] =  pid == pick.pid ? pick.pname : ""
                     picker_array += [pick]
                 }
@@ -140,6 +143,8 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     }
     
     func onBackSegue(model: PickerModel) {
+        selectedIndex = [0, 1].contains(selectedIndex) ? 2 : selectedIndex
+        segmentController.selectedSegmentIndex  = selectedIndex
         let indexPath = tableView.indexPathsForSelectedRows!.first!
         let needDic = dataArray[indexPath.section][indexPath.row]
         dataDic[needDic.name] = model.pname
@@ -149,7 +154,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
             statue = "0"
             switch needDic.tid {
             case "6", "7", "9","10":
-                nextID = needDic.tid == "7" || needDic.tid == "10" ? "\(Int(needDic.tid)! - 1)" : "\(Int(needDic.tid)! + 1)"
+                nextID = ["7", "10"].contains(needDic.tid) ? "\(Int(needDic.tid)! - 1)" : "\(Int(needDic.tid)! + 1)"
                 if getDicWithId(nextID).picker_pid != "0" || getDicWithId("11").switch_status == "1" || getDicWithId("12").switch_status == "1" {
                     statue = "1"
                 }
@@ -173,6 +178,8 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     }
     
     func switchStateChange(sw:UISwitch) {
+        selectedIndex = [0, 1].contains(selectedIndex) ? 2 : selectedIndex
+        segmentController.selectedSegmentIndex  = selectedIndex
         let model = dataArray[sw.tag / 10][sw.tag % 10]
         var nextID = model.tid
         var statue = "\(sw.on.hashValue)"

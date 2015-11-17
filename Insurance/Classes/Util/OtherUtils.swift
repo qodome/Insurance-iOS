@@ -7,7 +7,7 @@ func getFormatterPrice(origial: NSNumber) -> String {
     let formatter = NSNumberFormatter()
     formatter.numberStyle = .DecimalStyle
     formatter.maximumFractionDigits = 2
-    return  "￥\(formatter.stringFromNumber(NSNumber(double: origial.doubleValue / 100))!)"
+    return  "￥\(formatter.stringFromNumber(NSNumber(double: origial.doubleValue / 100))!.stringByReplacingOccurrencesOfString(",", withString: ""))"
 }
 
 // 获取状态的中文显示字
