@@ -31,6 +31,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
             field.placeholder = placeArray[index]
             field.clearButtonMode = .WhileEditing
             field.delegate = self
+            field.secureTextEntry = [2, 3].contains(index) ? true : false
             field.returnKeyType = index == 4 ? .Done : .Next
         }
         items = [[Item.emptyItem() , Item.emptyItem(), Item.emptyItem(), Item.emptyItem(), Item.emptyItem()]]

@@ -34,6 +34,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
             field.placeholder = placeArray[index]
             field.clearButtonMode = .WhileEditing
             field.delegate = self
+            field.secureTextEntry = [1, 2].contains(index) ? true : false
             field.returnKeyType = index == 3 ? .Done :.Next
         }
     }

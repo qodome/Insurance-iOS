@@ -120,6 +120,6 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     
     // MARK: - 💛 自定义方法 (Custom Method)
     func feigai() {
-        showAlert(self, title: "费改税，也称税费改革，是指在对现有的政府收费进行清理整顿的基础上，用税收取代一些具有税收特征的收费，通过进一步深化财税体制改革，初步建立起以税收为主，少量的、必要的政府收费为辅的政府收入体系。其实质是为规范政府收入机制而必须采取的一项重大改革举措。")
+        showAlert(self, title: "商业车险改革扩大了承保范围，同时还将风险与费率挂钩，无出险车主可享受更高费率优惠，而出险越多的保费则越高。")
     }
 }

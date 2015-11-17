@@ -27,6 +27,7 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
             field.tag = index
             field.keyboardType = .ASCIICapable
             field.placeholder = placeArray[index]
+            field.secureTextEntry = true
             field.clearButtonMode = .WhileEditing
             field.delegate = self
             field.returnKeyType = index == 1 ? .Done : .Next
