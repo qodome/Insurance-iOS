@@ -8,13 +8,13 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     var freedomArray: [[Freedom]] = [[]]
     var freedomIndex = 0
     var onOrOff: Bool = false
-    var textField = UITextField()
+    let textField = UITextField()
     var locationData = Province() // 创造这个临时变量是为了提示用的
     
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if locationData.name != "" && ([0, 2].contains(locationData.state)){
+        if locationData.state != nil && ([0, 2].contains(locationData.state)){
             showAlert(self, title: "暂不支持“\(locationData.name)”投保")
         }
     }
@@ -153,7 +153,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         (data as? Enquiry)?.city = (nf.object!["city"] as! Province).name
         (data as? Enquiry)?.cityCode = (nf.object!["city"] as! Province).code
         locationData = (nf.object!["city"] as! Province)
-        tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as! Enquiry).city
+        tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.detailTextLabel?.text = (data as? Enquiry)?.city
     }
     
     func freedom() {

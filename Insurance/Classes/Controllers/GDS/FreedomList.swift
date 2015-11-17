@@ -102,19 +102,19 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
         dataArray = [[], [], [], []]
         let json = JSON(data:NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(["autoinsurance", "totalinsurance", "remarkinsurance", "remarkinsurance"][index], ofType: "json")!)!)
         for section in 0..<json.count {
-            for (_, rowValue) : (String, JSON) in json[section]["result"] {
+            for (_, subJson) : (String, JSON) in json[section]["result"] {
                 let model = Freedom()
-                model.setValuesForKeysWithDictionary(rowValue.dictionaryObject!)
+                model.setValuesForKeysWithDictionary(subJson.dictionaryObject!)
                 var pid = ""
-                if rowValue["picker_array"].isEmpty {
+                if subJson["picker_array"].isEmpty {
                     dataDic[model.name] = model.switch_status
                 } else {
                     pid = model.picker_pid
                 }
                 var picker_array: [PickerModel] = []
-                for (_, pickValue) : (String, JSON) in rowValue["picker_array"] {
+                for (_, pickJson) : (String, JSON) in subJson["picker_array"] {
                     let pick = PickerModel()
-                    pick.setValuesForKeysWithDictionary(pickValue.dictionaryObject!)
+                    pick.setValuesForKeysWithDictionary(pickJson.dictionaryObject!)
                     dataDic[model.name] =  pid == pick.pid ? pick.pname : ""
                     picker_array += [pick]
                 }
@@ -154,7 +154,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
             statue = "0"
             switch needDic.tid {
             case "6", "7", "9","10":
-                nextID = needDic.tid == "7" || needDic.tid == "10" ? "\(Int(needDic.tid)! - 1)" : "\(Int(needDic.tid)! + 1)"
+                nextID = ["7", "10"].contains(needDic.tid) ? "\(Int(needDic.tid)! - 1)" : "\(Int(needDic.tid)! + 1)"
                 if getDicWithId(nextID).picker_pid != "0" || getDicWithId("11").switch_status == "1" || getDicWithId("12").switch_status == "1" {
                     statue = "1"
                 }

@@ -20,13 +20,17 @@ class OfferList: TableList {
         mapping = smartMapping(ListModel.self)
         let offerMapping = smartMapping(Offer.self, children: [RKChild(path: "brand", type: Brand.self)])
         let agentMapping = smartMapping(Branch.self, children: [RKChild(path: "credit", type: BusinessCredit.self)])
-        agentMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "tags", toKeyPath: "tags", withMapping: smartListMapping(Tag.self)))
+        agentMapping.addRelationshipMappingWithSourceKeyPath("tags", mapping: smartListMapping(Tag.self))
         offerMapping.addRelationshipMappingWithSourceKeyPath("agent", mapping: agentMapping)
-        let groupMapping = smartMapping(ListModel.self)
-        let groupNext = smartMapping(InsuranceGroup.self)
-        groupNext.addRelationshipMappingWithSourceKeyPath("insurances", mapping: smartListMapping(Insurance.self))
-        groupMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: groupNext))
-        offerMapping.addRelationshipMappingWithSourceKeyPath("insurance_groups", mapping: groupMapping)
+        let groupListMapping = smartMapping(ListModel.self)
+        
+        let insuranceGroupMapping = smartMapping(InsuranceGroup.self)
+        
+        groupListMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: insuranceGroupMapping))
+        offerMapping.addRelationshipMappingWithSourceKeyPath("insurance_groups", mapping: groupListMapping)
+        
+        insuranceGroupMapping.addRelationshipMappingWithSourceKeyPath("insurances", mapping: smartListMapping(Insurance.self))
+
         mapping!.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: offerMapping))
         
         listView.registerClass(OfferListCell.self, forCellReuseIdentifier: cellId)
@@ -41,6 +45,7 @@ class OfferList: TableList {
     
     override func onLoadSuccess<E : ListModel>(entity: E) {
         super.onLoadSuccess(entity)
+        LOG(entity.count.integerValue)
         headLabel.text = "共计\(getTotal())家报价，报价有效期24小时"
     }
     

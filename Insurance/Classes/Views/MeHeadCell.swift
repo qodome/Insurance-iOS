@@ -4,8 +4,8 @@
 
 class MeHeadCell: UITableViewCell {
     var headImageView: ImageView!
-    var title = UILabel()
-    var subtitle = UILabel()
+    let title = UILabel()
+    let subtitle = UILabel()
     
     // MARK: - 💖 初始化
     required init?(coder aDecoder: NSCoder) {
