@@ -11,10 +11,10 @@ class OfferDetail: GroupedTableDetail {
         button.setTitle(LocalizedString("confirm_order"), forState: .Normal)
         view.addSubview(button)
         items = [[.emptyItem()], [.emptyItem()]]
-        for index in 0..<(data as! Offer).insurance_groups.count.integerValue {
+        for (i, value) in (data as! Offer).insurance_groups.results.enumerate() {
             items += [[]]
-            for insurance in ((data as! Offer).insurance_groups.results[index] as! InsuranceGroup).insurances.results {
-                items[index + 2] += [Item(title: (insurance as! Insurance).name)]
+            for insurance in (value as! InsuranceGroup).insurances.results {
+                items[i + 2] += [Item(title: (insurance as! Insurance).name)]
             }
         }
     }
@@ -59,7 +59,7 @@ class OfferDetail: GroupedTableDetail {
     
     func create() {
         showAlert(self, title: LocalizedString("承保价格以保险公司出单价为准，是否确认下单"), action: UIAlertAction(title: LocalizedString("是"), style: .Default, handler: { action in
-            let mapping = smartMapping(Order.self)
+            let mapping = getDetailMapping(Order.self)
             let descriptor = RKResponseDescriptor(mapping: mapping, method: .Any, pathPattern: nil, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful))
             RKObjectManager.sharedManager().addResponseDescriptor(descriptor)
             RKObjectManager.sharedManager().postObject(mapping, path: getEndpoint("orders"), parameters: ["product_id" : "1", "car_license_number" : (self.data as! Offer).carLicenseNumber, "offer_id" : (self.data as! Offer).id], success: { operation, result in

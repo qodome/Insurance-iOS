@@ -8,7 +8,7 @@ class ProductDetail: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        mapping = smartMapping(Product.self)
+        mapping = getDetailMapping(Product.self)
         refreshMode = .DidLoad
         items = [
             [Item(title: "name")],

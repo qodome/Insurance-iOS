@@ -6,7 +6,7 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        mapping = smartMapping(Enquiry.self)
+        mapping = getDetailMapping(Enquiry.self)
         tableView.backgroundColor = .whiteColor()
         let imageView = ImageView(frame: CGRectMake(view.frame.width / 6, view.frame.width / 6, view.frame.width / 3 * 2, view.frame.width / 3 * 2), cornerRadius: view.frame.width / 3)
         imageView.image = UIImage(named: endpoint.containsString("orders") ? "ic_order.png" : "ic_wait.png")

@@ -22,7 +22,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("enquiries")
-        mapping = smartMapping(Enquiry.self)
+        mapping = getDetailMapping(Enquiry.self)
         dataArray = dataArray[0].isEmpty ? [[], [], [], []] : dataArray
         items = [[], [], [], []] //两个组的占位
         if dataArray[0].isEmpty {
@@ -97,7 +97,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     // MARK: - 💛 自定义方法 (Custom Method)
     func getDataWithFirst(index: Int, type: Bool) {
         dataArray = [[], [], [], []]
-        let json = JSON(data:NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(["autoinsurance", "remarkinsurance", "autoinsurance", "remarkinsurance"][index], ofType: "json")!)!)
+        let json = JSON(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(["autoinsurance", "remarkinsurance", "autoinsurance", "remarkinsurance"][index], ofType: "json")!)!)
         for section in 0..<json.count {
             for row in 0..<json[section]["result"].count {
                 let model = Freedom()

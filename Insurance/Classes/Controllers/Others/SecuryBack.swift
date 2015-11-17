@@ -21,7 +21,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
     override func onPrepare() {
         super.onPrepare()
         endpoint = getEndpoint("repassword")
-        mapping = smartMapping(User.self)
+        mapping = getDetailMapping(User.self)
         items = [[Item.emptyItem(), Item.emptyItem(), Item.emptyItem(), Item.emptyItem()]]
         resignBtn = QuickButton(frame: CGRectMake(PADDING, 60 + 44 * 4 + PADDING, view.frame.width - 2 * PADDING, 50), title: LocalizedString("完成"), theme: STYLE_BUTTON_DARK)
         resignBtn.addTarget(self, action: "create", forControlEvents: .TouchUpInside)
@@ -89,7 +89,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
             showAlert(self, title: LocalizedString("请填写正确的手机号"), message: "")
             return
         }
-        let mapping = smartMapping(Sms.self)
+        let mapping = getDetailMapping(Sms.self)
         let descriptor = RKResponseDescriptor(mapping: mapping, method: .Any, pathPattern: nil, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful))
         RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "")
         RKObjectManager.sharedManager().addResponseDescriptor(descriptor)

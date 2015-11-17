@@ -30,7 +30,7 @@ class GDS: GroupedTableDetail, EAIntroDelegate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        mapping = smartMapping(CheckEnquiry.self)
+        mapping = getDetailMapping(CheckEnquiry.self)
         do { // 引导页
             var pages: [EAIntroPage] = []
             let pageConfigs = [
