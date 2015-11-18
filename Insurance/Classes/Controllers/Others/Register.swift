@@ -67,6 +67,14 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         cancel()
     }
     
+    override func onLoadFailure(statusCode: Int, error: NSError) {
+        if error.localizedDescription  == "No mappable object representations were found at the key paths searched." {
+            showAlert(self, title: "该手机号已注册过，请更换手机号。")
+        } else {
+            super.onLoadFailure(statusCode, error: error)
+        }
+    }
+    
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         dest.setValue("agreement", forKey: "nameString")
         dest.setValue(LocalizedString("注册协议"), forKey: "title")
