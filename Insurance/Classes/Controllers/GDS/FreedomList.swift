@@ -55,6 +55,9 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                 }
             }
         }
+        let brandView = UIView(frame: CGRectMake(0, 0 , view.frame.width, 35))
+        brandView.backgroundColor = .groupTableViewBackgroundColor()
+        tableView.tableHeaderView = brandView
     }
     
     override func onLoadSuccess<E : Enquiry>(entity: E) {

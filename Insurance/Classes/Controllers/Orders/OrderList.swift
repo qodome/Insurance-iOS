@@ -15,7 +15,6 @@ class OrderList: TableList {
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
         let segmentController = HMSegmentedControl(sectionTitles: [LocalizedString("all"), LocalizedString("auto_insurance")])
-        // segmentController.borderType = .Bottom
         segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
         segmentController.selectionIndicatorHeight = 2
         segmentController.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown

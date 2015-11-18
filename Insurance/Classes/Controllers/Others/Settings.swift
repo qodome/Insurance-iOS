@@ -9,7 +9,6 @@ class Settings: GroupedTableDetail {
     override func onPrepare() {
         super.onPrepare()
         items = [
-//            [Item(title: "securyaccount", dest: SecuryAccount.self, storyboard: false)],
             [Item(title: "about", dest: About.self)],
             [Item(title: "developer", selectable: true)],
             [Item(title: "sign_out", color: .systemDestructiveColor(), selectable: true)]
