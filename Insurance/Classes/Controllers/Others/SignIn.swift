@@ -17,6 +17,14 @@ class SignIn: SignInController {
         }
     }
     
+    override func onLoadFailure(statusCode: Int, error: NSError) {
+        if error.localizedDescription  == "No mappable object representations were found at the key paths searched." {
+            showAlert(self, title: "账号和密码不匹配，请核对后重试。")
+        } else {
+            super.onLoadFailure(statusCode, error: error)
+        }
+    }
+    
     // MARK: - 💛 Action
     func register() {
         startActivity(Item(dest: Register.self, storyboard: false))

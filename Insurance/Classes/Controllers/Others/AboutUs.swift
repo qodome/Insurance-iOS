@@ -25,11 +25,11 @@ class AboutUs: UIViewController, WKNavigationDelegate {
     }
     
     func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        navigationController?.showProgress()
-        navigationController?.setProgress(CGFloat(2 * webView.estimatedProgress), animated: true)
+//        navigationController?.showProgress()
+//        navigationController?.setProgress(CGFloat(2 * webView.estimatedProgress), animated: true)
     }
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        navigationController?.finishProgress()
+//        navigationController?.finishProgress()
     }
 }
