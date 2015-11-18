@@ -225,6 +225,6 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        return String(touch.view!.classForCoder) == "UITableViewCellContentView" ? false : true
+        return String(touch.view!.classForCoder) != "UITableViewCellContentView"
     }
 }

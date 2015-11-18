@@ -34,7 +34,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
             field.placeholder = placeArray[index]
             field.clearButtonMode = .WhileEditing
             field.delegate = self
-            field.secureTextEntry = [1, 2].contains(index) ? true : false
+            field.secureTextEntry = [1, 2].contains(index)
             field.returnKeyType = index == 3 ? .Done :.Next
         }
     }
@@ -75,19 +75,19 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
     // MARK: - 💛 自定义方法 (Custom Method)
     func create() {
         if phoneField.text!.isEmpty || codeField.text!.isEmpty || newSecuryField.text!.isEmpty || nextSecuryField.text!.isEmpty {
-            showAlert(self, title: LocalizedString("请把信息填写完整"), message: "")
+            showAlert(self, title: LocalizedString("请把信息填写完整"))
             return
         }
         if newSecuryField.text != nextSecuryField.text {
-            showAlert(self, title: LocalizedString("输入的两次新密码不一致，请核对后重试"), message: "")
-        }else {
+            showAlert(self, title: LocalizedString("输入的两次新密码不一致，请核对后重试"))
+        } else {
             loader?.update(parameters: ["username" : phoneField.text!, "password" : newSecuryField.text!, "code" : codeField.text!])
         }
     }
     
     func getCode() {
         if phoneField.text?.length != 11 {
-            showAlert(self, title: LocalizedString("请填写正确的手机号"), message: "")
+            showAlert(self, title: LocalizedString("请填写正确的手机号"))
             return
         }
         let mapping = getDetailMapping(Sms.self)
@@ -107,7 +107,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
         let _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
         dispatch_source_set_timer(_timer, dispatch_walltime(nil, 0), NSEC_PER_SEC, 0)
         dispatch_source_set_event_handler(_timer) { () in
-            self.signOutBtn.userInteractionEnabled = timeout <= 0 ? true : false
+            self.signOutBtn.userInteractionEnabled = timeout <= 0
             if timeout <= 0 {
                 dispatch_source_cancel(_timer)
                 delay(0.2) {
