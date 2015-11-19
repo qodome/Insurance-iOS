@@ -64,7 +64,7 @@ class GDS: GroupedTableDetail, EAIntroDelegate {
         super.onLoadSuccess(entity)
         objectId = entity.status == 3 ? entity.orderId : entity.enquiryId
         if entity.status == 0 && !entity.message.isEmpty {
-            showAlert(self, title: nil, message: entity.message)
+            showAlert(self, message: entity.message)
         }
         moveTo(entity.status.integerValue)
     }

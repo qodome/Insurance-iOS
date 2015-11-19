@@ -86,7 +86,7 @@ class OrderCreate: CreateController {
             request.sign = parameters["sign"]
             WXApi.sendReq(request)
         } else {
-            showAlert(self, title: "prepayId error")
+            showAlert(self, message: "prepayId error")
         }
     }
 }

@@ -30,11 +30,11 @@
 #import <M13ProgressSuite/UINavigationController+M13ProgressViewBar.h>
 
 // RestKit https://github.com/RestKit/RestKit
-#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#import <Availability.h>
 #import <SystemConfiguration/SystemConfiguration.h>
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
 #import <MobileCoreServices/MobileCoreServices.h>
 #else
-#import <SystemConfiguration/SystemConfiguration.h>
 #import <CoreServices/CoreServices.h>
 #endif
 

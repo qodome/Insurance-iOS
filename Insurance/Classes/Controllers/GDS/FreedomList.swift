@@ -103,7 +103,7 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
     // MARK: - 💛 自定义方法 (Custom Method)
     func getDataWithFirst(index: Int, type: Bool) {
         dataArray = [[], [], [], []]
-        let json = JSON(data:NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(["autoinsurance", "totalinsurance", "remarkinsurance", "remarkinsurance"][index], ofType: "json")!)!)
+        let json = JSON(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(["autoinsurance", "totalinsurance", "remarkinsurance", "remarkinsurance"][index], ofType: "json")!)!)
         for section in 0..<json.count {
             for (_, subJson) : (String, JSON) in json[section]["result"] {
                 let model = Freedom()

@@ -27,7 +27,6 @@ class OfferList: TableList {
     
     override func onLoadSuccess<E : ListModel>(entity: E) {
         super.onLoadSuccess(entity)
-        LOG(entity.count.integerValue)
         headLabel.text = "共计\(getTotal())家报价，报价有效期24小时"
     }
     
