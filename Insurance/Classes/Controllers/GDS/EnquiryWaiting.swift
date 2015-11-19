@@ -37,7 +37,7 @@ class EnquiryWaiting: GroupedTableDetail, UIAlertViewDelegate {
         if endpoint.containsString("orders") {
             startActivity(Item(dest: OrderDetail.self, storyboard: false))
         } else {
-            showAlert(self, title: nil, message: LocalizedString("确认取消询价吗？"), action: UIAlertAction(title: LocalizedString("是"), style: .Default, handler: { action in
+            showAlert(self, message: LocalizedString("确认取消询价吗？"), action: UIAlertAction(title: LocalizedString("是"), style: .Default, handler: { action in
                 self.loader?.update(parameters: ["status" : "c"])
             }), cancelButtonTitle: LocalizedString("否"))
         }

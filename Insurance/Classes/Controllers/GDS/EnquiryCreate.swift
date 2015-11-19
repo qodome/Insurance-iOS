@@ -15,7 +15,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if locationData.state != nil && ([0, 2].contains(locationData.state)) {
-            showAlert(self, title: nil, message: "暂不支持“\(locationData.name)”投保")
+            showAlert(self, message: "暂不支持“\(locationData.name)”投保")
         }
     }
     
@@ -139,7 +139,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
                 self.loader?.create(self.data, parameters: ["content" : mEnquiry.content, "city" : mEnquiry.city, "city_code" : mEnquiry.cityCode, "image_urls" : "\(MEDIA_URL)/\(imageUrl)", "buyer_message" : mEnquiry.buyerMessage])
             })
         } else {
-            showAlert(self, title: nil, message: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
+            showAlert(self, message: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
         }
     }
     
@@ -160,7 +160,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
         if imageDic["car_license"] != nil {
             startActivity(Item(dest: FreedomList.self, storyboard: false))
         } else {
-            showAlert(self, title: nil, message: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
+            showAlert(self, message: onOrOff ? "请上传车辆合格证照片" : "请上传行驶证正本照片")
         }
     }
     

@@ -67,12 +67,12 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
         cancel()
     }
     
-    override func onLoadFailure(statusCode: Int, error: NSError) {
-        if error.localizedDescription  == "No mappable object representations were found at the key paths searched." {
-            showAlert(self, title: nil, message: "该手机号已注册，请登录或找回密码。")
-        } else {
-            super.onLoadFailure(statusCode, error: error)
-        }
+    override func onLoadFailure(statusCode: Int, message: String) {
+//        if error.localizedDescription  == "No mappable object representations were found at the key paths searched." {
+//            showAlert(self, message: "该手机号已注册，请登录或找回密码。")
+//        } else {
+//            super.onLoadFailure(statusCode, error: error)
+//        }
     }
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
@@ -93,11 +93,11 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     // MARK: - 💛 自定义方法 (Custom Method)
     func create() {
         if phoneField.text!.isEmpty || codeField.text!.isEmpty || newSecuryField.text!.isEmpty || nextSecuryField.text!.isEmpty {
-            showAlert(self, title: nil, message: LocalizedString("请把信息填写完整"))
+            showAlert(self, message: LocalizedString("请把信息填写完整"))
             return
         }
         if newSecuryField.text != nextSecuryField.text {
-            showAlert(self, title: nil, message: LocalizedString("输入的两次密码不一致，请核对后再试"))
+            showAlert(self, message: LocalizedString("输入的两次密码不一致，请核对后再试"))
         } else {
             RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "")
             loader?.create(parameters: ["nickname" : nameField.text!, "username" : phoneField.text!, "password" : newSecuryField.text!, "code" : codeField.text!, "phone_number" : phoneField.text!])
@@ -106,7 +106,7 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     
     func getCode() {
         if phoneField.text?.length != 11 {
-            showAlert(self, title: nil, message: LocalizedString("请填写正确的手机号"))
+            showAlert(self, message: LocalizedString("请填写正确的手机号"))
             return
         }
         let mapping = getDetailMapping(Sms.self)
