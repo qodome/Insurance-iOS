@@ -8,7 +8,7 @@ pod 'FontAwesomeKit'
 pod 'FormatterKit'
 pod 'HMSegmentedControl'
 pod 'M13ProgressSuite'
-pod 'RestKit', :git => "https://github.com/RestKit/RestKit.git", :branch => "seg-bracket-imports"
+pod 'RestKit'
 pod 'SDWebImage'
 pod 'SZTextView'
 pod 'TLYShyNavBar'
