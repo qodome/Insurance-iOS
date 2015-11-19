@@ -14,7 +14,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
     // MARK: - 💖 生命周期 (Lifecycle)
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if locationData.state != nil && ([0, 2].contains(locationData.state)){
+        if locationData.state != nil && ([0, 2].contains(locationData.state)) {
             showAlert(self, title: "暂不支持“\(locationData.name)”投保")
         }
     }
