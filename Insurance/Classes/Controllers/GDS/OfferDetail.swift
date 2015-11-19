@@ -58,7 +58,7 @@ class OfferDetail: GroupedTableDetail {
     }
     
     func create() {
-        showAlert(self, title: LocalizedString("承保价格以保险公司出单价为准，是否确认下单"), action: UIAlertAction(title: LocalizedString("是"), style: .Default, handler: { action in
+        showAlert(self, title: nil, message: LocalizedString("承保价格以保险公司出单价为准，是否确认下单"), action: UIAlertAction(title: LocalizedString("是"), style: .Default, handler: { action in
             let mapping = getDetailMapping(Order.self)
             let descriptor = RKResponseDescriptor(mapping: mapping, method: .Any, pathPattern: nil, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful))
             RKObjectManager.sharedManager().addResponseDescriptor(descriptor)

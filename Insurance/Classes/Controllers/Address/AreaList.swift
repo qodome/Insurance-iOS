@@ -120,6 +120,6 @@ class AreaList: GroupedTableDetail, CLLocationManagerDelegate {
     
     // MARK: - 💛 自定义方法 (Custom Method)
     func feigai() {
-        showAlert(self, title: "商业车险改革扩大了承保范围，同时还将风险与费率挂钩，无出险车主可享受更高费率优惠，而出险越多的保费则越高。")
+        showAlert(self, title: nil, message: LocalizedString("商业车险改革扩大了承保范围，同时还将风险与费率挂钩，无出险车主可享受更高费率优惠，而出险越多的保费则越高。"))
     }
 }
