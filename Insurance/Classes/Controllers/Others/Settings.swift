@@ -41,7 +41,7 @@ class Settings: GroupedTableDetail {
                     NSUserDefaults.standardUserDefaults().removeObjectForKey(TaylorR.Pref.UserToken.rawValue) // 删除token
                     userToken = DEFAULT_TOKEN
                     RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "JWT \(userToken)")
-                    showAlert(self, title: "已注销")
+                    showAlert(self, title: nil, message: "已注销")
                     })
                 showActionSheet(self, alert: alert)
             default:

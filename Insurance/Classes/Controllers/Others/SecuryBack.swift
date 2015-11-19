@@ -75,11 +75,11 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
     // MARK: - 💛 自定义方法 (Custom Method)
     func create() {
         if phoneField.text!.isEmpty || codeField.text!.isEmpty || newSecuryField.text!.isEmpty || nextSecuryField.text!.isEmpty {
-            showAlert(self, title: LocalizedString("请把信息填写完整"))
+            showAlert(self, title: nil, message: LocalizedString("请把信息填写完整"))
             return
         }
         if newSecuryField.text != nextSecuryField.text {
-            showAlert(self, title: LocalizedString("输入的两次新密码不一致，请核对后重试"))
+            showAlert(self, title: nil, message: LocalizedString("输入的两次新密码不一致，请核对后重试"))
         } else {
             loader?.update(parameters: ["username" : phoneField.text!, "password" : newSecuryField.text!, "code" : codeField.text!])
         }
@@ -87,7 +87,7 @@ class SecuryBack: GroupedTableDetail, UITextFieldDelegate {
     
     func getCode() {
         if phoneField.text?.length != 11 {
-            showAlert(self, title: LocalizedString("请填写正确的手机号"))
+            showAlert(self, title: nil, message: LocalizedString("请填写正确的手机号"))
             return
         }
         let mapping = getDetailMapping(Sms.self)
