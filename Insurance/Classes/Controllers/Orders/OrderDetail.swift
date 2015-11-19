@@ -28,6 +28,10 @@ class OrderDetail: GroupedTableDetail {
     override func getItemView<T : Order, C : UITableViewCell>(data: T, tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         if indexPath.section == 0 {
             switch item.title {
+            case "created_time":
+                cell.detailTextLabel?.text = data.createdTime.formattedDateWithFormat("yyyy-MM-dd HH:mm:ss")
+            case "updated_time":
+                cell.detailTextLabel?.text = data.updatedTime.formattedDateWithFormat("yyyy-MM-dd HH:mm:ss")
             case "total_fee":
                 cell.detailTextLabel?.text = getFormatterPrice(data.totalFee)
             case "status":

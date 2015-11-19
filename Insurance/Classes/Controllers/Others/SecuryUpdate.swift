@@ -67,7 +67,7 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
     
     func create() {
         if newSecuryField.text != nextSecuryField.text {
-            showAlert(self, title: LocalizedString("输入的两次新密码不一致，请核对后重试"))
+            showAlert(self, title: nil, message: LocalizedString("输入的两次新密码不一致，请核对后重试"))
         } else {
             loader?.update(parameters: ["password" : nextSecuryField.text!])
         }
