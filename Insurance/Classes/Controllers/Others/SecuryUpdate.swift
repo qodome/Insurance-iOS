@@ -27,6 +27,7 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
             field.tag = index
             field.keyboardType = .ASCIICapable
             field.placeholder = placeArray[index]
+            field.secureTextEntry = true
             field.clearButtonMode = .WhileEditing
             field.delegate = self
             field.returnKeyType = index == 1 ? .Done : .Next
@@ -61,12 +62,12 @@ class SecuryUpdate: GroupedTableDetail, UITextFieldDelegate {
     
     // MARK: - 💛 自定义方法 (Custom Method)
     func enable() {
-        navigationItem.rightBarButtonItem?.enabled = !newSecuryField.text!.isEmpty && !nextSecuryField.text!.isEmpty ? true : false
+        navigationItem.rightBarButtonItem?.enabled = !newSecuryField.text!.isEmpty && !nextSecuryField.text!.isEmpty
     }
     
     func create() {
         if newSecuryField.text != nextSecuryField.text {
-            showAlert(self, title: LocalizedString("输入的两次新密码不一致，请核对后重试"), message: "")
+            showAlert(self, title: LocalizedString("输入的两次新密码不一致，请核对后重试"))
         } else {
             loader?.update(parameters: ["password" : nextSecuryField.text!])
         }
