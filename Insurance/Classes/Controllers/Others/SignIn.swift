@@ -18,7 +18,7 @@ class SignIn: SignInController {
     }
     
     override func onLoadFailure(statusCode: Int, message: String) {
-        if message  == "{\"non_field_errors\":[\"Unable to login with provided credentials.\"]}" {
+        if message == "{\"non_field_errors\":[\"Unable to login with provided credentials.\"]}" {
             showAlert(self, message: "账号和密码不匹配。")
         } else {
             super.onLoadFailure(statusCode, message: message)
