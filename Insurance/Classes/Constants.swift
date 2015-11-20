@@ -35,7 +35,10 @@ func reloadSettings() {
     // 微信
     WX_NOTIFY_URL = "\(BASE_URL)/api/v1/check_sign/"
     //
+    RKMIMETypeSerialization.registerClass(RKNSJSONSerialization.self, forMIMEType: "text/plain") // 微信接口返回json都为text
     RKObjectManager.setSharedManager(RKObjectManager(baseURL: NSURL(string: BASE_URL)))
+    RKObjectManager.sharedManager().HTTPClient.allowsInvalidSSLCertificate = true // 增加无证书的https支持
+    RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Accept-Encoding", value: "gzip, deflate")
     putBool("test_env", value: TestEnv)
 }
 
@@ -58,7 +61,26 @@ enum Color: Int {
     case XiaomarYellow = 0xFDB333 // 0xFFB419
 }
 
+enum Style: Int {
+    case Light, Dark
+}
+
+class Theme {
+    var color: Int!
+    var alpha: CGFloat!
+    var style: Style!
+    
+    init(style: Style = .Dark, color: Int = APP_COLOR, alpha: CGFloat = 1) {
+        self.style = style
+        self.color = color
+        self.alpha = alpha
+    }
+}
+
+let STYLE_BUTTON_DARK = Theme(alpha: 0.7)
+let STYLE_BUTTON_LIGHT = Theme(style: .Light)
+
 let GENDER_STRING = [
-    "m" : LocalizedString("male"),
-    "f" : LocalizedString("female")
+    "m" : "male",
+    "f" : "female"
 ]

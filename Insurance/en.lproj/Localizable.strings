@@ -7,19 +7,18 @@ flight = "Flight";
 vehicles = "Vehicles";
 insurances = "Insurances";
 
+auto_insurance = "Auto Insurance";
+
 car_license_number = "Car License Number";
 
-all = "All";
-
+register = "Register";
 call = "Call";
-securyaccount = "Secury Account";
 securyupdate = "Secury Update";
 securyback = "Secury Back";
 sure = "Sure";
-aboutus = "About Us";
+about_us = "About Us";
 
 /* 自主选险 */
-area_list = "Area List";
 freedom_list = "Freedom List";
 damage = "Physical Damage Coverage";
 third_party = "Third Party Liability Insurance";
@@ -40,10 +39,7 @@ mandatory = "Mandatory Liability Insurance";
 motor_taxes= "Motor Vehicle And Vessel Taxes";
 
 /* 询价 && 报价 */
-enquiry_create = "Enquiry Create";
-enquiry_watting = "Enquiry Watting";
-enquiry_detail = "Enquiry Detail";
+enquire = "Enquire";
 offer_list = "Offer List";
 offer_detail = "Offer Detail";
-enquiryStatus = "Enquiry Status";
-confirm_orders = "Confirm Orders";
+confirm_order = "Confirm Order";

@@ -7,7 +7,7 @@ class JxxTagsView: UIView {
     var returnWidth: CGFloat = 0
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override init(frame: CGRect) {
@@ -17,8 +17,8 @@ class JxxTagsView: UIView {
     func setTags(tags: [String], target: AnyObject?, action: Selector) {
         var x = PADDING // 左边距
         var y: CGFloat = theme.tagViewHight / 2 // 上边距10
-        for i in 0..<tags.count {
-            let btn = getBtn(tags[i], width: bounds.width - 32)
+        for tag in tags {
+            let btn = getBtn(tag, width: bounds.width - 32)
             returnWidth = x + btn.frame.width
             if x + btn.frame.width + 16 + theme.tagViewHight / 2 > bounds.width {
                 x = PADDING

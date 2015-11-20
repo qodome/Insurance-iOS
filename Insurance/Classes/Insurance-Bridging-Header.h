@@ -19,6 +19,9 @@
 // FormatterKit https://github.com/mattt/FormatterKit
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 
+// HMSegmentedControl https://github.com/HeshamMegid/HMSegmentedControl
+#import <HMSegmentedControl/HMSegmentedControl.h>
+
 // M13ProgressSuite https://github.com/Marxon13/M13ProgressSuite
 #import <M13ProgressSuite/M13ProgressHUD.h>
 #import <M13ProgressSuite/M13ProgressViewLetterpress.h>
@@ -27,11 +30,11 @@
 #import <M13ProgressSuite/UINavigationController+M13ProgressViewBar.h>
 
 // RestKit https://github.com/RestKit/RestKit
-#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#import <Availability.h>
 #import <SystemConfiguration/SystemConfiguration.h>
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
 #import <MobileCoreServices/MobileCoreServices.h>
 #else
-#import <SystemConfiguration/SystemConfiguration.h>
 #import <CoreServices/CoreServices.h>
 #endif
 

@@ -6,25 +6,20 @@ class OfferList: TableList {
     let headLabel = UILabel()
     
     // MARK: - 🐤 Taylor
+    override func setTableViewStyle() -> UITableViewStyle {
+        return .Grouped
+    }
+    
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
-        mapping = smartMapping(ListModel.self)
-        let offerMapping = smartMapping(Offer.self, children: ["brand" : Brand.self])
-        let agentMapping = smartMapping(Branch.self, children: ["credit" : BusinessCredit.self])
-        agentMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "tags", toKeyPath: "tags", withMapping: smartListMapping(Tag.self)))
-        offerMapping.addRelationshipMappingWithSourceKeyPath("agent", mapping: agentMapping)
-        let groupMapping = smartMapping(ListModel.self)
-        let groupNext = smartMapping(InsuranceGroup.self)
-        groupNext.addRelationshipMappingWithSourceKeyPath("insurances", mapping: smartListMapping(Insurance.self))
-        groupMapping.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: groupNext))
-        offerMapping.addRelationshipMappingWithSourceKeyPath("insurance_groups", mapping: groupMapping)
-        mapping!.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "results", toKeyPath: "results", withMapping: offerMapping))
+        let agentChild =  RKChild(path: "agent", type: Branch.self, children: [RKChild(path: "credit", type: BusinessCredit.self), RKChild(path: "tags", type: Tag.self, isList: true)])
+        let insuranceChild = RKChild(path: "insurance_groups", type: InsuranceGroup.self, children: [RKChild(path: "insurances", type: Insurance.self, isList: true)],isList: true)
+        mapping = getListMapping(Offer.self, children: [RKChild(path: "brand", type: Brand.self), agentChild, insuranceChild])
         listView.registerClass(OfferListCell.self, forCellReuseIdentifier: cellId)
         let brandView = UIView(frame: CGRectMake(0, 0 , view.frame.width, 35))
-        (listView as UITableView).tableHeaderView = brandView
         headLabel.frame = CGRectMake(10, 0 , view.frame.width - 10, 35)
         headLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        brandView.backgroundColor = .colorWithHex(BACKGROUND_COLOR)
+        brandView.backgroundColor = .groupTableViewBackgroundColor()
         brandView.addSubview(headLabel)
         view.addSubview(brandView)
         refreshMode = .WillAppear
@@ -32,7 +27,7 @@ class OfferList: TableList {
     
     override func onLoadSuccess<E : ListModel>(entity: E) {
         super.onLoadSuccess(entity)
-        headLabel.text = "共计\(getCount())家报价，报价有效期24小时"
+        headLabel.text = "共计\(getTotal())家报价，报价有效期24小时"
     }
     
     override func getItemView<V : UITableView, T : Offer, C : OfferListCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
@@ -43,7 +38,7 @@ class OfferList: TableList {
     override func onPerform<T : Offer>(action: Action, indexPath: NSIndexPath, item: T) {
         switch action {
         case .Open:
-            startActivity(Item(title: "", dest: OfferDetail.self, storyboard: false))
+            startActivity(Item(dest: OfferDetail.self, storyboard: false))
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
         }

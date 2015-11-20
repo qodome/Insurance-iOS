@@ -4,17 +4,32 @@
 
 class OrderList: TableList {
     // MARK: - 🐤 Taylor
+    override func setTableViewStyle() -> UITableViewStyle {
+        return .Grouped
+    }
+    
     override func onPrepare<T : UITableView>(listView: T) {
         super.onPrepare(listView)
         title = LocalizedString("orders")
-        mapping = smartListMapping(Order.self, children: ["user" : User.self, "product" : Product.self])
+        mapping = getListMapping(Order.self, children: [RKChild(path: "user", type: User.self), RKChild(path: "product", type: Product.self)])
         refreshMode = .DidLoad
         listView.registerClass(OrderCell.self, forCellReuseIdentifier: cellId)
+        let segmentController = HMSegmentedControl(sectionTitles: [LocalizedString("all"), LocalizedString("auto_insurance")])
+        segmentController.selectionIndicatorColor = .colorWithHex(APP_COLOR)
+        segmentController.selectionIndicatorHeight = 2
+        segmentController.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
+        segmentController.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe
+        segmentController.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)]
+        segmentController.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkTextColor(), NSFontAttributeName: UIFont.systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)]
+        segmentController.indexChangeBlock = { index in
+            index == 0 ? self.loader?.read() : self.loader?.read(self.endpoint, parameters: ["product_id" : "1"])
+        }
+        segmentController.frame = CGRectMake(0, STATUS_BAR_HEIGHT + NAVIGATION_BAR_HEIGHT, view.frame.width, 36)
+        view.addSubview(segmentController)
     }
     
     override func getItemView<V : UITableView, T : Order, C : OrderCell>(listView: V, indexPath: NSIndexPath, item: T, cell: C) -> C {
         cell.setData(item)
-        cell.accessoryType = .DisclosureIndicator
         return cell
     }
     
@@ -33,6 +48,6 @@ class OrderList: TableList {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 75 + PADDING
+        return 90
     }
 }

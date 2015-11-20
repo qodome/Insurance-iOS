@@ -13,12 +13,13 @@ class Profile: GroupedTableDetail, UpdateDelegate {
                 Item(title: "username")
             ],
             [
-                Item(title: "gender", dest: CheckListUpdate.self, storyboard: false),
+                Item(title: "gender", dest: CheckListUpdate.self, storyboard: false, options: GENDER_STRING),
                 Item(title: "about", dest: TextFieldUpdate.self, storyboard: false)
             ],
             [
                 Item(title: "phone_number", dest: TextFieldUpdate.self, storyboard: false),
-                Item(title: "id_card_number")
+                Item(title: "id_card_number"),
+                Item(title: "securyupdate", dest: SecuryUpdate.self, storyboard: false)
             ]
         ]
     }
@@ -30,8 +31,6 @@ class Profile: GroupedTableDetail, UpdateDelegate {
             let imageView = AvatarView(frame: CGRectMake(0, 0, 60, 60))
             imageView.image.sd_setImageWithURL(NSURL(string: data.imageUrl))
             cell.accessoryView = imageView
-        case "gender":
-            cell.detailTextLabel?.text = getString(GENDER_STRING, key: data.gender)
         default: break
         }
         return cell
@@ -42,7 +41,7 @@ class Profile: GroupedTableDetail, UpdateDelegate {
         case .Open:
             switch item.title {
             case "avatar":
-                startImageSheet(true)
+                startImageSheet(allowsEditing: true)
             default:
                 super.onPerform(action, indexPath: indexPath, item: item)
             }
@@ -53,14 +52,17 @@ class Profile: GroupedTableDetail, UpdateDelegate {
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {
         dest.setValue(data, forKey: "data")
-        dest.setValue(getSelected().first!.title, forKey: "fieldName")
-        if dest.isKindOfClass(UpdateController) {
+        if dest is UpdateController {
+            dest.setValue(getSelected().first!.title, forKey: "fieldName")
             (dest as! UpdateController).delegate = self
-            let endpoint = getEndpoint("users/\((data as! User).id)")
-            dest.setValue(endpoint, forKey: "endpoint")
-            dest.setValue(HttpLoader(endpoint: endpoint, type: User.self), forKey: "loader")
-            if dest.isKindOfClass(CheckListUpdate) {
-                dest.setValue([[Item(title: "male", url: "check://m"), Item(title: "female", url: "check://f")]], forKey: "items")
+            dest.setValue(getEndpoint("users/\((data as! User).id)"), forKey: "endpoint")
+            dest.setValue(getDetailMapping(User.self), forKey: "mapping")
+            if dest.isMemberOfClass(CheckListUpdate) {
+                var items: [[Item]]  = [[]]
+                for (key, value) in getSelected().first!.options! {
+                    items[0] += [Item(title: value, url: "local://check/\(key)")]
+                }
+                dest.setValue(items, forKey: "items")
             }
         }
     }
@@ -68,7 +70,7 @@ class Profile: GroupedTableDetail, UpdateDelegate {
     // MARK: - UpdatedDelegate
     func onBackSegue(data: ModelObject?) {
         self.data = data
-        tableView.reloadData()
+        tableView.reloadData() // TODO: 不需要全局刷新
     }
     
     // MARK: - 💜 UITableViewDelegate

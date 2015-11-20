@@ -8,7 +8,7 @@ class ProductDetail: GroupedTableDetail {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        mapping = smartMapping(Product.self)
+        mapping = getDetailMapping(Product.self)
         refreshMode = .DidLoad
         items = [
             [Item(title: "name")],
@@ -28,7 +28,7 @@ class ProductDetail: GroupedTableDetail {
             ]]
         imageView = ImageView(frame: CGRectMake(0, 0, view.frame.width, 130))
         tableView.addSubview(imageView)
-        let button = QuickButton(frame: CGRectMake(0, view.frame.height - BUTTON_HEIGHT, view.frame.width, BUTTON_HEIGHT))
+        let button = getBottomButton(view)
         button.addTarget(self, action: "buy", forControlEvents: .TouchUpInside)
         button.setTitle(LocalizedString("buy"), forState: .Normal)
         view.addSubview(button)

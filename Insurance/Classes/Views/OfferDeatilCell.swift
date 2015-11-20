@@ -3,25 +3,25 @@
 //
 
 class OfferDeatilCell: UITableViewCell {
-    var title = UILabel()
-    var detailLabel = UILabel()
-    let tagView = JxxTagsView()
+    let title = UILabel()
+    let subtitle = UILabel()
+    let tagsView = JxxTagsView()
     
     // MARK: - 💖 初始化
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - 💜 UITableViewDelegate
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
         title.frame = CGRectMake(PADDING, 5, SCREEN_WIDTH - 2 * PADDING, 20)
         addSubview(title)
-        detailLabel.frame = CGRectMake(PADDING, 30, SCREEN_WIDTH - 2 * PADDING, 20)
-        detailLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        addSubview(detailLabel)
-        tagView.frame = CGRectMake(0, 50, SCREEN_WIDTH, 28)
-        addSubview(tagView)
+        subtitle.frame = CGRectMake(PADDING, 30, SCREEN_WIDTH - 2 * PADDING, 20)
+        subtitle.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        addSubview(subtitle)
+        tagsView.frame = CGRectMake(0, 50, SCREEN_WIDTH, 28)
+        tagsView.theme = TagsTheme(color: XIAOMAR_BLUE)
+        addSubview(tagsView)
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
@@ -34,15 +34,14 @@ class OfferDeatilCell: UITableViewCell {
             let string = NSMutableAttributedString(string: "交易量\(data.agent.credit!.orderCount)单 成功率\(precentString)")
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(3, "\(data.agent.credit!.orderCount)".length))
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(string.length - precentString.length, precentString.length))
-            detailLabel.attributedText = string
+            subtitle.attributedText = string
         } else {
-            detailLabel.text = "无成交"
+            subtitle.text = "无成交"
         }
         var tagsArray: [String] = []
-        for (_, valueTag) in data.agent.tags.results.enumerate() {
-            tagsArray += [valueTag.name]
+        for tag in data.agent.tags.results as! [Tag] {
+            tagsArray += [tag.name]
         }
-        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
-        tagView.setTags(tagsArray, target: nil, action: nil)
+        tagsView.setTags(tagsArray, target: nil, action: nil)
     }
 }

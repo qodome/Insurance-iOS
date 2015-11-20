@@ -3,21 +3,20 @@
 //
 
 class OfferListCell: UITableViewCell {
-    var thirdLabel = UILabel()
+    let thirdParty = UILabel()
     var logoImage: ImageView!
-    var moneyLabel = UILabel()
-    var titleLabel = UILabel()
+    let quotedPrice = UILabel()
+    let titleLabel = UILabel()
     var remarkImage: ImageView!
-    var discountLabel = UILabel()
-    var detailLabel = UILabel()
-    let tagView = JxxTagsView()
+    let discountLabel = UILabel()
+    let subtitle = UILabel()
+    let tagsView = JxxTagsView()
     
     // MARK: - 💖 初始化
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - 💜 UITableViewDelegate
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
         logoImage = ImageView(frame: CGRectMake(PADDING, 5, 80, 40))
@@ -26,42 +25,50 @@ class OfferListCell: UITableViewCell {
         titleLabel.frame = CGRectMake(PADDING, 50, 0, 0)
         titleLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         addSubview(titleLabel)
-        moneyLabel.textColor = .colorWithHex(APP_COLOR)
-        moneyLabel.textAlignment = .Right
-        addSubview(moneyLabel)
-        thirdLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        addSubview(thirdLabel)
+        quotedPrice.textColor = .colorWithHex(APP_COLOR)
+        quotedPrice.textAlignment = .Right
+        addSubview(quotedPrice)
+        thirdParty.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        addSubview(thirdParty)
         discountLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
         discountLabel.frame = CGRectMake(SCREEN_WIDTH - PADDING - 35, 50, 35, 20)
         addSubview(discountLabel)
-        remarkImage = ImageView(frame: CGRectMake(discountLabel.frame.origin.x - 22, discountLabel.frame.origin.y + (discountLabel.bounds.height - 17) / 2, 17, 17))
+        remarkImage = ImageView(frame: CGRectMake(discountLabel.frame.origin.x - 22, 0, 17, 17))
         let remarkSettings =  FAKFontAwesome.giftIconWithSize(CGSizeSettingsIcon.width)
         remarkSettings.addAttribute(NSForegroundColorAttributeName, value: UIColor.colorWithHex(APP_COLOR))
         remarkImage.image = remarkSettings.imageWithSize(CGSizeSettingsIcon)
         remarkImage.contentMode = .ScaleAspectFit
         addSubview(remarkImage)
-        detailLabel.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
-        addSubview(detailLabel)
-        addSubview(tagView)
+        subtitle.font = .systemFontOfSize(DEFAULT_FONT_SIZE_SMALL)
+        addSubview(subtitle)
+        tagsView.theme = TagsTheme(color: XIAOMAR_BLUE)
+        addSubview(tagsView)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        for view in tagsView.subviews {
+            view.removeFromSuperview()
+        }
     }
     
     // MARK: - 💛 自定义方法 (Custom Method)
     func setData(data: Offer) {
         logoImage.sd_setImageWithURL(NSURL(string: data.brand.image_url), placeholderImage: UIImage(named: "logo_brand_2.png"))
-        moneyLabel.text = getFormatterPrice(data.quotedPrice)
-        moneyLabel.sizeToFit()
-        moneyLabel.frame.origin = CGPointMake(SCREEN_WIDTH - moneyLabel.bounds.width - PADDING, (50 - moneyLabel.bounds.height) / 2)
+        quotedPrice.text = getFormatterPrice(data.quotedPrice)
+        quotedPrice.sizeToFit()
+        quotedPrice.frame.origin = CGPointMake(SCREEN_WIDTH - quotedPrice.bounds.width - PADDING, (50 - quotedPrice.bounds.height) / 2)
         if data.thirdParty != 0 {
             let string = NSMutableAttributedString(string: "\(data.thirdParty.integerValue / 10000)万三者")
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(0, string.length - 3))
-            thirdLabel.attributedText = string
-            thirdLabel.sizeToFit()
-            thirdLabel.frame.origin.x = SCREEN_WIDTH - 2 * PADDING_INNER - moneyLabel.frame.width - thirdLabel.frame.width
-            thirdLabel.center.y = moneyLabel.center.y
+            thirdParty.attributedText = string
+            thirdParty.sizeToFit()
+            thirdParty.frame.origin.x = SCREEN_WIDTH - 2 * PADDING_INNER - quotedPrice.frame.width - thirdParty.frame.width
+            thirdParty.center.y = quotedPrice.center.y
         }
         titleLabel.text = data.agent.shortName
         titleLabel.sizeToFit()
-        remarkImage.hidden = data.remark == ""
+        remarkImage.hidden = data.remark.isEmpty
         let discount = String(format: "%.1f", (data.quotedPrice.floatValue - data.motorTaxes.floatValue) / data.originalPrice.floatValue * 10)
         if Float(discount) < 7 {
             discountLabel.text = "7.0折"
@@ -77,25 +84,21 @@ class OfferListCell: UITableViewCell {
             let string = NSMutableAttributedString(string: "\(data.agent.credit!.orderCount)单 成功率\(precentString)")
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(0, "\(data.agent.credit!.orderCount)".length))
             string.addAttributes([NSForegroundColorAttributeName : UIColor.colorWithHex(APP_COLOR)], range: NSMakeRange(string.length - precentString.length, precentString.length))
-            detailLabel.attributedText = string
+            subtitle.attributedText = string
             
         } else {
-            detailLabel.text = "无成交"
+            subtitle.text = "无成交"
         }
         discountLabel.center.y = titleLabel.center.y
         remarkImage.center.y = titleLabel.center.y
-        detailLabel.sizeToFit()
-        detailLabel.frame.origin = CGPointMake(PADDING, titleLabel.bounds.height + titleLabel.frame.origin.y + 10)
+        subtitle.sizeToFit()
+        subtitle.frame.origin = CGPointMake(PADDING, CGRectGetMaxY(titleLabel.frame) + 10)
         var tagsArray: [String] = []
-        for (_, valueTag) in data.agent.tags.results.enumerate() {
-            tagsArray += [valueTag.name]
+        for tag in data.agent.tags.results as! [Tag] {
+            tagsArray += [tag.name]
         }
-        tagView.frame = CGRectMake(2 * PADDING + detailLabel.bounds.width, discountLabel.frame.origin.y + discountLabel.bounds.height + 5, SCREEN_WIDTH - 2 * PADDING - detailLabel.bounds.width, 23)
-        for view in tagView.subviews {
-            view.removeFromSuperview()
-        }
-        tagView.theme = TagsTheme(color: XIAOMAR_BLUE)
-        tagView.setTags(tagsArray, target: nil, action: nil)
-        tagView.frame.origin.x = SCREEN_WIDTH - PADDING - tagView.getWidth()
+        tagsView.frame = CGRectMake(2 * PADDING + subtitle.bounds.width, CGRectGetMaxY(discountLabel.frame) + 5, SCREEN_WIDTH - 2 * PADDING - subtitle.bounds.width, 23)
+        tagsView.setTags(tagsArray, target: nil, action: nil)
+        tagsView.frame.origin.x = SCREEN_WIDTH - PADDING - tagsView.getWidth()
     }
 }

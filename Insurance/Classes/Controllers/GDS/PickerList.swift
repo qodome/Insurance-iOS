@@ -3,20 +3,17 @@
 //
 
 protocol PickerListDelegate {
-    func backPickerModel(model: PickerModel)
+    func onBackSegue(model: PickerModel)
 }
 
 class PickerList: GroupedTableDetail {
     var pickerData: [PickerModel] = []
-    var pickerDelegate: PickerListDelegate?
+    var delegate: PickerListDelegate?
     var selectedId = ""
-    var titleName = ""
     
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        title = titleName
-        items = [[]]
         for pickerModel in pickerData {
             selectedId = pickerModel.pid == selectedId ? pickerModel.plabel : selectedId
             items[0] += [Item(title: pickerModel.plabel, selectable: true)]
@@ -32,7 +29,7 @@ class PickerList: GroupedTableDetail {
         switch action {
         case .Open:
             cancel()
-            pickerDelegate!.backPickerModel(pickerData[indexPath.row])
+            delegate?.onBackSegue(pickerData[indexPath.row])
         default:
             super.onPerform(action, indexPath: indexPath, item: item)
         }

@@ -9,16 +9,15 @@ class Settings: GroupedTableDetail {
     override func onPrepare() {
         super.onPrepare()
         items = [
-//            [Item(title: "securyaccount", dest: SecuryAccount.self, storyboard: false)],
             [Item(title: "about", dest: About.self)],
             [Item(title: "developer", selectable: true)],
-            [Item(title: "sign_out", color: .destructiveColor(), selectable: true)]
+            [Item(title: "sign_out", color: .systemDestructiveColor(), selectable: true)]
         ]
     }
     
     override func prepareGetItemView<C : UITableViewCell>(tableView: UITableView, indexPath: NSIndexPath, item: Item, cell: C) -> UITableViewCell {
         if item.title == "developer" && TestEnv {
-            cell.textLabel?.textColor = .defaultColor()
+            cell.textLabel?.textColor = .systemDefaultColor()
         }
         return cell
     }
@@ -42,7 +41,7 @@ class Settings: GroupedTableDetail {
                     NSUserDefaults.standardUserDefaults().removeObjectForKey(TaylorR.Pref.UserToken.rawValue) // 删除token
                     userToken = DEFAULT_TOKEN
                     RKObjectManager.sharedManager().HTTPClient.setDefaultHeader("Authorization", value: "JWT \(userToken)")
-                    showAlert(self, title: "已注销")
+                    showAlert(self, message: "已注销")
                     })
                 showActionSheet(self, alert: alert)
             default:

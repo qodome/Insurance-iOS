@@ -19,7 +19,7 @@
            "accessory_type": "2",
            "switch_enable": "",
            "switch_status": "",
-           "picker_pid": "5",
+           "picker_pid": "6",
            "picker_array": [
                             {
                             "pid": "0",
@@ -65,7 +65,7 @@
            "accessory_type": "2",
            "switch_enable": "",
            "switch_status": "",
-           "picker_pid": "0",
+           "picker_pid": "1",
            "picker_array": [
                             {
                             "pid": "0",
@@ -116,7 +116,7 @@
            "accessory_type": "2",
            "switch_enable": "",
            "switch_status": "",
-           "picker_pid": "0",
+           "picker_pid": "1",
            "picker_array": [
                             {
                             "pid": "0",
@@ -166,7 +166,7 @@
            "label": "机动车全车盗抢险",
            "accessory_type": "1",
            "switch_enable": "1",
-           "switch_status": "0",
+           "switch_status": "1",
            "picker_pid": "",
            "picker_array": []
            }
@@ -182,7 +182,7 @@
            "accessory_type": "2",
            "switch_enable": "",
            "switch_status": "",
-           "picker_pid": "0",
+           "picker_pid": "1",
            "picker_array": [
                             {
                             "pid": "0",
@@ -233,7 +233,7 @@
            "label": "自燃损失险",
            "accessory_type": "1",
            "switch_enable": "1",
-           "switch_status": "0",
+           "switch_status": "1",
            "picker_pid": "",
            "picker_array": []
            },
@@ -287,8 +287,8 @@
            "name": "sp_theft",
            "label": "不计免赔盗抢险",
            "accessory_type": "1",
-           "switch_enable": "0",
-           "switch_status": "0",
+           "switch_enable": "1",
+           "switch_status": "1",
            "picker_pid": "",
            "picker_array": []
            },
@@ -297,8 +297,8 @@
            "name": "sp_staff",
            "label": "不计免赔车上人员险",
            "accessory_type": "1",
-           "switch_enable": "0",
-           "switch_status": "0",
+           "switch_enable": "1",
+           "switch_status": "1",
            "picker_pid": "",
            "picker_array": []
            },
@@ -307,8 +307,8 @@
            "name": "sp_additional",
            "label": "不计免赔附加险",
            "accessory_type": "1",
-           "switch_enable": "0",
-           "switch_status": "0",
+           "switch_enable": "1",
+           "switch_status": "1",
            "picker_pid": "",
            "picker_array": []
            }

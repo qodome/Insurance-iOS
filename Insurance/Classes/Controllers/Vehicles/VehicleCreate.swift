@@ -6,6 +6,6 @@ class VehicleCreate: TextFieldCreate {
     // MARK: - 🐤 Taylor
     override func onPrepare() {
         super.onPrepare()
-        mapping = smartMapping(Vehicle.self)
+        mapping = getDetailMapping(Vehicle.self)
     }
 }
