@@ -68,11 +68,11 @@ class Register: GroupedTableDetail, UITextFieldDelegate {
     }
     
     override func onLoadFailure(statusCode: Int, message: String) {
-//        if error.localizedDescription  == "No mappable object representations were found at the key paths searched." {
-//            showAlert(self, message: "该手机号已注册，请登录或找回密码。")
-//        } else {
-//            super.onLoadFailure(statusCode, error: error)
-//        }
+        if message  == "{\"username\":[\"已存在一位使用该名字的用户。\"]}" {
+            showAlert(self, message: "该手机号已注册，请登录或找回密码。")
+        } else {
+            super.onLoadFailure(statusCode, message: message)
+        }
     }
     
     override func onSegue(segue: UIStoryboardSegue?, dest: UIViewController, id: String) {

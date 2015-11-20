@@ -128,6 +128,9 @@ class FreedomList: GroupedTableDetail, PickerListDelegate {
                 }
             }
         }
+        if index == 3 {
+            dataDic.removeAllObjects()
+        }
     }
     
     func create() {

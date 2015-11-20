@@ -18,11 +18,11 @@ class SignIn: SignInController {
     }
     
     override func onLoadFailure(statusCode: Int, message: String) {
-//        if error.localizedDescription  == "No mappable object representations were found at the key paths searched." {
-//            showAlert(self, message: "账号和密码不匹配。")
-//        } else {
-//            super.onLoadFailure(statusCode, error: error)
-//        }
+        if message  == "{\"non_field_errors\":[\"Unable to login with provided credentials.\"]}" {
+            showAlert(self, message: "账号和密码不匹配。")
+        } else {
+            super.onLoadFailure(statusCode, message: message)
+        }
     }
     
     // MARK: - 💛 Action
