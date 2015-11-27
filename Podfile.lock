@@ -46,6 +46,7 @@ PODS:
     - RKValueTransformers (~> 1.1.0)
   - M13ProgressSuite (1.2.7)
   - PureLayout (3.0.1)
+  - R.swift (0.12.0)
   - RestKit (0.26.0):
     - RestKit/Core (= 0.26.0)
   - RestKit/Core (0.26.0):
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - FormatterKit
   - HMSegmentedControl
   - M13ProgressSuite
+  - R.swift
   - RestKit
   - SDWebImage
   - SZTextView
@@ -105,6 +107,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   M13ProgressSuite: 03d194af6359da440641ba758aed5a18b0386a86
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+  R.swift: 8d8a9f0cb36462d0dff82b70cc2c0396add668fe
   RestKit: 112fba5bd1f97598aac0db7981863d5fdc0263a2
   RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

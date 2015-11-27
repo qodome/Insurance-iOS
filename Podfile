@@ -18,7 +18,7 @@ target 'Insurance' do
     # pod 'WeiboSDK' # SB的集成了adsupport库, 会导致审核被拒
     # Swift
     # pod 'PageMenu', :git => "https://github.com/uacaps/PageMenu.git"
-    # pod 'R.swift'
+    pod 'R.swift'
     # pod 'Reachability'
     # pod 'SwiftyJSON'
 end

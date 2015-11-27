@@ -81,7 +81,7 @@ class EnquiryCreate: CreateController, CLLocationManagerDelegate, FreedomListDel
             case 2 :
                 cell.textLabel?.text = onOrOff ? LocalizedString("车辆合格证照片") : LocalizedString("行驶证正本照片")
                 let imageView = UIImageView(frame: CGRectMake(0, 0, 80, 60))
-                imageView.image = UIImage(named: onOrOff ? "ic_velicense.png" : "ic_vehiclelicense.png")
+                imageView.image = onOrOff ? R.image.ic_velicense : R.image.ic_vehiclelicense
                 cell.accessoryView = imageView
             default :
                 break

@@ -45,3 +45,6 @@ fastlane/screenshots
 __pycache__/
 *.py[cod]
 *$py.class
+
+# R.swift
+*.generated.swift
