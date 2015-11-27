@@ -1,6 +1,6 @@
 PODS:
   - AFNetworking (1.3.4)
-  - CTAssetsPickerController (3.1.1):
+  - CTAssetsPickerController (3.2.1):
     - PureLayout (~> 3.0.0)
   - DateTools (1.7.0)
   - EAIntroView (2.7.4):
@@ -75,7 +75,7 @@ PODS:
   - TransitionKit (2.2.1)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
-  - WXSDKCoreKit (1.6.1)
+  - WXSDKCoreKit (1.6.2)
 
 DEPENDENCIES:
   - CTAssetsPickerController
@@ -94,7 +94,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
-  CTAssetsPickerController: 6fba9134a230656ffe34ac0effb0060a1ead65cb
+  CTAssetsPickerController: 629e3c452efe92627b6386f572fc4e2f31533880
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   EAIntroView: 50b85eedf414260e61330070ffe5947e72493a62
   EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
@@ -113,6 +113,6 @@ SPEC CHECKSUMS:
   TLYShyNavBar: d313a1c50c58cb7af744829120eaa33ca8a998ce
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
-  WXSDKCoreKit: 537e126eca680d228d2cb084c7f8619303669493
+  WXSDKCoreKit: f8238a00ff3ccb1b857122cdd71f64affa83faf5
 
 COCOAPODS: 0.39.0
