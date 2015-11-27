@@ -19,7 +19,7 @@ target 'Insurance' do
     # Swift
     # pod 'PageMenu', :git => "https://github.com/uacaps/PageMenu.git"
     pod 'R.swift'
-    # pod 'Reachability'
+    pod 'Reachability'
     # pod 'SwiftyJSON'
 end
 
