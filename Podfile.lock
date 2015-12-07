@@ -3,7 +3,7 @@ PODS:
   - CTAssetsPickerController (3.2.1):
     - PureLayout (~> 3.0.0)
   - DateTools (1.7.0)
-  - EAIntroView (2.7.4):
+  - EAIntroView (2.8.0):
     - EARestrictedScrollView (~> 0.2.0)
   - EARestrictedScrollView (0.2.0)
   - FontAwesomeKit (2.2.0):
@@ -100,7 +100,7 @@ SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   CTAssetsPickerController: 629e3c452efe92627b6386f572fc4e2f31533880
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  EAIntroView: 50b85eedf414260e61330070ffe5947e72493a62
+  EAIntroView: f602b9e04b707870361655fdaa7e3798d8ffb53c
   EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
